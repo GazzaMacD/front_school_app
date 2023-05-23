@@ -1,0 +1,169 @@
+.header {
+  height: 78px;
+  width: 100%;
+  background-color: var(--color-base-cream);
+  position: fixed;
+  margin: 0 0 78px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  box-shadow: 0 1px 6px var(--color-shadow);
+  z-index: 1000;
+}
+.header-space {
+  height: 78px;
+}
+.header__logo {
+  height: 45px;
+}
+/* menu */
+/* hamburger */
+.checkbox {
+  display: none;
+}
+
+.menu-button {
+  position: relative;
+  background-color: var(--color-base-lcream);
+  height: 3.5rem;
+  width: 3.5rem;
+  border-radius: 50%;
+  position: fixed;
+  top: 1vh;
+  right: 2vw;
+  z-index: 3000;
+  box-shadow: 0 3px 10px var(--color-shadow);
+  text-align: center;
+  cursor: pointer;
+}
+
+.background {
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+  position: fixed;
+  top: 1.2vh;
+  right: 2.2vw;
+  background-image: radial-gradient(
+    var(--color-base-green),
+    var(--color-base-olive)
+  );
+  z-index: 1000;
+
+  transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+.nav {
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: -60vw;
+  z-index: 1500;
+  opacity: 0;
+  width: 0;
+  transition: all 0.8s;
+}
+
+.list {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  list-style: none;
+  text-align: center;
+  width: 100%;
+}
+
+.item {
+  margin: 1rem;
+  font-size: 36px;
+}
+
+.link:link,
+.link:visited {
+  display: inline-block;
+  font-size: 3rem;
+  font-weight: 300;
+  padding: 1rem 2rem;
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  background-image: linear-gradient(
+    120deg,
+    transparent 0%,
+    transparent 50%,
+    white 50%
+  );
+  background-size: 220%;
+  transition: all 0.4s;
+}
+
+.link:hover,
+.link:active {
+  color: lightgreen;
+  cursor: pointer;
+}
+
+/* functionality */
+.checkbox:checked ~ .background {
+  transform: scale(90);
+}
+.checkbox:checked ~ .nav {
+  opacity: 1;
+  width: 100%;
+  right: 0;
+}
+
+/*  */
+/* styling hamb ICON */
+.icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.icon,
+.icon::before,
+.icon::after {
+  width: 2.2rem;
+  height: 2px;
+  background-color: var(--color-base-green);
+  display: inline-block;
+}
+
+.icon::before,
+.icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  transition: all 0.2s;
+}
+
+.icon::before {
+  top: -0.8rem;
+}
+.icon::after {
+  top: 0.8rem;
+}
+
+.menu-button:hover icon:before {
+  top: -1rem;
+}
+.menu-button:hover icon::after {
+  top: 1rem;
+}
+
+.checkbox:checked + .menu-button .icon {
+  background-color: transparent;
+}
+
+.checkbox:checked + .menu-button .icon::before {
+  top: 0;
+  transform: rotate(135deg);
+}
+.checkbox:checked + .menu-button .icon::after {
+  top: 0;
+  transform: rotate(-135deg);
+}

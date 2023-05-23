@@ -1,3 +1,92 @@
 .heading {
-  color: var(--color-test);
+  color: var(--color-base-green);
+}
+.button {
+  margin: 0 auto;
+  display: block;
+  border: 0;
+  color: var(--color-base-cream);
+  padding: 15px 25px;
+  border-radius: 100px;
+  background-color: var(--color-base-green);
+  transition: background-color 0.5s ease;
+  font-weight: bold;
+  font-size: 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  cursor: pointer;
+}
+.button:hover {
+  background-color: var(--color-base-olive);
+}
+.button--red {
+  background-color: var(--color-base-red);
+  color: var(--color-white);
+}
+.fullwidth {
+  padding: 20px 0 40px 0;
+}
+.fullwidth-video {
+  width: 100%;
+  height: calc(100% - 78px);
+  position: relative;
+}
+.video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.overlay {
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  color: white;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.vinner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.vbanner {
+  position: absolute;
+  margin: auto;
+  inset: 0;
+  height: 100px;
+  width: 600px;
+}
+.vbanner__buttons {
+  display: flex;
+  justify-content: center;
+  column-gap: 3rem;
+}
+.dark {
+  background-color: var(--color-base-dbrown);
+  color: var(--color-base-cream);
+}
+.green {
+  background-color: var(--color-base-green);
+  color: var(--color-base-cream);
+}
+.green-gradient {
+  background: linear-gradient(
+    0deg,
+    var(--color-base-olive) 0%,
+    var(--color-base-green) 100%
+  );
+  color: var(--color-base-cream);
+}
+.cream-gradient {
+  background: linear-gradient(
+    0deg,
+    var(--color-base-dcream) 0%,
+    var(--color-base-cream) 100%
+  );
 }
