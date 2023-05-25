@@ -36,32 +36,34 @@ export default function App() {
             src="/img/xlingual_only_logo.svg"
             alt=""
           ></img>
-
-          <div>
-            <input type="checkbox" id="navi-toggle" className="checkbox" />
-            <label htmlFor="navi-toggle" className="menu-button">
-              <span className="icon">&nbsp;</span>
-            </label>
-            <div className="background">&nbsp;</div>
-            <nav className="nav">
-              <ul className="list">
-                <li className="item">
-                  <a className="link">Link 1 </a>
-                </li>
-                <li className="item">
-                  <a className="link">Link 1 </a>
-                </li>
-                <li className="item">
-                  <a className="link">Link 1 </a>
-                </li>
-                <li className="item">
-                  <a className="link">Link 1 </a>
-                </li>
-                <li className="item">
-                  <a className="link">Link 1 </a>
-                </li>
-              </ul>
-            </nav>
+          <div className="right-menu">
+            stuff
+            <div className="hamburger-system">
+              <input type="checkbox" id="navi-toggle" className="checkbox" />
+              <label htmlFor="navi-toggle" className="menu-button">
+                <span className="icon">&nbsp;</span>
+              </label>
+              <div className="background">&nbsp;</div>
+              <nav className="nav">
+                <ul className="list">
+                  <li className="item">
+                    <a className="link">Link 1 </a>
+                  </li>
+                  <li className="item">
+                    <a className="link">Link 1 </a>
+                  </li>
+                  <li className="item">
+                    <a className="link">Link 1 </a>
+                  </li>
+                  <li className="item">
+                    <a className="link">Link 1 </a>
+                  </li>
+                  <li className="item">
+                    <a className="link">Link 1 </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
           </div>
         </header>
         <div className="header-space"></div>

@@ -1,3 +1,6 @@
+/* 
+* Global Header Section
+*/
 .header {
   height: 78px;
   width: 100%;
@@ -9,7 +12,7 @@
   justify-content: space-between;
   padding: 0 10px;
   /* box-shadow: 0 1px 6px var(--color-shadow); */
-  z-index: 1000;
+  z-index: 1500;
 }
 .header h1 {
   color: var(--color-base-green);
@@ -20,8 +23,7 @@
 .header__logo {
   height: 45px;
 }
-/* menu */
-/* hamburger */
+/* hamburger menu system*/
 .checkbox {
   display: none;
 }
@@ -33,9 +35,9 @@
   width: 3.5rem;
   border-radius: 50%;
   position: fixed;
-  top: 1vh;
+  top: 1.6vh;
   right: 2vw;
-  z-index: 3000;
+  z-index: 2000;
   /* box-shadow: 0 3px 10px var(--color-shadow); */
   text-align: center;
   cursor: pointer;
@@ -46,13 +48,13 @@
   width: 3rem;
   border-radius: 50%;
   position: fixed;
-  top: 1.2vh;
+  top: 1.7vh;
   right: 2.2vw;
   background-image: radial-gradient(
     var(--color-base-green),
-    var(--color-base-olive)
+    var(--color-shade-green6)
   );
-  z-index: 2000;
+  z-index: 1900;
   transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
 }
 
@@ -64,6 +66,7 @@
   z-index: 1500;
   opacity: 0;
   width: 0;
+  z-index: 1950;
   transition: all 0.8s;
 }
 
