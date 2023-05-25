@@ -9,20 +9,7 @@
   --color-shade-green1: rgb(56, 103, 7);
   --color-shade-red1: rgb(153, 16, 25);
   --color-shade-yellow1: rgb(229, 173, 33);
-
-  /* --color-base-olive: rgba(49, 84, 7, 1); */
-  /* --color-base-lcream: rgb(253, 249, 240); */
-  /* --color-base-dcream: rgb(233, 214, 167); */
-
-  --color-lgreen: rgba(133, 242, 17, 1);
-  --color-pink: rgba(215, 76, 162, 1);
-  --color-purple: rgba(146, 12, 166, 1);
-  --color-black: rgba(0, 0, 0, 1);
-  --color-dgrey: rgba(128, 128, 128, 1);
-  --color-grey: rgba(204, 204, 204, 1);
-  --color-lgrey: rgba(246, 246, 246, 1);
-  --color-white: rgba(255, 255, 255, 1);
-  --color-background: rgb(234, 232, 227);
+  /*shadows*/
   --color-shadow: rgba(0, 0, 0, 0.2);
 }
 /*
