@@ -34,8 +34,9 @@ export default function App() {
           <img
             className="header__logo"
             src="/img/xlingual_only_logo.svg"
-            alt="Xlingual header log"
-          />
+            alt=""
+          ></img>
+
           <div>
             <input type="checkbox" id="navi-toggle" className="checkbox" />
             <label htmlFor="navi-toggle" className="menu-button">

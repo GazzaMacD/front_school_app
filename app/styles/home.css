@@ -18,22 +18,38 @@
   cursor: pointer;
 }
 .button:hover {
-  background-color: var(--color-base-olive);
+  background-color: var(--color-shade-green1);
 }
 .button--red {
   background-color: var(--color-base-red);
-  color: var(--color-white);
+  color: var(--color-base-cream);
+}
+
+.button--red:hover {
+  background-color: var(--color-shade-red1);
+}
+
+.button--yellow {
+  background-color: var(--color-base-yellow);
+  color: var(--color-base-dbrown);
+}
+
+.button--yellow:hover {
+  background-color: var(--color-shade-yellow1);
 }
 .fullwidth {
-  padding: 20px 0 40px 0;
+  padding: 80px 0 60px 0;
 }
 .fullwidth-video {
   width: 100%;
-  height: calc(100% - 78px);
+  height: calc(100% - 156px);
   position: relative;
+  background-color: var(--color-base-cream);
+  display: flex;
+  justify-content: end;
 }
 .video {
-  width: 100%;
+  width: 65%;
   height: 100%;
   object-fit: cover;
 }
@@ -47,8 +63,7 @@
   height: 100%;
   width: 100%;
   color: white;
-  text-align: center;
-  background-color: rgba(0, 0, 0, 0.3);
+  /* text-align: center; */
 }
 .vinner {
   position: relative;
@@ -57,15 +72,31 @@
 }
 .vbanner {
   position: absolute;
+  top: 20%;
+  left: 4%;
   margin: auto;
-  inset: 0;
-  height: 100px;
-  width: 600px;
+  width: 400px;
+}
+.vbanner h2 {
+  font-size: 2.5rem;
+  margin: 60px;
 }
 .vbanner__buttons {
   display: flex;
   justify-content: center;
   column-gap: 3rem;
+}
+.green-text {
+  color: var(--color-base-green);
+}
+.cream-text {
+  color: var(--color-base-cream);
+}
+.red-text {
+  color: var(--color-base-red);
+}
+.yellow-text {
+  color: var(--color-base-yellow);
 }
 .dark {
   background-color: var(--color-base-dbrown);
@@ -74,6 +105,9 @@
 .green {
   background-color: var(--color-base-green);
   color: var(--color-base-cream);
+}
+.green h2 {
+  color: var(--color-base-yellow);
 }
 .green-gradient {
   background: linear-gradient(

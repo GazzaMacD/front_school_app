@@ -33,10 +33,15 @@ export default function Index() {
         <div className="overlay">
           <div className="vinner">
             <div className="vbanner">
-              <h2>Awesome lessons and learning experiences</h2>
+              <h2>
+                <span className="green-text">
+                  Awesome lessons and <span className="yellow-text">lear</span>
+                  <span className="red-text">ning</span> experiences
+                </span>
+              </h2>
               <div className="vbanner__buttons">
-                <button className="button">Basic Button</button>
-                <button className="button button--red">Red Button</button>
+                <button className="button button--red ">Button</button>
+                <button className="button button--yellow">Button</button>
               </div>
             </div>
           </div>
@@ -46,15 +51,11 @@ export default function Index() {
         <div className="text-container">
           <h1 className="heading en">Welcome to the new Xlingual App</h1>
           <p>{text}</p>
-          <button className="button">Basic Button</button>
-          <br></br>
-          <br></br>
-          <button className="button button--red">Red Button</button>
+          <button className="button button--red">Basic Button</button>
         </div>
       </div>
       <div className="fullwidth green">
         <div className="text-container">
-          <h2 className="en">This is green solid container</h2>
           <h2>末うがいけ刊参組エヱヨ地生ユツコシ亮科</h2>
           <p>{text}</p>
         </div>
