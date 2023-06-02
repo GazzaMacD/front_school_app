@@ -10,6 +10,7 @@
   --color-shade-green6: rgb(25, 46, 3);
   --color-shade-red1: rgb(153, 16, 25);
   --color-shade-yellow1: rgb(229, 173, 33);
+  --color-tint-green1: rgb(82, 129, 57);
   /*shadows*/
   --color-shadow: rgba(0, 0, 0, 0.2);
 }
@@ -83,4 +84,11 @@ p {
 .text-container {
   margin: 0 auto;
   max-width: 700px;
+}
+
+/* Lists */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
