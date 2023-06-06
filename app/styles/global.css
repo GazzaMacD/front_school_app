@@ -92,3 +92,19 @@ ul {
   padding: 0;
   margin: 0;
 }
+
+/* small styles */
+@media (min-width: 576px) {
+}
+
+/* medium  styles */
+@media (min-width: 768px) {
+}
+
+/* large  styles */
+@media (min-width: 992px) {
+}
+
+/* xlarge styles */
+@media (min-width: 1200px) {
+}
