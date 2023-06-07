@@ -5,6 +5,12 @@
   --color-base-red: rgb(171, 18, 28);
   --color-base-dbrown: rgb(58, 35, 0);
   --color-base-yellow: rgb(255, 193, 37);
+  /* base text colors */
+  --color-text-dark: var(--color-base-dbrown);
+  --color-text-heading-dark: var(--color-base-green);
+  --color-text-light: var(--color-base-cream);
+  --color-text-heading-light: var(--color-base-yellow);
+
   /* tints and shades */
   --color-shade-green1: rgb(56, 103, 7);
   --color-shade-green6: rgb(25, 46, 3);
@@ -28,11 +34,9 @@
 }
 html,
 body {
-  font-size: 16px;
   height: 100%;
 }
 body {
-  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   background-color: var(--color-base-cream);
 }
@@ -59,47 +63,51 @@ h5,
 h6 {
   overflow-wrap: break-word;
 }
-/*
-* Base styles
-*/
 
-/* Typograpy*/
-body {
-  font-family: "Yu Gothic", "メイリオ", "Meiryo", "ＭＳ ゴシック", "MS Gothic",
-    "HiraKakuProN-W3", "TakaoExゴシック", "TakaoExGothic", "MotoyaLCedar",
-    "Droid Sans Japanese", sans-serif;
-  color: var(--color-base-dbrown);
-}
-.en {
-  font-family: "Montserrat", sans-serif;
-}
-p {
-  line-height: 2;
-  letter-spacing: 2.6px;
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-  font-weight: 300;
-}
-
-/* Containers */
-.text-container {
-  margin: 0 auto;
-  max-width: 700px;
-}
-
-/* Lists */
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
 /* ----------------------------- 
-Spacing
+Typography and Spacing
 -------------------------------- */
-
 :root {
+  /* font families */
+  --font-jp-primary: "Yu Gothic", "メイリオ", "Meiryo", "ＭＳ ゴシック",
+    "MS Gothic", "HiraKakuProN-W3", "TakaoExゴシック", "TakaoExGothic",
+    "MotoyaLCedar", "Droid Sans Japanese", sans-serif;
+  /*--font-jp-secondary: ; */
+  --font-en-primary: "Montserrat", sans-serif;
+  /*--font-en-secondary: "Montserrat", sans-serif;*/
+
+  /* base text sizes IMPORTANT */
+  --text-base-size: 1em;
+  --text-scale-ratio: 1.2;
+
+  /* type scale */
+  --text-xs: calc(1em / (var(--text-scale-ratio) * var(--text-scale-ratio)));
+  --text-sm: calc(1em / var(--text-scale-ratio));
+  --text-md: calc(1em * var(--text-scale-ratio));
+  --text-lg: calc(1em * var(--text-scale-ratio) * var(--text-scale-ratio));
+  --text-xl: calc(
+    1em * var(--text-scale-ratio) * var(--text-scale-ratio) *
+      var(--text-scale-ratio)
+  );
+  --text-xxl: calc(
+    1em * var(--text-scale-ratio) * var(--text-scale-ratio) *
+      var(--text-scale-ratio) * var(--text-scale-ratio)
+  );
+  --text-xxxl: calc(
+    1em * var(--text-scale-ratio) * var(--text-scale-ratio) *
+      var(--text-scale-ratio) * var(--text-scale-ratio) *
+      var(--text-scale-ratio)
+  );
+  /* base text values */
+  --text-line-height: 2;
+  --text-letter-spacing: 2.6px;
+
+  /* heading values */
+  --heading-line-height: 2;
+  --heading-letter-spacing: 2px;
+
   /* spacing values */
-  --space-unit: 1em;
+  --space-unit: 0.8em;
   --space-xxxs: calc(0.25 * var(--space-unit));
   --space-xxs: calc(0.375 * var(--space-unit));
   --space-xs: calc(0.5 * var(--space-unit));
@@ -115,14 +123,70 @@ Spacing
   --component-padding: var(--space-sm);
 }
 
-/* small styles */
-@media (min-width: 576px) {
+body {
+  font-size: var(--text-base-size);
+  font-family: var(--font-jp-primary);
+  color: var(--color-base-dbrown);
+}
+.en {
+  font-family: "Montserrat", sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+form legend {
+  color: var(--color-text-heading-dark);
+  line-height: var(--heading-line-height);
+}
+/* heading & text styles */
+.text--xxxl {
+  font-size: var(--text-xxxl);
+  margin-bottom: var(--space-lg);
+}
+h1,
+.text--xxl {
+  font-size: var(--text-xl);
+  margin-bottom: var(--space-md);
+}
+h2,
+.text--xl {
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-sm);
+}
+h3,
+.text--lg {
+  font-size: var(--text-md);
+  margin-bottom: var(--space-xs);
+}
+h4,
+.text--md {
+  font-size: var(--text-base-size);
+  margin-bottom: var(--space-xxs);
+}
+p {
+  line-height: var(--text-line-height);
+  letter-spacing: var(--text-letter-spacing);
+  margin-bottom: var(--space-lg);
+  font-weight: 300;
 }
 
-/* medium  styles */
 @media (min-width: 992px) {
+  :root {
+    --text-base-size: 1.1em;
+    --text-scale-ratio: 1.3;
+  }
 }
 
-/* large styles */
-@media (min-width: 1200px) {
+/* Containers */
+.text-container {
+  margin: 0 auto;
+  max-width: 700px;
+}
+
+/* Lists */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
