@@ -48,69 +48,43 @@ export default function Index() {
         </div>
       </div>
       <section className="bgrid">
-        <div className="">
-          <div className="text-container">
-            <h1 className="heading en">Client Testimonials</h1>
-            <p>{text}</p>
-            <button className="button">Basic Button</button>
-          </div>
+        <div className="btext">
+          <h1 className="heading en">Client Testimonials</h1>
+          <p>{text}</p>
+          <button className="button">Basic Button</button>
         </div>
-        <div></div>
+        <figure className="full-image">
+          <img src="/img/class.jpg" alt="Students" />
+          <figcaption>Students</figcaption>
+        </figure>
+        <div className="btext">
+          <h2 className="en">Section</h2>
+          <p>{text}</p>
+        </div>
+        <div className="btext">
+          <h2 className="en">Section</h2>
+          <p>{text}</p>
+        </div>
+        <figure className="text-width-image">
+          <img src="/img/class.jpg" alt="Students" />
+          <figcaption>Students</figcaption>
+        </figure>
+        <div className="btext">
+          <h2 className="en">Section</h2>
+          <p>{text}</p>
+        </div>
+        <figure className="three-quarter-image">
+          <img src="/img/class.jpg" alt="Students" />
+          <figcaption>Students</figcaption>
+        </figure>
+        <div className="btext">
+          <h2 className="en">Section</h2>
+          <p>{text}</p>
+        </div>
       </section>
-      <div className="fullwidth green">
-        <div className="text-container">
-          <h2>末うがいけ刊参組エヱヨ地生ユツコシ亮科</h2>
-          <p>{text}</p>
-        </div>
-      </div>
-      <div className="fullwidth">
-        <div className="text-container">
-          <h3>末うがいけ刊参組エヱヨ地生ユツコシ亮科</h3>
-          <ul>
-            <li>皇辞ワ索毎フ悪部表ノワス録浩ツ助頼柔ゅばル。</li>
-            <li>皇辞ワ索毎フ悪部表ノワス録浩ツ助頼柔ゅばル。</li>
-            <li>皇辞ワ索毎フ悪部表ノワス録浩ツ助頼柔ゅばル。</li>
-            <li>皇辞ワ索毎フ悪部表ノワス録浩ツ助頼柔ゅばル。</li>
-            <li>皇辞ワ索毎フ悪部表ノワス録浩ツ助頼柔ゅばル。</li>
-            <li>皇辞ワ索毎フ悪部表ノワス録浩ツ助頼柔ゅばル。</li>
-          </ul>
-        </div>
-      </div>
-      <div className="fullwidth dark">
-        <div className="text-container">
-          <h2 className="en">This is English</h2>
-          <h2>末うがいけ刊参組エヱヨ地生ユツコシ亮科</h2>
-          <p>{text}</p>
-        </div>
-      </div>
-      <div className="fullwidth cream-gradient">
-        <div className="text-container">
-          <h2 className="en">This is cream gradient</h2>
-          <h2>末うがいけ刊参組エヱヨ地生ユツコシ亮科</h2>
-          <p>{text}</p>
-        </div>
-      </div>
-      <div className="fullwidth green-gradient">
-        <div className="text-container">
-          <h2 className="en">This is a green gradient</h2>
-          <h2>末うがいけ刊参組エヱヨ地生ユツコシ亮科</h2>
-          <p>{text}</p>
-        </div>
-      </div>
-      <div className="fullwidth">
-        <div className="text-container">
-          <h2 className="en">This is English</h2>
-          <h2>末うがいけ刊参組エヱヨ地生ユツコシ亮科</h2>
-          <p>{text}</p>
-        </div>
-      </div>
-      <div className="fullwidth green">
-        <div className="text-container">
-          <h2 className="en">This is English</h2>
-          <h2>末うがいけ刊参組エヱヨ地生ユツコシ亮科</h2>
-          <p>{text}</p>
-        </div>
-      </div>
+      <footer className="bfooter">
+        <h2>Footer here</h2>
+      </footer>
     </>
   );
 }
