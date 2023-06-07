@@ -47,13 +47,16 @@ export default function Index() {
           </div>
         </div>
       </div>
-      <div className="fullwidth">
-        <div className="text-container">
-          <h1 className="heading en">Welcome to the new Xlingual App</h1>
-          <p>{text}</p>
-          <button className="button button--red">Basic Button</button>
+      <section className="bgrid">
+        <div className="">
+          <div className="text-container">
+            <h1 className="heading en">Client Testimonials</h1>
+            <p>{text}</p>
+            <button className="button">Basic Button</button>
+          </div>
         </div>
-      </div>
+        <div></div>
+      </section>
       <div className="fullwidth green">
         <div className="text-container">
           <h2>末うがいけ刊参組エヱヨ地生ユツコシ亮科</h2>

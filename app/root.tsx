@@ -1,8 +1,7 @@
 import { cssBundleHref } from "@remix-run/css-bundle";
 import type { LinksFunction } from "@remix-run/node";
-import globalStyles from "./styles/global.css";
-import elementStyles from "./styles/element.css";
-import rootStyles from "./styles/root.css";
+import baseStyles from "./styles/base.css";
+import baseElementStyles from "./styles/base-elements.css";
 import { AiFillPhone } from "react-icons/ai";
 import {
   FaInstagram,
@@ -22,9 +21,8 @@ import {
 
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
-  { rel: "stylesheet", href: globalStyles },
-  { rel: "stylesheet", href: elementStyles },
-  { rel: "stylesheet", href: rootStyles },
+  { rel: "stylesheet", href: baseStyles },
+  { rel: "stylesheet", href: baseElementStyles },
 ];
 
 export default function App() {
@@ -152,8 +150,9 @@ export default function App() {
             </div>
           </div>
         </header>
-        <div className="header-space"></div>
-        <Outlet />
+        <div className="content-wrapper">
+          <Outlet />
+        </div>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />

@@ -1,6 +1,42 @@
-/* 
-* Global Header Section
-*/
+/* Buttons */
+.button {
+  margin: 0 auto;
+  display: block;
+  border: 0;
+  color: var(--color-base-cream);
+  padding: 15px 25px;
+  border-radius: 100px;
+  background-color: var(--color-base-green);
+  transition: background-color 0.5s ease;
+  font-weight: bold;
+  font-size: 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  cursor: pointer;
+}
+.button:hover {
+  background-color: var(--color-shade-green1);
+}
+.button--red {
+  background-color: var(--color-base-red);
+  color: var(--color-base-cream);
+}
+
+.button--red:hover {
+  background-color: var(--color-shade-red1);
+}
+
+.button--yellow {
+  background-color: var(--color-base-yellow);
+  color: var(--color-base-dbrown);
+}
+
+.button--yellow:hover {
+  background-color: var(--color-shade-yellow1);
+}
+
+/* Global Header Section */
 .header {
   height: 78px;
   width: 100%;
@@ -296,4 +332,14 @@
 .mburger__checkbox:checked + .mburger__button .mburger__icon::after {
   top: 0;
   transform: rotate(-135deg);
+}
+
+/*  content other than header wrapper */
+.content-wrapper {
+  padding-top: 78px;
+}
+
+/*  base grids */
+.bgrid {
+  display: grid;
 }
