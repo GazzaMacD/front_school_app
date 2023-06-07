@@ -28,6 +28,7 @@
 }
 html,
 body {
+  font-size: 16px;
   height: 100%;
 }
 body {
@@ -98,13 +99,9 @@ ul {
 }
 
 /* medium  styles */
-@media (min-width: 768px) {
-}
-
-/* large  styles */
 @media (min-width: 992px) {
 }
 
-/* xlarge styles */
+/* large styles */
 @media (min-width: 1200px) {
 }
