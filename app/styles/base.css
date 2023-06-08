@@ -5,18 +5,19 @@
   --color-base-red: rgb(171, 18, 28);
   --color-base-dbrown: rgb(58, 35, 0);
   --color-base-yellow: rgb(255, 193, 37);
+  /* tints and shades */
+  --color-shade-green1: rgb(56, 103, 7);
+  --color-shade-green2: rgb(50, 92, 6);
+  --color-shade-green6: rgb(25, 46, 3);
+  --color-shade-red1: rgb(153, 16, 25);
+  --color-shade-yellow1: rgb(229, 173, 33);
+  --color-tint-green1: rgb(82, 129, 57);
   /* base text colors */
   --color-text-dark: var(--color-base-dbrown);
   --color-text-heading-dark: var(--color-base-green);
   --color-text-light: var(--color-base-cream);
   --color-text-heading-light: var(--color-base-yellow);
 
-  /* tints and shades */
-  --color-shade-green1: rgb(56, 103, 7);
-  --color-shade-green6: rgb(25, 46, 3);
-  --color-shade-red1: rgb(153, 16, 25);
-  --color-shade-yellow1: rgb(229, 173, 33);
-  --color-tint-green1: rgb(82, 129, 57);
   /*shadows*/
   --color-shadow: rgba(0, 0, 0, 0.2);
 }
@@ -106,8 +107,10 @@ Typography and Spacing
   --heading-line-height: 2;
   --heading-letter-spacing: 2px;
 
-  /* spacing values */
-  --space-unit: 0.8em;
+  /*  base space unit IMPORTANT */
+  --space-unit: 1em;
+
+  /*  spacing unit */
   --space-xxxs: calc(0.25 * var(--space-unit));
   --space-xxs: calc(0.375 * var(--space-unit));
   --space-xs: calc(0.5 * var(--space-unit));
@@ -176,6 +179,36 @@ p {
     --text-base-size: 1.1em;
     --text-scale-ratio: 1.3;
   }
+}
+/* links */
+a,
+a:link,
+a:visited {
+  color: var(--color-base-green);
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+}
+a::before,
+a:link::before,
+a:visted::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  border-radius: 1px;
+  background-color: var(--color-base-green);
+  bottom: 2px;
+  left: 0;
+}
+a:hover,
+a:active {
+  color: var(--color-shade-green2);
+}
+a:hover::before,
+a:active::before {
+  background-color: var(--color-shade-green2);
+  height: 2px;
 }
 
 /* Containers */
