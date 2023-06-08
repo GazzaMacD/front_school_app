@@ -1,6 +1,6 @@
 /* Buttons */
 .button {
-  margin: 0 auto;
+  margin: var(--space-lg) auto;
   display: block;
   border: 0;
   color: var(--color-base-cream);
@@ -51,6 +51,10 @@
   /* box-shadow: 0 1px 6px var(--color-shadow); */
   z-index: 1500;
 }
+.header ul {
+  list-style: none;
+  margin: 0;
+}
 .header h1 {
   color: var(--color-base-green);
 }
@@ -68,7 +72,8 @@
 }
 .right-menu__item {
 }
-.right-menu__link {
+.right-menu__link,
+.right-menu__link:link {
   position: relative;
   color: var(--color-base-green);
   text-decoration: none;
@@ -76,7 +81,8 @@
   align-items: center;
   padding: 5px 0 5px 0;
 }
-.right-menu__link::before {
+.right-menu__link::before,
+.right-menu__link:link::before {
   content: "";
   position: absolute;
   width: 100%;
@@ -153,6 +159,7 @@
 .mb__link:hover,
 .mb__link:active {
   cursor: pointer;
+  color: var(--color-base-cream);
 }
 
 .mb__link::before {
@@ -172,6 +179,7 @@
 .mb__link:hover::before {
   transform-origin: left;
   transform: scaleX(1);
+  background-color: var(--color-base-cream);
 }
 /*secondary links*/
 .mb__link--secondary {

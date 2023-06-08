@@ -12,6 +12,9 @@
   display: flex;
   justify-content: end;
 }
+.temp-video-base {
+  height: 400px;
+}
 .video {
   width: 65%;
   height: 100%;
