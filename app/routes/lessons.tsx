@@ -32,7 +32,7 @@ export async function loader({ request }: LoaderArgs) {
   //handle previews
   const previewResponse = await handlePreview<TLessonsPreview>(request);
   if (previewResponse.isPreview && previewResponse.data) {
-    return json<{ data: TLessonsPreview }>({ data: previewResponse.data });
+    return json({ data: previewResponse.data });
   }
   //NOTE : deal with preview errrors here
   const apiUrl = `${BASE_API_URL}/pages/?type=lessons.LessonListPage&fields=jp_title`;
@@ -42,8 +42,8 @@ export async function loader({ request }: LoaderArgs) {
       throw new Error("Error", { cause: response.status });
     }
     const pagesData: TLessons = await response.json();
-    const data = pagesData.items[0];
-    return json<{ data: TLesson }>({ data: data });
+    const data: TLesson = pagesData.items[0];
+    return json({ data: data });
   } catch (error) {
     console.error(error);
     if (error instanceof Error) {

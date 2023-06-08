@@ -1,3 +1,14 @@
+/*
+Media queries
+@media (min-width: 576px) {
+}
+
+@media (min-width: 992px) {
+}
+
+@media (min-width: 1450px) {
+}
+*/
 :root {
   /* base colors */
   --color-base-green: rgb(63, 115, 8);
