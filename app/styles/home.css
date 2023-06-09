@@ -1,54 +1,82 @@
-.fullwidth-video {
-  width: 100%;
-  height: calc(100% - 156px);
-  position: relative;
+/* ----------------------------- 
+Home Video Banner
+-------------------------------- */
+#video-banner {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto auto auto auto auto;
   background-color: var(--color-base-cream);
-  display: flex;
-  justify-content: end;
-  display: none;
+  height: calc(100% - 78px);
+  margin-bottom: 78px;
 }
-.temp-video-base {
-  height: 400px;
+.vbanner__wrapper {
+  grid-column: 1/13;
+  grid-row: 1/6;
 }
-.video {
-  width: 65%;
-  height: 100%;
+.vbanner__video {
+  width: 100%;
+  height: calc(100vh - 156px);
   object-fit: cover;
 }
-.overlay {
-  margin: auto;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  height: 100%;
-  width: 100%;
-  color: white;
-  z-index: 300;
-  /* text-align: center; */
+.vbanner__promo {
+  background-color: rgba(0, 0, 0, 0.15);
+  grid-column: 2/12;
+  grid-row: 2/5;
+  display: flex;
+  flex-direction: column;
+  border-radius: 40px;
+  align-items: center;
+  padding: var(--component-padding);
 }
-.vinner {
-  position: relative;
-  width: 100%;
-  height: 100%;
+.vbanner__text {
+  max-width: 300px;
 }
-.vbanner {
-  position: absolute;
-  top: 20%;
-  left: 4%;
-  margin: auto;
-  width: 400px;
-}
-.vbanner h2 {
-  font-size: 2.5rem;
-  margin: 60px;
+.vbanner__title {
+  color: var(--color-base-cream);
+  font-size: var(--text-lg);
+  text-align: center;
 }
 .vbanner__buttons {
   display: flex;
-  justify-content: center;
-  column-gap: 3rem;
+  gap: var(--space-sm);
 }
+@media (min-width: 992px) {
+  .vbanner__wrapper {
+    grid-column: 5/13;
+    grid-row: 1/6;
+  }
+  .vbanner__promo {
+    background-color: transparent;
+    grid-column: 1/5;
+    grid-row: 3/6;
+  }
+  .vbanner__title {
+    color: var(--color-base-green);
+    font-size: var(--text-lg);
+    text-align: center;
+  }
+  .vbanner__yellow {
+    color: var(--color-base-yellow);
+  }
+  .vbanner__red {
+    color: var(--color-base-red);
+  }
+}
+@media (min-width: 1450px) {
+  .vbanner__text {
+    max-width: 500px;
+  }
+  .vbanner__title {
+    font-size: var(--text-xl);
+  }
+  .vbanner__buttons {
+    gap: var(--space-xxl);
+  }
+}
+/* ----------------------------- 
+Our services
+-------------------------------- */
+
 .green-text {
   color: var(--color-base-green);
 }
