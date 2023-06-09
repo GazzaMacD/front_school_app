@@ -26,7 +26,28 @@ export default function Index() {
   const { text } = useLoaderData<typeof loader>();
   return (
     <>
-      <div className="fullwidth-video">
+      <section id="video-banner">
+        <div className="vbanner__wrapper">
+          <video className="vbanner__video" playsInline autoPlay muted loop>
+            <source src="/video/dummy.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div className="vbanner__promo">
+          <div className="vbanner__text">
+            <h2 className="vbanner__title">
+              Learn English with our{" "}
+              <span className="vbanner__yellow">multi</span>
+              <span className="vbanner__red">lingual</span> expert teachers.
+            </h2>
+          </div>
+          <div className="vbanner__buttons">
+            <button className="button button--red ">Courses</button>
+            <button className="button button--yellow">Experiences</button>
+          </div>
+        </div>
+      </section>
+
+      {/* <div className="fullwidth-video">
         <video className="video" playsInline autoPlay muted loop>
           <source src="/video/dummy.mp4" type="video/mp4" />
         </video>
@@ -46,7 +67,7 @@ export default function Index() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="temp-video-base"></div>
       <section className="bgrid">
         <div className="btext">

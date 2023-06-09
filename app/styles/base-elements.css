@@ -6,7 +6,7 @@ Buttons
   display: block;
   border: 0;
   color: var(--color-base-cream);
-  padding: 15px 25px;
+  padding: 10px 20px;
   border-radius: 100px;
   background-color: var(--color-base-green);
   transition: background-color 0.5s ease;
@@ -36,6 +36,12 @@ Buttons
 
 .button--yellow:hover {
   background-color: var(--color-shade-yellow1);
+}
+@media (min-width: 576px) {
+  .button {
+    margin: var(--space-sm) auto;
+    padding: 15px 25px;
+  }
 }
 
 /* ----------------------------- 
@@ -403,6 +409,7 @@ Base grids, containers  & figure/ img / classes
 -------------------------------- */
 .content-wrapper {
   padding-top: 78px;
+  height: 100%;
 }
 .bgrid {
   display: grid;
