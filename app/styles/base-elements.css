@@ -1,4 +1,6 @@
-/* Buttons */
+/* ----------------------------- 
+Buttons
+-------------------------------- */
 .button {
   margin: var(--space-lg) auto;
   display: block;
@@ -36,9 +38,9 @@
   background-color: var(--color-shade-yellow1);
 }
 
-/*  
-*  Global Header 
-*/
+/* ----------------------------- 
+Global Header
+-------------------------------- */
 
 .header {
   height: 78px;
@@ -50,7 +52,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 10px;
+  padding: 0 var(--component-margin);
   /* box-shadow: 0 1px 6px var(--color-shadow); */
   z-index: 1500;
 }
@@ -94,7 +96,7 @@
   height: 1px;
   border-radius: 1px;
   background-color: var(--color-shade-green1);
-  bottom: 0;
+  bottom: 2px;
   left: 0;
   /* animation */
   transform-origin: right;
@@ -125,11 +127,13 @@
   width: 3.5rem;
   border-radius: 50%;
   position: fixed;
-  top: 1.6vh;
+  top: 11px;
   right: 2vw;
   z-index: 2000;
   text-align: center;
   cursor: pointer;
+  transition: all 0.4s ease-out 0.2s;
+  transform: scale(1);
 }
 
 .mburger__background {
@@ -137,8 +141,8 @@
   width: 3rem;
   border-radius: 50%;
   position: fixed;
-  top: 1.9vh;
-  right: 2.4vw;
+  top: 15px;
+  right: 42px;
   background-image: radial-gradient(
     var(--color-tint-green1) 0%,
     var(--color-base-green) 40%,
@@ -198,7 +202,8 @@
 }
 
 .mburger__checkbox:checked + .mburger__button {
-  background-color: transparent;
+  transition: background-color 0.2s ease-out;
+  background-color: var(--color-tint-green1);
 }
 
 .mburger__checkbox:checked + .mburger__button .mburger__icon {
@@ -287,6 +292,9 @@
   color: var(--color-base-yellow);
   margin-bottom: 0.8rem;
 }
+.mburger__subheading:first-child {
+  padding-top: var(--space-xs);
+}
 .mburger__subblock {
   margin-bottom: 1.6rem;
 }
@@ -322,14 +330,32 @@
   cursor: pointer;
 }
 
-/*  content other than header wrapper */
-.content-wrapper {
-  padding-top: 78px;
-}
-
 @media (min-width: 576px) {
+  .header__logo {
+    height: 34px;
+  }
   .mburger__social {
     flex-direction: row;
+  }
+  .mb__link {
+    font-size: var(--text-lg);
+    margin-bottom: 2rem;
+  }
+  .mburger__right {
+    padding: 0 0 0 var(--space-xxl);
+  }
+  .mburger__subheading {
+    font-size: var(--text-sm);
+  }
+  .mburger__subheading:first-child {
+    padding-top: var(--space-sm);
+  }
+  .mb__link--secondary {
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-sm);
+  }
+  .mburger__social-link {
+    margin: 0 var(--space-xs) 0 0;
   }
 }
 
@@ -344,7 +370,7 @@
     margin-bottom: 2rem;
   }
   .mburger__menu {
-    padding: 78px 20%;
+    padding: 78px 10%;
   }
   .mburger__subheading {
     font-size: 1.4rem;
@@ -372,9 +398,12 @@
 @media (min-width: 1450px) {
 }
 
-/*  
-* Base grids, containers  & figure / classes 
-*/
+/* ----------------------------- 
+Base grids, containers  & figure/ img / classes
+-------------------------------- */
+.content-wrapper {
+  padding-top: 78px;
+}
 .bgrid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -438,7 +467,7 @@
   }
 }
 /* 
-* Front facing footer
+*  Temporary Front facing footer
 */
 .bfooter {
   background-color: var(--color-base-green);
