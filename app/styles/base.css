@@ -242,3 +242,11 @@ ol {
   list-style-position: inside;
   line-height: var(--text-line-height);
 }
+
+/* ----------------------------- 
+Design Elements
+-------------------------------- */
+:root {
+  /* border radiu */
+  --radius-base: 25px;
+}

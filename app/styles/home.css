@@ -41,6 +41,9 @@ Home Video Banner
   gap: var(--space-sm);
 }
 @media (min-width: 992px) {
+  .vbanner__video {
+    border-radius: var(--radius-base) 0 0 var(--radius-base);
+  }
   .vbanner__wrapper {
     grid-column: 5/13;
     grid-row: 1/6;
