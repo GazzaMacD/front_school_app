@@ -42,7 +42,7 @@ export default function App() {
             alt=""
           ></img>
           <div className="right-menu">
-            <nav>
+            <nav className="right-menu__nav">
               <ul className="right-menu__list">
                 <li className="right-menu__item">
                   <a className="right-menu__link" href="tel:0561-42-5707">
@@ -129,22 +129,22 @@ export default function App() {
                         <ul className="mburger__social">
                           <li>
                             <a className="mburger__social-link">
-                              <FaInstagram size={"28px"} />
+                              <FaInstagram className="mburger__social-icon" />
                             </a>
                           </li>
                           <li>
                             <a className="mburger__social-link">
-                              <FaFacebookF size={"26px"} />
+                              <FaFacebookF className="mburger__social-icon" />
                             </a>
                           </li>
                           <li>
                             <a className="mburger__social-link">
-                              <FaYoutube size={"32px"} />
+                              <FaYoutube className="mburger__social-icon" />
                             </a>
                           </li>
                           <li>
                             <a className="mburger__social-link">
-                              <FaLinkedinIn size={"28px"} />
+                              <FaLinkedinIn className="mburger__social-icon" />
                             </a>
                           </li>
                         </ul>
