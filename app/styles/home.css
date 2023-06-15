@@ -59,10 +59,10 @@ Home Video Banner
     text-align: center;
   }
   .vbanner__yellow {
-    color: var(--color-base-yellow);
+    color: var(--color-base-orange);
   }
   .vbanner__red {
-    color: var(--color-base-red);
+    color: var(--color-base-orange);
   }
 }
 @media (min-width: 1450px) {
@@ -75,6 +75,31 @@ Home Video Banner
   .vbanner__buttons {
     gap: var(--space-xxl);
   }
+}
+/* ----------------------------- 
+Our services
+-------------------------------- */
+#why {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 100px auto auto auto auto;
+  margin: 200px 0;
+}
+.why__heading {
+  grid-column: 2/12;
+  grid-row: 1 / 2;
+}
+.why__wrapper {
+  grid-column: 2/12;
+  grid-row: 4/6;
+  display: flex;
+  justify-content: space-between;
+}
+.why-point {
+  height: 350px;
+  width: 350px;
+  border-radius: 200px;
+  background-color: white;
 }
 /* ----------------------------- 
 Our services

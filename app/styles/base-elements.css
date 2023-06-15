@@ -1,15 +1,42 @@
 /* ----------------------------- 
+Headings
+-------------------------------- */
+.bsection-group {
+}
+.bsection-group__heading {
+  font-size: var(--text-sm);
+  font-family: var(--font-en-primary);
+  letter-spacing: 3px;
+  line-height: 1;
+  font-weight: 600;
+  margin: 0 0 var(--space-xs) 0;
+  padding: 0 0 0 var(--space-xs);
+  text-transform: capitalize;
+  color: var(--color-base-orange);
+}
+/* .bsection-group__heading > span:first-child {
+  color: var(--color-base-yellow);
+} */
+.bsection-group__subheading {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-base-green);
+  margin: 0 0 var(--space-sm) 0;
+  line-height: 1;
+}
+
+/* ----------------------------- 
 Buttons
 -------------------------------- */
 .button {
   margin: var(--space-lg) auto;
   display: block;
   border: 0;
-  color: var(--color-base-cream);
+  color: var(--color-base-text);
   padding: 10px 20px;
   border-radius: 100px;
-  background-color: var(--color-base-green);
-  transition: background-color 0.5s ease;
+  background-color: var(--color-base-limegreen);
+  transition: all 0.5s ease;
   font-weight: bold;
   font-size: 16px;
   user-select: none;
@@ -18,24 +45,16 @@ Buttons
   cursor: pointer;
 }
 .button:hover {
-  background-color: var(--color-shade-green1);
-}
-.button--red {
-  background-color: var(--color-base-red);
-  color: var(--color-base-cream);
+  background-color: var(--color-sec-darklime);
 }
 
-.button--red:hover {
-  background-color: var(--color-shade-red1);
-}
-
-.button--yellow {
-  background-color: var(--color-base-yellow);
-  color: var(--color-base-dbrown);
+.button--orange {
+  background-color: var(--color-base-orange);
+  color: var(--color-base-text);
 }
 
 .button--yellow:hover {
-  background-color: var(--color-shade-yellow1);
+  background-color: var(--color-base-orange);
 }
 @media (min-width: 576px) {
   .button {
@@ -101,7 +120,7 @@ Global Header
   width: 100%;
   height: 1px;
   border-radius: 1px;
-  background-color: var(--color-shade-green1);
+  background-color: var(--color-sec-olive);
   bottom: 2px;
   left: 0;
   /* animation */
@@ -110,7 +129,7 @@ Global Header
   transition: transform 0.3s ease-in-out;
 }
 .right-menu__link:hover {
-  color: var(--color-shade-green1);
+  color: var(--color-sec-olive);
 }
 .right-menu__link:hover::before {
   transform-origin: left;
@@ -149,11 +168,7 @@ Global Header
   position: fixed;
   top: 15px;
   right: 42px;
-  background-image: radial-gradient(
-    var(--color-tint-green1) 0%,
-    var(--color-base-green) 40%,
-    var(--color-shade-green1) 70%
-  );
+  background-color: var(--color-base-cream);
   z-index: 1900;
   transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
 }
@@ -209,7 +224,7 @@ Global Header
 
 .mburger__checkbox:checked + .mburger__button {
   transition: background-color 0.2s ease-out;
-  background-color: var(--color-tint-green1);
+  background-color: var(--color-base-cream);
 }
 
 .mburger__checkbox:checked + .mburger__button .mburger__icon {
@@ -219,12 +234,12 @@ Global Header
 .mburger__checkbox:checked + .mburger__button .mburger__icon::before {
   top: 0;
   transform: rotate(135deg);
-  background-color: var(--color-base-cream);
+  background-color: var(--color-base-green);
 }
 .mburger__checkbox:checked + .mburger__button .mburger__icon::after {
   top: 0;
   transform: rotate(-135deg);
-  background-color: var(--color-base-cream);
+  background-color: var(--color-base-green);
 }
 /* menu text containter */
 .mburger__menu {
@@ -250,7 +265,7 @@ Global Header
   font-size: var(--text-md);
   font-weight: 600;
   padding: 0;
-  color: var(--color-base-cream);
+  color: var(--color-base-green);
   text-decoration: none;
   position: relative;
   margin-bottom: var(--space-lg);
@@ -259,7 +274,7 @@ Global Header
 .mb__link:hover,
 .mb__link:active {
   cursor: pointer;
-  color: var(--color-base-cream);
+  color: var(--color-base-green);
 }
 
 .mb__link::before {
@@ -268,7 +283,7 @@ Global Header
   width: 100%;
   height: 2px;
   border-radius: 1px;
-  background-color: var(--color-base-cream);
+  background-color: var(--color-base-green);
   bottom: 0;
   left: 0;
   /* animation */
@@ -279,7 +294,7 @@ Global Header
 .mb__link:hover::before {
   transform-origin: left;
   transform: scaleX(1);
-  background-color: var(--color-base-cream);
+  background-color: var(--color-base-green);
 }
 
 /* right side and secondary links*/
@@ -295,7 +310,7 @@ Global Header
 }
 .mburger__subheading {
   font-size: 0.8rem;
-  color: var(--color-base-yellow);
+  color: var(--color-base-limegreen);
   margin-bottom: 0.8rem;
 }
 .mburger__subheading:first-child {
@@ -312,7 +327,7 @@ Global Header
   max-width: 400px;
 }
 .mburger__social-link {
-  color: var(--color-base-cream);
+  color: var(--color-base-green);
   display: block;
   height: 30px;
   width: 30px;
@@ -331,8 +346,8 @@ Global Header
   content: none;
 }
 .mburger__social-link:hover {
-  color: var(--color-base-green);
-  background-color: var(--color-base-cream);
+  color: var(--color-base-cream);
+  background-color: var(--color-base-green);
   cursor: pointer;
 }
 
@@ -388,7 +403,7 @@ Global Header
     max-width: 400px;
   }
   .mburger__social-link {
-    color: var(--color-base-cream);
+    color: var(--color-base-green);
     display: block;
     height: 40px;
     width: 40px;
@@ -477,7 +492,12 @@ Base grids, containers  & figure/ img / classes
 *  Temporary Front facing footer
 */
 .bfooter {
-  background-color: var(--color-base-green);
-  color: var(--color-base-cream);
+  background-color: var(--color-base-limegreen);
   min-height: 500px;
+}
+.bfooter h2 {
+  color: var(--color-base-brown);
+}
+.bfooter p {
+  color: var(--color-base-text);
 }
