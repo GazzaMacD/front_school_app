@@ -17,12 +17,40 @@ extra large
 }
 */
 :root {
-  /* base colors */
+  /* base brand colors */
   --color-base-green: rgb(63, 115, 8);
-  --color-base-cream: rgb(250, 245, 234);
-  --color-base-red: rgb(171, 18, 28);
+  --color-base-limegreen: #7aa700;
+  --color-base-cream: rgb(244, 241, 235);
+  --color-base-orange: #fe7108;
+  --color-base-brown: #403734;
+  --color-base-text: #352f2c;
+  /* secondary brand colors */
+  --color-sec-lightlime: #b1d121;
+  --color-sec-darklime: #678e00;
+  --color-sec-olive: #3e5e1f;
+  --color-sec-palegreen: #c6d5a1;
+  --color-sec-lightlime: #b1d121;
+  --color-sec-lightorange: #fe9600;
+  --color-sec-red: rgb(171, 18, 28);
+
+  /* --color-base-cream: rgb(250, 245, 234); */
+  /* --color-base-cream: #f5fdef; */
   --color-base-dbrown: rgb(58, 35, 0);
+  --color-base-lbrown: rgb(109, 66, 0);
   --color-base-yellow: rgb(255, 193, 37);
+  --color-base-yellow2: #f2ad00;
+  /* play */
+  /* --color-base-orange: #f95422; */
+  --color-base-lightorange: #fe9600;
+  --color-base-bluegreen: #0c4a46;
+  --color-base-lightgreen: #c6d5a1;
+  --color-base-darkgreen: #32604f;
+  --color-base-slate: #4c483e;
+  --color-base-darkslate: #2d2223;
+  /* --color-base-bluegreen2: #097472; */
+  --color-base-tint-green: #d8ddcd;
+  --color-base-orange2: #fc5c00;
+  --color-base-black: #000;
   /* tints and shades */
   --color-shade-green1: rgb(56, 103, 7);
   --color-shade-green2: rgb(50, 92, 6);
@@ -30,6 +58,7 @@ extra large
   --color-shade-red1: rgb(153, 16, 25);
   --color-shade-yellow1: rgb(229, 173, 33);
   --color-tint-green1: rgb(82, 129, 57);
+  --color-tint-green6: rgb(229, 231, 216);
   /* base text colors */
   --color-text-dark: var(--color-base-dbrown);
   --color-text-heading-dark: var(--color-base-green);
@@ -86,14 +115,18 @@ h6 {
 /* ----------------------------- 
 Typography and Spacing
 -------------------------------- */
+@font-face {
+  font-family: "Knewave";
+  src: url("/fonts/knewave/knewave.regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 :root {
   /* font families */
   --font-jp-primary: "Yu Gothic", "メイリオ", "Meiryo", "ＭＳ ゴシック",
     "MS Gothic", "HiraKakuProN-W3", "TakaoExゴシック", "TakaoExGothic",
     "MotoyaLCedar", "Droid Sans Japanese", sans-serif;
-  /*--font-jp-secondary: ; */
   --font-en-primary: "Montserrat", sans-serif;
-  /*--font-en-secondary: "Montserrat", sans-serif;*/
 
   /* base text sizes IMPORTANT */
   --text-base-size: 1em;
@@ -147,7 +180,7 @@ Typography and Spacing
 body {
   font-size: var(--text-base-size);
   font-family: var(--font-jp-primary);
-  color: var(--color-base-dbrown);
+  color: var(--color-base-text);
 }
 .en {
   font-family: "Montserrat", sans-serif;
@@ -156,8 +189,9 @@ h1,
 h2,
 h3,
 h4,
-form legend {
-  color: var(--color-text-heading-dark);
+form,
+legend {
+  color: var(--color-base-green);
   line-height: var(--heading-line-height);
 }
 /* heading & text styles */

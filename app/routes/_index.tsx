@@ -41,34 +41,62 @@ export default function Index() {
             </h2>
           </div>
           <div className="vbanner__buttons">
-            <button className="button button--red ">Courses</button>
-            <button className="button button--yellow">Experiences</button>
+            <button className="button ">Courses</button>
+            <button className="button button--orange">Experiences</button>
           </div>
         </div>
       </section>
 
-      {/* <div className="fullwidth-video">
-        <video className="video" playsInline autoPlay muted loop>
-          <source src="/video/dummy.mp4" type="video/mp4" />
-        </video>
-        <div className="overlay">
-          <div className="vinner">
-            <div className="vbanner">
-              <h2>
-                <span className="green-text">
-                  Awesome lessons and <span className="yellow-text">lear</span>
-                  <span className="red-text">ning</span> experiences
-                </span>
-              </h2>
-              <div className="vbanner__buttons">
-                <button className="button button--red ">Button</button>
-                <button className="button button--yellow">Button</button>
-              </div>
-            </div>
-          </div>
+      <section id="why">
+        <hgroup className="bsection-group why__heading">
+          <h2 className="bsection-group__heading">Why learn with us?</h2>
+          <p className="bsection-group__subheading">
+            占由の季及投先ぼがゆも奇引りン
+          </p>
+        </hgroup>
+        <div className="why__wrapper">
+          <div className="why-point"></div>
+          <div className="why-point"></div>
+          <div className="why-point"></div>
         </div>
-      </div> */}
-      <div className="temp-video-base"></div>
+      </section>
+
+      <section id="popular">
+        <hgroup className="bsection-group">
+          <h2 className="bsection-group__heading">Most popular courses</h2>
+          <p className="bsection-group__subheading">
+            占由の季及投先ぼがゆも奇引りン
+          </p>
+        </hgroup>
+      </section>
+
+      <section id="voice">
+        <hgroup className="bsection-group">
+          <h2 className="bsection-group__heading">Student voice</h2>
+          <p className="bsection-group__subheading">
+            占由の季及投先ぼがゆも奇引りン
+          </p>
+        </hgroup>
+      </section>
+
+      <section id="experiences">
+        <hgroup className="bsection-group">
+          <h2 className="bsection-group__heading">Meet us in an experience</h2>
+          <p className="bsection-group__subheading">
+            占由の季及投先ぼがゆも奇引りン
+          </p>
+        </hgroup>
+      </section>
+
+      <section id="free">
+        <hgroup className="bsection-group">
+          <h2 className="bsection-group__heading">Learn for free</h2>
+          <p className="bsection-group__subheading">
+            占由の季及投先ぼがゆも奇引りン
+          </p>
+        </hgroup>
+      </section>
+
       <section className="bgrid">
         <div className="btext">
           <h1>誕険かやあそ障子生ヌコ社数ルモ</h1>
@@ -135,6 +163,7 @@ export default function Index() {
       </section>
       <footer className="bfooter">
         <h2>Footer here</h2>
+        <p>Some stuff</p>
       </footer>
     </>
   );
