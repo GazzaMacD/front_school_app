@@ -1,0 +1,26 @@
+.auth-wrapper {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 110px;
+}
+.auth {
+  min-width: 300px;
+  min-height: 350px;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-base-white);
+  box-shadow: 1px 1px 5px 1px var(--color-shadow);
+  padding: var(--space-md);
+}
+.auth__heading {
+  margin-bottom: 0;
+  text-align: center;
+  font-size: var(--text-lg);
+}
+.submit {
+  width: 100%;
+  border-radius: var(--radius-xs);
+  margin: 20px 0;
+  text-transform: capitalize;
+}
