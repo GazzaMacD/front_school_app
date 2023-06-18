@@ -1,13 +1,13 @@
 .auth-wrapper {
-  height: 100%;
+  height: calc(100% - 78px);
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  padding-top: 110px;
+  align-items: center;
+  margin-bottom: 78px;
+  padding: 0 var(--component-margin);
 }
 .auth {
-  min-width: 300px;
-  min-height: 350px;
+  min-width: 290px;
   border-radius: var(--radius-sm);
   background-color: var(--color-base-white);
   box-shadow: 1px 1px 5px 1px var(--color-shadow);
@@ -23,4 +23,16 @@
   border-radius: var(--radius-xs);
   margin: 20px 0;
   text-transform: capitalize;
+  padding: 6px 15px;
+}
+@media (min-width: 576px) {
+  .auth {
+    min-width: 350px;
+  }
+}
+
+@media (min-width: 992px) {
+}
+
+@media (min-width: 1450px) {
 }
