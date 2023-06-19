@@ -52,3 +52,46 @@ export type TBaseListPage = {
     total_count: number;
   };
 };
+/*
+ * Form Base Functions
+ */
+
+/*
+ * Auth and Session
+ */
+
+/* Login */
+type TAuthErrorsBase = {
+  non_field_errors?: string[];
+};
+
+export type TUser = {
+  email: string;
+  full_name: string;
+  is_staff: boolean;
+  groups: string[];
+};
+
+export type TLogin = {
+  email: string;
+  password: string;
+};
+export type TLoginFail = TAuthErrorsBase & {
+  email?: string[];
+  password?: string[];
+};
+export type TLoginOk = {
+  access: string;
+  refresh: string;
+  user: TUser;
+};
+export type TLoginResponse = {
+  success: boolean;
+  status: number;
+  data: TLoginOk | TLoginFail;
+};
+export type TLoginActionResponse = {
+  fields: TLogin | null;
+  data: null;
+  errors: TLoginFail | null;
+};

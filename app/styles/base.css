@@ -21,6 +21,7 @@ extra large
   --color-base-green: rgb(63, 115, 8);
   --color-base-limegreen: #7aa700;
   --color-base-cream: rgb(244, 241, 235);
+  --color-base-white: white;
   --color-base-orange: #fe7108;
   --color-base-brown: #403734;
   --color-base-text: #352f2c;
@@ -283,4 +284,6 @@ Design Elements
 :root {
   /* border radiu */
   --radius-base: 25px;
+  --radius-sm: 15px;
+  --radius-xs: 5px;
 }
