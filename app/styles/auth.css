@@ -8,6 +8,7 @@
 }
 .auth {
   min-width: 290px;
+  max-width: 350px;
   border-radius: var(--radius-sm);
   background-color: var(--color-base-white);
   box-shadow: 1px 1px 5px 1px var(--color-shadow);
