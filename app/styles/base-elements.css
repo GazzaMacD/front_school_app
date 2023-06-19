@@ -102,7 +102,10 @@ Global Header
 .right-menu__nav {
   display: none;
 }
-.right-menu__item {
+.right-menu__list {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
 }
 .right-menu__link,
 .right-menu__link:link {
@@ -137,6 +140,18 @@ Global Header
 }
 .right-menu__link > span {
   padding: 0 0 0 10px;
+}
+.right-menu__form {
+  padding: 0;
+}
+.right-menu__form > button {
+  background-color: transparent;
+  border: 1px solid var(--color-base-green);
+  color: var(--color-base-green);
+  line-height: 1;
+  padding: 5px;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
 }
 
 /* 

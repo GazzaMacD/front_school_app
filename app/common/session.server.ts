@@ -45,10 +45,22 @@ export async function createUserSession(
     },
   });
 }
-
+function getUserSession(request: Request) {
+  return storage.getSession(request.headers.get("Cookie"));
+}
 /*
  * Auth Functions
  */
+export async function logout(request: Request, redirectPath = "/") {
+  const session = await getUserSession(request);
+  // NEED TO CALL LOGOUT IN BACKEND HERE
+  return redirect(redirectPath, {
+    headers: {
+      "Set-Cookie": await storage.destroySession(session),
+    },
+  });
+} //logout
+
 export async function register({
   email,
   password1,
