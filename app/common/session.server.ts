@@ -1,6 +1,12 @@
 import { createCookieSessionStorage, redirect, json } from "@remix-run/node";
 import { SESSION_NAME, SESSION_SECRET, BASE_API_URL } from "./constants";
-import type { TLogin, TLoginFail, TLoginOk, TLoginResponse } from "./types";
+import type {
+  TLogin,
+  TLoginFail,
+  TLoginOk,
+  TLoginResponse,
+  TUser,
+} from "./types";
 import { MESSAGES } from "./languageDictionary";
 
 /*
@@ -18,6 +24,23 @@ const storage = createCookieSessionStorage({
     httpOnly: true,
   },
 });
+
+/*
+ * Sesson
+ */
+
+export async function createUserSession(
+  userData: TLoginOk,
+  redirectTo: string
+) {
+  const session = await storage.getSession();
+  session.set(SESSION_NAME, userData);
+  return redirect(redirectTo, {
+    headers: {
+      "Set-Cookie": await storage.commitSession(session),
+    },
+  });
+}
 
 /*
  * Auth Functions

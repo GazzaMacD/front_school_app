@@ -2,9 +2,20 @@ import { useActionData, useSearchParams } from "@remix-run/react";
 import { type ActionArgs, json } from "@remix-run/node";
 import React from "react";
 
-import { login } from "~/common/session.server";
+import { login, createUserSession } from "~/common/session.server";
 import { MESSAGES } from "~/common/languageDictionary";
-import type { TLoginFail, TLoginActionResponse } from "~/common/types";
+import type {
+  TLoginFail,
+  TLoginActionResponse,
+  TLoginOk,
+} from "~/common/types";
+
+/*
+ * Helper functions
+ */
+function isLoginOk(data: TLoginFail | TLoginOk): data is TLoginOk {
+  return data && "access" in data;
+}
 
 /*
  * Server Functions
@@ -13,7 +24,7 @@ export const action = async ({ request }: ActionArgs) => {
   const form = await request.formData();
   const email = form.get("email");
   const password = form.get("password");
-  const redirectTo = form.get("redirect") || "/";
+  const redirectTo = form.get("redirect") || "/dashboard";
   if (
     typeof email !== "string" ||
     typeof password !== "string" ||
@@ -41,17 +52,21 @@ export const action = async ({ request }: ActionArgs) => {
       },
       { status: 400 }
     );
+  } else if (response.success && isLoginOk(response.data)) {
+    return createUserSession(response.data, redirectTo);
+  } else {
+    // unknown error so no login
+    return json<TLoginActionResponse>(
+      {
+        fields: null,
+        data: null,
+        errors: {
+          non_field_errors: [MESSAGES["en"].form.standard400],
+        },
+      },
+      { status: 400 }
+    );
   }
-  //success so create a session here and redirect
-  // or go to /dashboard
-  return json<TLoginActionResponse>(
-    {
-      fields: null,
-      data: null,
-      errors: null,
-    },
-    { status: 400 }
-  );
 }; //end action
 
 /*
@@ -61,7 +76,6 @@ export const action = async ({ request }: ActionArgs) => {
 export default function LoginRoute() {
   const actionData = useActionData<typeof action>();
   const [searchParams] = useSearchParams();
-  const [tempError, setTempError] = React.useState(false);
 
   return (
     <>
