@@ -598,16 +598,14 @@ label {
 }
 .form-validation-errors {
   /* ul element usually */
-  position: absolute;
-  bottom: -25px;
   margin: 0;
   color: var(--color-sec-red);
-  font-size: var(--text-sm);
+  font-size: var(--text-xs);
   list-style: none;
 }
 
 .form-nonfield-errors {
-  background-color: var(--color-sec-lightorange);
+  background-color: var(--color-sec-paleorange);
   border-radius: var(--radius-xs);
   padding: var(--space-xxxs) var(--space-xs);
 }

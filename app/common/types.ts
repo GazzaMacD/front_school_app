@@ -59,8 +59,6 @@ export type TBaseListPage = {
 /*
  * Auth and Session
  */
-
-/* Login */
 type TAuthErrorsBase = {
   non_field_errors?: string[];
 };
@@ -71,6 +69,34 @@ export type TUser = {
   is_staff: boolean;
   groups: string[];
 };
+/* Register */
+export type TRegister = {
+  email: string;
+  password1: string;
+  password2: string;
+};
+export type TRegisterFail = TAuthErrorsBase & {
+  email?: string[];
+  password1?: string[];
+  password2?: string[];
+};
+export type TRegisterOk = {
+  access: string;
+  refresh: string;
+  user: TUser;
+};
+export type TRegisterResponse = {
+  success: boolean;
+  status: number;
+  data: TRegisterOk | TRegisterFail;
+};
+export type TRegisterActionResponse = {
+  fields: TRegister | null;
+  data: null;
+  errors: TRegisterFail | null;
+};
+
+/* Login */
 
 export type TLogin = {
   email: string;

@@ -5,6 +5,10 @@ import type {
   TLoginFail,
   TLoginOk,
   TLoginResponse,
+  TRegister,
+  TRegisterFail,
+  TRegisterOk,
+  TRegisterResponse,
   TUser,
 } from "./types";
 import { MESSAGES } from "./languageDictionary";
@@ -45,6 +49,49 @@ export async function createUserSession(
 /*
  * Auth Functions
  */
+export async function register({
+  email,
+  password1,
+  password2,
+}: TRegister): Promise<TRegisterResponse> {
+  try {
+    const apiUrl = `${BASE_API_URL}/auth/registration/`;
+    const response = await fetch(apiUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        password1,
+        password2,
+      }),
+    });
+    const data: TRegisterOk | TRegisterFail = await response.json();
+    if (!response.ok) {
+      return {
+        success: false,
+        status: response.status,
+        data: data,
+      };
+    }
+    return {
+      success: true,
+      status: response.status,
+      data: data,
+    };
+  } catch (error) {
+    console.error(error);
+    return {
+      success: false,
+      status: 500,
+      data: {
+        non_field_errors: [MESSAGES["en"].network.error],
+      },
+    };
+  }
+}
+
 export async function login({
   email,
   password,
