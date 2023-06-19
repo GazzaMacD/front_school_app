@@ -50,6 +50,17 @@ export default function App() {
                     <span>0561-42-5707</span>
                   </a>
                 </li>
+                <li>
+                  <form
+                    className="right-menu__form"
+                    action="/logout"
+                    method="post"
+                  >
+                    <button className="right-menu__logout" type="submit">
+                      Logout
+                    </button>
+                  </form>
+                </li>
               </ul>
             </nav>
             <div className="mburger">
