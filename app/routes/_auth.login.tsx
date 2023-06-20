@@ -1,5 +1,5 @@
 import { useActionData, useSearchParams } from "@remix-run/react";
-import { type ActionArgs, json } from "@remix-run/node";
+import { type ActionArgs, type V2_MetaFunction, json } from "@remix-run/node";
 import React from "react";
 
 import { login, createUserSession } from "~/common/session.server";
@@ -9,6 +9,7 @@ import type {
   TLoginActionResponse,
   TLoginOk,
 } from "~/common/types";
+import { getTitle } from "~/common/utils";
 
 /*
  * Helper functions
@@ -16,6 +17,10 @@ import type {
 function isLoginOk(data: TLoginFail | TLoginOk): data is TLoginOk {
   return data && "access" in data;
 }
+
+export const meta: V2_MetaFunction = () => {
+  return [{ title: getTitle({ title: "Login", isHome: false }) }];
+};
 
 /*
  * Server Functions

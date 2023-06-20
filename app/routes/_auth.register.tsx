@@ -1,9 +1,15 @@
 import { useActionData, useSearchParams } from "@remix-run/react";
-import { type ActionArgs, json, redirect } from "@remix-run/node";
+import {
+  type V2_MetaFunction,
+  type ActionArgs,
+  json,
+  redirect,
+} from "@remix-run/node";
 import React from "react";
 
 import { register, createUserSession } from "~/common/session.server";
 import { MESSAGES } from "~/common/languageDictionary";
+import { getTitle } from "~/common/utils";
 import type {
   TRegisterFail,
   TRegisterActionResponse,
@@ -16,6 +22,9 @@ import type {
 function isRegisterOk(data: TRegisterFail | TRegisterOk): data is TRegisterOk {
   return data && "access" in data;
 }
+export const meta: V2_MetaFunction = () => {
+  return [{ title: getTitle({ title: "Register", isHome: false }) }];
+};
 
 /*
  * Server Functions
