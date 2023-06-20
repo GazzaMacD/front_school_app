@@ -45,3 +45,17 @@ export async function handlePreview<T>(
     error: null,
   };
 }
+
+/*
+ * Meta functions
+ */
+export function getTitle({
+  title,
+  isHome,
+}: {
+  title: string;
+  isHome: boolean;
+}): string {
+  const baseTitle = "英会話・語学学校 エクスリンガル";
+  return isHome ? baseTitle : `${title} | ${baseTitle}`;
+}
