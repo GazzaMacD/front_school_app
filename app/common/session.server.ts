@@ -5,11 +5,13 @@ import type {
   TLoginFail,
   TLoginOk,
   TLoginResponse,
+  TRefreshToken,
   TRegister,
   TRegisterFail,
   TRegisterOk,
   TRegisterResponse,
   TUser,
+  TValidateTokens,
 } from "./types";
 import { MESSAGES } from "./languageDictionary";
 
@@ -143,4 +145,77 @@ export async function login({
       },
     };
   }
+}
+
+/**
+ * Token Validation functions
+ */
+async function verifyAccessToken(accessToken: string): Promise<boolean> {
+  const verifyUrl = `${BASE_API_URL}/auth/token/verify/`;
+  try {
+    const response = await fetch(verifyUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        token: accessToken,
+      }),
+    });
+    if (!response.ok) {
+      return false;
+    }
+    return true;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+} //validateToken
+
+async function getRefreshToken(refreshToken: string): Promise<string | null> {
+  const refreshUrl = `${BASE_API_URL}/auth/token/refresh/`;
+  try {
+    const res = await fetch(refreshUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        refresh: refreshToken,
+      }),
+    });
+    if (!res.ok) {
+      //if not 200 return null
+      return null;
+    }
+    const resData: TRefreshToken = await res.json();
+    return resData.access;
+  } catch (error) {
+    // 500 errors or other unknown
+    console.error(error);
+    return null;
+  }
+} //getRefreshToken
+
+async function validateTokens({ accessToken, refreshToken }: TValidateTokens) {
+  const isVerified = await verifyAccessToken(accessToken);
+  if (isVerified) {
+    return {
+      isValid: true,
+      isNew: false,
+      newToken: null,
+    };
+  }
+  // notVerified so try to get new token using refresh token
+  const newToken = await getRefreshToken(refreshToken);
+  if (!newToken) {
+    // calling function must destroy session with logout
+    return {
+      isValid: false,
+      isNew: false,
+      newToken: null,
+    };
+  }
+  //has new Token, calling function must set new session
+  return {
+    isValid: true,
+    isNew: false,
+    newToken,
+  };
 }

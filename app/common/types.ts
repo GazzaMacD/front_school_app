@@ -121,3 +121,19 @@ export type TLoginActionResponse = {
   data: null;
   errors: TLoginFail | null;
 };
+
+/* JWT */
+export type TRefreshToken = {
+  access: string;
+  access_expiration: string;
+};
+
+export type TValidateTokens = {
+  accessToken: string;
+  refreshToken: string;
+};
+export type TValidateTokensResponse = {
+  isValid: boolean;
+  isNew: boolean;
+  newToken: string | null;
+};
