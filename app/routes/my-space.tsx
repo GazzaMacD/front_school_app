@@ -19,11 +19,11 @@ export async function loader({ request }: LoaderArgs) {
   return json({ user });
 }
 
-export default function DashboardParentRoute() {
+export default function MySpaceParentRoute() {
   const { user } = useLoaderData<typeof loader>();
   return (
     <div>
-      <h1 className="heading">Dashboard</h1>
+      <h1 className="heading">My Space</h1>
       <p>Hello {user.full_name ? user.full_name : user.email}</p>
     </div>
   );
