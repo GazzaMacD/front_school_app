@@ -1,5 +1,10 @@
 import { createCookieSessionStorage, redirect, json } from "@remix-run/node";
-import { SESSION_NAME, SESSION_SECRET, BASE_API_URL } from "./constants";
+import {
+  SESSION_NAME,
+  SESSION_SECRET,
+  BASE_API_URL,
+  DEFAULT_REDIRECT,
+} from "./constants";
 import type {
   TLogin,
   TLoginFail,
@@ -15,6 +20,22 @@ import type {
   TValidateTokensResponse,
 } from "./types";
 import { MESSAGES } from "./languageDictionary";
+
+/**
+ * Auth utility functions
+ */
+
+export function secureRedirect(to: FormDataEntryValue | null): string {
+  if (!to || typeof to !== "string") {
+    return DEFAULT_REDIRECT;
+  }
+
+  if (!to.startsWith("/") || to.startsWith("//")) {
+    return DEFAULT_REDIRECT;
+  }
+
+  return to;
+}
 
 /*
  * Storage
