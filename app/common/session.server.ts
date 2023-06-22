@@ -5,11 +5,14 @@ import type {
   TLoginFail,
   TLoginOk,
   TLoginResponse,
+  TRefreshToken,
   TRegister,
   TRegisterFail,
   TRegisterOk,
   TRegisterResponse,
-  TUser,
+  TUserData,
+  TValidateTokens,
+  TValidateTokensResponse,
 } from "./types";
 import { MESSAGES } from "./languageDictionary";
 
@@ -30,7 +33,7 @@ const storage = createCookieSessionStorage({
 });
 
 /*
- * Sesson
+ * Session
  */
 
 export async function createUserSession(
@@ -143,4 +146,128 @@ export async function login({
       },
     };
   }
+}
+
+/**
+ * User and Access functions
+ */
+
+export async function authenticatedUser(
+  request: Request
+): Promise<TUserData | null> {
+  const session = await getUserSession(request);
+  const sessionData: TUserData | undefined = session.get(SESSION_NAME);
+  const redirectPath = new URL(request.url).pathname;
+  if (!sessionData) return null;
+
+  //validate session data
+  const validatedResponse = await validateTokens({
+    accessToken: sessionData.access,
+    refreshToken: sessionData.refresh,
+  });
+
+  if (!validatedResponse.isValid) {
+    // Throw redirect and destroy session as invalid data in session
+    throw redirect(redirectPath, {
+      headers: {
+        "Set-Cookie": await storage.destroySession(session),
+      },
+    });
+  } else if (validatedResponse.isValid && !validatedResponse.isNew) {
+    // No changes required to session, all good here so return sessionData
+    return sessionData;
+  } else if (
+    validatedResponse.isValid &&
+    validatedResponse.isNew &&
+    validatedResponse.newToken
+  ) {
+    // THe access token has been renewed so session needs to be updated
+    // and the cookie set again
+    sessionData.access = validatedResponse.newToken;
+    session.set(SESSION_NAME, sessionData);
+    throw redirect(redirectPath, {
+      headers: {
+        "Set-Cookie": await storage.commitSession(session),
+      },
+    });
+  } else {
+    // Should never be here but just in case return null
+    return null;
+  }
+} // authenticatedUser
+
+/**
+ * Token Validation functions
+ */
+async function verifyAccessToken(accessToken: string): Promise<boolean> {
+  const verifyUrl = `${BASE_API_URL}/auth/token/verify/`;
+  try {
+    const response = await fetch(verifyUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        token: accessToken,
+      }),
+    });
+    if (!response.ok) {
+      return false;
+    }
+    return true;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+} //validateToken
+
+async function getRefreshToken(refreshToken: string): Promise<string | null> {
+  const refreshUrl = `${BASE_API_URL}/auth/token/refresh/`;
+  try {
+    const res = await fetch(refreshUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        refresh: refreshToken,
+      }),
+    });
+    if (!res.ok) {
+      //if not 200 return null
+      return null;
+    }
+    const resData: TRefreshToken = await res.json();
+    return resData.access;
+  } catch (error) {
+    // 500 errors or other unknown
+    console.error(error);
+    return null;
+  }
+} //getRefreshToken
+
+async function validateTokens({
+  accessToken,
+  refreshToken,
+}: TValidateTokens): Promise<TValidateTokensResponse> {
+  const isVerified = await verifyAccessToken(accessToken);
+  if (isVerified) {
+    return {
+      isValid: true,
+      isNew: false,
+      newToken: null,
+    };
+  }
+  // notVerified so try to get new token using refresh token
+  const newToken = await getRefreshToken(refreshToken);
+  if (!newToken) {
+    // calling function must destroy session with logout
+    return {
+      isValid: false,
+      isNew: false,
+      newToken: null,
+    };
+  }
+  //has new Token, calling function must set new session
+  return {
+    isValid: true,
+    isNew: true,
+    newToken,
+  };
 }

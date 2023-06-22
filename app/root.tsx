@@ -1,5 +1,5 @@
 import { cssBundleHref } from "@remix-run/css-bundle";
-import type { LinksFunction } from "@remix-run/node";
+import { type LinksFunction, type LoaderArgs, json } from "@remix-run/node";
 import baseStyles from "./styles/base.css";
 import baseElementStyles from "./styles/base-elements.css";
 import { AiFillPhone } from "react-icons/ai";
@@ -9,7 +9,6 @@ import {
   FaLinkedinIn,
   FaYoutube,
 } from "react-icons/fa";
-
 import {
   Links,
   LiveReload,
@@ -19,11 +18,18 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 
+import { authenticatedUser } from "./common/session.server";
+
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
   { rel: "stylesheet", href: baseStyles },
   { rel: "stylesheet", href: baseElementStyles },
 ];
+
+export async function loader({ request }: LoaderArgs) {
+  const userData = await authenticatedUser(request);
+  return json({ user: userData });
+}
 
 export default function App() {
   return (

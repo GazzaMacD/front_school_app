@@ -1,4 +1,4 @@
-import type { LinksFunction } from "@remix-run/node";
+import { type LinksFunction } from "@remix-run/node";
 import authStyles from "../styles/auth.css";
 import { Outlet } from "@remix-run/react";
 
