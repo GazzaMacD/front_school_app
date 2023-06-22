@@ -69,6 +69,11 @@ export type TUser = {
   is_staff: boolean;
   groups: string[];
 };
+export type TUserData = {
+  access: string;
+  refresh: string;
+  user: TUser;
+};
 /* Register */
 export type TRegister = {
   email: string;
@@ -80,11 +85,8 @@ export type TRegisterFail = TAuthErrorsBase & {
   password1?: string[];
   password2?: string[];
 };
-export type TRegisterOk = {
-  access: string;
-  refresh: string;
-  user: TUser;
-};
+export type TRegisterOk = TUserData;
+
 export type TRegisterResponse = {
   success: boolean;
   status: number;
