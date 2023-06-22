@@ -2,7 +2,11 @@ import { useActionData, useSearchParams } from "@remix-run/react";
 import { type ActionArgs, type V2_MetaFunction, json } from "@remix-run/node";
 import React from "react";
 
-import { login, createUserSession } from "~/common/session.server";
+import {
+  login,
+  createUserSession,
+  secureRedirect,
+} from "~/common/session.server";
 import { MESSAGES } from "~/common/languageDictionary";
 import type {
   TLoginFail,
@@ -29,7 +33,12 @@ export const action = async ({ request }: ActionArgs) => {
   const form = await request.formData();
   const email = form.get("email");
   const password = form.get("password");
-  const redirectTo = form.get("redirect") || "/dashboard";
+  let redirectTo = form.get("redirectTo");
+
+  //validate redirect to prevent open redirect attacks
+  redirectTo = secureRedirect(redirectTo);
+
+  //basic type validations - most validation done on backend
   if (
     typeof email !== "string" ||
     typeof password !== "string" ||
@@ -46,8 +55,10 @@ export const action = async ({ request }: ActionArgs) => {
       { status: 400 }
     );
   }
+
   const fields = { email, password };
   const response = await login({ email, password });
+
   if (!response.success) {
     return json<TLoginActionResponse>(
       {
@@ -86,6 +97,11 @@ export default function LoginRoute() {
     <>
       <h1 className="auth__heading">Login</h1>
       <form noValidate method="post">
+        <input
+          type="hidden"
+          name="redirectTo"
+          value={searchParams.get("redirectTo") ?? undefined}
+        />
         {actionData?.errors?.non_field_errors ? (
           <div className="form-nonfield-errors">
             <ul>
