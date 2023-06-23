@@ -17,6 +17,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+import { useLoaderData } from "@remix-run/react";
 
 import { authenticatedUser } from "./common/session.server";
 
@@ -28,10 +29,12 @@ export const links: LinksFunction = () => [
 
 export async function loader({ request }: LoaderArgs) {
   const userData = await authenticatedUser(request);
-  return json({ user: userData });
+  const user = userData ? userData.user : null;
+  return json({ user });
 }
 
 export default function App() {
+  const { user } = useLoaderData<typeof loader>();
   return (
     <html lang="ja">
       <head>
@@ -56,17 +59,32 @@ export default function App() {
                     <span>0561-42-5707</span>
                   </a>
                 </li>
-                <li>
-                  <form
-                    className="right-menu__form"
-                    action="/logout"
-                    method="post"
-                  >
-                    <button className="right-menu__logout" type="submit">
-                      Logout
-                    </button>
-                  </form>
-                </li>
+                {user ? (
+                  <li>
+                    <form
+                      className="right-menu__form"
+                      action="/logout"
+                      method="post"
+                    >
+                      <button className="right-menu__logout" type="submit">
+                        Logout
+                      </button>
+                    </form>
+                  </li>
+                ) : (
+                  <>
+                    <li className="right-menu__item">
+                      <a className="right-menu__link" href="/login">
+                        Login
+                      </a>
+                    </li>
+                    <li className="right-menu__item">
+                      <a className="right-menu__register-btn" href="/register">
+                        Sign up
+                      </a>
+                    </li>
+                  </>
+                )}
               </ul>
             </nav>
             <div className="mburger">
