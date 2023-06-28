@@ -18,6 +18,7 @@ import type {
   TUserData,
   TValidateTokens,
   TValidateTokensResponse,
+  TVerifyResponse,
 } from "./types";
 import { MESSAGES } from "./languageDictionary";
 
@@ -75,6 +76,48 @@ function getUserSession(request: Request) {
 /*
  * Auth Functions
  */
+
+export async function verifyEmail({
+  key,
+}: {
+  key: string;
+}): Promise<TVerifyResponse> {
+  try {
+    const response = await fetch(
+      `${BASE_API_URL}/auth/registration/verify-email/`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ key }),
+      }
+    );
+    const data = await response.json();
+    if (!response.ok) {
+      return {
+        success: false,
+        status: response.status,
+        data,
+      };
+    }
+    return {
+      success: true,
+      status: response.status,
+      data,
+    };
+  } catch (error) {
+    console.error(error);
+    return {
+      success: false,
+      status: 500,
+      data: {
+        detail: MESSAGES["en"].network.error,
+      },
+    };
+  }
+} //verifyEmail
+
 export async function logout(request: Request, redirectPath = "/") {
   const session = await getUserSession(request);
   // NEED TO CALL LOGOUT IN BACKEND HERE

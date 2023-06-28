@@ -20,7 +20,7 @@ import type {
  * Helper functions
  */
 function isRegisterOk(data: TRegisterFail | TRegisterOk): data is TRegisterOk {
-  return data && "access" in data;
+  return data && "detail" in data;
 }
 export const meta: V2_MetaFunction = () => {
   return [{ title: getTitle({ title: "Register", isHome: false }) }];
@@ -52,6 +52,7 @@ export const action = async ({ request }: ActionArgs) => {
   }
   const fields = { email, password1, password2 };
   const response = await register({ email, password1, password2 });
+  console.log(response);
   if (!response.success) {
     return json<TRegisterActionResponse>(
       {
