@@ -85,7 +85,9 @@ export type TRegisterFail = TAuthErrorsBase & {
   password1?: string[];
   password2?: string[];
 };
-export type TRegisterOk = TUserData;
+export type TRegisterOk = {
+  detail: string;
+};
 
 export type TRegisterResponse = {
   success: boolean;
@@ -122,6 +124,14 @@ export type TLoginActionResponse = {
   fields: TLogin | null;
   data: null;
   errors: TLoginFail | null;
+};
+
+/* Verify Email */
+
+export type TVerifyResponse = {
+  success: boolean;
+  status: number;
+  data: { detail: string };
 };
 
 /* JWT */
