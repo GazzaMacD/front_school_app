@@ -1,28 +1,14 @@
-import { useActionData } from "@remix-run/react";
 import {
   type LoaderArgs,
   type V2_MetaFunction,
-  json,
   redirect,
 } from "@remix-run/node";
 
-import { passwordReset } from "~/common/session.server";
-import { MESSAGES } from "~/common/languageDictionary";
-import type {
-  TPasswordResetErrors,
-  TPasswordResetOk,
-  TPasswordResetActionResponse,
-} from "~/common/types";
 import { getTitle } from "~/common/utils";
 
 /*
  * Helper functions
  */
-function isPasswordResetOk(
-  data: TPasswordResetErrors | TPasswordResetOk
-): data is TPasswordResetOk {
-  return data && "detail" in data;
-}
 
 export const meta: V2_MetaFunction = () => {
   return [
