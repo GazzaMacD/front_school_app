@@ -19,6 +19,9 @@ import type {
   TValidateTokens,
   TValidateTokensResponse,
   TVerifyResponse,
+  TPasswordResetErrors,
+  TPasswordResetOk,
+  TPasswordResetResponse,
 } from "./types";
 import { MESSAGES } from "./languageDictionary";
 
@@ -77,6 +80,46 @@ function getUserSession(request: Request) {
  * Auth Functions
  */
 
+/* verify email */
+export async function passwordReset({
+  email,
+}: {
+  email: string;
+}): Promise<TPasswordResetResponse> {
+  try {
+    const response = await fetch(`${BASE_API_URL}/auth/password/reset/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email }),
+    });
+    const data: TPasswordResetErrors | TPasswordResetOk = await response.json();
+    if (!response.ok) {
+      return {
+        success: false,
+        status: response.status,
+        data: data as TPasswordResetErrors,
+      };
+    }
+    return {
+      success: true,
+      status: response.status,
+      data: data as TPasswordResetOk,
+    };
+  } catch (error) {
+    console.error(error);
+    return {
+      success: false,
+      status: 500,
+      data: {
+        non_field_errors: [MESSAGES["en"].network.error],
+      },
+    };
+  }
+}
+
+/* verify email */
 export async function verifyEmail({
   key,
 }: {

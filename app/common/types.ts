@@ -134,6 +134,26 @@ export type TVerifyResponse = {
   data: { detail: string };
 };
 
+/* Reset Password */
+export type TPasswordResetOk = {
+  detail: string;
+};
+
+export type TPasswordResetErrors = TAuthErrorsBase & {
+  email?: string[];
+};
+
+export type TPasswordResetResponse = {
+  success: boolean;
+  status: number;
+  data: TPasswordResetOk | TPasswordResetErrors;
+};
+
+export type TPasswordResetActionResponse = {
+  fields: { email: string } | null;
+  errors: TPasswordResetErrors;
+};
+
 /* JWT */
 export type TRefreshToken = {
   access: string;
