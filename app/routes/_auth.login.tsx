@@ -1,4 +1,4 @@
-import { useActionData, useSearchParams } from "@remix-run/react";
+import { Link, useActionData, useSearchParams } from "@remix-run/react";
 import { type ActionArgs, type V2_MetaFunction, json } from "@remix-run/node";
 import React from "react";
 
@@ -166,6 +166,12 @@ export default function LoginRoute() {
         <button className="button submit " type="submit">
           sign in
         </button>
+        <div className="auth__top-message">
+          <p>
+            Forgot password? Please{" "}
+            <Link to="/password-reset">reset password</Link>
+          </p>
+        </div>
       </form>
     </>
   );

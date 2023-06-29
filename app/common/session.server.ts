@@ -22,6 +22,10 @@ import type {
   TPasswordResetErrors,
   TPasswordResetOk,
   TPasswordResetResponse,
+  TResetConfirm,
+  TResetConfirmResponse,
+  TResetConfirmErrors,
+  TResetConfirmOk,
 } from "./types";
 import { MESSAGES } from "./languageDictionary";
 
@@ -79,8 +83,55 @@ function getUserSession(request: Request) {
 /*
  * Auth Functions
  */
+/* reset confirm */
+export async function resetConfirm({
+  uid,
+  token,
+  newPassword1,
+  newPassword2,
+}: TResetConfirm): Promise<TResetConfirmResponse> {
+  try {
+    const response = await fetch(
+      `${BASE_API_URL}/auth/password/reset/confirm/`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          uid: uid,
+          token: token,
+          new_password1: newPassword1,
+          new_password2: newPassword2,
+        }),
+      }
+    );
+    const data: TResetConfirmErrors | TResetConfirmOk = await response.json();
+    if (!response.ok) {
+      return {
+        success: false,
+        status: response.status,
+        data: data as TResetConfirmErrors,
+      };
+    }
+    return {
+      success: true,
+      status: response.status,
+      data: data as TResetConfirmOk,
+    };
+  } catch (error) {
+    console.error(error);
+    return {
+      success: false,
+      status: 500,
+      data: {
+        non_field_errors: [MESSAGES["en"].network.error],
+      },
+    };
+  }
+}
 
-/* verify email */
+/* password reset */
 export async function passwordReset({
   email,
 }: {
