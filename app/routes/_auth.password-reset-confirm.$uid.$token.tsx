@@ -4,6 +4,7 @@ import {
   type V2_MetaFunction,
   json,
   redirect,
+  type LoaderArgs,
 } from "@remix-run/node";
 
 import { resetConfirm } from "~/common/session.server";
@@ -120,7 +121,7 @@ export const action = async ({ request }: ActionArgs) => {
   }
 }; //end action
 
-export const loader = async ({ params }: LoaderArgs) => {
+export const loader = ({ params }: LoaderArgs) => {
   const { uid, token } = params;
   return json({ uid, token });
 };
