@@ -665,5 +665,6 @@ label {
 }
 .form-nonfield-errors ul {
   margin: 0;
+  list-style: none;
   font-size: var(--text-sm);
 }

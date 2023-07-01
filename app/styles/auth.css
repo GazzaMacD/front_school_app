@@ -26,6 +26,9 @@
   text-transform: capitalize;
   padding: 6px 15px;
 }
+.auth__top-message {
+  text-align: center;
+}
 @media (min-width: 576px) {
   .auth {
     min-width: 350px;

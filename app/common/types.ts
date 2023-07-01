@@ -134,6 +134,53 @@ export type TVerifyResponse = {
   data: { detail: string };
 };
 
+/* Reset Password */
+export type TPasswordResetOk = {
+  detail: string;
+};
+
+export type TPasswordResetErrors = TAuthErrorsBase & {
+  email?: string[];
+};
+
+export type TPasswordResetResponse = {
+  success: boolean;
+  status: number;
+  data: TPasswordResetOk | TPasswordResetErrors;
+};
+
+export type TPasswordResetActionResponse = {
+  fields: { email: string } | null;
+  errors: TPasswordResetErrors;
+};
+/* reset confirm */
+export type TResetConfirm = {
+  newPassword1: string;
+  newPassword2: string;
+  uid: number;
+  token: string;
+};
+export type TResetConfirmErrors = TAuthErrorsBase & {
+  new_password1?: string[];
+  new_password2?: string[];
+  uid?: string[];
+  token?: string[];
+};
+export type TResetConfirmOk = {
+  detail: string;
+};
+
+export type TResetConfirmResponse = {
+  success: boolean;
+  status: number;
+  data: TResetConfirmOk | TResetConfirmErrors;
+};
+
+export type TResetConfirmActionResponse = {
+  fields: TResetConfirm | null;
+  errors: TResetConfirmErrors;
+};
+
 /* JWT */
 export type TRefreshToken = {
   access: string;
