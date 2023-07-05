@@ -1,7 +1,25 @@
 /* ----------------------------- 
+Containers
+-------------------------------- */
+.container {
+  margin: 0 auto;
+  max-width: 1140px;
+  padding: 0 var(--component-padding);
+}
+
+.text-container {
+  margin: 0 auto;
+  max-width: 700px;
+  padding: 0 var(--component-padding);
+}
+/* ----------------------------- 
 Headings
 -------------------------------- */
+.page-heading {
+  margin: 70px 0 30px 0;
+}
 .bsection-group {
+  margin-bottom: 50px;
 }
 .bsection-group__heading {
   font-size: var(--text-sm);
@@ -9,7 +27,7 @@ Headings
   letter-spacing: 3px;
   line-height: 1;
   font-weight: 600;
-  margin: 0 0 var(--space-xs) 0;
+  margin: 0 0 var(--space-lg) 0;
   padding: 0 0 0 var(--space-xs);
   text-transform: capitalize;
   color: var(--color-base-orange);
