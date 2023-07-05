@@ -52,6 +52,22 @@ export type TBaseListPage = {
     total_count: number;
   };
 };
+
+export type TWagListAllBase = {
+  id: number;
+  meta: TListPageMetaAll;
+  title: string;
+};
+
+export type TWagBasicImage = {
+  id: number;
+  meta: {
+    type: string;
+    detail_url: string;
+    download_url: string;
+  };
+  title: string;
+};
 /*
  * Form Base Functions
  */
