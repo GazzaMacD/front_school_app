@@ -30,6 +30,7 @@ type TLessons = TBaseListPage & {
 
 export async function loader({ request }: LoaderArgs) {
   const category = new URL(request.url).searchParams.get("category");
+  const catId = new URL(request.url).searchParams.get("id");
   //handle previews
   const previewResponse = await handlePreview<TLessonsPreview>(request);
   if (previewResponse.isPreview && previewResponse.data) {
@@ -39,7 +40,7 @@ export async function loader({ request }: LoaderArgs) {
   const pageUrl = `${BASE_API_URL}/pages/?type=lessons.LessonListPage&fields=ja_title,short_intro`;
   const categoriesUrl = `${BASE_API_URL}/lesson-categories/`;
   const lessonsUrl = category
-    ? `${BASE_API_URL}/pages/?type=lessons.LessonDetailPage&category=${category}&fields=*`
+    ? `${BASE_API_URL}/pages/?type=lessons.LessonDetailPage&category=${catId}&fields=*`
     : `${BASE_API_URL}/pages/?type=lessons.LessonDetailPage&fields=*`;
 
   const urls = [pageUrl, lessonsUrl, categoriesUrl];
@@ -88,6 +89,7 @@ export async function loader({ request }: LoaderArgs) {
 export default function LessonsPage() {
   const [searchParams] = useSearchParams();
   const urlCategory = searchParams.get("category");
+  const urlId = searchParams.get("id");
   const {
     data: { page, lessons, categories },
   } = useLoaderData<typeof loader>();
@@ -101,17 +103,15 @@ export default function LessonsPage() {
           <div className="l-cat__links">
             <Link
               to="."
-              className={`l-cat__link ${
-                !urlCategory ? "l-cat__link--active" : ""
-              }`}
+              className={`l-cat__link ${!urlId ? "l-cat__link--active" : ""}`}
             >
               All Lessons
             </Link>
             {categories.data.map((category) => (
               <Link
-                to={`?category=${category.id}`}
+                to={`?category=${category.ja_name}&id=${category.id}`}
                 className={`l-cat__link ${
-                  Number(urlCategory) === Number(category.id)
+                  Number(urlId) === Number(category.id)
                     ? "l-cat__link--active"
                     : ""
                 }`}
