@@ -1,5 +1,5 @@
 /* ----------------------------- 
-Containers
+Containers and Iframes
 -------------------------------- */
 .container {
   margin: 0 auto;
@@ -17,6 +17,17 @@ Containers
   padding: 0;
   width: 100%;
 }
+.youtube-iframe {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  border: none;
+}
+.youtube-iframe-short {
+  aspect-ratio: 9 / 16;
+  width: 100%;
+  border: none;
+}
+
 /* ----------------------------- 
 Headings
 -------------------------------- */

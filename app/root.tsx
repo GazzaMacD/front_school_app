@@ -2,6 +2,7 @@ import { cssBundleHref } from "@remix-run/css-bundle";
 import { type LinksFunction, type LoaderArgs, json } from "@remix-run/node";
 import baseStyles from "./styles/base.css";
 import baseElementStyles from "./styles/base-elements.css";
+import { BASE_BACK_URL } from "~/common/constants.server";
 import { AiFillPhone } from "react-icons/ai";
 import {
   FaInstagram,

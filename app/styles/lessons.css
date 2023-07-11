@@ -95,9 +95,68 @@ a.l-cat__link::before {
   color: var(--color-base-lightgreen);
 }
 
-/* Lesson Detail Page */
+/* 
+* Lesson Detail Page 
+*/
 .l-detail-header {
 }
 .l-detail-header__img {
   width: 100%;
+}
+/* Lesson Detail Conversation block */
+.l-conv {
+  background-color: white;
+}
+.l-conv__table td {
+  vertical-align: top;
+  padding: var(--space-xxs);
+}
+/* Lesson Detail Multiple Choice block */
+.l-mc-questions {
+  margin: 40px 0;
+  padding: 50px 0;
+  border-top: 1px var(--color-base-green) solid;
+  border-bottom: 1px var(--color-base-green) solid;
+}
+.l-mc-questions__title {
+  text-align: center;
+}
+.l-mc-questions__instructions {
+  font-size: var(--text-xs);
+}
+.l-question {
+  cursor: pointer;
+}
+.l-question__question {
+  margin: 0 0 var(--space-xs) 0;
+}
+.l-question__choices {
+  padding: 0 0 20px 40px;
+}
+.l-question__choice {
+  padding: var(--space-xxs) 0;
+  margin: var(--space-xxs) 0;
+  position: relative;
+  cursor: pointer;
+}
+.l-question__correct {
+  color: var(--color-base-green);
+}
+.l-question__correct::before {
+  content: "◯";
+  position: absolute;
+  color: var(--color-base-green);
+  left: -30px;
+}
+.l-question__incorrect {
+  color: var(--color-base-orange);
+}
+.l-question__incorrect::before {
+  content: "X";
+  position: absolute;
+  color: var(--color-base-orange);
+  left: -30px;
+}
+.l-question__answer p {
+  margin: 0;
 }

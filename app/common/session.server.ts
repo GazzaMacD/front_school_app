@@ -4,7 +4,7 @@ import {
   SESSION_SECRET,
   BASE_API_URL,
   DEFAULT_REDIRECT,
-} from "./constants";
+} from "./constants.server";
 import type {
   TLogin,
   TLoginFail,
