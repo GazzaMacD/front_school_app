@@ -160,3 +160,37 @@ a.l-cat__link::before {
 .l-question__answer p {
   margin: 0;
 }
+
+/* Related lesson */
+.l-rel {
+  margin-bottom: 50px;
+}
+.l-rel__title {
+  text-align: center;
+}
+.l-rel__lessons {
+  display: flex;
+  gap: 2%;
+}
+.l-rel__card {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 23.5%;
+  background-color: white;
+}
+.l-rel__card__details {
+  padding: var(--space-xs);
+}
+.l-rel__card__title {
+  font-size: var(--text-md);
+}
+.l-rel__card__intro {
+}
+a.l-rel__card__button {
+  color: var(--color-base-text);
+}
+a.l-rel__card__button::before {
+  content: none;
+}

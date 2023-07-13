@@ -183,6 +183,7 @@ export async function loader({ request, params }: LoaderArgs) {
 export default function LessonsDetailPage() {
   const { data, BASE_BACK_URL } = useLoaderData<typeof loader>();
   const pubDate = new Date(data.published_date);
+  console.log(data);
   return (
     <>
       <div className="l-header">
@@ -342,6 +343,37 @@ export default function LessonsDetailPage() {
             return <MCQuestions key={block.id} value={block.value} />;
           }
         })}
+      </section>
+      <section className="l-rel">
+        <div className="container">
+          <h2>Other lessons you might like</h2>
+          <div className="l-rel__lessons">
+            {data.related_lessons.map((related_lesson) => {
+              return (
+                <div key={related_lesson.id} className="l-rel__card">
+                  <img
+                    src={`${BASE_BACK_URL}${related_lesson.lesson.image.thumbnail.src}`}
+                    alt={related_lesson.lesson.image.thumbnail?.alt}
+                  />
+                  <div className="l-rel__card__details">
+                    <h4 className="l-rel__card__title">
+                      {related_lesson.lesson.ja_title}
+                    </h4>
+                    <p className="l-rel__card__intro">
+                      {related_lesson.lesson.ja_title}
+                    </p>
+                    <Link
+                      to={`/lessons/${related_lesson.lesson.slug}`}
+                      className="button l-rel__card__button"
+                    >
+                      Learn More
+                    </Link>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
       </section>
     </>
   );
