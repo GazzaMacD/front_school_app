@@ -27,7 +27,7 @@ extra large
   --color-base-text: #352f2c;
   /* secondary brand colors */
   --color-sec-lightlime: #b1d121;
-  --color-sec-darklime: #678e00;
+  --color-sec-darklime: #6d9600;
   --color-sec-olive: #3e5e1f;
   --color-sec-palegreen: #c6d5a1;
   --color-sec-lightlime: #b1d121;
@@ -68,7 +68,7 @@ extra large
   --color-text-heading-light: var(--color-base-yellow);
 
   /*shadows*/
-  --color-shadow: rgba(0, 0, 0, 0.2);
+  --color-shadow: rgba(0, 0, 0, 0.1);
 }
 /*
   Josh's Custom CSS Reset

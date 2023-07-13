@@ -346,7 +346,7 @@ export default function LessonsDetailPage() {
       </section>
       <section className="l-rel">
         <div className="container">
-          <h2>Other lessons you might like</h2>
+          <h2 className="l-rel__title">Other lessons you might like</h2>
           <div className="l-rel__lessons">
             {data.related_lessons.map((related_lesson) => {
               return (
@@ -354,17 +354,18 @@ export default function LessonsDetailPage() {
                   <img
                     src={`${BASE_BACK_URL}${related_lesson.lesson.image.thumbnail.src}`}
                     alt={related_lesson.lesson.image.thumbnail?.alt}
+                    className="l-rel__card__img"
                   />
                   <div className="l-rel__card__details">
                     <h4 className="l-rel__card__title">
                       {related_lesson.lesson.ja_title}
                     </h4>
                     <p className="l-rel__card__intro">
-                      {related_lesson.lesson.ja_title}
+                      {related_lesson.lesson.short_intro}
                     </p>
                     <Link
                       to={`/lessons/${related_lesson.lesson.slug}`}
-                      className="button l-rel__card__button"
+                      className="l-rel__card__button"
                     >
                       Learn More
                     </Link>
