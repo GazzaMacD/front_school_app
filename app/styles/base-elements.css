@@ -1,5 +1,5 @@
 /* ----------------------------- 
-Containers
+Containers and Iframes
 -------------------------------- */
 .container {
   margin: 0 auto;
@@ -12,12 +12,25 @@ Containers
   max-width: 700px;
   padding: 0 var(--component-padding);
 }
+.full-width-container {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+.youtube-iframe {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  border: none;
+}
+.youtube-iframe-short {
+  aspect-ratio: 9 / 16;
+  width: 100%;
+  border: none;
+}
+
 /* ----------------------------- 
 Headings
 -------------------------------- */
-.page-heading {
-  margin: 70px 0 30px 0;
-}
 .bsection-group {
   margin-bottom: 50px;
 }
@@ -41,6 +54,25 @@ Headings
   color: var(--color-base-green);
   margin: 0 0 var(--space-sm) 0;
   line-height: 1;
+}
+/* ----------------------------- 
+Block quotes
+-------------------------------- */
+.bquote {
+  padding: var(--space-md) 0 var(--space-xl) 0;
+  display: flex;
+  justify-content: center;
+}
+.bquote__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top: 1px solid var(--color-base-text);
+  border-bottom: 1px solid var(--color-base-text);
+  width: 80%;
+  padding: var(--space-md);
+}
+.bquote blockquote {
 }
 
 /* ----------------------------- 
