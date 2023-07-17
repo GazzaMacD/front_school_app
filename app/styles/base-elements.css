@@ -22,10 +22,10 @@ Containers and Iframes
   width: 100%;
   border: none;
 }
-.youtube-iframe-short {
-  aspect-ratio: 9 / 16;
-  width: 100%;
-  border: none;
+@media screen and (orientation: portrait) {
+  .youtube-short {
+    aspect-ratio: 9 / 16;
+  }
 }
 
 /* ----------------------------- 

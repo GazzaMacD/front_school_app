@@ -229,7 +229,7 @@ export default function LessonsDetailPage() {
             );
           } else if (block.type === "text_width_img") {
             return (
-              <div key={block.id} className="text-container l-detail-image">
+              <div key={block.id} className="text-container">
                 <figure>
                   <img
                     src={`${BASE_BACK_URL}${block.value.image.original.src}`}
@@ -274,7 +274,7 @@ export default function LessonsDetailPage() {
             );
           } else if (block.type === "block_quote") {
             return (
-              <div key={block.id} className="text-container">
+              <div key={block.id} className="text-container l-detail-image">
                 <figure className="bquote">
                   <div className="bquote__inner">
                     <blockquote cite={block.value?.citation_url}>
@@ -289,31 +289,19 @@ export default function LessonsDetailPage() {
               </div>
             );
           } else if (block.type === "youtube") {
-            if (block.value.short) {
-              return (
-                <div key={block.id} className="text-container">
-                  <iframe
-                    className="youtube-iframe-short"
-                    src={block.value.src}
-                    title="YouTube video player"
-                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  ></iframe>
-                </div>
-              );
-            } else {
-              return (
-                <div key={block.id} className="container">
-                  <iframe
-                    className="youtube-iframe"
-                    src={block.value.src}
-                    title="YouTube video player"
-                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  ></iframe>
-                </div>
-              );
-            }
+            return (
+              <div key={block.id} className="container">
+                <iframe
+                  className={`youtube-iframe ${
+                    block.value.short ? "youtube-short" : ""
+                  }`}
+                  src={`${block.value.src}?modestbranding=1&controls=0&rel=0`}
+                  title="YouTube video player"
+                  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            );
           } else if (block.type === "conversation") {
             const p1 = block.value.person_one_name;
             const p2 = block.value.person_two_name;
