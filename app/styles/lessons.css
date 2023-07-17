@@ -112,6 +112,12 @@ a.l-cat__link::before {
 /* Lesson Detail Conversation block */
 .l-conv {
   background-color: white;
+  padding: var(--space-sm);
+  margin: var(--space-lg) 0;
+  border: 1px solid var(--color-base-green);
+}
+.l-conv__title {
+  text-align: center;
 }
 .l-conv__table td {
   vertical-align: top;

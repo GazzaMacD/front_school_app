@@ -183,7 +183,6 @@ export async function loader({ request, params }: LoaderArgs) {
 export default function LessonsDetailPage() {
   const { data, BASE_BACK_URL } = useLoaderData<typeof loader>();
   const pubDate = new Date(data.published_date);
-  console.log(data);
   return (
     <>
       <div className="l-header">
@@ -321,7 +320,7 @@ export default function LessonsDetailPage() {
             return (
               <div key={block.id} className="text-container">
                 <div className="l-conv">
-                  <h4>{block.value.title}</h4>
+                  <h4 className="l-conv__title">{block.value.title}</h4>
                   <p>{block.value.intro}</p>
                   <table className="l-conv__table">
                     {block.value.conversation.map((lines: any) => {
@@ -482,7 +481,10 @@ function MCQuestions({ value }: TMCQuestionsProps) {
           ) : null}
         </div>
         <div>
-          <button onClick={() => setShowAnswers(!showAnswers)}>
+          <button
+            className="button"
+            onClick={() => setShowAnswers(!showAnswers)}
+          >
             {showAnswers ? "Hide Answers" : "Show answers"}
           </button>
           {showAnswers &&
