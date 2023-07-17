@@ -243,7 +243,10 @@ export default function LessonsDetailPage() {
             );
           } else if (block.type === "full_width_img") {
             return (
-              <div key={block.id} className="full-width-container">
+              <div
+                key={block.id}
+                className="full-width-container l-detail-image"
+              >
                 <figure>
                   <img
                     src={`${BASE_BACK_URL}${block.value.image.original.src}`}
@@ -257,7 +260,7 @@ export default function LessonsDetailPage() {
             );
           } else if (block.type === "beyond_text_img") {
             return (
-              <div key={block.id} className="container">
+              <div key={block.id} className="container l-detail-image">
                 <figure>
                   <img
                     src={`${BASE_BACK_URL}${block.value.image.original.src}`}
@@ -271,7 +274,7 @@ export default function LessonsDetailPage() {
             );
           } else if (block.type === "block_quote") {
             return (
-              <div key={block.id} className="text-container">
+              <div key={block.id} className="text-container l-detail-image">
                 <figure className="bquote">
                   <div className="bquote__inner">
                     <blockquote cite={block.value?.citation_url}>
@@ -305,7 +308,7 @@ export default function LessonsDetailPage() {
             return (
               <div key={block.id} className="text-container">
                 <div className="l-conv">
-                  <h4>{block.value.title}</h4>
+                  <h4 className="l-conv__title">{block.value.title}</h4>
                   <p>{block.value.intro}</p>
                   <table className="l-conv__table">
                     {block.value.conversation.map((lines: any) => {
