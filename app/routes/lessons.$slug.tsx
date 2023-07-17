@@ -230,7 +230,7 @@ export default function LessonsDetailPage() {
             );
           } else if (block.type === "text_width_img") {
             return (
-              <div key={block.id} className="text-container">
+              <div key={block.id} className="text-container l-detail-image">
                 <figure>
                   <img
                     src={`${BASE_BACK_URL}${block.value.image.original.src}`}
@@ -244,7 +244,10 @@ export default function LessonsDetailPage() {
             );
           } else if (block.type === "full_width_img") {
             return (
-              <div key={block.id} className="full-width-container">
+              <div
+                key={block.id}
+                className="full-width-container l-detail-image"
+              >
                 <figure>
                   <img
                     src={`${BASE_BACK_URL}${block.value.image.original.src}`}
@@ -258,7 +261,7 @@ export default function LessonsDetailPage() {
             );
           } else if (block.type === "beyond_text_img") {
             return (
-              <div key={block.id} className="container">
+              <div key={block.id} className="container l-detail-image">
                 <figure>
                   <img
                     src={`${BASE_BACK_URL}${block.value.image.original.src}`}

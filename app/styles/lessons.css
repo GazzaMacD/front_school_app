@@ -103,6 +103,12 @@ a.l-cat__link::before {
 .l-detail-header__img {
   width: 100%;
 }
+.l-detail-image {
+  padding: var(--space-md) 0;
+}
+.l-detail-image figcaption {
+  padding: var(--space-xxs) var(--component-padding);
+}
 /* Lesson Detail Conversation block */
 .l-conv {
   background-color: white;
