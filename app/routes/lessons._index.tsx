@@ -1,5 +1,5 @@
 import { redirect, json } from "@remix-run/node";
-import { BASE_API_URL, BASE_BACK_URL } from "~/common/constants.server";
+import { BASE_API_URL /*BASE_BACK_URL*/ } from "~/common/constants.server";
 import { Link, useLoaderData } from "@remix-run/react";
 import { handlePreview } from "~/common/utils";
 import { useSearchParams } from "@remix-run/react";
@@ -24,6 +24,7 @@ type TLessons = TBaseListPage & {
   items: TLesson[];
 };
 
+const BASE_BACK_URL = "http://127.0.0.1:8000";
 /*
  * serverside functions
  */
