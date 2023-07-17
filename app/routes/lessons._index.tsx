@@ -41,8 +41,8 @@ export async function loader({ request }: LoaderArgs) {
   const pageUrl = `${BASE_API_URL}/pages/?type=lessons.LessonListPage&fields=ja_title,short_intro`;
   const categoriesUrl = `${BASE_API_URL}/lesson-categories/`;
   const lessonsUrl = category
-    ? `${BASE_API_URL}/pages/?type=lessons.LessonDetailPage&category=${catId}&fields=*`
-    : `${BASE_API_URL}/pages/?type=lessons.LessonDetailPage&fields=*`;
+    ? `${BASE_API_URL}/pages/?order=-published_date&type=lessons.LessonDetailPage&category=${catId}&fields=*`
+    : `${BASE_API_URL}/pages/?order=-published_date&type=lessons.LessonDetailPage&fields=*`;
 
   const urls = [pageUrl, lessonsUrl, categoriesUrl];
   try {
