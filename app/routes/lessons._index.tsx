@@ -1,7 +1,8 @@
 import { redirect, json } from "@remix-run/node";
-import { BASE_API_URL /*BASE_BACK_URL*/ } from "~/common/constants.server";
+import { BASE_API_URL } from "~/common/constants.server";
 import { Link, useLoaderData } from "@remix-run/react";
-import { handlePreview } from "~/common/utils";
+import { handlePreview } from "~/common/utils.server";
+import { getGlobalEnv } from "~/common/utils";
 import { useSearchParams } from "@remix-run/react";
 
 /*types */
@@ -24,7 +25,6 @@ type TLessons = TBaseListPage & {
   items: TLesson[];
 };
 
-const BASE_BACK_URL = "http://127.0.0.1:8000";
 /*
  * serverside functions
  */
@@ -91,6 +91,7 @@ export default function LessonsPage() {
   const [searchParams] = useSearchParams();
   const urlCategory = searchParams.get("category");
   const urlId = searchParams.get("id");
+  const ENV = getGlobalEnv();
   const {
     data: { page, lessons, categories },
   } = useLoaderData<typeof loader>();
@@ -132,7 +133,7 @@ export default function LessonsPage() {
               <Link to={lesson.meta.slug} key={lesson.id}>
                 <li className="l-list-item">
                   <img
-                    src={`${BASE_BACK_URL}${lesson.header_image.meta.download_url}`}
+                    src={`${ENV.BASE_BACK_URL}${lesson.header_image.meta.download_url}`}
                     alt={lesson.header_image.title}
                     className="l-list-item__img"
                   />
