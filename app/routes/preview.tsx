@@ -1,6 +1,6 @@
 import { redirect } from "@remix-run/node";
 import type { LoaderArgs } from "@remix-run/node";
-import { BASE_API_URL } from "~/common/constants";
+import { BASE_API_URL } from "~/common/constants.server";
 
 export async function loader({ request }: LoaderArgs) {
   /* A resource route to deal with routing the preview requests

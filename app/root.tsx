@@ -1,8 +1,5 @@
 import { cssBundleHref } from "@remix-run/css-bundle";
 import { type LinksFunction, type LoaderArgs, json } from "@remix-run/node";
-import baseStyles from "./styles/base.css";
-import baseElementStyles from "./styles/base-elements.css";
-import { BASE_BACK_URL } from "~/common/constants.server";
 import { AiFillPhone } from "react-icons/ai";
 import {
   FaInstagram,
@@ -21,6 +18,9 @@ import {
 import { useLoaderData } from "@remix-run/react";
 
 import { authenticatedUser } from "./common/session.server";
+import baseStyles from "./styles/base.css";
+import baseElementStyles from "./styles/base-elements.css";
+import { createGlobalEnvObj } from "./env.server";
 
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
@@ -31,11 +31,12 @@ export const links: LinksFunction = () => [
 export async function loader({ request }: LoaderArgs) {
   const userData = await authenticatedUser(request);
   const user = userData ? userData.user : null;
-  return json({ user });
+  const GLOBAL_ENV = createGlobalEnvObj();
+  return json({ user, GLOBAL_ENV });
 }
 
 export default function App() {
-  const { user } = useLoaderData<typeof loader>();
+  const { user, GLOBAL_ENV } = useLoaderData<typeof loader>();
   return (
     <html lang="ja">
       <head>
@@ -197,6 +198,11 @@ export default function App() {
         </div>
         <ScrollRestoration />
         <Scripts />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.GLOBAL_ENV = ${JSON.stringify(GLOBAL_ENV)}`,
+          }}
+        />
         <LiveReload />
       </body>
     </html>

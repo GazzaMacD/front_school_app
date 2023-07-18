@@ -1,3 +1,13 @@
+type TClientENV = {
+  BASE_BACK_URL: string;
+};
+
+declare global {
+  var GLOBAL_ENV: TClientENV;
+  interface Window {
+    GLOBAL_ENV: TClientENV;
+  }
+}
 /*
  * Base Pages from Wagtail
  */

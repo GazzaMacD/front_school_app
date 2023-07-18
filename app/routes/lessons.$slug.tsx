@@ -2,7 +2,7 @@ import { redirect, json } from "@remix-run/node";
 import React from "react";
 import { BASE_API_URL, BASE_BACK_URL } from "~/common/constants.server";
 import { useLoaderData } from "@remix-run/react";
-import { handlePreview } from "~/common/utils";
+import { handlePreview } from "~/common/utils.server";
 import { AiOutlineCalendar, AiOutlineClockCircle } from "react-icons/ai";
 import { useRouteError, isRouteErrorResponse, Link } from "@remix-run/react";
 
@@ -13,6 +13,7 @@ import type {
   TWagListAllBase,
   TBaseDetailPage,
 } from "~/common/types";
+import { getGlobalEnv } from "~/common/utils";
 
 type TLessonDetailOptions = {
   jp_title: string;
@@ -155,10 +156,7 @@ export async function loader({ request, params }: LoaderArgs) {
     const pagesData = await response.json();
     let data = pagesData.items[0];
     data = multipleChoiceCreator(data);
-    return json({
-      data: data,
-      BASE_BACK_URL,
-    });
+    return json({ data });
   } catch (error) {
     console.error(error);
     if (error instanceof Error) {
@@ -181,7 +179,8 @@ export async function loader({ request, params }: LoaderArgs) {
  * client side code
  */
 export default function LessonsDetailPage() {
-  const { data, BASE_BACK_URL } = useLoaderData<typeof loader>();
+  const { data } = useLoaderData<typeof loader>();
+  const ENV = getGlobalEnv();
   const pubDate = new Date(data.published_date);
   return (
     <>
@@ -212,7 +211,7 @@ export default function LessonsDetailPage() {
           <p className="l-header__intro">{data.short_intro}</p>
           <img
             className="l-detail-header__img"
-            src={`${BASE_BACK_URL}${data.header_image.meta.download_url}`}
+            src={`${ENV.BASE_BACK_URL}${data.header_image.meta.download_url}`}
             alt={data.header_image.title}
           />
         </header>
@@ -232,7 +231,7 @@ export default function LessonsDetailPage() {
               <div key={block.id} className="text-container">
                 <figure>
                   <img
-                    src={`${BASE_BACK_URL}${block.value.image.original.src}`}
+                    src={`${ENV.BASE_BACK_URL}${block.value.image.original.src}`}
                     alt={block.value.image.original?.alt}
                   />
                   {block.value?.caption ? (
@@ -249,7 +248,7 @@ export default function LessonsDetailPage() {
               >
                 <figure>
                   <img
-                    src={`${BASE_BACK_URL}${block.value.image.original.src}`}
+                    src={`${ENV.BASE_BACK_URL}${block.value.image.original.src}`}
                     alt={block.value.image.original?.alt}
                   />
                   {block.value?.caption ? (
@@ -263,7 +262,7 @@ export default function LessonsDetailPage() {
               <div key={block.id} className="container l-detail-image">
                 <figure>
                   <img
-                    src={`${BASE_BACK_URL}${block.value.image.original.src}`}
+                    src={`${ENV.BASE_BACK_URL}${block.value.image.original.src}`}
                     alt={block.value.image.original?.alt}
                   />
                   {block.value?.caption ? (
@@ -313,7 +312,7 @@ export default function LessonsDetailPage() {
                   <table className="l-conv__table">
                     {block.value.conversation.map((lines: any) => {
                       return (
-                        <>
+                        <React.Fragment key={lines.person_one.slice(0, 6)}>
                           <tr>
                             <td>{p1}</td>
                             <td>:</td> <td>{lines.person_one}</td>
@@ -322,7 +321,7 @@ export default function LessonsDetailPage() {
                             <td>{p2}</td>
                             <td>:</td> <td>{lines.person_two}</td>
                           </tr>
-                        </>
+                        </React.Fragment>
                       );
                     })}
                   </table>
@@ -342,7 +341,7 @@ export default function LessonsDetailPage() {
               return (
                 <div key={related_lesson.id} className="l-rel__card">
                   <img
-                    src={`${BASE_BACK_URL}${related_lesson.lesson.image.thumbnail.src}`}
+                    src={`${ENV.BASE_BACK_URL}${related_lesson.lesson.image.thumbnail.src}`}
                     alt={related_lesson.lesson.image.thumbnail?.alt}
                     className="l-rel__card__img"
                   />
