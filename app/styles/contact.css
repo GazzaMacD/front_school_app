@@ -1,0 +1,24 @@
+/* Contact Form (cf) */
+.cf-wrapper {
+  padding: var(--space-md);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-base-white);
+  box-shadow: 1px 1px 5px 1px var(--color-shadow);
+}
+.cf-heading {
+  text-align: center;
+}
+.cf__half {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.cf__half > .input-group {
+  flex: 0 0 49%;
+}
+.cf textarea {
+  min-height: 200px;
+}
+.cf .submit {
+  max-width: 300px;
+}
