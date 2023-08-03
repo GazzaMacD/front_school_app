@@ -22,3 +22,11 @@
 .cf .submit {
   max-width: 300px;
 }
+.cf__remaining {
+  font-size: var(--text-sm);
+  color: var(--color-base-green);
+}
+.cf__remaining--zero {
+  font-size: var(--text-sm);
+  color: var(--color-base-orange);
+}
