@@ -141,7 +141,22 @@ export const action = async ({ request }: ActionArgs) => {
 
 export default function Contact() {
   const actionData = useActionData<typeof action>();
-  const maxMsgLength = 200;
+  const maxMsgLength = 300;
+  const [remaining, setRemaining] = React.useState(maxMsgLength);
+  const messageRef = React.useRef<null | HTMLTextAreaElement>(null);
+
+  function messageChangeHandler(e: React.ChangeEvent<HTMLTextAreaElement>) {
+    let num = maxMsgLength - e.currentTarget.value.length;
+    setRemaining(num);
+  }
+
+  React.useEffect(() => {
+    if (messageRef.current) {
+      const len = messageRef.current.value.length;
+      setRemaining(maxMsgLength - len);
+    }
+  }, []);
+
   return (
     <div>
       <header className="container">
@@ -248,12 +263,21 @@ export default function Contact() {
             </div>
             <div className="input-group">
               <label className="required" htmlFor="message-input">
-                message
+                message{" "}
+                <span
+                  className={`${
+                    remaining > 0 ? "cf__remaining" : "cf__remaining--zero"
+                  }`}
+                >
+                  {remaining}
+                </span>
               </label>
               <textarea
                 id="message-input"
                 maxLength={maxMsgLength}
                 name="message"
+                onChange={messageChangeHandler}
+                ref={messageRef}
                 defaultValue={actionData?.fields?.message}
                 aria-invalid={Boolean(actionData?.errors?.message?.length)}
                 aria-errormessage={
