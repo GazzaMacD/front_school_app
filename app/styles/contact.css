@@ -1,3 +1,56 @@
+.accordian__open {
+  display: block;
+}
+.accordian__closed {
+  display: none;
+}
+/* Contact Page (cf) */
+.cf__title {
+  text-align: center;
+  margin-top: 50px;
+}
+.cp__accordian-heading {
+  background-color: var(--color-base-white);
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  color: var(--color-base-green);
+  padding: 10px;
+}
+.cp__accordian-heading button {
+  display: flex;
+  line-height: 1;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--color-base-limegreen);
+  background-color: var(--color-base-white);
+  color: var(--color-base-brown);
+  color: var(--color-base-green);
+  border: none;
+}
+.cp__accordian-heading span {
+  line-height: 1;
+  font-size: var(--text-xxs);
+  font-weight: 400;
+  margin-left: 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-base-white);
+  color: var(--color-base-limegreen);
+  border: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+  padding: 0 0 3px 0;
+  margin: 5px 0 0 20px;
+}
+.cp__accordian-content {
+  margin: -21px 0 25px 0;
+  background-color: var(--color-sec-darkcream);
+  padding: 10px;
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+}
 /* Contact Form (cf) */
 .cf-wrapper {
   padding: var(--space-md);
@@ -6,7 +59,7 @@
   box-shadow: 1px 1px 5px 1px var(--color-shadow);
 }
 .cf-heading {
-  text-align: center;
+  text-align: left;
 }
 .cf__half {
   display: flex;

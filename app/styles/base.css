@@ -26,6 +26,7 @@ extra large
   --color-base-brown: #403734;
   --color-base-text: #352f2c;
   /* secondary brand colors */
+  --color-sec-darkcream: #e2daca;
   --color-sec-lightlime: #b1d121;
   --color-sec-darklime: #6d9600;
   --color-sec-olive: #3e5e1f;
@@ -135,6 +136,13 @@ Typography and Spacing
   --text-scale-ratio: 1.2;
 
   /* type scale */
+  --text-xxs: calc(
+    1em /
+      (
+        var(--text-scale-ratio) * var(--text-scale-ratio) *
+          var(--text-scale-ratio)
+      )
+  );
   --text-xs: calc(1em / (var(--text-scale-ratio) * var(--text-scale-ratio)));
   --text-sm: calc(1em / var(--text-scale-ratio));
   --text-md: calc(1em * var(--text-scale-ratio));
