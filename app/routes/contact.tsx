@@ -160,16 +160,68 @@ export default function Contact() {
   return (
     <div>
       <header className="container">
-        <h1 className="heading">Contact Page</h1>
+        <h1 className="heading cf__title">Contact Page</h1>
       </header>
       <section className="container">
-        <h2>Our trial lesson process</h2>
+        <div>
+          <Accordion
+            ariaControls="trial-lesson-process"
+            controllerElement={(isExpanded) => (
+              <h2 className="cp__accordian-heading">
+                <button>
+                  Our trial lesson process
+                  <span>{isExpanded ? "▲" : "▼"}</span>
+                </button>
+              </h2>
+            )}
+          >
+            <div className="cp__accordian-content">
+              <p>Item 1</p>
+              <p>Item 2</p>
+              <p>Item 3</p>
+            </div>
+          </Accordion>
+        </div>
       </section>
       <section className="container">
-        <h2>Process to join one a learning experience</h2>
+        <div>
+          <Accordion
+            ariaControls="experience-process"
+            controllerElement={(isExpanded) => (
+              <h2 className="cp__accordian-heading">
+                <button>
+                  How to join our experiences{" "}
+                  <span>{isExpanded ? "▲" : "▼"}</span>
+                </button>
+              </h2>
+            )}
+          >
+            <div className="cp__accordian-content">
+              <p>Item 1</p>
+              <p>Item 2</p>
+              <p>Item 3</p>
+            </div>
+          </Accordion>
+        </div>
       </section>
       <section className="container">
-        <h2>Common questions</h2>
+        <Accordion
+          ariaControls="experience-process"
+          controllerElement={(isExpanded) => (
+            <h2 className="cp__accordian-heading">
+              <button>
+                Common questions
+                <span>{isExpanded ? "▲" : "▼"}</span>
+              </button>
+            </h2>
+          )}
+        >
+          <div className="cp__accordian-content">
+            <p>Item 1</p>
+            <p>Item 2</p>
+            <p>Item 3</p>
+          </div>
+        </Accordion>
       </section>
       <section className="container">
         <div className="cf-wrapper">
@@ -307,3 +359,37 @@ export default function Contact() {
     </div>
   );
 }
+
+type TAccordianProps = {
+  controllerElement: React.FunctionComponent;
+  ariaControls: string;
+  children: React.ReactNode;
+};
+
+const Accordion = ({
+  controllerElement,
+  ariaControls,
+  children,
+}: TAccordianProps) => {
+  const [isExpanded, setIsExpanded] = React.useState(false);
+
+  return (
+    <>
+      <div
+        aria-expanded={isExpanded}
+        aria-controls={ariaControls}
+        onClick={() => setIsExpanded((prevIsExpanded) => !prevIsExpanded)}
+      >
+        {controllerElement(isExpanded)}
+      </div>
+      {
+        <div
+          className={`${isExpanded ? "accordian__open" : "accordian__closed"}`}
+          id={ariaControls}
+        >
+          {children}
+        </div>
+      }
+    </>
+  );
+};

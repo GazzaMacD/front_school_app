@@ -661,7 +661,22 @@ textarea {
   transition: box-shadow 200ms, border-color 50ms ease-out,
     background-color 50ms ease-out, color 50ms ease-out;
 }
-:focus {
+
+[type="text"]:focus,
+[type="password"]:focus,
+[type="date"]:focus,
+[type="datetime"]:focus,
+[type="datetime-local"]:focus,
+[type="month"]:focus,
+[type="week"]:focus,
+[type="email"]:focus,
+[type="number"]:focus,
+[type="search"]:focus,
+[type="tel"]:focus,
+[type="time"]:focus,
+[type="url"]:focus,
+[type="color"]:focus,
+textarea:focus {
   box-shadow: 0px 0px 1px 2px var(--color-base-green);
   outline: 1px solid var(--color-base-green);
 }
