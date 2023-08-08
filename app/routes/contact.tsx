@@ -270,21 +270,30 @@ export default function Contact() {
                     <div
                       key={block.id}
                       dangerouslySetInnerHTML={{ __html: block.value }}
+                      className="cp__textinfo"
                     />
                   );
                 }
                 if (block.type === "info_cards") {
                   return (
-                    <div key={block.id}>
+                    <div className="blk-infocards" key={block.id}>
                       {block.value.cards.map((card) => {
                         return (
-                          <div key={card.title}>
+                          <div className="blk-infocard" key={card.title}>
                             <img
                               src={`${ENV.BASE_BACK_URL}${card.image.medium.src}`}
                               alt={card.image.medium.alt}
+                              className="blk-infocard__img"
                             />
-                            <h3>{card.title}</h3>
-                            <p>{card.text}</p>
+                            <div
+                              className="blk-infocard__details"
+                              key={card.title}
+                            >
+                              <h3 className="blk-infocard__title">
+                                {card.title}
+                              </h3>
+                              <p className="blk-infocard__text">{card.text}</p>
+                            </div>
                           </div>
                         );
                       })}
