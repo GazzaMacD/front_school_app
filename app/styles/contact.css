@@ -10,10 +10,11 @@
   margin-top: 50px;
 }
 .cp__accordian-heading {
-  background-color: var(--color-base-white);
+  background-color: var(--color-sec-darkcream);
+  border: 1px solid var(--color-base-limegreen);
   border-radius: var(--radius-sm) var(--radius-sm) 0 0;
   color: var(--color-base-green);
-  padding: 10px;
+  padding: 22px;
 }
 .cp__accordian-heading button {
   display: flex;
@@ -21,8 +22,7 @@
   width: 100%;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--color-base-limegreen);
-  background-color: var(--color-base-white);
+  background-color: var(--color-sec-darkcream);
   color: var(--color-base-brown);
   color: var(--color-base-green);
   border: none;
@@ -37,6 +37,7 @@
   justify-content: center;
   align-items: center;
   background-color: var(--color-base-white);
+  background-color: var(--color-sec-darkcream);
   color: var(--color-base-limegreen);
   border: none;
   width: 24px;
@@ -46,20 +47,38 @@
   margin: 5px 0 0 20px;
 }
 .cp__accordian-content {
-  margin: -21px 0 25px 0;
-  background-color: var(--color-sec-darkcream);
-  padding: 10px;
+  margin: -24px 0 25px 0;
+  background-color: var(--color-base-white);
+  padding: var(--space-md);
   border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  border: 1px solid var(--color-base-limegreen);
+}
+.cp__textinfo {
+  margin: 0 auto;
+  max-width: 700px;
 }
 /* Contact Form (cf) */
-.cf-wrapper {
-  padding: var(--space-md);
-  border-radius: var(--radius-sm);
-  background-color: var(--color-base-white);
-  box-shadow: 1px 1px 5px 1px var(--color-shadow);
+.cf-header {
+  background-color: var(--color-sec-darkcream);
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  border: 1px solid var(--color-base-limegreen);
+  padding: 22px;
 }
-.cf-heading {
+.cf-title {
   text-align: left;
+  margin: 0;
+  line-height: 1;
+}
+.cf-wrapper {
+  margin-bottom: 80px;
+}
+.cf-main {
+  padding: var(--space-md);
+  background-color: var(--color-base-white);
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  border-left: 1px solid var(--color-base-limegreen);
+  border-bottom: 1px solid var(--color-base-limegreen);
+  border-right: 1px solid var(--color-base-limegreen);
 }
 .cf__half {
   display: flex;
