@@ -1,7 +1,13 @@
 import type { LinksFunction } from "@remix-run/node";
-import { useActionData } from "@remix-run/react";
+import { useActionData, useLoaderData } from "@remix-run/react";
 import React from "react";
-import { type ActionArgs, type V2_MetaFunction, json } from "@remix-run/node";
+import {
+  type ActionArgs,
+  type V2_MetaFunction,
+  json,
+  type LoaderArgs,
+} from "@remix-run/node";
+import { getGlobalEnv } from "~/common/utils";
 
 import contactStyles from "~/styles/contact.css";
 import { BASE_API_URL } from "~/common/constants.server";
@@ -33,16 +39,38 @@ type TContactActionResponse = {
   errors: TContactErrors;
 };
 
-export const links: LinksFunction = () => [
-  { rel: "stylesheet", href: contactStyles },
-];
-
 function validateRequired(value: unknown): string[] {
   if (!value) {
     return [`This field is required`];
   }
   return [];
 }
+
+export const links: LinksFunction = () => [
+  { rel: "stylesheet", href: contactStyles },
+];
+
+export async function loader({ request, params }: LoaderArgs) {
+  try {
+    const apiUrl = `${BASE_API_URL}/pages/?slug=contact&type=contacts.ContactPage&fields=*`;
+    const response = await fetch(apiUrl);
+    const responseData = await response.json();
+    if (!response.ok) {
+      return json({
+        data: {
+          errors: ["oh no, some server error"],
+        },
+      });
+    }
+    return json({ data: responseData });
+  } catch (error) {
+    return json({
+      data: {
+        errors: ["oh no, some network error"],
+      },
+    });
+  }
+} // loader
 
 export const action = async ({ request }: ActionArgs) => {
   const form = await request.formData();
@@ -140,13 +168,18 @@ export const action = async ({ request }: ActionArgs) => {
 }; // action
 
 export default function Contact() {
+  const ENV = getGlobalEnv();
   const actionData = useActionData<typeof action>();
+  const {
+    data: { items },
+  } = useLoaderData<typeof loader>();
+  const pageData = items[0];
   const maxMsgLength = 300;
   const [remaining, setRemaining] = React.useState(maxMsgLength);
   const messageRef = React.useRef<null | HTMLTextAreaElement>(null);
 
   function messageChangeHandler(e: React.ChangeEvent<HTMLTextAreaElement>) {
-    let num = maxMsgLength - e.currentTarget.value.length;
+    const num = maxMsgLength - e.currentTarget.value.length;
     setRemaining(num);
   }
 
@@ -160,7 +193,8 @@ export default function Contact() {
   return (
     <div>
       <header className="container">
-        <h1 className="heading cf__title">Contact Page</h1>
+        <h1 className="heading cf__title">{pageData.ja_title}</h1>
+        <p>{pageData.short_intro}</p>
       </header>
       <section className="container">
         <div>
@@ -176,9 +210,43 @@ export default function Contact() {
             )}
           >
             <div className="cp__accordian-content">
-              <p>Item 1</p>
-              <p>Item 2</p>
-              <p>Item 3</p>
+              {pageData.assessment_trial.map((block) => {
+                if (block.type === "rich_text") {
+                  return (
+                    <div
+                      key={block.id}
+                      dangerouslySetInnerHTML={{ __html: block.value }}
+                      className="cp__textinfo"
+                    />
+                  );
+                }
+                if (block.type === "info_cards") {
+                  return (
+                    <div className="blk-infocards" key={block.id}>
+                      {block.value.cards.map((card) => {
+                        return (
+                          <div className="blk-infocard" key={card.title}>
+                            <img
+                              src={`${ENV.BASE_BACK_URL}${card.image.medium.src}`}
+                              alt={card.image.medium.alt}
+                              className="blk-infocard__img"
+                            />
+                            <div
+                              className="blk-infocard__details"
+                              key={card.title}
+                            >
+                              <h3 className="blk-infocard__title">
+                                {card.title}
+                              </h3>
+                              <p className="blk-infocard__text">{card.text}</p>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  );
+                }
+              })}
             </div>
           </Accordion>
         </div>
@@ -190,16 +258,49 @@ export default function Contact() {
             controllerElement={(isExpanded) => (
               <h2 className="cp__accordian-heading">
                 <button>
-                  How to join our experiences{" "}
-                  <span>{isExpanded ? "▲" : "▼"}</span>
+                  Join our experiences <span>{isExpanded ? "▲" : "▼"}</span>
                 </button>
               </h2>
             )}
           >
             <div className="cp__accordian-content">
-              <p>Item 1</p>
-              <p>Item 2</p>
-              <p>Item 3</p>
+              {pageData.join_experience.map((block) => {
+                if (block.type === "rich_text") {
+                  return (
+                    <div
+                      key={block.id}
+                      dangerouslySetInnerHTML={{ __html: block.value }}
+                      className="cp__textinfo"
+                    />
+                  );
+                }
+                if (block.type === "info_cards") {
+                  return (
+                    <div className="blk-infocards" key={block.id}>
+                      {block.value.cards.map((card) => {
+                        return (
+                          <div className="blk-infocard" key={card.title}>
+                            <img
+                              src={`${ENV.BASE_BACK_URL}${card.image.medium.src}`}
+                              alt={card.image.medium.alt}
+                              className="blk-infocard__img"
+                            />
+                            <div
+                              className="blk-infocard__details"
+                              key={card.title}
+                            >
+                              <h3 className="blk-infocard__title">
+                                {card.title}
+                              </h3>
+                              <p className="blk-infocard__text">{card.text}</p>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  );
+                }
+              })}
             </div>
           </Accordion>
         </div>
@@ -217,143 +318,162 @@ export default function Contact() {
           )}
         >
           <div className="cp__accordian-content">
-            <p>Item 1</p>
-            <p>Item 2</p>
-            <p>Item 3</p>
+            {pageData.question_and_answer.map((block) => {
+              if (block.type === "q_and_a") {
+                return (
+                  <div className="blk-q-and-a" key={block.id}>
+                    {block.value.q_and_a_series.map((qa) => {
+                      return (
+                        <React.Fragment key={qa.question}>
+                          <p>{qa.question}</p>
+                          <p>{qa.answer}</p>
+                        </React.Fragment>
+                      );
+                    })}
+                  </div>
+                );
+              }
+            })}
           </div>
         </Accordion>
       </section>
       <section className="container">
         <div className="cf-wrapper">
-          <h2 className="cf-heading">Contact us</h2>
-          <form className="cf" noValidate method="POST">
-            <div className="cf__half">
+          <div className="cf-header">
+            <h2 className="cf-title">Contact us</h2>
+          </div>
+          <div className="cf-main">
+            <form className="cf" noValidate method="POST">
+              <div className="cf__half">
+                <div className="input-group">
+                  <label className="required" htmlFor="full-name-input">
+                    full name
+                  </label>
+                  <input
+                    type="text"
+                    id="full-name-input"
+                    name="fullName"
+                    defaultValue={actionData?.fields?.fullName}
+                    aria-invalid={Boolean(actionData?.errors?.fullName?.length)}
+                    aria-errormessage={
+                      actionData?.errors?.fullName?.length
+                        ? "full-name-errors"
+                        : undefined
+                    }
+                  />
+                  {actionData?.errors?.fullName?.length ? (
+                    <ul
+                      className="form-validation-errors"
+                      role="alert"
+                      id="full-name-errors"
+                    >
+                      {actionData.errors.fullName.map((error: string) => {
+                        return <li key={error}>{error}</li>;
+                      })}
+                    </ul>
+                  ) : null}
+                </div>
+                <div className="input-group">
+                  <label className="required" htmlFor="full-en-name-input">
+                    full english name
+                  </label>
+                  <input
+                    type="text"
+                    id="full-en-name-input"
+                    name="fullEnName"
+                    defaultValue={actionData?.fields?.fullEnName}
+                    aria-invalid={Boolean(
+                      actionData?.errors?.fullEnName?.length
+                    )}
+                    aria-errormessage={
+                      actionData?.errors?.fullEnName?.length
+                        ? "full-en-name-errors"
+                        : undefined
+                    }
+                  />
+                  {actionData?.errors?.fullEnName?.length ? (
+                    <ul
+                      className="form-validation-errors"
+                      role="alert"
+                      id="full-en-name-errors"
+                    >
+                      {actionData.errors.fullEnName.map((error: string) => {
+                        return <li key={error}>{error}</li>;
+                      })}
+                    </ul>
+                  ) : null}
+                </div>
+                <div className="input-group">
+                  <label className="required" htmlFor="email-input">
+                    email
+                  </label>
+                  <input
+                    type="email"
+                    id="email-input"
+                    name="email"
+                    defaultValue={actionData?.fields?.email}
+                    aria-invalid={Boolean(actionData?.errors?.email?.length)}
+                    aria-errormessage={
+                      actionData?.errors?.email?.length
+                        ? "email-errors"
+                        : undefined
+                    }
+                  />
+                  {actionData?.errors?.email?.length ? (
+                    <ul
+                      className="form-validation-errors"
+                      role="alert"
+                      id="email-errors"
+                    >
+                      {actionData.errors.email.map((error: string) => {
+                        return <li key={error}>{error}</li>;
+                      })}
+                    </ul>
+                  ) : null}
+                </div>
+              </div>
               <div className="input-group">
-                <label className="required" htmlFor="full-name-input">
-                  full name
+                <label className="required" htmlFor="message-input">
+                  message{" "}
+                  <span
+                    className={`${
+                      remaining > 0 ? "cf__remaining" : "cf__remaining--zero"
+                    }`}
+                  >
+                    {remaining}
+                  </span>
                 </label>
-                <input
-                  type="text"
-                  id="full-name-input"
-                  name="fullName"
-                  defaultValue={actionData?.fields?.fullName}
-                  aria-invalid={Boolean(actionData?.errors?.fullName?.length)}
+                <textarea
+                  id="message-input"
+                  maxLength={maxMsgLength}
+                  name="message"
+                  onChange={messageChangeHandler}
+                  ref={messageRef}
+                  defaultValue={actionData?.fields?.message}
+                  aria-invalid={Boolean(actionData?.errors?.message?.length)}
                   aria-errormessage={
-                    actionData?.errors?.fullName?.length
-                      ? "full-name-errors"
+                    actionData?.errors?.message?.length
+                      ? "message-errors"
                       : undefined
                   }
-                />
-                {actionData?.errors?.fullName?.length ? (
+                ></textarea>
+                {actionData?.errors?.message?.length ? (
                   <ul
                     className="form-validation-errors"
                     role="alert"
-                    id="full-name-errors"
+                    id="message-errors"
                   >
-                    {actionData.errors.fullName.map((error: string) => {
+                    {actionData.errors.message.map((error: string) => {
                       return <li key={error}>{error}</li>;
                     })}
                   </ul>
                 ) : null}
               </div>
-              <div className="input-group">
-                <label className="required" htmlFor="full-en-name-input">
-                  full english name
-                </label>
-                <input
-                  type="text"
-                  id="full-en-name-input"
-                  name="fullEnName"
-                  defaultValue={actionData?.fields?.fullEnName}
-                  aria-invalid={Boolean(actionData?.errors?.fullEnName?.length)}
-                  aria-errormessage={
-                    actionData?.errors?.fullEnName?.length
-                      ? "full-en-name-errors"
-                      : undefined
-                  }
-                />
-                {actionData?.errors?.fullEnName?.length ? (
-                  <ul
-                    className="form-validation-errors"
-                    role="alert"
-                    id="full-en-name-errors"
-                  >
-                    {actionData.errors.fullEnName.map((error: string) => {
-                      return <li key={error}>{error}</li>;
-                    })}
-                  </ul>
-                ) : null}
-              </div>
-              <div className="input-group">
-                <label className="required" htmlFor="email-input">
-                  email
-                </label>
-                <input
-                  type="email"
-                  id="email-input"
-                  name="email"
-                  defaultValue={actionData?.fields?.email}
-                  aria-invalid={Boolean(actionData?.errors?.email?.length)}
-                  aria-errormessage={
-                    actionData?.errors?.email?.length
-                      ? "email-errors"
-                      : undefined
-                  }
-                />
-                {actionData?.errors?.email?.length ? (
-                  <ul
-                    className="form-validation-errors"
-                    role="alert"
-                    id="email-errors"
-                  >
-                    {actionData.errors.email.map((error: string) => {
-                      return <li key={error}>{error}</li>;
-                    })}
-                  </ul>
-                ) : null}
-              </div>
-            </div>
-            <div className="input-group">
-              <label className="required" htmlFor="message-input">
-                message{" "}
-                <span
-                  className={`${
-                    remaining > 0 ? "cf__remaining" : "cf__remaining--zero"
-                  }`}
-                >
-                  {remaining}
-                </span>
-              </label>
-              <textarea
-                id="message-input"
-                maxLength={maxMsgLength}
-                name="message"
-                onChange={messageChangeHandler}
-                ref={messageRef}
-                defaultValue={actionData?.fields?.message}
-                aria-invalid={Boolean(actionData?.errors?.message?.length)}
-                aria-errormessage={
-                  actionData?.errors?.message?.length
-                    ? "message-errors"
-                    : undefined
-                }
-              ></textarea>
-              {actionData?.errors?.message?.length ? (
-                <ul
-                  className="form-validation-errors"
-                  role="alert"
-                  id="message-errors"
-                >
-                  {actionData.errors.message.map((error: string) => {
-                    return <li key={error}>{error}</li>;
-                  })}
-                </ul>
-              ) : null}
-            </div>
-            <button className="button submit " type="submit">
-              Send
-            </button>
-          </form>
+              <button className="button submit " type="submit">
+                Send
+              </button>
+            </form>
+          </div>
         </div>
       </section>
     </div>

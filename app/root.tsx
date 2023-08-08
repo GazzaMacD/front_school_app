@@ -20,12 +20,14 @@ import { useLoaderData } from "@remix-run/react";
 import { authenticatedUser } from "./common/session.server";
 import baseStyles from "./styles/base.css";
 import baseElementStyles from "./styles/base-elements.css";
+import blocksStyles from "./styles/blocks.css";
 import { createGlobalEnvObj } from "./env.server";
 
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
   { rel: "stylesheet", href: baseStyles },
   { rel: "stylesheet", href: baseElementStyles },
+  { rel: "stylesheet", href: blocksStyles },
 ];
 
 export async function loader({ request }: LoaderArgs) {
