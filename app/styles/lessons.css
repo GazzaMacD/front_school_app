@@ -1,11 +1,29 @@
 .l-header {
   margin: 70px 0 30px 0;
 }
-.l-header__top {
+.l-header__info {
   display: flex;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
   gap: var(--space-lg);
+  margin-bottom: 3rem;
+}
+.l-header__author {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.l-header__author > a::before {
+  content: none;
+}
+.l-header__author img {
+  height: 80px;
+  width: 80px;
+  border: 2px solid var(--color-base-limegreen);
+  border-radius: 40px;
+}
+.l-header__author p {
+  margin: 0 0 0 10px;
 }
 .l-header__date {
   color: var(--color-base-orange);
