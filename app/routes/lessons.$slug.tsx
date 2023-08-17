@@ -186,13 +186,23 @@ export default function LessonsDetailPage() {
     <>
       <div className="l-header">
         <header className="container">
-          <div className="l-header__top">
-            <Link
-              to={`/lessons?category=${data.category.ja_name}&id=${data.category.id}`}
-              className="l-cat__link"
-            >
-              {data.category.ja_name}
-            </Link>
+          <h1 className="l-header__title">{data.ja_title}</h1>
+          <p className="l-header__intro">{data.short_intro}</p>
+          <div className="l-header__info">
+            <div className="l-header__author">
+              <Link to={`/staff/${data.author.slug}`}>
+                <img
+                  src={`${ENV.BASE_BACK_URL}${data.author.image.thumbnail.src}`}
+                  alt={data.author.image.thumbnail.alt}
+                />
+              </Link>
+              <p>
+                By{" "}
+                <Link to={`/staff/${data.author.slug}`}>
+                  {data.author.name}
+                </Link>
+              </p>
+            </div>
             <div className="l-header__date">
               <AiOutlineCalendar />
               <p>
@@ -206,9 +216,13 @@ export default function LessonsDetailPage() {
               <AiOutlineClockCircle />
               <p>勉強時間: {data.estimated_time}分</p>
             </div>
+            <Link
+              to={`/lessons?category=${data.category.ja_name}&id=${data.category.id}`}
+              className="l-cat__link"
+            >
+              {data.category.ja_name}
+            </Link>
           </div>
-          <h1 className="l-header__title">{data.ja_title}</h1>
-          <p className="l-header__intro">{data.short_intro}</p>
           <img
             className="l-detail-header__img"
             src={`${ENV.BASE_BACK_URL}${data.header_image.meta.download_url}`}
