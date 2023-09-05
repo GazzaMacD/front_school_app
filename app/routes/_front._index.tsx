@@ -161,10 +161,6 @@ export default function Index() {
           <p>{text}</p>
         </div>
       </section>
-      <footer className="bfooter">
-        <h2>Footer here</h2>
-        <p>Some stuff</p>
-      </footer>
     </>
   );
 }
