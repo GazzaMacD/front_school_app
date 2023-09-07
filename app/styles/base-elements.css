@@ -526,7 +526,6 @@ Base grids, containers  & figure/ img / classes
 -------------------------------- */
 .content-wrapper {
   padding-top: 78px;
-  height: 100%;
 }
 .bgrid {
   display: grid;
@@ -590,18 +589,55 @@ Base grids, containers  & figure/ img / classes
     grid-column: 5 / 9;
   }
 }
-/* 
-*  Temporary Front facing footer
-*/
-.bfooter {
-  background-color: var(--color-base-limegreen);
+/* ----------------------------- 
+Front  Header
+-------------------------------- */
+.footer {
+  background-color: var(--color-base-brown);
   min-height: 500px;
+  padding: 2rem 0;
+  border-top: 5px solid;
+  border-image: linear-gradient(
+      to right,
+      var(--color-base-limegreen) 50%,
+      var(--color-base-orange) 50%
+    )
+    100% 1;
 }
-.bfooter h2 {
-  color: var(--color-base-brown);
+.footer__top {
+  display: flex;
 }
-.bfooter p {
-  color: var(--color-base-text);
+.footer__branding-col {
+  flex: 0 0 40%;
+  display: flex;
+  flex-direction: column;
+}
+.footer__branding-col h2 {
+  color: var(--color-base-cream);
+  line-height: 1.2;
+  margin: 0 0 1rem 0;
+}
+.footer__col h3 {
+  color: var(--color-sec-darkcream);
+  margin: 20px 0 10px 0;
+  line-height: 1.2;
+}
+.footer__branding-col p {
+  color: var(--color-sec-darkcream);
+}
+.footer__col {
+  flex: 0 0 30%;
+  display: flex;
+  flex-direction: column;
+}
+.footer__col a,
+.footer__branding-col a,
+.footer__branding-col h2 {
+  color: var(--color-base-cream);
+}
+.footer__col a::before,
+.footer__branding-col a::before {
+  content: none;
 }
 
 /* ----------------------------- 

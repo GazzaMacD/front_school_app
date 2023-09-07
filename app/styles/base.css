@@ -18,17 +18,17 @@ extra large
 */
 :root {
   /* base brand colors */
-  --color-base-green: rgb(63, 115, 8);
-  --color-base-limegreen: #7aa700;
+  --color-base-green: #341911;
+  --color-base-limegreen: #89b72d;
   --color-base-cream: rgb(244, 241, 235);
   --color-base-white: white;
-  --color-base-orange: #fe7108;
-  --color-base-brown: #403734;
+  --color-base-orange: #f06232;
+  --color-base-brown: #341911;
   --color-base-text: #352f2c;
   /* secondary brand colors */
-  --color-sec-darkcream: #e2daca;
+  --color-sec-darkcream: #ccc7b3;
   --color-sec-lightlime: #b1d121;
-  --color-sec-darklime: #6d9600;
+  --color-sec-darklime: #6e9424;
   --color-sec-olive: #3e5e1f;
   --color-sec-palegreen: #c6d5a1;
   --color-sec-lightlime: #b1d121;
@@ -246,7 +246,7 @@ p {
 a,
 a:link,
 a:visited {
-  color: var(--color-base-green);
+  color: var(--color-sec-darklime);
   text-decoration: none;
   display: inline-block;
   position: relative;
@@ -258,7 +258,7 @@ a:link::before {
   width: 100%;
   height: 1px;
   border-radius: 1px;
-  background-color: var(--color-base-green);
+  background-color: var(--color-sec-darklime);
   bottom: 2px;
   left: 0;
 }
