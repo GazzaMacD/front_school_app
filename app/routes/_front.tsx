@@ -1,5 +1,11 @@
 import { Outlet } from "@remix-run/react";
 import { Link } from "@remix-run/react";
+import {
+  FaInstagram,
+  FaFacebookF,
+  FaLinkedinIn,
+  FaYoutube,
+} from "react-icons/fa";
 
 export default function FrontParentRoute() {
   return (
@@ -14,6 +20,17 @@ export default function FrontParentRoute() {
               <h2>XLingual</h2>
             </Link>
             <p>Experts in language learning</p>
+            <div className="footer__social">
+              <Link to="#">
+                <FaInstagram className="footer__social-icon" />
+              </Link>
+              <Link to="#">
+                <FaFacebookF className="footer__social-icon" />
+              </Link>
+              <Link to="#">
+                <FaYoutube className="footer__social-icon" />
+              </Link>
+            </div>
           </div>
           <div className="footer__col">
             <h3>Learning</h3>
