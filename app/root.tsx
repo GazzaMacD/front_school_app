@@ -195,9 +195,7 @@ export default function App() {
             </div>
           </div>
         </header>
-        <div className="content-wrapper">
-          <Outlet />
-        </div>
+        <Outlet />
         <ScrollRestoration />
         <Scripts />
         <script
