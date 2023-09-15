@@ -48,13 +48,13 @@ export default function FrontParentRoute() {
             <Link to="/contact">Phone</Link>
             <Link to="/contact">Email</Link>
             <h3>Other</h3>
-            <Link to="/prices">Prices</Link>
+            <Link to="/prices">Class Prices</Link>
             <Link to="/privacy-policy">Privacy policy</Link>
           </div>
         </div>
         <div className="container footer__bottom">
           <p>
-            © Copyright 2023 株式会社XLingual | All Rights Reserved | Design by
+            © Copyright 2023 株式会社XLingual | All Rights Reserved | Website by
             digital4.green
           </p>
         </div>

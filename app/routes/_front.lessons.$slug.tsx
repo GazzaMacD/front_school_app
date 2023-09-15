@@ -1,6 +1,6 @@
 import { redirect, json } from "@remix-run/node";
 import React from "react";
-import { BASE_API_URL, BASE_BACK_URL } from "~/common/constants.server";
+import { BASE_API_URL } from "~/common/constants.server";
 import { useLoaderData } from "@remix-run/react";
 import { handlePreview } from "~/common/utils.server";
 import { AiOutlineCalendar, AiOutlineClockCircle } from "react-icons/ai";
