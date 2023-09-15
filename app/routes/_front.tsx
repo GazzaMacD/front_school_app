@@ -40,6 +40,7 @@ export default function FrontParentRoute() {
             <h3>Company</h3>
             <Link to="/about">About Us</Link>
             <Link to="/schools">Our Schools</Link>
+            <Link to="/news">News</Link>
           </div>
           <div className="footer__col">
             <h3>Contact Us</h3>
@@ -50,6 +51,12 @@ export default function FrontParentRoute() {
             <Link to="/prices">Prices</Link>
             <Link to="/privacy-policy">Privacy policy</Link>
           </div>
+        </div>
+        <div className="container footer__bottom">
+          <p>
+            © Copyright 2023 株式会社XLingual | All Rights Reserved | Design by
+            digital4.green
+          </p>
         </div>
       </footer>
     </>
