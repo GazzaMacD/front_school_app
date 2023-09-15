@@ -43,11 +43,10 @@ export default function CourseDetailPage() {
   const { data } = useLoaderData<typeof loader>();
   const ENV = getGlobalEnv();
   const subject = data.course.subject as "english" | "japanese" | "french";
-  const subjectDisplay = data.course.subject_display.split(",");
-  const categoryDisplay =
-    data.course_category.course_category_display.split(",");
-  const levelFromDisplay = data.level_from.level_display.split(",");
-  const levelToDisplay = data.level_to.level_display.split(",");
+  const subjectDisplay = data.course.display.split(",");
+  const categoryDisplay = data.course_category.display.split(",");
+  const levelFromDisplay = data.level_from.display.split(",");
+  const levelToDisplay = data.level_to.display.split(",");
   return (
     <>
       <header>
@@ -68,8 +67,8 @@ export default function CourseDetailPage() {
         <p>
           course level:{" "}
           {subject === "japanese" ? levelFromDisplay[0] : levelFromDisplay[1]}
-          {data.level_to.level_number < 2 ||
-          data.level_to.level_number <= data.level_from.level_number
+          {data.level_to.number < 2 ||
+          data.level_to.number <= data.level_from.number
             ? ""
             : subject === "japanese"
             ? ` ~ ${levelToDisplay[0]}`
