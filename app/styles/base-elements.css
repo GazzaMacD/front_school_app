@@ -43,7 +43,7 @@ Headings
   margin: 0 0 var(--space-lg) 0;
   padding: 0 0 0 var(--space-xs);
   text-transform: capitalize;
-  color: var(--color-base-orange);
+  color: var(--color-base-limegreen);
 }
 /* .bsection-group__heading > span:first-child {
   color: var(--color-base-yellow);
@@ -594,7 +594,7 @@ Front  Header
 -------------------------------- */
 .footer {
   background-color: var(--color-base-brown);
-  min-height: 500px;
+  min-height: max-content;
   padding: 2rem 0;
   border-top: 5px solid;
   border-image: linear-gradient(
@@ -606,6 +606,7 @@ Front  Header
 }
 .footer__top {
   display: flex;
+  padding-bottom: 2rem;
 }
 .footer__branding-col {
   flex: 0 0 40%;
@@ -647,6 +648,14 @@ Front  Header
 .footer__col a::before,
 .footer__branding-col a::before {
   content: none;
+}
+.footer__bottom {
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-sec-darkcream);
+}
+.footer__bottom p {
+  margin: 0;
+  color: var(--color-sec-darkcream);
 }
 
 /* ----------------------------- 
