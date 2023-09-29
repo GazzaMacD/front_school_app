@@ -5,8 +5,8 @@ import { BASE_API_URL } from "~/common/constants.server";
 
 export async function loader() {
   try {
-    const lPageUrl = `${BASE_API_URL}/pages/?type=learningcenters.LearningCenterListPage&fields=*`;
-    const dPageUrl = `${BASE_API_URL}/pages/?type=learningcenters.LearningCenterDetailPage&fields=title,display_title,lc`;
+    const lPageUrl = `${BASE_API_URL}/pages/?type=languageschools.LanguageSchoolListPage&fields=*`;
+    const dPageUrl = `${BASE_API_URL}/pages/?type=languageschools.LanguageSchoolDetailPage&fields=title,display_title,lc`;
     const urls = [lPageUrl, dPageUrl];
     const [lPage, dPage] = await Promise.all(
       urls.map((url) =>
@@ -37,7 +37,7 @@ export async function loader() {
   }
 }
 
-export default function LearningCenterListPage() {
+export default function LanguageSchoolsListPage() {
   const { listPage: lp, dPages: dp } = useLoaderData<typeof loader>();
 
   return (
@@ -48,10 +48,10 @@ export default function LearningCenterListPage() {
         {dp.map((school) => {
           const address = school.lc.address;
           return (
-            <Link to={`/learning-centers/${school.meta.slug}`} key={school.id}>
+            <Link to={`/language-schools/${school.meta.slug}`} key={school.id}>
               <div>
                 <p>{school.display_title}英会話教室</p>
-                <h3>{school.title} Learning Center</h3>
+                <h3>{school.title} Language School</h3>
                 <p>{address.code}</p>
                 <p>{address.state}</p>
                 <p>{address.city}</p>
@@ -65,16 +65,3 @@ export default function LearningCenterListPage() {
     </div>
   );
 }
-/*
-"lc": {
-                "id": 1,
-                "name": "Hanamizukidori",
-                "address": {
-                    "line_one": "桜作1104エクセレントヒルズ C",
-                    "line_two": "",
-                    "city": "長久手市",
-                    "state": "愛知県",
-                    "code": "480-1157",
-                    "country": "Japan"
-                }
-*/
