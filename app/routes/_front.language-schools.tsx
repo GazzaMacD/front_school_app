@@ -6,7 +6,7 @@ import { BASE_API_URL } from "~/common/constants.server";
 export async function loader() {
   try {
     const lPageUrl = `${BASE_API_URL}/pages/?type=languageschools.LanguageSchoolListPage&fields=*`;
-    const dPageUrl = `${BASE_API_URL}/pages/?type=languageschools.LanguageSchoolDetailPage&fields=title,display_title,lc`;
+    const dPageUrl = `${BASE_API_URL}/pages/?type=languageschools.LanguageSchoolDetailPage&fields=title,display_title,ls`;
     const urls = [lPageUrl, dPageUrl];
     const [lPage, dPage] = await Promise.all(
       urls.map((url) =>
@@ -46,7 +46,7 @@ export default function LanguageSchoolsListPage() {
       <div dangerouslySetInnerHTML={{ __html: lp.display_intro }} />
       <div>
         {dp.map((school) => {
-          const address = school.lc.address;
+          const address = school.ls.address;
           return (
             <Link to={`/language-schools/${school.meta.slug}`} key={school.id}>
               <div>
