@@ -102,3 +102,52 @@
   font-size: var(--text-sm);
   color: var(--color-base-orange);
 }
+/* contact index */
+.frco-idx {
+  width: 100%;
+}
+.frco-idx__heading {
+  text-align: center;
+}
+.frco-idx__links {
+  display: flex;
+  gap: 2rem;
+}
+a.frco-idx__link {
+  box-shadow: 1px 1px 5px 1px var(--color-shadow);
+  flex: 1;
+  height: 200px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--text-lg);
+  color: black;
+}
+a.frco-idx__link--tel {
+  background-color: var(--color-base-limegreen);
+}
+a.frco-idx__link--form {
+  background-color: var(--color-base-orange);
+}
+
+a.frco-idx__link::before {
+  content: none;
+}
+
+/* contact telephone */
+.frco-tel__number {
+  font-size: var(--text-xl);
+  margin-bottom: 3rem;
+}
+
+.frco-tel__times {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+.frco-tel__time {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}

@@ -1,202 +1,44 @@
 import type { LinksFunction } from "@remix-run/node";
-import { useActionData, useLoaderData, Outlet } from "@remix-run/react";
+import { useLoaderData, Outlet } from "@remix-run/react";
 import React from "react";
-import {
-  type ActionArgs,
-  type V2_MetaFunction,
-  json,
-  type LoaderArgs,
-} from "@remix-run/node";
+import { json } from "@remix-run/node";
 import { getGlobalEnv } from "~/common/utils";
 
 import contactStyles from "~/styles/contact.css";
 import { BASE_API_URL } from "~/common/constants.server";
-import { MESSAGES } from "~/common/languageDictionary";
 
 /* Types */
-type TContactAPIResponse = {
-  details?: "ok";
-  email?: string[];
-  contact_notes?: {
-    note: string[];
-  }[];
-};
-type TContactErrors = {
-  non_field_errors?: string[];
-  fullName?: string[];
-  fullEnName?: string[];
-  email?: string[];
-  message?: string[];
-};
-type TContactActionResponse = {
-  fields: {
-    fullName: string;
-    fullEnName: string;
-    email: string;
-    message: string;
-  } | null;
-  data: { details: "ok" } | null;
-  errors: TContactErrors;
-};
-
-function validateRequired(value: unknown): string[] {
-  if (!value) {
-    return [`This field is required`];
-  }
-  return [];
-}
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: contactStyles },
 ];
 
-export async function loader({ request, params }: LoaderArgs) {
+export async function loader() {
   try {
     const apiUrl = `${BASE_API_URL}/pages/?slug=contact&type=contacts.ContactPage&fields=*`;
     const response = await fetch(apiUrl);
-    const responseData = await response.json();
-    if (!response.ok) {
-      return json({
-        data: {
-          errors: ["oh no, some server error"],
-        },
-      });
+    const contactPageData = await response.json();
+    if (!response.ok || !contactPageData.items.length) {
+      throw new Response("Sorry, that is a 404", { status: 404 });
     }
-    return json({ data: responseData });
+    const data = contactPageData.items[0];
+    return json({ data });
   } catch (error) {
-    return json({
-      data: {
-        errors: ["oh no, some network error"],
-      },
-    });
+    throw new Response("Oh sorry, that is a 500", { status: 500 });
   }
 } // loader
 
-export const action = async ({ request }: ActionArgs) => {
-  const form = await request.formData();
-
-  const fullName = form.get("fullName");
-  const fullEnName = form.get("fullEnName");
-  const email = form.get("email");
-  const message = form.get("message");
-  //basic type validations - most validation done on backend
-  if (
-    typeof fullName !== "string" ||
-    typeof fullEnName !== "string" ||
-    typeof email !== "string" ||
-    typeof message !== "string"
-  ) {
-    return json<TContactActionResponse>(
-      {
-        fields: null,
-        data: null,
-        errors: {
-          non_field_errors: [MESSAGES["en"].form.standard400],
-        },
-      },
-      { status: 400 }
-    );
-  }
-
-  const errors: TContactErrors = {
-    non_field_errors: [],
-    fullName: validateRequired(fullName),
-    fullEnName: validateRequired(fullEnName),
-    email: validateRequired(email),
-    message: validateRequired(message),
-  };
-  const fields = { fullName, fullEnName, email, message };
-  if (!Object.values(errors).every((v) => !v.length)) {
-    return json<TContactActionResponse>(
-      {
-        fields,
-        data: null,
-        errors,
-      },
-      { status: 400 }
-    );
-  }
-  /* back end */
-  try {
-    const response = await fetch(`${BASE_API_URL}/contact/form/`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: fullName,
-        name_en: fullEnName,
-        contact_emails: [{ email: email }],
-        contact_notes: [{ note: message }],
-      }),
-    });
-    const responseData: TContactAPIResponse = await response.json();
-    if (!response.ok) {
-      errors.email = responseData.email ? responseData.email : [];
-      errors.message = responseData.contact_notes
-        ? responseData.contact_notes[0].note
-        : [];
-      return json<TContactActionResponse>(
-        {
-          fields: fields,
-          data: null,
-          errors,
-        },
-        { status: 400 }
-      );
-    }
-    return json<TContactActionResponse>(
-      {
-        fields: null,
-        data: { details: "ok" },
-        errors,
-      },
-      { status: 200 }
-    );
-  } catch (error) {
-    // network error
-    errors.non_field_errors = [MESSAGES["en"].form.standard400];
-    return json(
-      {
-        fields,
-        data: null,
-        errors,
-      },
-      { status: 400 }
-    );
-  } // catch
-}; // action
-
-export default function Contact() {
+export default function ContactParentPage() {
   const ENV = getGlobalEnv();
-  const actionData = useActionData<typeof action>();
-  const {
-    data: { items },
-  } = useLoaderData<typeof loader>();
-  const pageData = items[0];
-  const maxMsgLength = 300;
-  const [remaining, setRemaining] = React.useState(maxMsgLength);
-  const messageRef = React.useRef<null | HTMLTextAreaElement>(null);
-
-  function messageChangeHandler(e: React.ChangeEvent<HTMLTextAreaElement>) {
-    const num = maxMsgLength - e.currentTarget.value.length;
-    setRemaining(num);
-  }
-
-  React.useEffect(() => {
-    if (messageRef.current) {
-      const len = messageRef.current.value.length;
-      setRemaining(maxMsgLength - len);
-    }
-  }, []);
+  const { data } = useLoaderData<typeof loader>();
 
   return (
-    <div>
+    <div id="trial">
       <header className="container">
-        <h1 className="heading cf__title">{pageData.ja_title}</h1>
-        <p>{pageData.short_intro}</p>
+        <h1 className="heading cf__title">{data.ja_title}</h1>
+        <p>{data.short_intro}</p>
       </header>
-      <section className="container">
+      <section className="container" id="experience">
         <div>
           <Accordion
             ariaControls="trial-lesson-process"
@@ -210,7 +52,7 @@ export default function Contact() {
             )}
           >
             <div className="cp__accordian-content">
-              {pageData.assessment_trial.map((block) => {
+              {data.assessment_trial.map((block) => {
                 if (block.type === "rich_text") {
                   return (
                     <div
@@ -264,7 +106,7 @@ export default function Contact() {
             )}
           >
             <div className="cp__accordian-content">
-              {pageData.join_experience.map((block) => {
+              {data.join_experience.map((block) => {
                 if (block.type === "rich_text") {
                   return (
                     <div
@@ -305,7 +147,7 @@ export default function Contact() {
           </Accordion>
         </div>
       </section>
-      <section className="container">
+      <section id="contact" className="container">
         <Accordion
           ariaControls="experience-process"
           controllerElement={(isExpanded) => (
@@ -318,7 +160,7 @@ export default function Contact() {
           )}
         >
           <div className="cp__accordian-content">
-            {pageData.question_and_answer.map((block) => {
+            {data.question_and_answer.map((block) => {
               if (block.type === "q_and_a") {
                 return (
                   <div className="blk-q-and-a" key={block.id}>

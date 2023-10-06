@@ -44,9 +44,9 @@ export default function FrontParentRoute() {
           </div>
           <div className="footer__col">
             <h3>Contact Us</h3>
-            <Link to="/contact">Contact Form</Link>
-            <Link to="/contact">Phone</Link>
-            <Link to="/contact">Email</Link>
+            <Link to="/contact/form#contact">Contact Form</Link>
+            <Link to="/contact/telephone#contact">Phone</Link>
+            <Link to="mailto:contact@xlingual.co.jp">Email</Link>
             <h3>Other</h3>
             <Link to="/prices">Class Prices</Link>
             <Link to="/privacy-policy">Privacy policy</Link>
