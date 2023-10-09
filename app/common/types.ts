@@ -91,7 +91,9 @@ type TAuthErrorsBase = {
 
 export type TUser = {
   email: string;
-  full_name: string;
+  contact: {
+    name: string;
+  };
   is_staff: boolean;
   groups: string[];
 };

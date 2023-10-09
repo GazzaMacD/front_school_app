@@ -1,0 +1,13 @@
+.bkms-sidebar {
+  position: fixed;
+  width: 250px;
+  height: 100%;
+  background-color: var(--color-base-cream);
+}
+/* my space main */
+.bkms-main {
+  background-color: white;
+  min-height: 100%;
+  margin: 0 0 0 250px;
+  padding: 98px 20px 20px 20px;
+}
