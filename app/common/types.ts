@@ -95,7 +95,7 @@ export type TUser = {
     name: string;
   };
   is_staff: boolean;
-  groups: string[];
+  groups: { name: string }[];
 };
 export type TUserData = {
   access: string;
