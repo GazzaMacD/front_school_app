@@ -1,11 +1,18 @@
-import { type LoaderArgs, json, redirect } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
+import {
+  type LoaderArgs,
+  type LinksFunction,
+  json,
+  redirect,
+} from "@remix-run/node";
+import { useLoaderData, Outlet } from "@remix-run/react";
+
 import { authenticatedUser } from "../common/session.server";
+import mySpaceStyles from "~/styles/my-space.css";
 import { type TUser } from "~/common/types";
 
-// export const links: LinksFunction = () => [
-//   { rel: "stylesheet", href: dasboardParentStyles },
-// ];
+export const links: LinksFunction = () => [
+  { rel: "stylesheet", href: mySpaceStyles },
+];
 
 export async function loader({ request }: LoaderArgs) {
   const userData = await authenticatedUser(request);
@@ -19,12 +26,18 @@ export async function loader({ request }: LoaderArgs) {
   return json({ user });
 }
 
-export default function MySpaceParentRoute() {
+export default function BackParentRoute() {
   const { user } = useLoaderData<typeof loader>();
+  console.log(user);
   return (
-    <div>
-      <h1 className="heading">My Space</h1>
-      <p>Hello {user.full_name ? user.full_name : user.email}</p>
-    </div>
+    <>
+      <aside className="bkms-sidebar">
+        <p>My Space</p>
+        <p>Hello {user?.contact?.name ? user.contact.name : user.email}</p>
+      </aside>
+      <main className="bkms-main">
+        <Outlet />
+      </main>
+    </>
   );
 }
