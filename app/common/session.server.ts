@@ -309,7 +309,13 @@ export async function login({
 /**
  * User and Access functions
  */
-
+export function createAuthenticatedHeaders(userData: TUserData) {
+  const headers = new Headers();
+  headers.append("Content-Type", "application/json");
+  headers.append("Accept", "application/json");
+  headers.append("Authorization", `Bearer ${userData.access}`);
+  return headers;
+}
 export async function authenticatedUser(
   request: Request
 ): Promise<TUserData | null> {
@@ -349,7 +355,6 @@ export async function authenticatedUser(
       },
     });
   } else {
-    // Should never be here but just in case return null
     return null;
   }
 } // authenticatedUser

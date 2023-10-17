@@ -181,7 +181,7 @@ export default function RegisterRoute() {
           ) : null}
         </div>
         <button className="button submit " type="submit">
-          sign in
+          register
         </button>
       </form>
     </>
