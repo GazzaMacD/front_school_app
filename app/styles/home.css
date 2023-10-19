@@ -144,4 +144,54 @@ Our services
   );
 }
 
-/*grid play */
+/* ----------------------------- 
+Testimonials (test)
+-------------------------------- */
+#testimonials {
+  margin-bottom: var(--space-xxl);
+}
+.test-students {
+  display: flex;
+}
+.test-testimonial {
+  width: 350px;
+  height: 250px;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-base-white);
+  box-shadow: 1px 1px 5px 1px var(--color-shadow);
+  padding: var(--space-md);
+}
+.test-testimonial__header {
+  display: flex;
+  gap: 10px;
+}
+.test-testimonial__headimage {
+  flex: 0 0 30%;
+}
+.test-testimonial__image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+.test-testimonial__headtext {
+  flex: 0 0 70%;
+}
+.test-testimonial__name {
+  margin: 0;
+}
+.test-testimonial__occu {
+  margin: 0;
+  font-size: var(--text-xs);
+}
+.test-testimonial__org {
+  margin: 0;
+  font-size: var(--text-xs);
+}
+.test-testimonial__comment {
+  margin: var(--space-sm) 0;
+  font-size: var(--text-sm);
+}
+.test-testimonial__link {
+  font-size: var(--text-sm);
+}

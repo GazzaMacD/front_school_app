@@ -14,7 +14,7 @@ Containers and Iframes
 }
 .full-width-container {
   margin: 0;
-  padding: 0;
+  padding: 0 var(--component-padding);
   width: 100%;
 }
 .youtube-iframe {
@@ -32,7 +32,8 @@ Containers and Iframes
 Headings
 -------------------------------- */
 .bsection-group {
-  margin-bottom: 50px;
+  display: block;
+  margin: 20px 0 50px 0;
 }
 .bsection-group__heading {
   font-size: var(--text-sm);
