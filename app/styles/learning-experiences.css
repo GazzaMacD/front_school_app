@@ -1,0 +1,30 @@
+.frle-upcoming {
+}
+/*
+* List Page (learning exprience list page = lexlp)
+*/
+.lexlp-cards {
+  display: flex;
+}
+a.lexlp-card-link {
+}
+a.lexlp-card-link::before {
+  content: none;
+}
+.lexlp-card {
+  max-width: 400px;
+  background-color: white;
+}
+.lexlp-card__details {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  color: black;
+}
+.lexlp-card__details p {
+  margin: 0;
+}
+.lexlp-card__details button {
+  align-self: flex-end;
+  cursor: pointer;
+}
