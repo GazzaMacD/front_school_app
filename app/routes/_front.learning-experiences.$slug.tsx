@@ -234,38 +234,3 @@ export default function LearningExperiencesDetailPage() {
     </div>
   );
 }
-
-const temp = {
-  staff_members: [
-    {
-      id: 1,
-      meta: {
-        type: "products.ExperiencePageStaff",
-      },
-      staff: {
-        id: 8,
-        name: "Brian Carpenter",
-        slug: "brian-carpenter",
-        position: "CEO",
-        intro:
-          "枝井取改ー際細ナラク間内ヱ真値あっど編参あを慎八すッ文右7成いっドふ針97念テ別声かでりっ選何き獲浅べを月姫校ねやこゅ。猶ユチオア教視成な再日ハキヌオ碁不ー教表さにっ声行けりちら断命楽れさ転属ツ更座レ投記ホニ際質ワ芸場テシケク美庁課囲ゃ。囲ツスコ表道ヤ描村ツテ再7中楽ょせ古戻スなげ遺愛フルヘ示償ほじ渉者次まえ採場シ頭24没ウ風41尚徒阿忘ねドる。",
-        image: {
-          id: 7,
-          title: "Brian Carpenter",
-          original: {
-            src: "/media/images/portrait_image_pwCwxFV.original.jpg",
-            width: 1080,
-            height: 1080,
-            alt: "Brian Carpenter",
-          },
-          thumbnail: {
-            src: "/media/images/portrait_image_pwCwxFV.2e16d0ba.fill-450x450.jpg",
-            width: 450,
-            height: 450,
-            alt: "Brian Carpenter",
-          },
-        },
-      },
-    },
-  ],
-};
