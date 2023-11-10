@@ -28,3 +28,51 @@ a.lexix-card-link::before {
   align-self: flex-end;
   cursor: pointer;
 }
+
+/* Detail Page (learning exprience detail page = lexdp)*/
+.lexdp__heading {
+  text-align: center;
+  margin: 6rem auto 4rem auto;
+  max-width: 700px;
+}
+
+.lexdp__heading h1,
+.lexdp__heading h2 {
+  margin: 0;
+}
+
+.lexdp__heading span {
+  display: block;
+  font-size: var(--text-xs);
+  color: var(--color-base-limegreen);
+  margin-bottom: -5px;
+}
+.lexdp__past-pictures {
+  display: flex;
+  gap: var(--space-sm);
+}
+.lexdp__map iframe {
+  width: 100%;
+  min-height: 400px;
+}
+.lexdp__schedule-table th,
+.lexdp__schedule-table td {
+  padding: 5px 10px;
+}
+.lexdp__schedule-table th > span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* related lessons */
+#lexdp-lessons {
+  margin-bottom: 5rem;
+}
+.lexdp__lessons {
+  display: flex;
+}
+.lexdp__lesson {
+  background-color: white;
+  flex: 0 0 350px;
+}

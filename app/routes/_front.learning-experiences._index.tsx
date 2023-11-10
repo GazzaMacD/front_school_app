@@ -2,7 +2,7 @@ import { Link, useLoaderData } from "@remix-run/react";
 import { json } from "@remix-run/node";
 
 import { BASE_API_URL } from "~/common/constants.server";
-import { getGlobalEnv } from "~/common/utils";
+import { getGlobalEnv, getDateString } from "~/common/utils";
 
 export async function loader() {
   try {
@@ -54,14 +54,7 @@ export default function LearningExperiencesIndexPage() {
         <h2>Upcoming Learning Experiences</h2>
         <div className="lexix-cards">
           {detailPages.map((page) => {
-            const startDate = new Date(page.start_date);
-            const endDate = new Date(page.end_date);
-            let dateString: string;
-            if (startDate.getTime() === endDate.getTime()) {
-              dateString = `${startDate.getFullYear()}/${startDate.getMonth()}/${startDate.getDay()}`;
-            } else {
-              dateString = `${startDate.getFullYear()}/${startDate.getMonth()}/${startDate.getDay()} ~ ${endDate.getFullYear()}/${endDate.getMonth()}/${endDate.getDay()}`;
-            }
+            const dateString = getDateString(page.start_date, page.end_date);
             return (
               <Link
                 className="lexix-card-link"
