@@ -9,6 +9,18 @@ import {
 import { BASE_API_URL } from "~/common/constants.server";
 import { getDateString, getGlobalEnv } from "~/common/utils";
 
+function getValidPrices(prices) {
+  const now = new Date().getTime();
+  const validPrices = prices.filter((price) => {
+    const startDate = new Date(price.start_date).getTime();
+    const endDate = price.end_date ? new Date(price.end_date).getTime() : null;
+    if (startDate > now) return false;
+    if (endDate && endDate < now) return false;
+    return true;
+  });
+  return validPrices;
+}
+
 export async function loader({ params }: LoaderArgs) {
   const { slug } = params;
   try {
@@ -30,6 +42,7 @@ export default function LearningExperiencesDetailPage() {
   const { page } = useLoaderData<typeof loader>();
   const ENV = getGlobalEnv();
   const dateString = getDateString(page.start_date, page.end_date);
+
   return (
     <div id="lexdp">
       <header>
@@ -166,7 +179,7 @@ export default function LearningExperiencesDetailPage() {
                     {block.value.schedule.map((row) => {
                       return (
                         <tr key={row.detail.slice(0, 12)}>
-                          {hasDate && <td>{row.date}</td>}
+                          {hasDate && <td>{row?.date}</td>}
                           <td>{row.time.slice(0, 5)}</td>
                           <td>{row.detail}</td>
                         </tr>
@@ -177,6 +190,19 @@ export default function LearningExperiencesDetailPage() {
               );
             }
           })}
+          <h3>料金</h3>
+          <ul>
+            {getValidPrices(page.learning_experience.productService.prices).map(
+              (price) => {
+                return (
+                  <li key={price.id}>
+                    {price.name} - ￥{price.afterTaxPrice}
+                    <span> (税込)</span>
+                  </li>
+                );
+              }
+            )}
+          </ul>
         </div>
       </section>
       <section id="lexdp-place">
