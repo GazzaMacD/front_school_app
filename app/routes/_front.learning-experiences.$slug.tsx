@@ -192,16 +192,16 @@ export default function LearningExperiencesDetailPage() {
           })}
           <h3>料金</h3>
           <ul>
-            {getValidPrices(page.learning_experience.productService.prices).map(
-              (price) => {
-                return (
-                  <li key={price.id}>
-                    {price.name} - ￥{price.afterTaxPrice}
-                    <span> (税込)</span>
-                  </li>
-                );
-              }
-            )}
+            {getValidPrices(
+              page.learning_experience.product_service.prices
+            ).map((price) => {
+              return (
+                <li key={price.id}>
+                  {price.display_name} - ￥{price.posttax_price}
+                  <span> (税込)</span>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </section>
@@ -220,10 +220,10 @@ export default function LearningExperiencesDetailPage() {
         {page.address && (
           <div className="text-container">
             <h3>Address</h3>
-            <p>{page.address.postalCode}</p>
-            <p>{page.address.cityTownVillage}</p>
-            <p>{page.address.lineTwo}</p>
-            <p>{page.address.lineOne}</p>
+            <p>{page.address.postal_code}</p>
+            <p>{page.address.city_town_village}</p>
+            <p>{page.address.line_two}</p>
+            <p>{page.address.line_one}</p>
             <p>{page.address.name}</p>
           </div>
         )}
