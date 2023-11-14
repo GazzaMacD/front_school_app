@@ -49,9 +49,25 @@ export default function LearningExperiencesIndexPage() {
   const ENV = getGlobalEnv();
   return (
     <div id="lexix">
-      <h1>{listPage.display_title}</h1>
+      <header>
+        <hgroup className="lexdp__heading">
+          <h1>
+            <span>Learning Experiences</span>
+            {listPage.display_title}
+          </h1>
+          <p>{listPage.display_tagline}</p>
+        </hgroup>
+      </header>
+      <section></section>
+      <div dangerouslySetInnerHTML={{ __html: listPage.intro }} />
       <section>
-        <h2>Upcoming Learning Experiences</h2>
+        <hgroup className="lexdp__heading">
+          <h2>
+            <span>Upcoming Learning Experiences</span>
+            Upcoming Learning Experiences in Japanese
+          </h2>
+          <p>Blurb here in Japanese sellling upcoming experiences</p>
+        </hgroup>
         <div className="lexix-cards">
           {detailPages.map((page) => {
             const dateString = getDateString(page.start_date, page.end_date);
@@ -79,7 +95,26 @@ export default function LearningExperiencesIndexPage() {
         </div>
       </section>
       <section>
-        <h2>Previous Learning Experience Photos</h2>
+        <hgroup className="lexdp__heading">
+          <h2>
+            <span>Learning Experiences Photos</span>
+            Learning Experience Photos (日本語)
+          </h2>
+          <p>Blurb here about photos</p>
+        </hgroup>
+        <div className="lexix__photos">
+          {listPage.experiences_gallery.map((figure) => {
+            return (
+              <figure key={figure.id} className="lexix__figure">
+                <img
+                  src={`${ENV.BASE_BACK_URL}${figure.value.image.medium.src}`}
+                  alt={figure.value.image.medium.alt}
+                />
+                <figcaption>{figure.value.caption}</figcaption>
+              </figure>
+            );
+          })}
+        </div>
       </section>
     </div>
   );

@@ -28,6 +28,15 @@ a.lexix-card-link::before {
   align-self: flex-end;
   cursor: pointer;
 }
+.lexix__photos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1%;
+}
+.lexix__figure {
+  flex: 0 0 24%;
+}
 
 /* Detail Page (learning exprience detail page = lexdp)*/
 .lexdp__heading {
