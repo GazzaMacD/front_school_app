@@ -41,3 +41,10 @@ export function getDateString(start: string, end: string) {
   }
   return dateString;
 }
+
+/*
+ * Display functions
+ */
+export function getDisplay(str: string, langNum: number) {
+  return str.split(",")[langNum];
+}
