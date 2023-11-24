@@ -146,31 +146,19 @@ export async function loader({ request, params }: LoaderArgs) {
   try {
     const { slug } = params;
     if (!slug) {
-      throw new Error("Error", { cause: 404 });
+      throw new Response("Oops that's a 404", { status: 404 });
     }
     const apiUrl = `${BASE_API_URL}/pages/?type=lessons.LessonDetailPage&slug=${slug}&fields=*`;
-    const response = await fetch(apiUrl);
-    if (!response.ok) {
-      throw new Error("Error", { cause: response.status });
+    const res = await fetch(apiUrl);
+    const data = await res.json();
+    if (!res.ok || !data.items.length) {
+      throw new Response("Oops that's a 404", { status: 404 });
     }
-    const pagesData = await response.json();
-    let data = pagesData.items[0];
-    data = multipleChoiceCreator(data);
-    return json({ data });
+    let page = data.items[0];
+    page = multipleChoiceCreator(page);
+    return json({ page });
   } catch (error) {
     console.error(error);
-    if (error instanceof Error) {
-      switch (error.cause) {
-        case 404:
-          throw new Response("Oops sorry something went wrong", {
-            status: 404,
-          });
-        default:
-          throw new Response("Oops sorry something went wrong", {
-            status: 500,
-          });
-      }
-    }
     throw new Response("Oops sorry something went wrong", { status: 500 });
   }
 } //loader
@@ -179,27 +167,27 @@ export async function loader({ request, params }: LoaderArgs) {
  * client side code
  */
 export default function LessonsDetailPage() {
-  const { data } = useLoaderData<typeof loader>();
+  const { page } = useLoaderData<typeof loader>();
   const ENV = getGlobalEnv();
-  const pubDate = new Date(data.published_date);
+  const pubDate = new Date(page.published_date);
   return (
     <>
       <div className="l-header">
         <header className="container">
-          <h1 className="l-header__title">{data.ja_title}</h1>
-          <p className="l-header__intro">{data.short_intro}</p>
+          <h1 className="l-header__title">{page.display_title}</h1>
+          <p className="l-header__intro">{page.display_tagline}</p>
           <div className="l-header__info">
             <div className="l-header__author">
-              <Link to={`/staff/${data.author.slug}`}>
+              <Link to={`/staff/${page.author.slug}`}>
                 <img
-                  src={`${ENV.BASE_BACK_URL}${data.author.image.thumbnail.src}`}
-                  alt={data.author.image.thumbnail.alt}
+                  src={`${ENV.BASE_BACK_URL}${page.author.image.thumbnail.src}`}
+                  alt={page.author.image.thumbnail.alt}
                 />
               </Link>
               <p>
                 By{" "}
-                <Link to={`/staff/${data.author.slug}`}>
-                  {data.author.name}
+                <Link to={`/staff/${page.author.slug}`}>
+                  {page.author.name}
                 </Link>
               </p>
             </div>
@@ -214,24 +202,24 @@ export default function LessonsDetailPage() {
             </div>
             <div className="l-header__learn">
               <AiOutlineClockCircle />
-              <p>勉強時間: {data.estimated_time}分</p>
+              <p>勉強時間: {page.estimated_time}分</p>
             </div>
             <Link
-              to={`/lessons?category=${data.category.ja_name}&id=${data.category.id}`}
+              to={`/lessons?category=${page.category.ja_name}&id=${page.category.id}`}
               className="l-cat__link"
             >
-              {data.category.ja_name}
+              {page.category.ja_name}
             </Link>
           </div>
           <img
             className="l-detail-header__img"
-            src={`${ENV.BASE_BACK_URL}${data.header_image.meta.download_url}`}
-            alt={data.header_image.title}
+            src={`${ENV.BASE_BACK_URL}${page.header_image.medium.src}`}
+            alt={page.header_image.title}
           />
         </header>
       </div>
       <section>
-        {data.lesson_content.map((block: any) => {
+        {page.lesson_content.map((block: any) => {
           if (block.type === "rich_text") {
             return (
               <div
@@ -351,7 +339,7 @@ export default function LessonsDetailPage() {
         <div className="container">
           <h2 className="l-rel__title">Other lessons you might like</h2>
           <div className="l-rel__lessons">
-            {data.related_lessons.map((related_lesson) => {
+            {page.related_lessons.map((related_lesson) => {
               return (
                 <div key={related_lesson.id} className="l-rel__card">
                   <img
@@ -361,13 +349,13 @@ export default function LessonsDetailPage() {
                   />
                   <div className="l-rel__card__details">
                     <h4 className="l-rel__card__title">
-                      {related_lesson.lesson.ja_title}
+                      {related_lesson.lesson.display_title}
                     </h4>
                     <p className="l-rel__card__intro">
-                      {related_lesson.lesson.short_intro}
+                      {related_lesson.lesson.display_tagline}
                     </p>
                     <Link
-                      to={`/lessons/${related_lesson.lesson.slug}`}
+                      to={`/blog-lessons/${related_lesson.lesson.slug}`}
                       className="l-rel__card__button"
                     >
                       Learn More
