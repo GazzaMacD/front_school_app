@@ -73,15 +73,39 @@ export async function loader({ request }: LoaderArgs) {
     const [page, categories] = await Promise.all(
       urls.map((url) =>
         fetch(url)
-          .then((r) => r.json())
-          .then((data) => ({ data, url }))
+          .then(async (r) => {
+            return {
+              data: await r.json(),
+              status: r.status,
+              ok: r.ok,
+            };
+          })
+          .then((data) => {
+            return {
+              data: data.data,
+              status: data.status,
+              ok: data.ok,
+              url: url,
+            };
+          })
           .catch((error) => ({ error, url }))
       )
     );
-    /* Error checking here */
+    if (!page.ok || !categories.ok || !page.data.items.length) {
+      throw new Response("Oops that's 404", { status: 404 });
+    }
+    // can now get detail page
+    let detailUrl = `${BASE_API_URL}/pages/?order=-published_date&type=lessons.LessonDetailPage&fields=_,slug,display_title,display_tagline,published_date,title,header_image`;
+    const res = await fetch(detailUrl);
+    const data = await res.json();
+    if (!res.ok) {
+      throw new Response("Oops that's 404", { status: 404 });
+    }
+
     return json({
       page: page.data.items[0],
       categories: categories.data,
+      lessonsData: data,
     });
   } catch (error) {
     throw new Response("Oops sorry something went wrong", {
@@ -92,7 +116,7 @@ export async function loader({ request }: LoaderArgs) {
 
 export default function BlogLessonsIndexPage() {
   const ENV = getGlobalEnv();
-  const { page, categories: c } = useLoaderData<typeof loader>();
+  const { page, categories: c, lessonsData } = useLoaderData<typeof loader>();
   const categories = [...[{ id: 0, name: "All", ja_name: "全レッスン" }], ...c];
 
   // States
@@ -100,12 +124,12 @@ export default function BlogLessonsIndexPage() {
     id: null | number;
     jaCat: null | string;
   }>({ id: 0, jaCat: null });
-  const [lessons, setLessons] = React.useState([]);
+  const lessons = lessonsData.items;
 
   return (
     <div>
       <header className="container">
-        <hgroup>
+        <hgroup className="heading1">
           <h1>
             <span>{page.title}</span>
             {page.display_title}
@@ -136,34 +160,38 @@ export default function BlogLessonsIndexPage() {
           </div>
         </div>
       </header>
-      <div className="container">
+      <div className="container l-list-wrapper">
         {lessons.length ? (
-          <ul className="l-list">
+          <div className="l-list">
             {lessons.map((lesson) => {
               const pubDate = new Date(lesson.published_date);
               return (
-                <Link to={lesson.meta.slug} key={lesson.id}>
-                  <li className="l-list-item">
-                    <img
-                      src={`${ENV.BASE_BACK_URL}${lesson.header_image.meta.download_url}`}
-                      alt={lesson.header_image.title}
-                      className="l-list-item__img"
-                    />
+                <Link
+                  to={lesson.meta.slug}
+                  key={lesson.id}
+                  className="l-list-link"
+                >
+                  <div className="l-list-item">
+                    <div className="l-list-item__img">
+                      <img
+                        src={`${ENV.BASE_BACK_URL}${lesson.header_image.thumbnail.src}`}
+                        alt={lesson.header_image.title}
+                      />
+                    </div>
                     <div className="l-list-item__details">
-                      <h3>{lesson.ja_title}</h3>
-                      <p>{lesson.short_intro}</p>
+                      <h4>{lesson.display_title}</h4>
+                      <p>{lesson.display_tagline}</p>
                       <span>{`${pubDate.getFullYear()}/${
                         pubDate.getMonth() + 1
                       }/${pubDate.getDate()}`}</span>
                     </div>
-                  </li>
+                  </div>
                 </Link>
               );
             })}
-          </ul>
+          </div>
         ) : null}
       </div>
-      <button onClick={() => null}>Load More</button>
     </div>
   );
 }
