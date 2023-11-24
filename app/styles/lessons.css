@@ -62,7 +62,7 @@
   gap: var(--space-md);
 }
 
-a.l-cat__link {
+.l-cat__link {
   display: inline-block;
   border: 0;
   color: var(--color-base-text);
@@ -70,10 +70,10 @@ a.l-cat__link {
   border-radius: 100px;
   background-color: var(--color-base-limegreen);
 }
-a.l-cat__link--active {
+.l-cat__link--active {
   background-color: var(--color-base-orange);
 }
-a.l-cat__link::before {
+.l-cat__link::before {
   content: none;
 }
 .l-list-wrapper {
