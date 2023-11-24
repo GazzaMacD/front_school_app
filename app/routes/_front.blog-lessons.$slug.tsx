@@ -149,7 +149,6 @@ export async function loader({ request, params }: LoaderArgs) {
       throw new Response("Oops that's a 404", { status: 404 });
     }
     const apiUrl = `${BASE_API_URL}/pages/?type=lessons.LessonDetailPage&slug=${slug}&fields=*`;
-    console.log(apiUrl);
     const res = await fetch(apiUrl);
     const data = await res.json();
     if (!res.ok || !data.items.length) {
@@ -356,7 +355,7 @@ export default function LessonsDetailPage() {
                       {related_lesson.lesson.display_tagline}
                     </p>
                     <Link
-                      to={`/lessons/${related_lesson.lesson.slug}`}
+                      to={`/blog-lessons/${related_lesson.lesson.slug}`}
                       className="l-rel__card__button"
                     >
                       Learn More
