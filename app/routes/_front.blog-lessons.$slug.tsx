@@ -174,8 +174,8 @@ export default function LessonsDetailPage() {
     <>
       <div className="l-header">
         <header className="container">
-          <h1 className="l-header__title">{page.ja_title}</h1>
-          <p className="l-header__intro">{page.short_intro}</p>
+          <h1 className="l-header__title">{page.display_title}</h1>
+          <p className="l-header__intro">{page.display_tagline}</p>
           <div className="l-header__info">
             <div className="l-header__author">
               <Link to={`/staff/${page.author.slug}`}>
@@ -213,7 +213,7 @@ export default function LessonsDetailPage() {
           </div>
           <img
             className="l-detail-header__img"
-            src={`${ENV.BASE_BACK_URL}${page.header_image.meta.download_url}`}
+            src={`${ENV.BASE_BACK_URL}${page.header_image.medium.src}`}
             alt={page.header_image.title}
           />
         </header>
