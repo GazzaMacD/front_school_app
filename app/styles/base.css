@@ -292,8 +292,13 @@ Design Elements
 }
 
 /* ----------------------------- 
-Containers and Iframes
+Containers, Wrappers and Iframes
 -------------------------------- */
+.base-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
 .container {
   margin: 0 auto;
   max-width: 1140px;
@@ -901,9 +906,10 @@ Base grids, containers  & figure/ img / classes
   }
 }
 /* ----------------------------- 
-Front  Header
+Footer
 -------------------------------- */
 .footer {
+  margin-top: auto;
   background-color: var(--color-base-brown);
   min-height: max-content;
   padding: 2rem 0;
