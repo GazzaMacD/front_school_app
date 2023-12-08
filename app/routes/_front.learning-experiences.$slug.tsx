@@ -48,7 +48,7 @@ export default function LearningExperiencesDetailPage() {
       <header>
         <hgroup className="lexdp__heading">
           <h1>
-            <span>Learning Experience</span>
+            <span>{page.title}</span>
             {page.display_title}
           </h1>
           <p>{page.display_tagline}</p>

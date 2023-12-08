@@ -261,3 +261,82 @@ a.l-rel__card__button:hover {
 a.l-rel__card__button::before {
   content: none;
 }
+/* 
+* Blocks 
+*/
+/* Examples */
+.blk-examples {
+  padding: 30px 10px;
+  background-color: var(--color-base-white);
+  border: solid var(--color-base-brown) 2px;
+  position: relative;
+  margin-bottom: 3rem;
+}
+.blk-examples > div:first-child {
+  position: absolute;
+  top: -21px;
+  padding: 5px 10px;
+  border: solid var(--color-base-brown) 2px;
+  background-color: var(--color-sec-lightlime);
+  border-radius: var(--radius-sm);
+}
+
+.blk-examples p {
+  font-weight: 500;
+  margin-bottom: var(--space-xxs);
+  padding-left: 15px;
+  position: relative;
+  color: inherit;
+}
+.blk-examples p::before {
+  content: "・ ";
+  position: absolute;
+  left: -10px;
+}
+
+/* Wrong Right */
+.blk-wr-wrapper {
+  padding: 30px 10px;
+  background-color: var(--color-base-white);
+  border: solid var(--color-base-brown) 2px;
+  position: relative;
+  margin-bottom: 3rem;
+}
+.blk-wr-wrapper > div:first-child {
+  position: absolute;
+  top: -21px;
+  padding: 5px 10px;
+  border: solid var(--color-base-brown) 2px;
+  background-color: var(--color-sec-lightlime);
+  border-radius: var(--radius-sm);
+}
+.blk-wr {
+  margin-bottom: 2rem;
+}
+.blk-wr:last-child {
+  margin-bottom: 0;
+}
+.blk-wr__ex {
+  display: flex;
+}
+.blk-wr p {
+  margin: 0;
+  font-weight: 500;
+}
+.blk-wr__ex {
+  padding-left: 20px;
+  position: relative;
+}
+.blk-wr__ex--wrong {
+  color: red;
+}
+.blk-wr__ex--right {
+  color: green;
+}
+.blk-wr__icon {
+  position: absolute;
+  height: 25px;
+  width: 25px;
+  left: -4px;
+  top: 8px;
+}
