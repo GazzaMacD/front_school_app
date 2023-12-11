@@ -19,13 +19,11 @@ import { useLoaderData } from "@remix-run/react";
 
 import { authenticatedUser } from "./common/session.server";
 import globalStyles from "./styles/global.css";
-import blocksStyles from "./styles/blocks.css";
 import { createGlobalEnvObj } from "./env.server";
 
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
   { rel: "stylesheet", href: globalStyles },
-  { rel: "stylesheet", href: blocksStyles },
 ];
 
 export async function loader({ request }: LoaderArgs) {

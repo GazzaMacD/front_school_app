@@ -292,7 +292,7 @@ ol {
 }
 
 /*
-* ======== Global Shared Styles for commone elements across app =======
+* ======== Global Shared Styles for common classes  and component classes across app =======
 * prefixed with g-
 */
 /* 
@@ -1129,4 +1129,55 @@ label {
   margin: 20px 0;
   text-transform: capitalize;
   padding: 6px 15px;
+}
+/*
+* 'info_cards' blocks
+*/
+.blk-infocards {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: wrap;
+}
+.blk-infocard {
+  flex: 0 0 24%;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-base-white);
+  box-shadow: 1px 1px 5px 1px var(--color-shadow);
+}
+.blk-infocard__img {
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+}
+.blk-infocard__details {
+  padding: var(--component-padding);
+}
+.blk-infocard__title {
+  font-size: var(--text-base-size);
+}
+.blk-infocard__text {
+  font-size: var(--text-sm);
+  margin: 0;
+}
+
+/*
+* 'question and answer' blocks
+*/
+.blk-q-and-a p {
+  position: relative;
+  padding-left: 35px;
+}
+.blk-q-and-a p:nth-child(odd)::before {
+  content: "Q";
+  color: var(--color-base-orange);
+  position: absolute;
+  font-size: var(--text-lg);
+  left: 0;
+  top: -12px;
+}
+.blk-q-and-a p:nth-child(even)::before {
+  content: "A";
+  color: var(--color-base-limegreen);
+  position: absolute;
+  font-size: var(--text-lg);
+  left: 0;
+  top: -12px;
 }
