@@ -56,32 +56,48 @@ export default function Index() {
         </div>
       </section>
 
-      <section id="why">
-        <hgroup className="bsection-group why__heading">
-          <h2 className="bsection-group__heading">Why learn with us?</h2>
-          <p className="bsection-group__subheading">
-            占由の季及投先ぼがゆも奇引りン
-          </p>
+      <hr></hr>
+      <section id="popular">
+        <hgroup className="bsection-group">
+          <h2 className="bsection-group__heading">Why learn with us</h2>
+          <p className="bsection-group__subheading">なぜ私たちと学ぶのか</p>
+          <p>140 char tagline here in Japanese (seo focused)</p>
         </hgroup>
-        <div className="why__wrapper">
-          <div className="why-point"></div>
-          <div className="why-point"></div>
-          <div className="why-point"></div>
-        </div>
+        <p>
+          ------------- Picture here of team with explanation of our philosophy
+          on learning languages and link or button to about us page
+          -------------
+        </p>
       </section>
 
+      <hr></hr>
+      <section id="popular">
+        <hgroup className="bsection-group">
+          <h2 className="bsection-group__heading">Our Services</h2>
+          <p className="bsection-group__subheading">私たちのサービス</p>
+          <p>140 char tagline here in Japanese (seo focused)</p>
+        </hgroup>
+        <p>
+          -------- Our 4 main Servics here with brief, attractive explanation of
+          each service with link button to relevant pages 1. Business English
+          learning 2. General English learning 3. English Exam preparation 4.
+          Language learning experiences (education events where use english to
+          teach and communicate) -------------
+        </p>
+      </section>
+
+      <hr></hr>
       <section id="testimonials" className="full-width-container">
         <hgroup className="bsection-group">
           <h2 className="bsection-group__heading">Customer Testimonials</h2>
-          <p className="bsection-group__subheading">
-            占由の季及投先ぼがゆも奇引りン
-          </p>
+          <p className="bsection-group__subheading">お客様の声</p>
+          <p>140 char tagline here in Japanese (seo focused)</p>
         </hgroup>
         <div>
-          <h3>On Google</h3>
-        </div>
-        <div>
-          <h3>On our site</h3>
+          <p>
+            --------testimonials from students with links to the whole page
+            which has video interview-------------
+          </p>
           <div className="test-students">
             {testimonials.length &&
               testimonials.map((testimonial) => {
@@ -128,32 +144,35 @@ export default function Index() {
           </div>
         </div>
       </section>
+      <hr></hr>
 
       <section id="popular">
         <hgroup className="bsection-group">
-          <h2 className="bsection-group__heading">Most popular courses</h2>
-          <p className="bsection-group__subheading">
-            占由の季及投先ぼがゆも奇引りン
-          </p>
+          <h2 className="bsection-group__heading">Most popular prices</h2>
+          <p className="bsection-group__subheading">人気クラスの料</p>
+          <p>140 char tagline here in Japanese (seo focused)</p>
         </hgroup>
+        <p>
+          -------- Our most popular 3 class prices in table form with link or
+          button to /class-prices -------------
+        </p>
       </section>
 
-      <section id="voice">
-        <hgroup className="bsection-group">
-          <h2 className="bsection-group__heading">Student voice</h2>
-          <p className="bsection-group__subheading">
-            占由の季及投先ぼがゆも奇引りン
-          </p>
-        </hgroup>
-      </section>
-
+      <hr></hr>
       <section id="experiences">
         <hgroup className="bsection-group">
-          <h2 className="bsection-group__heading">Meet us in an experience</h2>
-          <p className="bsection-group__subheading">
-            占由の季及投先ぼがゆも奇引りン
-          </p>
+          <h2 className="bsection-group__heading">Learn from our free blogs</h2>
+          <p className="bsection-group__subheading">無料ブログレッスンで学</p>
+          <p>140 char tagline here in Japanese (seo focused)</p>
         </hgroup>
+        <p>
+          List of top 5 / 7 latest blog lesson posts where we teach for free to
+          our community
+        </p>
+        <p>
+          + Area for form to subscribe to our email to stay uptodate with our
+          latest learning posts and instagram learning
+        </p>
       </section>
     </>
   );
