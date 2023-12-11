@@ -1,4 +1,9 @@
 /*
+================= Notes ===================
+BEM - prefix identifiers for class names accross the app
+g- | global styles
+
+-----------------
 Media queries
 -----------------
 small
@@ -15,6 +20,10 @@ large
 extra large
 @media (min-width: 1450px) {
 }
+*/
+
+/*
+* ======== CSS Globally accessible variables =======
 */
 :root {
   /* base brand colors */
@@ -72,8 +81,7 @@ extra large
   --color-shadow: rgba(0, 0, 0, 0.1);
 }
 /*
-  Josh's Custom CSS Reset
-  https://www.joshwcomeau.com/css/custom-css-reset/
+* ======== CSS Resets =======
 */
 *,
 *::before,
@@ -115,9 +123,11 @@ h6 {
   overflow-wrap: break-word;
 }
 
-/* ----------------------------- 
-Typography and Spacing
--------------------------------- */
+/*
+* ======== Global styles (mostly elements - low specificity) =======
+*/
+
+/*  Typography and Spacing- */
 @font-face {
   font-family: "Knewave";
   src: url("/fonts/knewave/knewave.regular.woff") format("woff");
@@ -281,7 +291,11 @@ ol {
   line-height: var(--text-line-height);
 }
 
-/* ----------------------------- 
+/*
+* ======== Global Shared Styles for commone elements across app =======
+* prefixed with g-
+*/
+/* 
 Design Elements
 -------------------------------- */
 :root {
