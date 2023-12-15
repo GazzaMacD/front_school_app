@@ -43,8 +43,8 @@ export default function CourseDetailPage() {
   const { data } = useLoaderData<typeof loader>();
   const ENV = getGlobalEnv();
   const subject = data.course.subject as "english" | "japanese" | "french";
-  const subjectDisplay = data.course.display.split(",");
-  const categoryDisplay = data.course_category.display.split(",");
+  const subjectDisplay = data.course.subject_display.split(",");
+  const categoryDisplay = data.course.course_category_display.split(",");
   const levelFromDisplay = data.level_from.display.split(",");
   const levelToDisplay = data.level_to.display.split(",");
   return (
@@ -79,9 +79,7 @@ export default function CourseDetailPage() {
         <h2>What skills I will learn</h2>
         <ul>
           {data.course_content_points.map((block) => {
-            return block.value.liste.map((item) => (
-              <li key={item.list_item.slice(0, 4)}>{item.list_item}</li>
-            ));
+            return <li key={block.id}>{block.value.text}</li>;
           })}
         </ul>
       </section>
