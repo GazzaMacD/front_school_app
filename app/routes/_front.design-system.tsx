@@ -1,110 +1,78 @@
 import * as React from "react";
+import type { LinksFunction } from "@remix-run/node";
+
+import designStyles from "~/styles/design-system.css";
+import { Button, ButtonLink } from "~/components/buttons";
+
+export const links: LinksFunction = () => [
+  { rel: "stylesheet", href: designStyles },
+];
 
 export default function DesignSystem() {
   return (
-    <div className="container">
-      <h1 style={{ textAlign: "center" }}>Design System</h1>
-      <Section title={"Buttons"}>
-        <FlexCol title="Primary" colNum={3}>
-          <ExpoBox title="test button" colNum={2}>
-            <button>I am a test</button>
-          </ExpoBox>
-          <ExpoBox title="test button" colNum={2}>
-            <button>I am a test</button>
-          </ExpoBox>
-          <ExpoBox title="test button" colNum={2}>
-            <button>I am a test</button>
-          </ExpoBox>
-        </FlexCol>
-      </Section>
-    </div>
-  );
-}
-
-type TExpoBoxProps = {
-  title: string;
-  colNum: 1 | 2 | 3 | 4;
-  children: React.ReactNode | React.ReactNode[];
-};
-
-function ExpoBox({ title, colNum, children }: TExpoBoxProps) {
-  return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        padding: "20px",
-        width: `${
-          colNum === 4
-            ? "25%"
-            : colNum === 3
-            ? "33.33%"
-            : colNum === 2
-            ? "50%"
-            : "100%"
-        }`,
-      }}
-    >
-      <h4>{title}</h4>
-      {children}
-    </div>
-  );
-}
-
-type TSectionProps = {
-  title: string;
-  children: React.ReactNode | React.ReactNode[];
-};
-
-function Section({ title, children }: TSectionProps) {
-  return (
-    <section
-      style={{
-        borderBottom: "1px black solid",
-        padding: "25px 0",
-      }}
-    >
-      <h2 style={{ textAlign: "center" }}>{title}</h2>
-      <div
-        style={{
-          display: "flex",
-        }}
-      >
-        {children}
-      </div>
-    </section>
-  );
-}
-
-type TFlexColProps = {
-  title: string;
-  colNum: 1 | 2 | 3 | 4;
-  children: React.ReactNode | React.ReactNode[];
-};
-
-function FlexCol({ title, colNum, children }: TFlexColProps) {
-  return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        alignItems: "center",
-        width: `${
-          colNum === 4
-            ? "25%"
-            : colNum === 3
-            ? "33.33%"
-            : colNum === 2
-            ? "50%"
-            : "100%"
-        }`,
-      }}
-    >
-      {title && <h3>{title}</h3>}
-      {children}
+    <div>
+      <h1 className="ds-h1">Design System</h1>
+      <section className="container">
+        <h2>Buttons</h2>
+        <div className="ds-display">
+          <article>
+            <Button>Primary Large</Button>
+          </article>
+          <article>
+            <Button size="medium">Primary Medium</Button>
+          </article>
+          <article>
+            <Button size="small">Primary Small</Button>
+          </article>
+          <article>
+            <Button variant="secondary">Secondary Large</Button>
+          </article>
+          <article>
+            <Button variant="secondary" size="medium">
+              Secondary Medium
+            </Button>
+          </article>
+          <article>
+            <Button variant="secondary" size="small">
+              Secondary Small
+            </Button>
+          </article>
+          <article>
+            <ButtonLink to="https://duckduckgo.com">
+              P ButtonLink Large
+            </ButtonLink>
+          </article>
+          <article>
+            <ButtonLink to="https://duckduckgo.com" size="medium">
+              P ButtonLink Medium
+            </ButtonLink>
+          </article>
+          <article>
+            <ButtonLink to="https://duckduckgo.com" size="small">
+              P ButtonLink Small
+            </ButtonLink>
+          </article>
+          <article>
+            <ButtonLink to="https://duckduckgo.com" variant="secondary">
+              S ButtonLink Large
+            </ButtonLink>
+          </article>
+          <article>
+            <ButtonLink
+              to="https://duckduckgo.com"
+              variant="secondary"
+              size="medium"
+            >
+              S ButtonLink Medium
+            </ButtonLink>
+          </article>
+          <article>
+            <ButtonLink to="/" variant="secondary" size="small">
+              S ButtonLink Small
+            </ButtonLink>
+          </article>
+        </div>
+      </section>
     </div>
   );
 }

@@ -1,0 +1,15 @@
+.ds-h1 {
+  text-align: center;
+}
+.ds-display {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2%;
+}
+article {
+  aspect-ratio: 2/1;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
