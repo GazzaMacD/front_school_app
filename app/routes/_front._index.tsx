@@ -5,6 +5,7 @@ import homeStyles from "../styles/home.css";
 import { getTitle } from "~/common/utils";
 import { BASE_API_URL } from "~/common/constants.server";
 import { getGlobalEnv } from "~/common/utils";
+import { ButtonLink } from "~/components/buttons";
 
 // server side functions
 export const meta: V2_MetaFunction = () => {
@@ -50,8 +51,10 @@ export default function Index() {
             </h2>
           </div>
           <div className="vbanner__buttons">
-            <button className="button ">Courses</button>
-            <button className="button button--orange">Experiences</button>
+            <ButtonLink to="/courses">Courses</ButtonLink>
+            <ButtonLink to="/learning-experiences" variant="secondary">
+              Experiences
+            </ButtonLink>
           </div>
         </div>
       </section>
