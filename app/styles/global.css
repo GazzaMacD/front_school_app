@@ -24,6 +24,19 @@ extra large
 */
 
 /*
+* ======== Font Faces =======
+*/
+
+@font-face {
+  font-display: fallback;
+  font-family: "Zen Kaku Gothic Antique";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/zen-kaku-gothic-antique-v15-japanese_latin-regular.woff2")
+    format("woff2");
+}
+
+/*
 * ======== CSS Resets =======
 */
 *,
@@ -500,17 +513,11 @@ template {
 }
 
 /*  Typography and Spacing- */
-@font-face {
-  font-family: "Knewave";
-  src: url("/fonts/knewave/knewave.regular.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
 :root {
   /* font families */
-  --font-jp-primary: "Yu Gothic", "メイリオ", "Meiryo", "ＭＳ ゴシック",
-    "MS Gothic", "HiraKakuProN-W3", "TakaoExゴシック", "TakaoExGothic",
-    "MotoyaLCedar", "Droid Sans Japanese", sans-serif;
+  --font-jp-primary: "Zen Kaku Gothic Antique", "Yu Gothic", "メイリオ",
+    "Meiryo", "ＭＳ ゴシック", "MS Gothic", "HiraKakuProN-W3", "TakaoExゴシック",
+    "TakaoExGothic", "MotoyaLCedar", "Droid Sans Japanese", sans-serif;
   --font-en-primary: "Montserrat", sans-serif;
 
   /* base text sizes IMPORTANT */
