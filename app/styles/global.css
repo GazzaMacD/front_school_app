@@ -502,7 +502,7 @@ template {
 /*  Typography and Spacing- */
 :root {
   /* font families */
-  --font-jp-primary: "Zen Kaku Gothic Antique", "Yu Gothic", "メイリオ",
+  --font-jp-primary: "游ゴシック", "游ゴシック体", "Yu Gothic", "メイリオ",
     "Meiryo", "ＭＳ ゴシック", "MS Gothic", "HiraKakuProN-W3", "TakaoExゴシック",
     "TakaoExGothic", "MotoyaLCedar", "Droid Sans Japanese", sans-serif;
   --font-en-primary: "Rubik", sans-serif;
@@ -570,7 +570,7 @@ body {
   background-color: var(--color-base-cream);
 }
 .en {
-  font-family: "Montserrat", sans-serif;
+  font-family: var(--font-en-primary);
 }
 h1,
 h2,
