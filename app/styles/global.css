@@ -24,19 +24,6 @@ extra large
 */
 
 /*
-* ======== Font Faces =======
-*/
-
-@font-face {
-  font-display: fallback;
-  font-family: "Zen Kaku Gothic Antique";
-  font-style: normal;
-  font-weight: 400;
-  src: url("/fonts/zen-kaku-gothic-antique-v15-japanese_latin-regular.woff2")
-    format("woff2");
-}
-
-/*
 * ======== CSS Resets =======
 */
 *,
@@ -518,7 +505,7 @@ template {
   --font-jp-primary: "Zen Kaku Gothic Antique", "Yu Gothic", "メイリオ",
     "Meiryo", "ＭＳ ゴシック", "MS Gothic", "HiraKakuProN-W3", "TakaoExゴシック",
     "TakaoExGothic", "MotoyaLCedar", "Droid Sans Japanese", sans-serif;
-  --font-en-primary: "Montserrat", sans-serif;
+  --font-en-primary: "Rubik", sans-serif;
 
   /* base text sizes IMPORTANT */
   --text-base-size: 1em;
@@ -730,9 +717,9 @@ Headings
 .bsection-group__heading {
   font-size: var(--text-sm);
   font-family: var(--font-en-primary);
+  font-weight: 600;
   letter-spacing: 3px;
   line-height: 1;
-  font-weight: 600;
   margin: 0 0 var(--space-lg) 0;
   padding: 0 0 0 var(--space-xs);
   text-transform: capitalize;

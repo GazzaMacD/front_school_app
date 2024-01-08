@@ -19,10 +19,12 @@ import { useLoaderData } from "@remix-run/react";
 
 import { authenticatedUser } from "./common/session.server";
 import globalStyles from "./styles/global.css";
+import fontStyles from "./styles/fonts.css";
 import { createGlobalEnvObj } from "./env.server";
 
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
+  { rel: "stylesheet", href: fontStyles },
   { rel: "stylesheet", href: globalStyles },
 ];
 
