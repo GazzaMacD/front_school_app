@@ -1,0 +1,31 @@
+/*
+* ======== Font Faces =======
+*/
+
+@font-face {
+  font-display: fallback;
+  font-family: "Zen Kaku Gothic Antique";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Zen Kaku Gothic Antique"),
+    url("/fonts/zen-kaku-gothic-antique-v15-japanese_latin-regular.woff2")
+      format("woff2");
+}
+/* rubik-regular (400) - latin */
+@font-face {
+  font-display: fallback;
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Rubik"),
+    url("/fonts/rubik-v28-latin-regular.woff2") format("woff2");
+}
+
+/* rubik-600 - latin */
+@font-face {
+  font-display: fallback;
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 600;
+  src: local("Rubik"), url("/fonts/rubik-v28-latin-600.woff2") format("woff2");
+}
