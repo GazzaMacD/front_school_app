@@ -419,6 +419,12 @@ template {
 /* Color Variables */
 :root {
   /* base brand colors */
+  --color-brand-green: hsl(102, 64%, 47%);
+  --color-brand-brown: hsl(37, 56%, 22%);
+  --color-brand-cream: hsl(44, 100%, 95%);
+  --color-brand-white: hsl(0, 0%, 100%);
+  --color-brand-orange: hsl(30, 100%, 48%);
+  /* base brand colors */
   --color-base-green: #331a00; /* #35302a;  #133e16; #2f2426 */
   --color-base-limegreen: #74a12e; /* #89b72d; */
   --color-base-cream: #fff8ee; /*#ffefd5; /* #ffe5b4; /*#fdfcf8; /*rgb(244, 241, 235);*/
@@ -566,8 +572,8 @@ template {
 body {
   font-size: var(--text-base-size);
   font-family: var(--font-jp-primary);
-  color: var(--color-base-text);
-  background-color: var(--color-base-cream);
+  color: var(--color-brand-brown);
+  background-color: var(--color-brand-cream);
 }
 .en {
   font-family: var(--font-en-primary);
@@ -723,7 +729,7 @@ Headings
   margin: 0 0 var(--space-lg) 0;
   padding: 0 0 0 var(--space-xs);
   text-transform: capitalize;
-  color: var(--color-base-limegreen);
+  color: var(--color-brand-brown);
 }
 /* .bsection-group__heading > span:first-child {
   color: var(--color-base-yellow);
@@ -731,7 +737,7 @@ Headings
 .bsection-group__subheading {
   font-size: var(--text-lg);
   font-weight: 600;
-  color: var(--color-base-green);
+  color: var(--color-brand-green);
   margin: 0 0 var(--space-sm) 0;
   line-height: 1;
 }
@@ -863,7 +869,7 @@ Global Header
 .header {
   height: 78px;
   width: 100%;
-  background-color: var(--color-base-cream);
+  background-color: var(--color-brand-cream);
   position: fixed;
   top: 0;
   margin: 0 0 78px 0;
@@ -1337,7 +1343,7 @@ Footer
 -------------------------------- */
 .footer {
   margin-top: auto;
-  background-color: var(--color-base-brown);
+  background-color: var(--color-brand-cream);
   min-height: max-content;
   padding: 2rem 0;
   border-top: 5px solid;
@@ -1358,7 +1364,7 @@ Footer
   flex-direction: column;
 }
 .footer__branding-col h2 {
-  color: var(--color-base-cream);
+  color: var(--color-brand-brown);
   line-height: 1.2;
   margin: 0 0 1rem 0;
 }
@@ -1372,12 +1378,12 @@ Footer
   height: 30px;
 }
 .footer__col h3 {
-  color: var(--color-sec-darkcream);
+  color: var(--color-brand-brown);
   margin: 20px 0 10px 0;
   line-height: 1.2;
 }
 .footer__branding-col p {
-  color: var(--color-sec-darkcream);
+  color: var(--color-brand-brown);
 }
 .footer__col {
   flex: 0 0 30%;
@@ -1387,7 +1393,7 @@ Footer
 .footer__col a,
 .footer__branding-col a,
 .footer__branding-col h2 {
-  color: var(--color-base-cream);
+  color: var(--color-brand-brown);
 }
 .footer__col a::before,
 .footer__branding-col a::before {
@@ -1395,11 +1401,11 @@ Footer
 }
 .footer__bottom {
   padding-top: 2rem;
-  border-top: 1px solid var(--color-sec-darkcream);
+  border-top: 1px solid var(--color-brand-brown);
 }
 .footer__bottom p {
   margin: 0;
-  color: var(--color-sec-darkcream);
+  color: var(--color-brand-brown);
 }
 
 /* ----------------------------- 
