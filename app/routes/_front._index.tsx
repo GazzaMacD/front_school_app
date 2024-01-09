@@ -6,6 +6,7 @@ import { getTitle } from "~/common/utils";
 import { BASE_API_URL } from "~/common/constants.server";
 import { getGlobalEnv } from "~/common/utils";
 import { ButtonLink } from "~/components/buttons";
+import { HeadingOne } from "~/components/headings";
 
 // server side functions
 export const meta: V2_MetaFunction = () => {
@@ -61,11 +62,11 @@ export default function Index() {
 
       <hr></hr>
       <section id="popular">
-        <hgroup className="bsection-group">
-          <h2 className="bsection-group__heading">Why learn with us</h2>
-          <p className="bsection-group__subheading">なぜ私たちと学ぶのか</p>
-          <p>140 char tagline here in Japanese (seo focused)</p>
-        </hgroup>
+        <HeadingOne
+          enText="Why learn with us"
+          jpText="エクスリンガルの強みか"
+          align="left"
+        />
         <p>
           ------------- Picture here of team with explanation of our philosophy
           on learning languages and link or button to about us page
@@ -75,11 +76,11 @@ export default function Index() {
 
       <hr></hr>
       <section id="popular">
-        <hgroup className="bsection-group">
-          <h2 className="bsection-group__heading">Our Services</h2>
-          <p className="bsection-group__subheading">私たちのサービス</p>
-          <p>140 char tagline here in Japanese (seo focused)</p>
-        </hgroup>
+        <HeadingOne
+          enText="Our Services"
+          jpText="エクスリンガルのサービス"
+          align="left"
+        />
         <p>
           -------- Our 4 main Servics here with brief, attractive explanation of
           each service with link button to relevant pages 1. Business English
@@ -91,11 +92,11 @@ export default function Index() {
 
       <hr></hr>
       <section id="testimonials" className="full-width-container">
-        <hgroup className="bsection-group">
-          <h2 className="bsection-group__heading">Customer Testimonials</h2>
-          <p className="bsection-group__subheading">お客様の声</p>
-          <p>140 char tagline here in Japanese (seo focused)</p>
-        </hgroup>
+        <HeadingOne
+          enText="Customer Testimonials"
+          jpText="お客様の声"
+          align="center"
+        />
         <div>
           <p>
             --------testimonials from students with links to the whole page
@@ -150,11 +151,11 @@ export default function Index() {
       <hr></hr>
 
       <section id="popular">
-        <hgroup className="bsection-group">
-          <h2 className="bsection-group__heading">Most popular prices</h2>
-          <p className="bsection-group__subheading">人気クラスの料</p>
-          <p>140 char tagline here in Japanese (seo focused)</p>
-        </hgroup>
+        <HeadingOne
+          enText="Popular Price Plans"
+          jpText="人気プランの料金"
+          align="left"
+        />
         <p>
           -------- Our most popular 3 class prices in table form with link or
           button to /class-prices -------------
@@ -162,12 +163,17 @@ export default function Index() {
       </section>
 
       <hr></hr>
-      <section id="experiences">
-        <hgroup className="bsection-group">
-          <h2 className="bsection-group__heading">Learn from our free blogs</h2>
-          <p className="bsection-group__subheading">無料ブログレッスンで学</p>
-          <p>140 char tagline here in Japanese (seo focused)</p>
-        </hgroup>
+      <section id="teachers">
+        <HeadingOne enText="Teachers" jpText="講師紹介" align="center" />
+        <p>Introduce staff here</p>
+      </section>
+
+      <section id="blog-lessons">
+        <HeadingOne
+          enText="Blog Lessons"
+          jpText="読んで学べるブログ"
+          align="left"
+        />
         <p>
           List of top 5 / 7 latest blog lesson posts where we teach for free to
           our community
