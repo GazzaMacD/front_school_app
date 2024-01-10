@@ -419,7 +419,7 @@ template {
 /* Color Variables */
 :root {
   /* base brand colors */
-  --color-brand-green: hsl(102, 64%, 47%);
+  --color-brand-green: hsl(104, 80%, 36%); /* <-- ok AA(102, 64%, 47%)*/
   --color-brand-brown: hsl(37, 56%, 22%);
   --color-brand-cream: hsl(44, 100%, 95%);
   --color-brand-white: hsl(0, 0%, 100%);
@@ -776,90 +776,6 @@ Block quotes
   padding: var(--space-md);
 }
 .bquote blockquote {
-}
-
-/* ----------------------------- 
-Buttons
--------------------------------- */
-a.g-button {
-  all: unset;
-  all: revert;
-}
-a.g-button::before {
-  content: none;
-}
-.g-button,
-a.g-button {
-  border: 0;
-  padding: 0;
-  white-space: nowrap;
-  cursor: pointer;
-  color: var(--color-base-brown);
-  font-weight: 700;
-  text-decoration: none;
-}
-.g-button:focus {
-  outline: 0;
-  box-shadow: 0 0 0 2px var(--color-sec-focusblue);
-}
-.g-button.large {
-  padding: 12px 24px;
-  border-radius: 100px;
-}
-.g-button.medium {
-  padding: 8px 16px;
-  border-radius: 100px;
-}
-.g-button.small {
-  padding: 6px 12px;
-  border-radius: 100px;
-}
-.g-button.primary {
-  background-color: var(--color-base-limegreen);
-}
-.g-button.primary:hover {
-  background-color: var(--color-sec-darklime);
-}
-.g-button.secondary {
-  background-color: var(--color-base-orange);
-}
-.g-button.secondary:hover {
-  background-color: var(--color-sec-darkorange);
-}
-
-.button {
-  margin: var(--space-lg) auto;
-  display: block;
-  border: 0;
-  color: var(--color-base-text);
-  padding: 10px 20px;
-  border-radius: 100px;
-  background-color: var(--color-base-limegreen);
-  transition: all 0.5s ease;
-  font-weight: bold;
-  font-size: 16px;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  cursor: pointer;
-}
-.button:hover {
-  background-color: var(--color-sec-darklime);
-}
-
-.button--orange {
-  background-color: var(--color-base-orange);
-  color: var(--color-base-text);
-}
-
-.button--yellow:hover {
-  background-color: var(--color-base-orange);
-}
-@media (min-width: 576px) {
-  .button {
-    margin: var(--space-sm) auto;
-    padding: 15px 25px;
-  }
 }
 
 /* ----------------------------- 
@@ -1639,5 +1555,88 @@ label {
 
   .g-heading1__jp {
     font-size: var(--r18px);
+  }
+}
+
+/* Buttons */
+a.g-button {
+  all: unset;
+  all: revert;
+}
+a.g-button::before {
+  content: none;
+}
+.g-button,
+a.g-button {
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  cursor: pointer;
+  color: var(--color-brand-white); /*var(--color-brand-brown); */
+  font-weight: 600;
+  font-size: var(--r18px);
+  text-decoration: none;
+}
+.g-button:focus {
+  outline: 0;
+  box-shadow: 0 0 0 2px var(--color-sec-focusblue);
+}
+.g-button.large {
+  padding: 12px 24px;
+  border-radius: 100px;
+}
+.g-button.medium {
+  padding: 8px 16px;
+  border-radius: 100px;
+}
+.g-button.small {
+  padding: 6px 12px;
+  border-radius: 100px;
+}
+.g-button.primary {
+  background-color: var(--color-brand-green);
+}
+.g-button.primary:hover {
+  background-color: var(--color-sec-darklime);
+}
+.g-button.secondary {
+  background-color: var(--color-brand-orange);
+}
+.g-button.secondary:hover {
+  background-color: var(--color-sec-darkorange);
+}
+
+.button {
+  margin: var(--space-lg) auto;
+  display: block;
+  border: 0;
+  color: var(--color-base-text);
+  padding: 10px 20px;
+  border-radius: 100px;
+  background-color: var(--color-base-limegreen);
+  transition: all 0.5s ease;
+  font-weight: bold;
+  font-size: 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  cursor: pointer;
+}
+.button:hover {
+  background-color: var(--color-sec-darklime);
+}
+
+.button--orange {
+  background-color: var(--color-base-orange);
+  color: var(--color-base-text);
+}
+
+.button--yellow:hover {
+  background-color: var(--color-base-orange);
+}
+@media (min-width: 576px) {
+  .button {
+    margin: var(--space-sm) auto;
+    padding: 15px 25px;
   }
 }
