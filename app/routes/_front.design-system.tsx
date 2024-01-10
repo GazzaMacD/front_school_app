@@ -10,7 +10,7 @@ export const links: LinksFunction = () => [
 
 export default function DesignSystem() {
   return (
-    <div>
+    <div className="ds">
       <h1 className="ds-h1">Design System</h1>
       <section className="container">
         <h2>Buttons</h2>
@@ -71,6 +71,35 @@ export default function DesignSystem() {
               S ButtonLink Small
             </ButtonLink>
           </article>
+        </div>
+      </section>
+      <section>
+        <h2>Colors</h2>
+        <div className="ds-half-wrapper">
+          <div className="ds-brown ds-half">
+            <h2 className="green">This is an h2 in green</h2>
+            <p className="green">This is a very short paragraph in green</p>
+            <ButtonLink to="https://duckduckgo.com">
+              P ButtonLink Large
+            </ButtonLink>
+            <h2 className="orange">This is an h2 in orange</h2>
+            <p className="orange">This is a very short paragraph in orange </p>
+            <ButtonLink to="https://duckduckgo.com" variant="secondary">
+              S ButtonLink Large
+            </ButtonLink>
+          </div>
+          <div className="ds-cream ds-half">
+            <h2 className="green">This is an h2 in green</h2>
+            <p className="green">This is a very short paragraph in green</p>
+            <ButtonLink to="https://duckduckgo.com">
+              P ButtonLink Large
+            </ButtonLink>
+            <h2 className="orange">This is an h2 in orange</h2>
+            <p className="orange">This is a very short paragraph in orange </p>
+            <ButtonLink to="https://duckduckgo.com" variant="secondary">
+              S ButtonLink Large
+            </ButtonLink>
+          </div>
         </div>
       </section>
     </div>
