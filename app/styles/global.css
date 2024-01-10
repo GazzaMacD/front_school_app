@@ -3,25 +3,27 @@
 BEM - prefix identifiers for class names accross the app
 g- | global styles
 
------------------
+========
 Media queries
 - rem assumed at 16px == 1rem
------------------
-small
-- any code not in media query
+- Mobile first assumed 
+- 3 break points
 
-medium
-@media (min-width: 36rem) {
+--------
+medium (768px / 16 = 48rem)
+@media (min-width: 48rem) {
 }
-
-large
-@media (min-width: 62rem) {
+--------
+large (1024px / 16 = 64rem)
+@media (min-width: 64rem) {
+  ...
 }
-
-extra large
-@media (min-width: 90rem) {
+--------
+extra-large (1536px / 16 = 96rem)
+@media (min-width: 96rem) {
+  ...
 }
-*/
+========
 
 /*
 * ======== CSS Resets =======

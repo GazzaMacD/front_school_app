@@ -18,12 +18,36 @@ export const links: LinksFunction = () => [
 ];
 
 export const loader = async () => {
+  const homeUrl = `${BASE_API_URL}/pages/?type=home.HomePage&fields=*`;
+  const testimonialsUrl = `${BASE_API_URL}/pages/?type=testimonials.TestimonialDetailPage&fields=slug,customer_name,customer_image,occupation,organization_name,comment&limit=2`;
+  const urls = [homeUrl, testimonialsUrl];
   try {
-    const testimonialsUrl = `${BASE_API_URL}/pages/?type=testimonials.TestimonialDetailPage&fields=slug,customer_name,customer_image,occupation,organization_name,comment&limit=10`;
-    const testimonialRes = await fetch(testimonialsUrl);
-    const testimonialData = await testimonialRes.json();
+    const [home, testimonials] = await Promise.all(
+      urls.map((url) =>
+        fetch(url)
+          .then(async (r) => {
+            return {
+              data: await r.json(),
+              status: r.status,
+              ok: r.ok,
+            };
+          })
+          .then((data) => {
+            return {
+              data: data.data,
+              status: data.status,
+              ok: data.ok,
+              url: url,
+            };
+          })
+          .catch((error) => ({ error, url }))
+      )
+    );
+    /* NOTE - ERROR HANDLING HERE */
+
     return json({
-      testimonials: testimonialData.items,
+      home: home.data.items[0],
+      testimonials: testimonials.data.items,
     });
   } catch (error) {
     throw new Response("sorry, that is a 500", { status: 500 });
@@ -33,8 +57,9 @@ export const loader = async () => {
 // --------------------------------//
 // client side functions
 export default function Index() {
-  const { testimonials } = useLoaderData<typeof loader>();
+  const { home, testimonials } = useLoaderData<typeof loader>();
   const ENV = getGlobalEnv();
+
   return (
     <>
       <section id="video-banner">
@@ -60,18 +85,26 @@ export default function Index() {
         </div>
       </section>
 
-      <hr></hr>
-      <section id="popular">
-        <HeadingOne
-          enText="Why learn with us"
-          jpText="エクスリンガルの強みか"
-          align="left"
-        />
-        <p>
-          ------------- Picture here of team with explanation of our philosophy
-          on learning languages and link or button to about us page
-          -------------
-        </p>
+      <section id="why">
+        <div className="container ho-why">
+          <div className="ho-why__img-wrapper">
+            <div>
+              <img
+                src={`${ENV.BASE_BACK_URL}${home.why_image.medium.src}`}
+                alt={home.why_image.medium.alt}
+              />
+            </div>
+          </div>
+          <div>
+            <HeadingOne
+              enText={home.why_en_title}
+              jpText={home.why_jp_title}
+              align="left"
+            />
+
+            <div dangerouslySetInnerHTML={{ __html: home.why_content }}></div>
+          </div>
+        </div>
       </section>
 
       <hr></hr>
