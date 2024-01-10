@@ -59,7 +59,7 @@ export const loader = async () => {
 export default function Index() {
   const { home, testimonials } = useLoaderData<typeof loader>();
   const ENV = getGlobalEnv();
-  console.log(home);
+
   return (
     <>
       <section id="video-banner">
@@ -85,15 +85,9 @@ export default function Index() {
         </div>
       </section>
 
-      <hr></hr>
-      <section id="popular">
-        <HeadingOne
-          enText={home.why_en_title}
-          jpText={home.why_jp_title}
-          align="left"
-        />
-        <div>
-          <div>
+      <section id="why">
+        <div className="container ho-why">
+          <div className="ho-why__img-wrapper">
             <div>
               <img
                 src={`${ENV.BASE_BACK_URL}${home.why_image.medium.src}`}
@@ -101,7 +95,15 @@ export default function Index() {
               />
             </div>
           </div>
-          <div dangerouslySetInnerHTML={{ __html: home.why_content }}></div>
+          <div>
+            <HeadingOne
+              enText={home.why_en_title}
+              jpText={home.why_jp_title}
+              align="left"
+            />
+
+            <div dangerouslySetInnerHTML={{ __html: home.why_content }}></div>
+          </div>
         </div>
       </section>
 

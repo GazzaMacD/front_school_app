@@ -76,31 +76,27 @@ Home Video Banner
     gap: var(--space-xxl);
   }
 }
-/* ----------------------------- 
-Our services
--------------------------------- */
-#why {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 100px auto auto auto auto;
-  margin: 200px 0;
-}
-.why__heading {
-  grid-column: 2/12;
-  grid-row: 1 / 2;
-}
-.why__wrapper {
-  grid-column: 2/12;
-  grid-row: 4/6;
+/**
+* Why study with us 
+*/
+.ho-why {
   display: flex;
-  justify-content: space-between;
 }
-.why-point {
-  height: 350px;
-  width: 350px;
-  border-radius: 200px;
-  background-color: white;
+@media (min-width: 48rem) {
+  .ho-why {
+    flex-direction: row;
+    gap: var(--r20px);
+  }
+  .ho-why > div {
+    flex: 1;
+  }
+  .ho-why__img-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 }
+
 /* ----------------------------- 
 Our services
 -------------------------------- */
