@@ -1538,15 +1538,13 @@ label {
   display: block;
   font-family: var(--font-jp-primary);
   font-weight: 600;
-  text-align: left;
   color: var(--color-brand-brown);
 }
 .g-heading1.center {
   text-align: center;
 }
-
-.g-heading1__jp.center {
-  text-align: center;
+.g-heading1.dark > span {
+  color: var(--color-brand-white);
 }
 
 @media (min-width: 62rem) {

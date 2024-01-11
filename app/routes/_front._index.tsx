@@ -100,6 +100,7 @@ export default function Index() {
               enText={home.why_en_title}
               jpText={home.why_jp_title}
               align="left"
+              bkground="light"
             />
 
             <div dangerouslySetInnerHTML={{ __html: home.why_content }}></div>
@@ -107,20 +108,43 @@ export default function Index() {
         </div>
       </section>
 
-      <hr></hr>
-      <section id="popular">
-        <HeadingOne
-          enText="Our Services"
-          jpText="エクスリンガルのサービス"
-          align="left"
-        />
-        <p>
-          -------- Our 4 main Servics here with brief, attractive explanation of
-          each service with link button to relevant pages 1. Business English
-          learning 2. General English learning 3. English Exam preparation 4.
-          Language learning experiences (education events where use english to
-          teach and communicate) -------------
-        </p>
+      <section id="services">
+        <div className="ho-services-swoosh">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path
+              fill="#584019"
+              fill-opacity="1"
+              d="M0,288L80,256C160,224,320,160,480,154.7C640,149,800,203,960,213.3C1120,224,1280,192,1360,176L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"
+            ></path>
+          </svg>
+        </div>
+        <div className="ho-services">
+          <HeadingOne
+            enText={home.service_en_title}
+            jpText={home.service_jp_title}
+            align="left"
+            bkground="dark"
+          />
+          <div className="ho-services__cards">
+            {home.service_cards.map((service) => {
+              return (
+                <article key={service.id} className="ho-services__card">
+                  <div className="ho-services__card__img-wrap">
+                    <img
+                      className="ho-services__card__img"
+                      src={`${ENV.BASE_BACK_URL}${service.value.image.medium.src}`}
+                      alt={service.value.image.medium.alt}
+                    />
+                  </div>
+                  <div className="ho-services__details">
+                    <h3>{service.value.title}</h3>
+                    <p>{service.value.text}</p>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </div>
       </section>
 
       <hr></hr>
@@ -129,6 +153,7 @@ export default function Index() {
           enText="Customer Testimonials"
           jpText="お客様の声"
           align="center"
+          bkground="light"
         />
         <div>
           <p>
@@ -188,6 +213,7 @@ export default function Index() {
           enText="Popular Price Plans"
           jpText="人気プランの料金"
           align="left"
+          bkground="light"
         />
         <p>
           -------- Our most popular 3 class prices in table form with link or
