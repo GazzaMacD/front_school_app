@@ -20,9 +20,10 @@ export const links: LinksFunction = () => [
 export const loader = async () => {
   const homeUrl = `${BASE_API_URL}/pages/?type=home.HomePage&fields=*`;
   const testimonialsUrl = `${BASE_API_URL}/pages/?type=testimonials.TestimonialDetailPage&fields=slug,customer_name,customer_image,occupation,organization_name,comment&limit=2`;
-  const urls = [homeUrl, testimonialsUrl];
+  const blogslUrl = `${BASE_API_URL}/pages/?order=-published_date&limit=8&type=lessons.LessonDetailPage&fields=_,slug,display_title,display_tagline,published_date,title,header_image`;
+  const urls = [homeUrl, testimonialsUrl, blogslUrl];
   try {
-    const [home, testimonials] = await Promise.all(
+    const [home, testimonials, blogs] = await Promise.all(
       urls.map((url) =>
         fetch(url)
           .then(async (r) => {
@@ -44,10 +45,12 @@ export const loader = async () => {
       )
     );
     /* NOTE - ERROR HANDLING HERE */
+    console.log(blogs);
 
     return json({
       home: home.data.items[0],
       testimonials: testimonials.data.items,
+      blogs: blogs.data.items,
     });
   } catch (error) {
     throw new Response("sorry, that is a 500", { status: 500 });
@@ -57,8 +60,9 @@ export const loader = async () => {
 // --------------------------------//
 // client side functions
 export default function Index() {
-  const { home, testimonials } = useLoaderData<typeof loader>();
+  const { home, testimonials, blogs } = useLoaderData<typeof loader>();
   const ENV = getGlobalEnv();
+  console.log(blogs);
 
   return (
     <>
@@ -113,7 +117,7 @@ export default function Index() {
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
             <path
               fill="#584019"
-              fill-opacity="1"
+              fillOpacity="1"
               d="M0,288L80,256C160,224,320,160,480,154.7C640,149,800,203,960,213.3C1120,224,1280,192,1360,176L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"
             ></path>
           </svg>
