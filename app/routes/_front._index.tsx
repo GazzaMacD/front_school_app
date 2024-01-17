@@ -1,6 +1,13 @@
 import type { LinksFunction, V2_MetaFunction } from "@remix-run/node";
+import * as React from "react";
 import { json } from "@remix-run/node";
+import swipperStyles from "swiper/css";
+import swipperNavStyles from "swiper/css/navigation";
 import { Link, useLoaderData } from "@remix-run/react";
+import { FaArrowRightLong } from "react-icons/fa6";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+
 import homeStyles from "../styles/home.css";
 import { getTitle } from "~/common/utils";
 import { BASE_API_URL } from "~/common/constants.server";
@@ -14,13 +21,15 @@ export const meta: V2_MetaFunction = () => {
 };
 
 export const links: LinksFunction = () => [
+  { rel: "stylesheet", href: swipperNavStyles },
+  { rel: "stylesheet", href: swipperStyles },
   { rel: "stylesheet", href: homeStyles },
 ];
 
 export const loader = async () => {
   const homeUrl = `${BASE_API_URL}/pages/?type=home.HomePage&fields=*`;
   const testimonialsUrl = `${BASE_API_URL}/pages/?type=testimonials.TestimonialDetailPage&fields=slug,customer_name,customer_image,occupation,organization_name,comment&limit=2`;
-  const blogslUrl = `${BASE_API_URL}/pages/?order=-published_date&limit=8&type=lessons.LessonDetailPage&fields=_,slug,display_title,display_tagline,published_date,title,header_image`;
+  const blogslUrl = `${BASE_API_URL}/pages/?order=-published_date&limit=8&type=lessons.LessonDetailPage&fields=_,id,slug,display_title,display_tagline,published_date,title,header_image`;
   const urls = [homeUrl, testimonialsUrl, blogslUrl];
   try {
     const [home, testimonials, blogs] = await Promise.all(
@@ -45,7 +54,6 @@ export const loader = async () => {
       )
     );
     /* NOTE - ERROR HANDLING HERE */
-    console.log(blogs);
 
     return json({
       home: home.data.items[0],
@@ -62,7 +70,32 @@ export const loader = async () => {
 export default function Index() {
   const { home, testimonials, blogs } = useLoaderData<typeof loader>();
   const ENV = getGlobalEnv();
-  console.log(blogs);
+  const [windowSize, setWindowSize] = React.useState(() => {
+    if (typeof window !== "undefined") {
+      return window.innerWidth;
+    }
+    return 0;
+  });
+
+  const handleWindowResize = React.useCallback((event) => {
+    setWindowSize(window.innerWidth);
+  }, []);
+
+  React.useEffect(() => {
+    window.addEventListener("resize", handleWindowResize);
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, [handleWindowResize]);
+
+  let sliderSpace =
+    windowSize > 1536
+      ? 120
+      : windowSize > 1024
+      ? 80
+      : windowSize > 768
+      ? 40
+      : 20;
 
   return (
     <>
@@ -227,7 +260,12 @@ export default function Index() {
 
       <hr></hr>
       <section id="teachers">
-        <HeadingOne enText="Teachers" jpText="講師紹介" align="center" />
+        <HeadingOne
+          enText="Teachers"
+          jpText="講師紹介"
+          align="center"
+          bkground="light"
+        />
         <p>Introduce staff here</p>
       </section>
 
@@ -236,15 +274,59 @@ export default function Index() {
           enText="Blog Lessons"
           jpText="読んで学べるブログ"
           align="left"
+          bkground="light"
         />
-        <p>
-          List of top 5 / 7 latest blog lesson posts where we teach for free to
-          our community
-        </p>
-        <p>
-          + Area for form to subscribe to our email to stay uptodate with our
-          latest learning posts and instagram learning
-        </p>
+        <div className="ho-blog__slider-wrapper">
+          <Swiper
+            // install Swiper modules
+            modules={[Navigation]}
+            spaceBetween={sliderSpace}
+            slidesPerView={3}
+            navigation
+            pagination={{ clickable: true }}
+            scrollbar={{ draggable: true }}
+            onSwiper={(swiper) => console.log(swiper)}
+            onSlideChange={() => console.log("slide change")}
+          >
+            {blogs.map((blog, i) => {
+              const date = new Date(blog.published_date);
+              return (
+                <SwiperSlide key={blog.id}>
+                  <Link
+                    className="ho-blog-link"
+                    to={`/blog-lessons/${blog.meta.slug}`}
+                  >
+                    <div className="ho-blog__card">
+                      <div className="ho-blog__card-img-wrapper">
+                        <img
+                          className="ho-blog__card-img"
+                          src={`${ENV.BASE_BACK_URL}${blog.header_image.medium.src}`}
+                          alt={blog.header_image.medium.alt}
+                        />
+                        <div className="ho-blog__card-overlay">
+                          <div className="ho-blog__card-overlay-inner">
+                            <h3>Read Blog Lesson</h3>
+                            <p>記事を読む</p>
+                            <FaArrowRightLong />
+                          </div>
+                        </div>
+                      </div>
+                      <div className="ho-blog__card-details">
+                        <p>
+                          {`${date.getFullYear()}.${
+                            date.getMonth() + 1
+                          }.${date.getDate()}`}{" "}
+                          <span>blog lesson</span>
+                        </p>
+                        <h3>{blog.display_title}</h3>
+                      </div>
+                    </div>
+                  </Link>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        </div>
       </section>
     </>
   );
