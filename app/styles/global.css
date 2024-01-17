@@ -586,7 +586,7 @@ h3,
 h4,
 form,
 legend {
-  color: var(--color-base-green);
+  color: var(--color-brand-brown);
   line-height: var(--heading-line-height);
 }
 /* heading & text styles */
