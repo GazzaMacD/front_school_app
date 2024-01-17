@@ -9,6 +9,16 @@ declare global {
   }
 }
 /*
+ * Colors
+ */
+export type TBrandColors =
+  | "white"
+  | "cream"
+  | "beige"
+  | "brown"
+  | "green"
+  | "orange";
+/*
  * Base Pages from Wagtail
  */
 

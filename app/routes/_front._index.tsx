@@ -10,6 +10,7 @@ import { Navigation } from "swiper/modules";
 
 import homeStyles from "../styles/home.css";
 import { getTitle } from "~/common/utils";
+import { Swoosh1 } from "~/components/swooshes";
 import { BASE_API_URL } from "~/common/constants.server";
 import { getGlobalEnv } from "~/common/utils";
 import { ButtonLink } from "~/components/buttons";
@@ -146,15 +147,7 @@ export default function Index() {
       </section>
 
       <section id="services">
-        <div className="ho-services-swoosh">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-            <path
-              fill="#584019"
-              fillOpacity="1"
-              d="M0,288L80,256C160,224,320,160,480,154.7C640,149,800,203,960,213.3C1120,224,1280,192,1360,176L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"
-            ></path>
-          </svg>
-        </div>
+        <Swoosh1 backColor="cream" swooshColor="brown" />
         <div className="ho-services">
           <HeadingOne
             enText={home.service_en_title}
@@ -270,63 +263,66 @@ export default function Index() {
       </section>
 
       <section id="blog-lessons">
-        <HeadingOne
-          enText="Blog Lessons"
-          jpText="読んで学べるブログ"
-          align="left"
-          bkground="light"
-        />
-        <div className="ho-blog__slider-wrapper">
-          <Swiper
-            // install Swiper modules
-            modules={[Navigation]}
-            spaceBetween={sliderSpace}
-            slidesPerView={3}
-            navigation
-            pagination={{ clickable: true }}
-            scrollbar={{ draggable: true }}
-            onSwiper={(swiper) => console.log(swiper)}
-            onSlideChange={() => console.log("slide change")}
-          >
-            {blogs.map((blog, i) => {
-              const date = new Date(blog.published_date);
-              return (
-                <SwiperSlide key={blog.id}>
-                  <Link
-                    className="ho-blog-link"
-                    to={`/blog-lessons/${blog.meta.slug}`}
-                  >
-                    <div className="ho-blog__card">
-                      <div className="ho-blog__card-img-wrapper">
-                        <img
-                          className="ho-blog__card-img"
-                          src={`${ENV.BASE_BACK_URL}${blog.header_image.medium.src}`}
-                          alt={blog.header_image.medium.alt}
-                        />
-                        <div className="ho-blog__card-overlay">
-                          <div className="ho-blog__card-overlay-inner">
-                            <h3>Read Blog Lesson</h3>
-                            <p>記事を読む</p>
-                            <FaArrowRightLong />
+        <div className="ho-blog-lessons">
+          <HeadingOne
+            enText="Blog Lessons"
+            jpText="読んで学べるブログ"
+            align="left"
+            bkground="light"
+          />
+          <div className="ho-blog__slider-wrapper">
+            <Swiper
+              // install Swiper modules
+              modules={[Navigation]}
+              spaceBetween={sliderSpace}
+              slidesPerView={3}
+              navigation
+              pagination={{ clickable: true }}
+              scrollbar={{ draggable: true }}
+              onSwiper={(swiper) => console.log(swiper)}
+              onSlideChange={() => console.log("slide change")}
+            >
+              {blogs.map((blog, i) => {
+                const date = new Date(blog.published_date);
+                return (
+                  <SwiperSlide key={blog.id}>
+                    <Link
+                      className="ho-blog-link"
+                      to={`/blog-lessons/${blog.meta.slug}`}
+                    >
+                      <div className="ho-blog__card">
+                        <div className="ho-blog__card-img-wrapper">
+                          <img
+                            className="ho-blog__card-img"
+                            src={`${ENV.BASE_BACK_URL}${blog.header_image.medium.src}`}
+                            alt={blog.header_image.medium.alt}
+                          />
+                          <div className="ho-blog__card-overlay">
+                            <div className="ho-blog__card-overlay-inner">
+                              <h3>Read Blog Lesson</h3>
+                              <p>記事を読む</p>
+                              <FaArrowRightLong />
+                            </div>
                           </div>
                         </div>
+                        <div className="ho-blog__card-details">
+                          <p>
+                            {`${date.getFullYear()}.${
+                              date.getMonth() + 1
+                            }.${date.getDate()}`}{" "}
+                            <span>blog lesson</span>
+                          </p>
+                          <h3>{blog.display_title}</h3>
+                        </div>
                       </div>
-                      <div className="ho-blog__card-details">
-                        <p>
-                          {`${date.getFullYear()}.${
-                            date.getMonth() + 1
-                          }.${date.getDate()}`}{" "}
-                          <span>blog lesson</span>
-                        </p>
-                        <h3>{blog.display_title}</h3>
-                      </div>
-                    </div>
-                  </Link>
-                </SwiperSlide>
-              );
-            })}
-          </Swiper>
+                    </Link>
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
+          </div>
         </div>
+        <Swoosh1 swooshColor="beige" backColor="white" />
       </section>
     </>
   );

@@ -421,11 +421,12 @@ template {
 /* Color Variables */
 :root {
   /* base brand colors */
-  --color-brand-green: hsl(104, 80%, 36%); /* <-- ok AA(102, 64%, 47%)*/
-  --color-brand-brown: hsl(37, 56%, 22%);
-  --color-brand-cream: hsl(44, 100%, 95%);
   --color-brand-white: hsl(0, 0%, 100%);
-  --color-brand-orange: hsl(30, 100%, 48%);
+  --color-brand-cream: hsl(44, 100%, 95%);
+  --color-brand-beige: hsl(38, 52%, 88%);
+  --color-brand-brown: hsl(37, 56%, 22%);
+  --color-brand-green: hsl(104, 80%, 36%);
+  --color-brand-orange: hsl(28, 100%, 48%);
   /* base brand colors */
   --color-base-green: #331a00; /* #35302a;  #133e16; #2f2426 */
   --color-base-limegreen: #74a12e; /* #89b72d; */
@@ -1556,6 +1557,11 @@ label {
   .g-heading1__jp {
     font-size: var(--r18px);
   }
+}
+
+/* Swooshes */
+.g-swoosh1 {
+  margin: -100px 0 -10px 0;
 }
 
 /* Buttons */
