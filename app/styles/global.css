@@ -1262,16 +1262,9 @@ Footer
 -------------------------------- */
 .footer {
   margin-top: auto;
-  background-color: var(--color-brand-cream);
+  background-color: var(--color-brand-beige);
   min-height: max-content;
   padding: 2rem 0;
-  border-top: 5px solid;
-  border-image: linear-gradient(
-      to right,
-      var(--color-base-limegreen) 50%,
-      var(--color-base-orange) 50%
-    )
-    100% 1;
 }
 .footer__top {
   display: flex;
