@@ -31,9 +31,11 @@ export const loader = async () => {
   const homeUrl = `${BASE_API_URL}/pages/?type=home.HomePage&fields=*`;
   const testimonialsUrl = `${BASE_API_URL}/pages/?type=testimonials.TestimonialDetailPage&fields=slug,customer_name,customer_image,occupation,organization_name,comment&limit=2`;
   const blogslUrl = `${BASE_API_URL}/pages/?order=-published_date&limit=8&type=lessons.LessonDetailPage&fields=_,id,slug,display_title,display_tagline,published_date,title,header_image`;
-  const urls = [homeUrl, testimonialsUrl, blogslUrl];
+  const teachersUrl = `${BASE_API_URL}/pages/?type=staff.StaffDetailPage&fields=_,id,title,slug,intro,profile_image&limit=4`;
+  console.log(teachersUrl);
+  const urls = [homeUrl, testimonialsUrl, teachersUrl, blogslUrl];
   try {
-    const [home, testimonials, blogs] = await Promise.all(
+    const [home, testimonials, teachers, blogs] = await Promise.all(
       urls.map((url) =>
         fetch(url)
           .then(async (r) => {
@@ -59,6 +61,7 @@ export const loader = async () => {
     return json({
       home: home.data.items[0],
       testimonials: testimonials.data.items,
+      teachers: teachers.data.items,
       blogs: blogs.data.items,
     });
   } catch (error) {
@@ -69,7 +72,8 @@ export const loader = async () => {
 // --------------------------------//
 // client side functions
 export default function Index() {
-  const { home, testimonials, blogs } = useLoaderData<typeof loader>();
+  const { home, testimonials, blogs, teachers } =
+    useLoaderData<typeof loader>();
   const ENV = getGlobalEnv();
   const [windowSize, setWindowSize] = React.useState(() => {
     if (typeof window !== "undefined") {
@@ -251,15 +255,46 @@ export default function Index() {
         </p>
       </section>
 
-      <hr></hr>
       <section id="teachers">
-        <HeadingOne
-          enText="Teachers"
-          jpText="講師紹介"
-          align="center"
-          bkground="light"
-        />
-        <p>Introduce staff here</p>
+        <div className="ho-teachers">
+          <HeadingOne
+            enText="Teachers"
+            jpText="講師紹介"
+            align="center"
+            bkground="light"
+          />
+          <div className="ho-teachers__list">
+            {teachers.map((teacher) => {
+              return (
+                <article key={teacher.id} className="ho-teacher__card">
+                  <Link
+                    to={`/staff/${teacher.meta.slug}`}
+                    className="ho-teacher__card-link"
+                  >
+                    <div className="ho-teacher__card-img-wrapper">
+                      <img
+                        className="ho-teacher__card-img"
+                        src={`${ENV.BASE_BACK_URL}${teacher.profile_image.thumbnail.src}`}
+                        alt={teacher.profile_image.thumbnail.alt}
+                      />
+                      <div className="ho-teacher__card-overlay">
+                        <div className="ho-teacher__card-overlay-inner">
+                          <h3>View Details</h3>
+                          <p>詳細を見る</p>
+                          <FaArrowRightLong />
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                  <div className="ho-teacher__card-details">
+                    <h3>{teacher.title}</h3>
+                    <p>{teacher.intro}</p>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </div>
       </section>
 
       <section id="blog-lessons">

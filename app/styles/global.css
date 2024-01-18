@@ -546,8 +546,8 @@ template {
       var(--text-scale-ratio)
   );
   /* base text values */
-  --text-line-height: 2;
-  --text-letter-spacing: 2.6px;
+  --text-line-height: 1.8;
+  --text-letter-spacing: 1px;
 
   /* heading values */
   --heading-line-height: 2;

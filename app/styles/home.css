@@ -174,7 +174,103 @@ Testimonials (test)
 .test-testimonial__link {
   font-size: var(--text-sm);
 }
+/**
+*    Teachers 
+*/
 
+.ho-teachers {
+  padding: 80px 120px 110px 120px;
+}
+.ho-teachers__list {
+  display: flex;
+  justify-content: space-between;
+  gap: 120px;
+}
+.ho-teacher__card {
+  width: min-content;
+}
+a.ho-teacher__card-link::before {
+  content: none;
+}
+.ho-teacher__card-img-wrapper {
+  position: relative;
+  border-radius: 50%;
+  width: max-content;
+  margin-bottom: 40px;
+}
+.ho-teacher__card-img {
+  border-radius: 50%;
+}
+.ho-teacher__card-overlay {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--color-brand-green);
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  opacity: 0%;
+  transform: scale(0);
+  transition: transform 0.3s ease-out, opacity 0.2s ease-in;
+  border-radius: 50%;
+  z-index: 4;
+}
+.ho-teacher__card-img-wrapper:hover .ho-teacher__card-overlay {
+  width: 100%;
+  cursor: pointer;
+  opacity: 90%;
+  transform: scale(1);
+}
+.ho-teacher__card-img-wrapper:hover .ho-teacher__card-overlay {
+  width: 100%;
+  cursor: pointer;
+}
+.ho-teacher__card-overlay-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--color-brand-white);
+  text-align: center;
+  opacity: 0;
+  transition: 0.2s opacity ease-in-out;
+}
+.ho-teacher__card-overlay-inner > h3 {
+  color: var(--color-brand-white);
+  font-family: var(--font-en-primary);
+  font-weight: 600;
+  font-size: calc(var(--r12px) + var(--r20px));
+  line-height: 1;
+  margin: 0;
+}
+.ho-teacher__card-overlay-inner > p:last-of-type {
+  font-weight: 700;
+  margin: 0;
+  line-height: 1;
+  padding: 40px 0;
+}
+.ho-teacher__card-overlay-inner > svg {
+  height: calc(var(--r20px) * 2);
+  width: calc(var(--r20px) * 2);
+}
+.ho-teacher__card-overlay:hover .ho-teacher__card-overlay-inner {
+  opacity: 100%;
+}
+.ho-teacher__card-details > h3 {
+  text-align: center;
+  font-size: calc(var(--r20px) + var(--r16px));
+  font-family: var(--font-en-primary);
+  font-weight: 600;
+}
+.ho-teacher__card-details > p {
+  text-align: center;
+  font-size: var(--r14px);
+}
 /**
 *   Blog lessons 
 */
@@ -247,7 +343,7 @@ a.ho-blog-link::before {
 .ho-blog__card-img-wrapper:hover .ho-blog__card-overlay {
   width: 100%;
   cursor: pointer;
-  opacity: 100%;
+  opacity: 90%;
 }
 .ho-blog__card-img-wrapper:hover .ho-blog__card-overlay {
   width: 100%;
