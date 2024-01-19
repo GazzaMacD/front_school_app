@@ -127,53 +127,64 @@ Home Video Banner
 Testimonials (test)
 -------------------------------- */
 #testimonials {
-  margin-bottom: var(--space-xxl);
+  padding: 180px 0 120px 0;
 }
-.test-students {
+.ho-test {
   display: flex;
+  gap: 100px;
+  padding: 80px 0;
+  position: relative;
 }
-.test-testimonial {
-  width: 350px;
-  height: 250px;
-  border-radius: var(--radius-sm);
-  background-color: var(--color-base-white);
-  box-shadow: 1px 1px 5px 1px var(--color-shadow);
-  padding: var(--space-md);
+.ho-test > div {
+  flex: 1;
 }
-.test-testimonial__header {
+.ho-test:last-of-type {
+  flex-direction: row-reverse;
+}
+.ho-test__detail {
   display: flex;
-  gap: 10px;
+  flex-direction: column;
+  justify-content: center;
 }
-.test-testimonial__headimage {
-  flex: 0 0 30%;
+.ho-test__detail__lead {
+  font-size: calc(var(--r20px) + var(--r16px));
+  font-weight: 600;
+  position: relative;
 }
-.test-testimonial__image {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  margin: 0 auto;
+.ho-test__detail__lead::before {
+  content: "“";
+  position: absolute;
+  color: var(--color-brand-beige);
+  font-size: calc(var(--r10px) * 20);
+  z-index: -1;
+  line-height: 1;
+  top: -40px;
+  left: -55px;
 }
-.test-testimonial__headtext {
-  flex: 0 0 70%;
+.ho-test__detail__person {
+  font-size: var(--r18px);
+  font-weight: 600;
 }
-.test-testimonial__name {
-  margin: 0;
+.ho-test__detail__person > span {
+  padding-left: var(--r18px);
 }
-.test-testimonial__occu {
-  margin: 0;
-  font-size: var(--text-xs);
+.ho-test__detail__comment {
+  font-size: var(--r16px);
 }
-.test-testimonial__org {
-  margin: 0;
-  font-size: var(--text-xs);
+.ho-test__img {
+  border-radius: 80px;
 }
-.test-testimonial__comment {
-  margin: var(--space-sm) 0;
-  font-size: var(--text-sm);
+.ho-test__button-wrapper {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: auto;
 }
-.test-testimonial__link {
-  font-size: var(--text-sm);
+.ho-test:last-of-type .ho-test__button-wrapper {
+  right: auto;
+  left: 0;
 }
+
 /**
 *    Teachers 
 */
