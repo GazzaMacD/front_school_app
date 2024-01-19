@@ -1262,23 +1262,21 @@ Footer
 -------------------------------- */
 .footer {
   margin-top: auto;
-  background-color: var(--color-brand-cream);
+  background-color: var(--color-brand-beige);
   min-height: max-content;
   padding: 2rem 0;
-  border-top: 5px solid;
-  border-image: linear-gradient(
-      to right,
-      var(--color-base-limegreen) 50%,
-      var(--color-base-orange) 50%
-    )
-    100% 1;
 }
-.footer__top {
+.footer__inner {
   display: flex;
   padding-bottom: 2rem;
 }
 .footer__branding-col {
-  flex: 0 0 40%;
+  flex: 1 1 33%;
+  display: flex;
+  flex-direction: column;
+}
+.footer__branding-col {
+  flex: 1 0 50%;
   display: flex;
   flex-direction: column;
 }
@@ -1295,6 +1293,21 @@ Footer
 .footer__social-icon {
   width: 30px;
   height: 30px;
+}
+.footer__copyright {
+  padding-top: 20px;
+}
+.footer__copyright > p {
+  font-size: var(--r12px);
+  margin-bottom: 0;
+}
+.footer__col {
+  flex: 0 0 25%;
+}
+.footer__col > ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 .footer__col h3 {
   color: var(--color-brand-brown);
@@ -1317,14 +1330,6 @@ Footer
 .footer__col a::before,
 .footer__branding-col a::before {
   content: none;
-}
-.footer__bottom {
-  padding-top: 2rem;
-  border-top: 1px solid var(--color-brand-brown);
-}
-.footer__bottom p {
-  margin: 0;
-  color: var(--color-brand-brown);
 }
 
 /* ----------------------------- 
