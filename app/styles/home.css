@@ -177,12 +177,12 @@ Testimonials (test)
 .ho-test__button-wrapper {
   position: absolute;
   bottom: 0;
-  right: 0;
+  right: -85px;
   left: auto;
 }
 .ho-test:last-of-type .ho-test__button-wrapper {
   right: auto;
-  left: 0;
+  left: -85px;
 }
 
 /**

@@ -1616,6 +1616,56 @@ a.g-button {
 .g-button.secondary:hover {
   background-color: var(--color-sec-darkorange);
 }
+/* round button */
+a.g-round-button {
+  display: block;
+  position: relative;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+}
+a.g-round-button.orange {
+  background-color: var(--color-brand-orange);
+}
+a.g-round-button.green {
+  background-color: var(--color-brand-green);
+}
+a.g-round-button {
+  color: white;
+}
+a.g-round-button:before {
+  content: none;
+}
+.g-round-button > div {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  padding: 35px;
+}
+.g-round-button__en {
+  max-width: 150px;
+  font-family: var(--font-en-primary);
+  font-weight: 600;
+  font-size: calc(var(--r20px) + var(--r10px));
+  line-height: 1;
+  margin: 0;
+}
+.g-round-button__jp {
+  max-width: 180px;
+  font-family: var(--font-en-primary);
+  font-weight: 600;
+  font-size: var(--r14px);
+  line-height: 1;
+  margin: 0;
+}
+.g-round-button svg {
+  width: 40px;
+  height: 40px;
+}
 
 .button {
   margin: var(--space-lg) auto;

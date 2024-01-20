@@ -13,7 +13,7 @@ import { getTitle } from "~/common/utils";
 import { Swoosh1 } from "~/components/swooshes";
 import { BASE_API_URL } from "~/common/constants.server";
 import { getGlobalEnv } from "~/common/utils";
-import { ButtonLink } from "~/components/buttons";
+import { ButtonLink, RoundButtonLink } from "~/components/buttons";
 import { HeadingOne } from "~/components/headings";
 
 // server side functions
@@ -211,7 +211,14 @@ export default function Index() {
                       alt={t.testimonial.image.medium.alt}
                     />
                   </div>
-                  <div className="ho-test__button-wrapper">button</div>
+                  <div className="ho-test__button-wrapper">
+                    <RoundButtonLink
+                      to={`/testimonials/${t.testimonial.slug}`}
+                      en="Video Interview"
+                      jp="ビデオインタビューを見る"
+                      color="orange"
+                    />
+                  </div>
                 </article>
               );
             })}
