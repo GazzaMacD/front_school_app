@@ -184,6 +184,63 @@ Testimonials (test)
   right: auto;
   left: -85px;
 }
+/**
+*     Prices 
+*/
+.ho-prices {
+  margin-left: 120px;
+  padding: 160px 120px 200px 225px;
+  background-color: var(--color-brand-brown);
+  border-radius: 80px 0 0 80px;
+}
+.ho-price {
+  border: 1px solid var(--color-brand-white);
+  border-radius: var(--radius-medium);
+  padding: 50px;
+  width: min-content;
+}
+.ho-price > h3 {
+  color: var(--color-brand-white);
+  text-align: center;
+  font-family: var(--font-en-primary);
+  font-weight: 600;
+  font-size: calc(var(--r20px) + var(--r16px));
+  line-height: 1;
+  margin: 0 0 16px 0;
+}
+.ho-price > p {
+  color: var(--color-brand-white);
+  text-align: center;
+  font-family: var(--font-jp-primary);
+  font-weight: 600;
+  font-size: var(--r12px);
+  line-height: 1;
+  margin: 0 0 25px 0;
+}
+.ho-price > table {
+  border-collapse: collapse;
+}
+.ho-price > table > tr {
+  border-top: solid 1px var(--color-base-white);
+}
+.ho-price > table > tr > td {
+  padding: 20px 0 20px 0;
+  font-size: var(--r16px);
+  font-family: 600;
+}
+.ho-price > table > tr > td:nth-of-type(odd) {
+  color: var(--color-brand-orange);
+  text-align: left;
+  min-width: 260px;
+}
+.ho-price > table > tr > td:nth-of-type(even) {
+  color: var(--color-brand-white);
+  text-align: center;
+  display: flex;
+  min-width: 150px;
+  justify-content: center;
+  align-items: center;
+}
 
 /**
 *    Teachers 

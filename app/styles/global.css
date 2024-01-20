@@ -679,6 +679,8 @@ Design Elements
   --radius-base: 25px;
   --radius-sm: 15px;
   --radius-xs: 5px;
+  --radius-large: 80px;
+  --radius-medium: 40px;
 }
 
 /* ----------------------------- 
