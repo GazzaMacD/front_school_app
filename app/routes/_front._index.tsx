@@ -13,7 +13,7 @@ import { getTitle } from "~/common/utils";
 import { Swoosh1 } from "~/components/swooshes";
 import { BASE_API_URL } from "~/common/constants.server";
 import { getGlobalEnv } from "~/common/utils";
-import { ButtonLink } from "~/components/buttons";
+import { ButtonLink, RoundButtonLink } from "~/components/buttons";
 import { HeadingOne } from "~/components/headings";
 
 // server side functions
@@ -29,13 +29,11 @@ export const links: LinksFunction = () => [
 
 export const loader = async () => {
   const homeUrl = `${BASE_API_URL}/pages/?type=home.HomePage&fields=*`;
-  const testimonialsUrl = `${BASE_API_URL}/pages/?type=testimonials.TestimonialDetailPage&fields=slug,customer_name,customer_image,occupation,organization_name,comment&limit=2`;
   const blogslUrl = `${BASE_API_URL}/pages/?order=-published_date&limit=8&type=lessons.LessonDetailPage&fields=_,id,slug,display_title,display_tagline,published_date,title,header_image`;
   const teachersUrl = `${BASE_API_URL}/pages/?type=staff.StaffDetailPage&fields=_,id,title,slug,intro,profile_image&limit=4`;
-  console.log(teachersUrl);
-  const urls = [homeUrl, testimonialsUrl, teachersUrl, blogslUrl];
+  const urls = [homeUrl, teachersUrl, blogslUrl];
   try {
-    const [home, testimonials, teachers, blogs] = await Promise.all(
+    const [home, teachers, blogs] = await Promise.all(
       urls.map((url) =>
         fetch(url)
           .then(async (r) => {
@@ -60,7 +58,6 @@ export const loader = async () => {
 
     return json({
       home: home.data.items[0],
-      testimonials: testimonials.data.items,
       teachers: teachers.data.items,
       blogs: blogs.data.items,
     });
@@ -72,8 +69,7 @@ export const loader = async () => {
 // --------------------------------//
 // client side functions
 export default function Index() {
-  const { home, testimonials, blogs, teachers } =
-    useLoaderData<typeof loader>();
+  const { home, blogs, teachers } = useLoaderData<typeof loader>();
   const ENV = getGlobalEnv();
   const [windowSize, setWindowSize] = React.useState(() => {
     if (typeof window !== "undefined") {
@@ -181,66 +177,54 @@ export default function Index() {
         </div>
       </section>
 
-      <hr></hr>
-      <section id="testimonials" className="full-width-container">
-        <HeadingOne
-          enText="Customer Testimonials"
-          jpText="お客様の声"
-          align="center"
-          bkground="light"
-        />
-        <div>
-          <p>
-            --------testimonials from students with links to the whole page
-            which has video interview-------------
-          </p>
-          <div className="test-students">
-            {testimonials.length &&
-              testimonials.map((testimonial) => {
-                return (
-                  <article key={testimonial.id} className="test-testimonial">
-                    <header className="test-testimonial__header">
-                      <div className="test-testimonial__headimage">
-                        <img
-                          className="test-testimonial__image"
-                          src={`${ENV.BASE_BACK_URL}${testimonial.customer_image.thumbnail.src}`}
-                          alt={testimonial.customer_image.thumbnail.alt}
-                        />
-                      </div>
-                      <div className="test-testimonial__headtext">
-                        <h4 className="test-testimonial__name">
-                          {testimonial.customer_name}
-                        </h4>
-                        {testimonial.occupation && (
-                          <p className="test-testimonial__occu">
-                            {testimonial.occupation}
-                          </p>
-                        )}
-                        {testimonial.organization_name && (
-                          <p className="test-testimonial__org">
-                            {testimonial.organization_name}
-                          </p>
-                        )}
-                      </div>
-                    </header>
-                    <p className="test-testimonial__comment">
-                      {testimonial.comment.length > 40
-                        ? `${testimonial.comment.slice(0, 40)}...`
-                        : testimonial.comment}
-                      <Link
-                        className="test-testimonial__link"
-                        to={`/testimonials/${testimonial.meta.slug}`}
-                      >
-                        Read more and watch interview
-                      </Link>
+      <section id="testimonials">
+        <div className="ho-tests container">
+          <HeadingOne
+            enText={home.testimonial_en_title}
+            jpText={home.testimonial_jp_title}
+            align="center"
+            bkground="light"
+          />
+          <div>
+            {home.home_testimonials.map((t) => {
+              return (
+                <article className="ho-test" key={t.id}>
+                  <div className="ho-test__detail">
+                    <p className="ho-test__detail__lead">
+                      {t.testimonial.lead_sentence}
                     </p>
-                  </article>
-                );
-              })}
+                    <h3 className="ho-test__detail__person">
+                      {t.testimonial.occupation}
+                      <span>{t.testimonial.customer_name}</span>
+                    </h3>
+                    <div
+                      className="ho-test__detail__comment"
+                      dangerouslySetInnerHTML={{
+                        __html: t.testimonial.comment,
+                      }}
+                    />
+                  </div>
+                  <div className="ho-test__img-wrapper">
+                    <img
+                      className="ho-test__img"
+                      src={`${ENV.BASE_BACK_URL}${t.testimonial.image.medium.src}`}
+                      alt={t.testimonial.image.medium.alt}
+                    />
+                  </div>
+                  <div className="ho-test__button-wrapper">
+                    <RoundButtonLink
+                      to={`/testimonials/${t.testimonial.slug}`}
+                      en="Video Interview"
+                      jp="ビデオインタビューを見る"
+                      color="orange"
+                    />
+                  </div>
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>
-      <hr></hr>
 
       <section id="popular">
         <HeadingOne

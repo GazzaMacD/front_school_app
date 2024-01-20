@@ -1,4 +1,5 @@
 import { Link } from "@remix-run/react";
+import { FaArrowRightLong } from "react-icons/fa6";
 
 type TButtonProps = {
   to: string;
@@ -37,5 +38,22 @@ function ButtonLink({
     </Link>
   );
 }
+type TRoundButtonProps = {
+  to: string;
+  color: "orange" | "green";
+  jp: string;
+  en: string;
+};
+function RoundButtonLink({ to, color, jp, en }: TRoundButtonProps) {
+  return (
+    <Link to={to} className={`g-round-button ${color}`}>
+      <div>
+        <div className="g-round-button__en">{en}</div>
+        <div className="g-round-button__jp">{jp}</div>
+        <FaArrowRightLong />
+      </div>
+    </Link>
+  );
+}
 
-export { Button, ButtonLink };
+export { Button, ButtonLink, RoundButtonLink };
