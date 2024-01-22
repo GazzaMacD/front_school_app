@@ -427,10 +427,10 @@ template {
   --color-brand-brown: hsl(37, 56%, 22%);
   --color-brand-green: hsl(104, 80%, 36%);
   --color-brand-orange: hsl(28, 100%, 48%);
-  /* base brand colors */
-  --color-base-green: #331a00; /* #35302a;  #133e16; #2f2426 */
-  --color-base-limegreen: #74a12e; /* #89b72d; */
-  --color-base-cream: #fff8ee; /*#ffefd5; /* #ffe5b4; /*#fdfcf8; /*rgb(244, 241, 235);*/
+  /* base secondary brand colors */
+  --color-sec-lightbrown: hsl(36.99, 52.52%, 27.25%);
+
+  /*  OLD EXPERIMENTAL COLORS */
   --color-base-white: white;
   --color-base-orange: #e54e20; /* #f3460f;  #f06232; */
   --color-base-brown: #331a00; /*#35302a; /*#133e16; #2f2426; /* #341911 */
@@ -450,6 +450,9 @@ template {
 
   /* --color-base-cream: rgb(250, 245, 234); */
   /* --color-base-cream: #f5fdef; */
+  --color-base-green: #331a00; /* #35302a;  #133e16; #2f2426 */
+  --color-base-limegreen: #74a12e; /* #89b72d; */
+  --color-base-cream: #fff8ee; /*#ffefd5; /* #ffe5b4; /*#fdfcf8; /*rgb(244, 241, 235);*/
   --color-base-dbrown: rgb(58, 35, 0);
   --color-base-lbrown: rgb(109, 66, 0);
   --color-base-yellow: rgb(255, 193, 37);
@@ -679,6 +682,8 @@ Design Elements
   --radius-base: 25px;
   --radius-sm: 15px;
   --radius-xs: 5px;
+  --radius-large: 80px;
+  --radius-medium: 40px;
 }
 
 /* ----------------------------- 
@@ -1616,7 +1621,7 @@ a.g-button {
 .g-button.secondary:hover {
   background-color: var(--color-sec-darkorange);
 }
-/* round button */
+/* large round button */
 a.g-round-button {
   display: block;
   position: relative;
@@ -1665,6 +1670,45 @@ a.g-round-button:before {
 .g-round-button svg {
   width: 40px;
   height: 40px;
+}
+/* large bi-lingual button */
+a.g-lgbi-button-link {
+  display: block;
+  color: var(--color-brand-white);
+  width: min-content;
+}
+a.g-lgbi-button-link:before {
+  content: none;
+}
+.g-lgbi-button {
+  width: max-content;
+  padding: 40px 60px;
+  border-radius: var(--radius-medium);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.g-lgbi-button.orange {
+  background-color: var(--color-brand-orange);
+}
+.g-lgbi-button.green {
+  background-color: var(--color-brand-green);
+}
+.g-lgbi-button__en {
+  font-size: calc(var(--r12px) + var(--r20px));
+  font-family: var(--font-en-primary);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.g-lgbi-button__jp {
+  font-size: calc(var(--r14px));
+  font-family: var(--font-jp-primary);
+  font-weight: 600;
+}
+.g-lgbi-button svg {
+  width: 40px;
+  height: 40px;
+  margin-left: 60px;
 }
 
 .button {
