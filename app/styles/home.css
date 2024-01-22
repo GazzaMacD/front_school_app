@@ -187,16 +187,25 @@ Testimonials (test)
 /**
 *     Prices 
 */
+#prices {
+  margin-bottom: 160px;
+}
 .ho-prices {
   margin-left: 120px;
   padding: 160px 120px 200px 225px;
   background-color: var(--color-brand-brown);
   border-radius: 80px 0 0 80px;
+  position: relative;
 }
 
 /* price slider */
 .ho-prices__wrapper .swiper {
   padding: 100px 0 0 0;
+}
+.ho-prices__button-wrapper {
+  position: absolute;
+  bottom: -74px;
+  right: 120px;
 }
 .ho-prices__wrapper .swiper-button-prev {
   width: 60px;

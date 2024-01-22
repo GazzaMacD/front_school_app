@@ -56,4 +56,27 @@ function RoundButtonLink({ to, color, jp, en }: TRoundButtonProps) {
   );
 }
 
-export { Button, ButtonLink, RoundButtonLink };
+/* Large bilingual button  link*/
+
+type TLgBiButtonLinkProps = {
+  to: string;
+  color: "orange" | "green";
+  jp: string;
+  en: string;
+};
+
+function LgBiButtonLink({ to, color, jp, en }: TLgBiButtonLinkProps) {
+  return (
+    <Link to={to} className={`g-lgbi-button-link`}>
+      <div className={`g-lgbi-button ${color}`}>
+        <div className="g-lgbi-button__inner">
+          <div className="g-lgbi-button__en">{en}</div>
+          <div className="g-lgbi-button__jp">{jp}</div>
+        </div>
+        <FaArrowRightLong />
+      </div>
+    </Link>
+  );
+}
+
+export { Button, ButtonLink, RoundButtonLink, LgBiButtonLink };

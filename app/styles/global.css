@@ -1621,7 +1621,7 @@ a.g-button {
 .g-button.secondary:hover {
   background-color: var(--color-sec-darkorange);
 }
-/* round button */
+/* large round button */
 a.g-round-button {
   display: block;
   position: relative;
@@ -1670,6 +1670,45 @@ a.g-round-button:before {
 .g-round-button svg {
   width: 40px;
   height: 40px;
+}
+/* large bi-lingual button */
+a.g-lgbi-button-link {
+  display: block;
+  color: var(--color-brand-white);
+  width: min-content;
+}
+a.g-lgbi-button-link:before {
+  content: none;
+}
+.g-lgbi-button {
+  width: max-content;
+  padding: 40px 60px;
+  border-radius: var(--radius-medium);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.g-lgbi-button.orange {
+  background-color: var(--color-brand-orange);
+}
+.g-lgbi-button.green {
+  background-color: var(--color-brand-green);
+}
+.g-lgbi-button__en {
+  font-size: calc(var(--r12px) + var(--r20px));
+  font-family: var(--font-en-primary);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.g-lgbi-button__jp {
+  font-size: calc(var(--r14px));
+  font-family: var(--font-jp-primary);
+  font-weight: 600;
+}
+.g-lgbi-button svg {
+  width: 40px;
+  height: 40px;
+  margin-left: 60px;
 }
 
 .button {

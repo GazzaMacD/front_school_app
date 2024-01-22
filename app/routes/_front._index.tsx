@@ -13,7 +13,11 @@ import { getTitle } from "~/common/utils";
 import { Swoosh1 } from "~/components/swooshes";
 import { BASE_API_URL } from "~/common/constants.server";
 import { getGlobalEnv } from "~/common/utils";
-import { ButtonLink, RoundButtonLink } from "~/components/buttons";
+import {
+  ButtonLink,
+  RoundButtonLink,
+  LgBiButtonLink,
+} from "~/components/buttons";
 import { HeadingOne } from "~/components/headings";
 import { getDisplay } from "~/common/utils";
 
@@ -314,6 +318,14 @@ export default function Index() {
                 );
               })}
             </Swiper>
+          </div>
+          <div className="ho-prices__button-wrapper">
+            <LgBiButtonLink
+              to="/class-prices"
+              color="orange"
+              jp="すべてのプランを見る"
+              en="View All Plans"
+            />
           </div>
         </div>
       </section>
