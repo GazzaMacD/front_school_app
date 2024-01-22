@@ -807,6 +807,7 @@ Global Header
 .g-header__inner {
   display: flex;
   width: 100%;
+  padding: 0 60px;
   align-items: center;
   justify-content: space-between;
 }
@@ -836,19 +837,35 @@ Global Header
 }
 
 /* right menu*/
-.right-menu {
+.g-right-menu {
   padding: 0 115px 0 0;
 }
-.right-menu__nav {
+.g-right-menu__nav {
   display: none;
 }
-.right-menu__list {
+.g-right-menu__list {
   display: flex;
   align-items: center;
   gap: var(--space-md);
 }
-.right-menu__link,
-.right-menu__link:link {
+
+a.g-right-menu__phone {
+  font-family: var(--font-en-primary);
+  font-weight: 600;
+  color: var(--color-brand-brown);
+  display: flex;
+  align-items: center;
+}
+a.g-right-menu__phone:before {
+  content: none;
+}
+.g-right-menu__phone > svg {
+  margin-right: 10px;
+  width: 25px;
+  height: 25px;
+}
+.g-right-menu__link,
+.g-right-menu__link:link {
   position: relative;
   color: var(--color-base-green);
   text-decoration: none;
@@ -856,8 +873,8 @@ Global Header
   align-items: center;
   padding: 5px 0 5px 0;
 }
-.right-menu__link::before,
-.right-menu__link:link::before {
+.g-right-menu__link::before,
+.g-right-menu__link:link::before {
   content: "";
   position: absolute;
   width: 100%;
@@ -871,14 +888,14 @@ Global Header
   transform: scaleX(0);
   transition: transform 0.3s ease-in-out;
 }
-.right-menu__link:hover {
+.g-right-menu__link:hover {
   color: var(--color-base-green);
 }
-.right-menu__link:hover::before {
+.g-right-menu__link:hover::before {
   transform-origin: left;
   transform: scaleX(1);
 }
-.right-menu__link > span {
+.g-right-menu__link > span {
   padding: 0 0 0 10px;
 }
 a.right-menu__register-btn {
@@ -1173,7 +1190,7 @@ a.right-menu__register-btn:hover {
 }
 
 @media (min-width: 992px) {
-  .right-menu__nav {
+  .g-right-menu__nav {
     display: block;
   }
   /* hamburger */
@@ -1208,7 +1225,13 @@ a.right-menu__register-btn:hover {
   }
 }
 
-@media (min-width: 1450px) {
+@media (min-width: 1024px) {
+  .g-right-menu__phone {
+    font-family: var(--font-en-primary);
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--color-brand-brown);
+  }
 }
 
 /* ----------------------------- 

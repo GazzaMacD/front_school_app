@@ -1,6 +1,7 @@
 import { cssBundleHref } from "@remix-run/css-bundle";
 import { type LinksFunction, type LoaderArgs, json } from "@remix-run/node";
 import { AiFillPhone } from "react-icons/ai";
+import { FaMobileAlt } from "react-icons/fa";
 import {
   FaInstagram,
   FaFacebookF,
@@ -59,12 +60,15 @@ export default function App() {
                   エクスリンガル｜Experts in Language Learning
                 </div>
               </div>
-              <div className="right-menu">
-                <nav className="right-menu__nav">
-                  <ul className="right-menu__list">
-                    <li className="right-menu__item">
-                      <a className="right-menu__link" href="tel:0561-42-5707">
-                        <AiFillPhone />
+              <div className="g-right-menu">
+                <nav className="g-right-menu__nav">
+                  <ul className="g-right-menu__list">
+                    <li className="g-right-menu__item">
+                      <a
+                        className="g-right-menu__phone"
+                        href="tel:0561-42-5707"
+                      >
+                        <FaMobileAlt />
                         <span>0561-42-5707</span>
                       </a>
                     </li>
