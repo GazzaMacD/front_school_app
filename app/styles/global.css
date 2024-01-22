@@ -427,10 +427,10 @@ template {
   --color-brand-brown: hsl(37, 56%, 22%);
   --color-brand-green: hsl(104, 80%, 36%);
   --color-brand-orange: hsl(28, 100%, 48%);
-  /* base brand colors */
-  --color-base-green: #331a00; /* #35302a;  #133e16; #2f2426 */
-  --color-base-limegreen: #74a12e; /* #89b72d; */
-  --color-base-cream: #fff8ee; /*#ffefd5; /* #ffe5b4; /*#fdfcf8; /*rgb(244, 241, 235);*/
+  /* base secondary brand colors */
+  --color-sec-lightbrown: hsl(36.99, 52.52%, 27.25%);
+
+  /*  OLD EXPERIMENTAL COLORS */
   --color-base-white: white;
   --color-base-orange: #e54e20; /* #f3460f;  #f06232; */
   --color-base-brown: #331a00; /*#35302a; /*#133e16; #2f2426; /* #341911 */
@@ -450,6 +450,9 @@ template {
 
   /* --color-base-cream: rgb(250, 245, 234); */
   /* --color-base-cream: #f5fdef; */
+  --color-base-green: #331a00; /* #35302a;  #133e16; #2f2426 */
+  --color-base-limegreen: #74a12e; /* #89b72d; */
+  --color-base-cream: #fff8ee; /*#ffefd5; /* #ffe5b4; /*#fdfcf8; /*rgb(244, 241, 235);*/
   --color-base-dbrown: rgb(58, 35, 0);
   --color-base-lbrown: rgb(109, 66, 0);
   --color-base-yellow: rgb(255, 193, 37);

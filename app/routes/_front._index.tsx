@@ -236,64 +236,84 @@ export default function Index() {
             bkground="dark"
           />
           <div className="ho-prices__wrapper">
-            {home.home_class_prices.map((p) => {
-              const cp = p.class_price;
-              const pi = p.class_price.price_info;
-              return (
-                <article key={p.id} className="ho-price">
-                  <h3>{cp.title}</h3>
-                  <p>{cp.display_title}</p>
-                  <table>
-                    <tr>
-                      <td>料金</td>
-                      <td>￥{pi.posttax_price}</td>
-                    </tr>
-                    <tr>
-                      <td>時間</td>
-                      <td>
-                        {cp.length}
-                        {getDisplay(cp.length_unit, 1)}
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>頻度</td>
-                      <td>
-                        {getDisplay(cp.quantity_unit, 1)}
-                        {cp.quantity}回
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>最大人数</td>
-                      <td>{cp.max_num}</td>
-                    </tr>
-                    <tr>
-                      <td>ネイティブ・マルチリンガル講師</td>
-                      <td>{cp.is_native ? <FaRegCircle /> : <FaXmark />}</td>
-                    </tr>
-                    <tr>
-                      <td>オンライン受講</td>
-                      <td>{cp.is_online ? <FaRegCircle /> : <FaXmark />}</td>
-                    </tr>
-                    <tr>
-                      <td>対面受講</td>
-                      <td>{cp.is_inperson ? <FaRegCircle /> : <FaXmark />}</td>
-                    </tr>
-                    <tr>
-                      <td>オンラインレッスンノート</td>
-                      <td>
-                        {cp.has_onlinenotes ? <FaRegCircle /> : <FaXmark />}
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>オンライン予約</td>
-                      <td>
-                        {cp.bookable_online ? <FaRegCircle /> : <FaXmark />}
-                      </td>
-                    </tr>
-                  </table>
-                </article>
-              );
-            })}
+            <Swiper
+              // install Swiper modules
+              modules={[Navigation]}
+              spaceBetween={sliderSpace}
+              slidesPerView={2.5}
+              navigation
+              pagination={{ clickable: true }}
+              scrollbar={{ draggable: true }}
+              onSwiper={(swiper) => console.log(swiper)}
+              onSlideChange={() => console.log("slide change")}
+            >
+              {home.home_class_prices.map((p) => {
+                const cp = p.class_price;
+                const pi = p.class_price.price_info;
+                return (
+                  <SwiperSlide key={p.id}>
+                    <article className="ho-price">
+                      <h3>{cp.title}</h3>
+                      <p>{cp.display_title}</p>
+                      <table>
+                        <tr>
+                          <td>料金</td>
+                          <td>￥{pi.posttax_price}</td>
+                        </tr>
+                        <tr>
+                          <td>時間</td>
+                          <td>
+                            {cp.length}
+                            {getDisplay(cp.length_unit, 1)}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>頻度</td>
+                          <td>
+                            {getDisplay(cp.quantity_unit, 1)}
+                            {cp.quantity}回
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>最大人数</td>
+                          <td>{cp.max_num}</td>
+                        </tr>
+                        <tr>
+                          <td>ネイティブ講師</td>
+                          <td>
+                            {cp.is_native ? <FaRegCircle /> : <FaXmark />}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>オンライン受講</td>
+                          <td>
+                            {cp.is_online ? <FaRegCircle /> : <FaXmark />}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>対面受講</td>
+                          <td>
+                            {cp.is_inperson ? <FaRegCircle /> : <FaXmark />}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>オンラインレッスンノート</td>
+                          <td>
+                            {cp.has_onlinenotes ? <FaRegCircle /> : <FaXmark />}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>オンライン予約</td>
+                          <td>
+                            {cp.bookable_online ? <FaRegCircle /> : <FaXmark />}
+                          </td>
+                        </tr>
+                      </table>
+                    </article>
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
           </div>
         </div>
       </section>
