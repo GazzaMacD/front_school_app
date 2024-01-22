@@ -790,7 +790,7 @@ Block quotes
 Global Header
 -------------------------------- */
 
-.header {
+.g-header {
   height: 78px;
   width: 100%;
   background-color: var(--color-brand-cream);
@@ -804,18 +804,35 @@ Global Header
   /* box-shadow: 0 1px 6px var(--color-shadow); */
   z-index: 1500;
 }
-.header ul {
+.g-header__inner {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+.g-header__branding {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  margin-right: auto;
+}
+.g-header ul {
   list-style: none;
   margin: 0;
 }
-.header h1 {
+.g-header h1 {
   color: var(--color-base-green);
 }
-.header-space {
+.g-header__tagline {
+  color: var(--color-brand-brown);
+  font-size: var(--r14px);
+}
+.g-header-space {
   height: 78px;
 }
-.header__logo {
-  height: 30px;
+.g-header__logo {
+  height: 40px;
 }
 
 /* right menu*/
