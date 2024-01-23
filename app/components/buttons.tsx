@@ -78,5 +78,32 @@ function LgBiButtonLink({ to, color, jp, en }: TLgBiButtonLinkProps) {
     </Link>
   );
 }
+/* Large bilingual button  link*/
 
-export { Button, ButtonLink, RoundButtonLink, LgBiButtonLink };
+type TPillButtonLinkProps = {
+  to: string;
+  color: "orange" | "green" | "brown" | "white";
+  bkColor: "orange" | "green" | "brown" | "white";
+  children: React.ReactNode;
+};
+
+function SolidPillButtonLink({
+  to,
+  color,
+  bkColor,
+  children,
+}: TPillButtonLinkProps) {
+  return (
+    <Link to={to} className="g-sp-button-link">
+      <div className="g-sp-button">{children}</div>
+    </Link>
+  );
+}
+
+export {
+  Button,
+  ButtonLink,
+  RoundButtonLink,
+  LgBiButtonLink,
+  SolidPillButtonLink,
+};
