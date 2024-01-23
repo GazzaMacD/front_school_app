@@ -9,6 +9,7 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import {
+  Link,
   Links,
   LiveReload,
   Meta,
@@ -21,6 +22,7 @@ import { useLoaderData } from "@remix-run/react";
 import { authenticatedUser } from "./common/session.server";
 import globalStyles from "./styles/global.css";
 import fontStyles from "./styles/fonts.css";
+import { SolidPillButtonLink } from "./components/buttons";
 import { createGlobalEnvObj } from "./env.server";
 
 export const links: LinksFunction = () => [
@@ -51,26 +53,33 @@ export default function App() {
           <header className="g-header">
             <div className="g-header__inner">
               <div className="g-header__branding">
-                <img
-                  className="g-header__logo"
-                  src="/img/xlingual_logo_without tagline.svg"
-                  alt="XLingual logo"
-                ></img>
+                <Link to="/" className="g-header__logo-link">
+                  <img
+                    className="g-header__logo"
+                    src="/img/xlingual_logo_without tagline.svg"
+                    alt="XLingual logo"
+                  ></img>
+                </Link>
                 <div className="g-header__tagline">
                   エクスリンガル｜Experts in Language Learning
                 </div>
               </div>
-              <div className="g-right-menu">
-                <nav className="g-right-menu__nav">
-                  <ul className="g-right-menu__list">
-                    <li className="g-right-menu__item">
-                      <a
-                        className="g-right-menu__phone"
-                        href="tel:0561-42-5707"
-                      >
+              <div className="g-menu">
+                <nav className="g-menu__nav">
+                  <ul className="g-menu__list">
+                    <li className="g-menu__item">
+                      <a className="g-menu__phone" href="tel:0561-42-5707">
                         <FaMobileAlt />
                         <span>0561-42-5707</span>
                       </a>
+                    </li>
+                    <li className="g-menu__item">
+                      <SolidPillButtonLink
+                        to="/contact/form#contact"
+                        color="brown"
+                      >
+                        お問い合わせフォーム
+                      </SolidPillButtonLink>
                     </li>
                     {user ? (
                       <li>
@@ -86,17 +95,12 @@ export default function App() {
                       </li>
                     ) : (
                       <>
-                        <li className="right-menu__item">
-                          <a className="right-menu__link" href="/login">
-                            Login
+                        <li className="g-menu__item">
+                          <a className="g-menu__reglog-link" href="/register">
+                            <div className="g-menu__reglog reg">新規登録</div>
                           </a>
-                        </li>
-                        <li className="right-menu__item">
-                          <a
-                            className="right-menu__register-btn"
-                            href="/register"
-                          >
-                            Sign up
+                          <a className="g-menu__reglog-link" href="/login">
+                            <div className="g-menu__reglog log">ログイン</div>
                           </a>
                         </li>
                       </>
@@ -115,7 +119,10 @@ export default function App() {
                       className="mburger__button"
                       role="button"
                     >
-                      <span className="mburger__icon">&nbsp;</span>
+                      <div className="g-burger__button-inner">
+                        <span className="mburger__icon">&nbsp;</span>
+                        <span className="mburger__text">メニュー</span>
+                      </div>
                     </label>
                     <div className="mburger__background">&nbsp;</div>
                     <div className="mburger__menu">
