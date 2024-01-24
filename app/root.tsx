@@ -82,14 +82,14 @@ export default function App() {
                       </SolidPillButtonLink>
                     </li>
                     {user ? (
-                      <li>
+                      <li className="g-menu__item">
                         <form
                           className="right-menu__form"
                           action="/logout"
                           method="post"
                         >
-                          <button className="right-menu__logout" type="submit">
-                            Logout
+                          <button className="g-menu__logout" type="submit">
+                            ログアウト
                           </button>
                         </form>
                       </li>

@@ -796,7 +796,6 @@ Global Header
   background-color: var(--color-brand-cream);
   position: fixed;
   top: 0;
-  margin: 0 0 100px 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -869,7 +868,7 @@ a.g-menu__phone:before {
   height: 25px;
 }
 
-/* registration & login buttons*/
+/* registration, logout & login buttons*/
 a.g-menu__reglog-link {
   display: block;
 }
@@ -885,7 +884,9 @@ a.g-menu__reglog-link:before {
   border: 2px solid var(--color-brand-orange);
   padding: 12px 26px;
   font-size: 16px;
+  font-weight: 600;
   line-height: 1;
+  transition: all 0.25s ease-in-out;
 }
 a.g-menu__reglog-link:hover > .g-menu__reglog {
   color: var(--color-brand-orange);
@@ -896,6 +897,24 @@ a.g-menu__reglog-link:hover > .g-menu__reglog {
 }
 .g-menu__reglog.log {
   border-radius: 0 100px 100px 0;
+}
+
+.g-menu__logout {
+  color: var(--color-brand-white);
+  background-color: var(--color-brand-orange);
+  border: 2px solid var(--color-brand-orange);
+  border-radius: 100px;
+  padding: 12px 26px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+  transition: all 0.25s ease-in-out;
+}
+.g-menu__logout:hover {
+  cursor: pointer;
+  color: var(--color-brand-orange);
+  background-color: var(--color-brand-white);
+  border: 2px solid var(--color-brand-orange);
 }
 
 /* 
@@ -919,12 +938,14 @@ a.g-menu__reglog-link:hover > .g-menu__reglog {
   padding: 12px 20px;
   line-height: 1;
 }
+
 .g-burger__button-inner {
   position: relative;
 }
 .mburger__text {
   line-height: 1;
   font-size: 16px;
+  font-weight: 600;
   padding-left: 26px;
   color: var(--color-brand-brown);
 }
@@ -1196,11 +1217,11 @@ a.g-menu__reglog-link:hover > .g-menu__reglog {
   }
 }
 
-/* ----------------------------- 
-Base grids, containers  & figure/ img / classes
--------------------------------- */
+/** 
+* Base grids, containers  & figure/ img / classes
+*/
 .content-wrapper {
-  padding-top: 78px;
+  padding-top: 100px;
 }
 .bgrid {
   display: grid;
@@ -1264,9 +1285,10 @@ Base grids, containers  & figure/ img / classes
     grid-column: 5 / 9;
   }
 }
-/* ----------------------------- 
-Footer
--------------------------------- */
+
+/** 
+* Footer
+*/
 .footer {
   margin-top: auto;
   background-color: var(--color-brand-beige);
@@ -1571,12 +1593,17 @@ label {
   }
 }
 
-/* Swooshes */
+/** 
+* Swooshes 
+*/
 .g-swoosh1 {
   margin: -100px 0 -10px 0;
 }
 
-/* Buttons */
+/** 
+* Buttons 
+*/
+
 a.g-button {
   all: unset;
   all: revert;
@@ -1673,6 +1700,7 @@ a.g-round-button:before {
   width: 40px;
   height: 40px;
 }
+
 /* large bi-lingual button */
 a.g-lgbi-button-link {
   display: block;
@@ -1712,10 +1740,12 @@ a.g-lgbi-button-link:before {
   height: 40px;
   margin-left: 60px;
 }
-/* pill type menu */
+
+/* pill type buttons */
 a.g-sp-button-link {
   color: var(--color-brand-white);
   font-size: var(--r16px);
+  font-weight: 600;
   line-height: 1;
 }
 a.g-sp-button-link:before {
@@ -1727,6 +1757,7 @@ a.g-sp-button-link:before {
   padding: 12px 26px;
   border-radius: 100px;
   display: flex;
+  transition: all 0.25s ease-in-out;
   justify-content: space-between;
   gap: 5px;
 }

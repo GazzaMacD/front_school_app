@@ -106,25 +106,21 @@ export default function Index() {
   return (
     <>
       <section id="video-banner">
-        <div className="vbanner__wrapper">
-          <video className="vbanner__video" playsInline autoPlay muted loop>
+        <div className="ho-vbanner__wrapper">
+          <video className="ho-vbanner__video" playsInline autoPlay muted loop>
             <source src="/video/dummy.mp4" type="video/mp4" />
           </video>
         </div>
-        <div className="vbanner__promo">
-          <div className="vbanner__text">
-            <h2 className="vbanner__title">
-              Learn English with our{" "}
-              <span className="vbanner__yellow">multi</span>
-              <span className="vbanner__red">lingual</span> expert teachers.
-            </h2>
-          </div>
-          <div className="vbanner__buttons">
-            <ButtonLink to="/courses">Courses</ButtonLink>
-            <ButtonLink to="/learning-experiences" variant="secondary">
-              Experiences
-            </ButtonLink>
-          </div>
+        <div className="ho-vbanner__promo">
+          <p className="ho-vbanner__title-en">
+            Learn English with our{" "}
+            <span className="ho-vbanner__green">multilingual</span> expert
+            teachers.
+          </p>
+          <h1 className="ho-vbanner__title-ja">
+            <span>XLingual - エクスリンガル語学学校 -</span>
+            マルチリンガルの講師たちと一緒に英語を勉強しましょう
+          </h1>
         </div>
       </section>
 
