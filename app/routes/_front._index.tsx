@@ -35,10 +35,9 @@ export const links: LinksFunction = () => [
 export const loader = async () => {
   const homeUrl = `${BASE_API_URL}/pages/?type=home.HomePage&fields=*`;
   const blogslUrl = `${BASE_API_URL}/pages/?order=-published_date&limit=8&type=lessons.LessonDetailPage&fields=_,id,slug,display_title,display_tagline,published_date,title,header_image`;
-  const teachersUrl = `${BASE_API_URL}/pages/?type=staff.StaffDetailPage&fields=_,id,title,slug,intro,profile_image&limit=4`;
-  const urls = [homeUrl, teachersUrl, blogslUrl];
+  const urls = [homeUrl, blogslUrl];
   try {
-    const [home, teachers, blogs] = await Promise.all(
+    const [home, blogs] = await Promise.all(
       urls.map((url) =>
         fetch(url)
           .then(async (r) => {
@@ -63,7 +62,6 @@ export const loader = async () => {
 
     return json({
       home: home.data.items[0],
-      teachers: teachers.data.items,
       blogs: blogs.data.items,
     });
   } catch (error) {
@@ -74,7 +72,7 @@ export const loader = async () => {
 // --------------------------------//
 // client side functions
 export default function Index() {
-  const { home, blogs, teachers } = useLoaderData<typeof loader>();
+  const { home, blogs } = useLoaderData<typeof loader>();
   const ENV = getGlobalEnv();
   const [windowSize, setWindowSize] = React.useState(() => {
     if (typeof window !== "undefined") {
@@ -339,24 +337,25 @@ export default function Index() {
       <section id="teachers">
         <div className="ho-teachers">
           <HeadingOne
-            enText="Teachers"
-            jpText="講師紹介"
+            enText={home.teacher_en_title}
+            jpText={home.teacher_jp_title}
             align="center"
             bkground="light"
           />
           <div className="ho-teachers__list">
-            {teachers.map((teacher) => {
+            {home.home_teachers.map((item) => {
+              const teacher = item.teacher;
               return (
                 <article key={teacher.id} className="ho-teacher__card">
                   <Link
-                    to={`/staff/${teacher.meta.slug}`}
+                    to={`/staff/${teacher.slug}`}
                     className="ho-teacher__card-link"
                   >
                     <div className="ho-teacher__card-img-wrapper">
                       <img
                         className="ho-teacher__card-img"
-                        src={`${ENV.BASE_BACK_URL}${teacher.profile_image.thumbnail.src}`}
-                        alt={teacher.profile_image.thumbnail.alt}
+                        src={`${ENV.BASE_BACK_URL}${teacher.image.thumbnail.src}`}
+                        alt={teacher.image.thumbnail.alt}
                       />
                       <div className="ho-teacher__card-overlay">
                         <div className="ho-teacher__card-overlay-inner">
@@ -368,8 +367,8 @@ export default function Index() {
                     </div>
                   </Link>
                   <div className="ho-teacher__card-details">
-                    <h3>{teacher.title}</h3>
-                    <p>{teacher.intro}</p>
+                    <h3>{teacher.display_name}</h3>
+                    <p>{teacher.display_tagline}</p>
                   </div>
                 </article>
               );
