@@ -82,20 +82,14 @@ function LgBiButtonLink({ to, color, jp, en }: TLgBiButtonLinkProps) {
 
 type TPillButtonLinkProps = {
   to: string;
-  color: "orange" | "green" | "brown" | "white";
-  bkColor: "orange" | "green" | "brown" | "white";
+  color: "brown" | "orange" | "green";
   children: React.ReactNode;
 };
 
-function SolidPillButtonLink({
-  to,
-  color,
-  bkColor,
-  children,
-}: TPillButtonLinkProps) {
+function SolidPillButtonLink({ to, color, children }: TPillButtonLinkProps) {
   return (
     <Link to={to} className="g-sp-button-link">
-      <div className="g-sp-button">{children}</div>
+      <div className={`g-sp-button ${color}`}>{children}</div>
     </Link>
   );
 }

@@ -4,76 +4,74 @@ Home Video Banner
 #video-banner {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: auto auto auto auto auto;
-  background-color: var(--color-base-cream);
+  grid-template-rows: repeat(6, auto);
+  background-color: var(--color-brand-cream);
   height: calc(100% - 78px);
   margin-bottom: 78px;
 }
-.vbanner__wrapper {
+.ho-vbanner__wrapper {
   grid-column: 1/13;
   grid-row: 1/6;
 }
-.vbanner__video {
+.ho-vbanner__video {
   width: 100%;
   height: calc(100vh - 156px);
   object-fit: cover;
 }
-.vbanner__promo {
-  background-color: rgba(0, 0, 0, 0.15);
+.ho-vbanner__promo {
   grid-column: 2/12;
   grid-row: 2/5;
-  display: flex;
-  flex-direction: column;
-  border-radius: 40px;
-  align-items: center;
-  padding: var(--component-padding);
 }
-.vbanner__text {
-  max-width: 300px;
+.ho-vbanner__title-en {
+  color: var(--color-brand-brown);
+  font-family: var(--font-en-primary);
+  font-weight: 600;
+  margin: 0;
+  line-height: 1;
 }
-.vbanner__title {
-  color: var(--color-base-cream);
-  font-size: var(--text-lg);
-  text-align: center;
+.ho-vbanner__title-en > span {
+  color: var(--color-brand-green);
 }
-.vbanner__buttons {
-  display: flex;
-  gap: var(--space-sm);
+.ho-vbanner__title-ja {
+  color: var(--color-brand-brown);
+  font-family: var(--font-jp-primary);
+  font-weight: 600;
+  margin: 0;
+  line-height: 1;
 }
-@media (min-width: 992px) {
-  .vbanner__video {
-    border-radius: var(--radius-base) 0 0 var(--radius-base);
+.ho-vbanner__title-ja > span {
+  display: none;
+}
+@media (min-width: 768px) {
+  .ho-vbanner__video {
+    border-radius: var(--radius-large) 0 0 var(--radius-large);
   }
-  .vbanner__wrapper {
-    grid-column: 5/13;
+  .ho-vbanner__wrapper {
+    grid-column: 3/13;
     grid-row: 1/6;
   }
-  .vbanner__promo {
+  .ho-vbanner__promo {
     background-color: transparent;
     grid-column: 1/5;
     grid-row: 3/6;
   }
-  .vbanner__title {
-    color: var(--color-base-green);
-    font-size: var(--text-lg);
-    text-align: center;
-  }
-  .vbanner__yellow {
-    color: var(--color-base-limegreen);
-  }
-  .vbanner__red {
-    color: var(--color-base-orange);
-  }
 }
-@media (min-width: 1450px) {
-  .vbanner__text {
-    max-width: 500px;
+@media (min-width: 1024px) {
+  .ho-vbanner__promo {
+    margin-top: 200px;
+    grid-column: 2/7;
+    grid-row: 4/5;
+    background-color: rgba(255, 248, 230, 0.4);
+    border-radius: var(--radius-medium);
+    padding: 10px 10px 20px 0;
   }
-  .vbanner__title {
-    font-size: var(--text-xl);
+  .ho-vbanner__title-en {
+    font-size: 64px;
+    line-height: 1.4;
   }
-  .vbanner__buttons {
-    gap: var(--space-xxl);
+  .ho-vbanner__title-ja {
+    font-size: 24px;
+    margin-top: 40px;
   }
 }
 /**
