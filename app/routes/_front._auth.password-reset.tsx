@@ -136,7 +136,7 @@ export default function PasswordResetRoute() {
         </div>
 
         <button className="au-form__submit " type="submit">
-          ログイン
+          送信する
           <FaArrowRightLong />
         </button>
       </form>
