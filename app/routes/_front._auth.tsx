@@ -1,6 +1,8 @@
 import { type LinksFunction } from "@remix-run/node";
-import authStyles from "../styles/auth.css";
 import { Outlet } from "@remix-run/react";
+
+import { Swoosh1 } from "~/components/swooshes";
+import authStyles from "../styles/auth.css";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: authStyles },
@@ -8,10 +10,11 @@ export const links: LinksFunction = () => [
 
 export default function AuthParentRoute() {
   return (
-    <div className="auth-wrapper">
-      <div className="auth">
+    <>
+      <div className="au-wrapper">
         <Outlet />
       </div>
-    </div>
+      <Swoosh1 swooshColor="beige" backColor="cream" />
+    </>
   );
 }

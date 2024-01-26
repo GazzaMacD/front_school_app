@@ -428,7 +428,9 @@ template {
   --color-brand-green: hsl(104, 80%, 36%);
   --color-brand-orange: hsl(28, 100%, 48%);
   /* base secondary brand colors */
-  --color-sec-lightbrown: hsl(36.99, 52.52%, 27.25%);
+  --color-sec-lightbrown: hsl(36, 56%, 27%);
+  --color-sec-lightorange: hsl(28, 100%, 75%);
+  --color-sec-darkgreen: hsl(104, 80%, 28%);
 
   /*  OLD EXPERIMENTAL COLORS */
   --color-base-white: white;
@@ -635,7 +637,7 @@ p {
 a,
 a:link,
 a:visited {
-  color: var(--color-sec-darklime);
+  color: var(--color-brand-brown);
   text-decoration: none;
   display: inline-block;
   position: relative;
@@ -647,20 +649,19 @@ a:link::before {
   width: 100%;
   height: 1px;
   border-radius: 1px;
-  background-color: var(--color-sec-darklime);
+  background-color: var(--color-brand-brown);
   bottom: 2px;
   left: 0;
 }
 a:hover,
 a:active {
-  color: var(--color-shade-green2);
+  color: var(--color-sec-lightbrown);
 }
 a:hover::before,
 a:active::before {
-  background-color: var(--color-shade-green2);
+  background-color: var(--color-sec-lightbrown);
   height: 2px;
 }
-
 /* Lists */
 ul,
 ol {
@@ -668,6 +669,11 @@ ol {
   padding: 0;
   list-style-position: inside;
   line-height: var(--text-line-height);
+}
+
+/* buttons */
+button:hover {
+  cursor: pointer;
 }
 
 /*
@@ -1374,6 +1380,52 @@ fieldset {
   padding: 0;
   border: 0;
 }
+.g-form__input-group {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 40px;
+  position: relative;
+}
+.g-required {
+  position: relative;
+}
+.g-required:after {
+  content: "必須";
+  position: absolute;
+  font-size: var(--r12px);
+  line-height: 1;
+  color: white;
+  background-color: var(--color-brand-orange);
+  margin-left: 8px;
+  padding: 4px 6px;
+  border-radius: 50px;
+}
+.g-form__text-label {
+  margin-bottom: 10px;
+}
+/* form validation errors */
+.g-form__validation-errors {
+  /* ul element usually */
+  margin: 0;
+  color: var(--color-brand-orange);
+  font-size: var(--r10px);
+  list-style: none;
+}
+
+.g-form__nonfield-errors {
+  background-color: var(--color-sec-lightorange);
+  border-radius: 5px;
+  padding: 5px 10px;
+  list-style: none;
+  color: var(--color-brand-brown);
+  margin-bottom: 10px;
+}
+.g-form__nonfield-errors ul {
+  margin: 0;
+  list-style: none;
+  font-size: var(--text-sm);
+}
+
 .input-group {
   display: flex;
   flex-direction: column;
@@ -1405,16 +1457,16 @@ textarea {
   width: 100%;
   height: 2.5rem;
   margin: 0;
-  padding: var(--space-xxxs) var(--space-xs);
-  border: 1px solid var(--color-base-green);
-  border-radius: var(--radius-xs);
+  padding: 5px 10px;
+  border: 1px solid var(--color-brand-brown);
+  border-radius: 5px;
   background-blend-mode: luminosity;
   box-shadow: none;
   font-family: var(--font-body);
   font-size: 1rem;
   font-weight: normal;
   line-height: 1.5;
-  color: var(--color-base-text);
+  color: var(--color-brand-brown);
   transition: box-shadow 200ms, border-color 50ms ease-out,
     background-color 50ms ease-out, color 50ms ease-out;
 }
@@ -1434,8 +1486,8 @@ textarea {
 [type="url"]:focus,
 [type="color"]:focus,
 textarea:focus {
-  box-shadow: 0px 0px 1px 2px var(--color-base-green);
-  outline: 1px solid var(--color-base-green);
+  box-shadow: 0px 0px 1px 2px var(--color-brand-brown);
+  outline: 1px solid var(--color-brand-brown);
 }
 
 [type="text"][aria-invalid="true"],
@@ -1453,7 +1505,8 @@ textarea:focus {
 [type="url"][aria-invalid="true"],
 [type="color"][aria-invalid="true"],
 textarea[aria-invalid="true"] {
-  border-color: var(--color-sec-red);
+  border: 1px solid var(--color-brand-orange);
+  box-shadow: 0px 0px 1px 1px var(--color-brand-orange);
 }
 
 textarea {
@@ -1467,7 +1520,7 @@ textarea[rows] {
 }
 label {
   margin: 0;
-  color: var(--color-base-text);
+  color: var(--color-brand-brown);
   text-transform: capitalize;
 }
 .form-validation-errors {
