@@ -14,6 +14,8 @@ import type {
   TPasswordResetActionResponse,
 } from "~/common/types";
 import { getTitle } from "~/common/utils";
+import { HeadingOne } from "~/components/headings";
+import { FaArrowRightLong } from "react-icons/fa6";
 
 /*
  * Helper functions
@@ -83,10 +85,15 @@ export default function PasswordResetRoute() {
 
   return (
     <>
-      <h1 className="auth__heading">Password Reset</h1>
-      <form noValidate method="post">
+      <HeadingOne
+        jpText="パスワード再設定"
+        enText="Password Reset"
+        align="center"
+        bkground="light"
+      />
+      <form className="au-form g-form" noValidate method="post">
         {actionData && actionData?.errors?.non_field_errors ? (
-          <div className="form-nonfield-errors">
+          <div className="g-form__nonfield-errors">
             <ul>
               {actionData.errors.non_field_errors.map((error) => (
                 <li role="alert" key={error}>
@@ -97,12 +104,18 @@ export default function PasswordResetRoute() {
           </div>
         ) : null}
 
-        <div className="input-group">
-          <label htmlFor="email-input">email</label>
+        <div className="g-form__input-group">
+          <label
+            className="g-form__text-label g-required"
+            htmlFor="email-input"
+          >
+            Eメールアドレス
+          </label>
           <input
             type="email"
             id="email-input"
             name="email"
+            required
             defaultValue={actionData?.fields?.email}
             aria-invalid={Boolean(actionData?.errors?.email?.length)}
             aria-errormessage={
@@ -111,7 +124,7 @@ export default function PasswordResetRoute() {
           />
           {actionData?.errors?.email?.length ? (
             <ul
-              className="form-validation-errors"
+              className="g-form__validation-errors"
               role="alert"
               id="email-errors"
             >
@@ -122,8 +135,9 @@ export default function PasswordResetRoute() {
           ) : null}
         </div>
 
-        <button className="button submit " type="submit">
-          submit
+        <button className="au-form__submit " type="submit">
+          ログイン
+          <FaArrowRightLong />
         </button>
       </form>
     </>

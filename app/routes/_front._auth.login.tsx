@@ -155,7 +155,7 @@ export default function LoginRoute() {
             className="g-form__text-label g-required"
             htmlFor="password-input"
           >
-            password
+            パスワード
           </label>
           <input
             type="password"
