@@ -8,7 +8,10 @@ type TSwoosh = {
 
 function Swoosh1({ swooshColor, backColor }: TSwoosh) {
   return (
-    <div className="g-swoosh1" style={{ fill: `${brandColors[backColor]}` }}>
+    <div
+      className="g-swoosh1"
+      style={{ backgroundColor: `${brandColors[backColor]}` }}
+    >
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path
           style={{ fill: `${brandColors[swooshColor]}` }}
