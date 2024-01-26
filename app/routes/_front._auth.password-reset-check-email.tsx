@@ -5,6 +5,8 @@ import {
 } from "@remix-run/node";
 
 import { getTitle } from "~/common/utils";
+import { HeadingOne } from "~/components/headings";
+import { FaArrowRightLong } from "react-icons/fa6";
 
 /*
  * Helper functions
@@ -34,13 +36,20 @@ export function loader({ request }: LoaderArgs) {
 export default function PasswordResetCheckEmailRoute() {
   return (
     <>
-      <h1 className="auth__heading">Password Reset</h1>
-      <div className="auth__top-message">
-        <p>
-          Please check your email and follow the instructions to reset your
-          password. Please check your junk mail folder if you didn't recieve the
-          mail.
-        </p>
+      <HeadingOne
+        jpText="リセットメールを確認する"
+        enText="Check Reset Mail"
+        align="center"
+        bkground="light"
+      />
+      <div className="au-form">
+        <div className="au-form__message">
+          <p>
+            Please check your email and follow the instructions to reset your
+            password. Please check your junk mail folder if you didn't recieve
+            the mail.
+          </p>
+        </div>
       </div>
     </>
   );
