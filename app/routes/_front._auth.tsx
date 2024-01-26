@@ -10,14 +10,11 @@ export const links: LinksFunction = () => [
 
 export default function AuthParentRoute() {
   return (
-    <div>
-      <div className="auth-wrapper">
-        <div className="auth">
-          <Outlet />
-        </div>
+    <>
+      <div className="au-wrapper">
+        <Outlet />
       </div>
-
       <Swoosh1 swooshColor="beige" backColor="cream" />
-    </div>
+    </>
   );
 }
