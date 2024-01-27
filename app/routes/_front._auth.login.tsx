@@ -171,7 +171,7 @@ export default function LoginRoute() {
           />
           {actionData?.errors?.password?.length ? (
             <ul
-              className="form-validation-errors"
+              className="g-form__validation-errors"
               role="alert"
               id="password-errors"
             >
