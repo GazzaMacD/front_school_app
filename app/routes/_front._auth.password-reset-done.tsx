@@ -6,6 +6,7 @@ import {
 import { Link } from "@remix-run/react";
 
 import { getTitle } from "~/common/utils";
+import { HeadingOne } from "~/components/headings";
 
 /*
  * Helper functions
@@ -33,15 +34,22 @@ export function loader({ request }: LoaderArgs) {
  * Client Functions
  */
 
-export default function PasswordResetCheckEmailRoute() {
+export default function PasswordResetDoneRoute() {
   return (
     <>
-      <h1 className="auth__heading">Password Reset Done</h1>
-      <div className="auth__top-message">
-        <p>
-          Your password has been changed so you are able to{" "}
-          <Link to="/login">login</Link>.
-        </p>
+      <HeadingOne
+        jpText="パスワードリセット完了"
+        enText="Password Reset Done"
+        align="center"
+        bkground="light"
+      />
+      <div className="au-form">
+        <div className="au-form__message">
+          <p>
+            Success! 😄 Your password has been changed. You should now be able
+            to <Link to="/login">login</Link>.
+          </p>
+        </div>
       </div>
     </>
   );

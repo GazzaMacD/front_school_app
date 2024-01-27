@@ -6,7 +6,6 @@ import {
 
 import { getTitle } from "~/common/utils";
 import { HeadingOne } from "~/components/headings";
-import { FaArrowRightLong } from "react-icons/fa6";
 
 /*
  * Helper functions

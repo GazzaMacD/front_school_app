@@ -193,7 +193,7 @@ export default function ResetConfirmRoute() {
           ) : null}
         </div>
 
-        <div className="input-group">
+        <div className="g-form__input-group">
           <label
             htmlFor="new-password2-input"
             className="g-form__text-label g-required"
