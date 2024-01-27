@@ -15,6 +15,8 @@ import type {
   TResetConfirmActionResponse,
 } from "~/common/types";
 import { getTitle } from "~/common/utils";
+import { HeadingOne } from "~/components/headings";
+import { FaArrowRightLong } from "react-icons/fa6";
 
 /*
  * Helper functions
@@ -136,10 +138,15 @@ export default function ResetConfirmRoute() {
 
   return (
     <>
-      <h1 className="auth__heading">Confirm Reset</h1>
-      <form noValidate method="post">
+      <HeadingOne
+        jpText="リセットの確認"
+        enText="Confirm Reset"
+        align="center"
+        bkground="light"
+      />
+      <form className="au-form g-form" noValidate method="post">
         {actionData && actionData?.errors?.non_field_errors ? (
-          <div className="form-nonfield-errors">
+          <div className="g-form__nonfield-errors">
             <ul>
               {actionData.errors.non_field_errors.map((error) => (
                 <li role="alert" key={error}>
@@ -154,8 +161,13 @@ export default function ResetConfirmRoute() {
 
         <input type="hidden" name="token" value={token} />
 
-        <div className="input-group">
-          <label htmlFor="new-password1-input">New Password</label>
+        <div className="g-form__input-group">
+          <label
+            htmlFor="new-password1-input"
+            className="g-form__text-label g-required"
+          >
+            新しいパスワード
+          </label>
           <input
             type="password"
             id="new-password1-input"
@@ -170,7 +182,7 @@ export default function ResetConfirmRoute() {
           />
           {actionData?.errors?.new_password1?.length ? (
             <ul
-              className="form-validation-errors"
+              className="g-form__validation-errors"
               role="alert"
               id="new-password1-errors"
             >
@@ -182,7 +194,12 @@ export default function ResetConfirmRoute() {
         </div>
 
         <div className="input-group">
-          <label htmlFor="new-password2-input">Repeat New Password</label>
+          <label
+            htmlFor="new-password2-input"
+            className="g-form__text-label g-required"
+          >
+            新しいパスワードの確認
+          </label>
           <input
             type="password"
             id="new-password2-input"
@@ -197,7 +214,7 @@ export default function ResetConfirmRoute() {
           />
           {actionData?.errors?.new_password2?.length ? (
             <ul
-              className="form-validation-errors"
+              className="g-form__validation-errors"
               role="alert"
               id="new-password2-errors"
             >
@@ -208,8 +225,9 @@ export default function ResetConfirmRoute() {
           ) : null}
         </div>
 
-        <button className="button submit " type="submit">
-          reset password
+        <button className="au-form__submit " type="submit">
+          送信する
+          <FaArrowRightLong />
         </button>
       </form>
     </>
