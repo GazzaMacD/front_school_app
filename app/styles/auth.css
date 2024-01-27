@@ -1,6 +1,7 @@
 .au-wrapper {
   min-height: calc(100% - 100px);
-  width: 100%;
+  margin: 0 auto;
+  max-width: 600px;
   min-width: 300px;
   padding: 20px 0 60px 0;
   display: flex;
@@ -22,8 +23,13 @@
 .au-form__bottom-message > p {
   margin-bottom: 5px;
 }
-.au-form__bottom-message > a {
-  color: red;
+.au-form__message {
+  max-width: 500px;
+  text-align: center;
+  font-size: var(--r14px);
+}
+.au-form__message > p {
+  margin-bottom: 5px;
 }
 .au-form__submit {
   background-color: var(--color-brand-green);
