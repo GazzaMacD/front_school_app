@@ -66,7 +66,7 @@ export const action = async ({ request }: ActionArgs) => {
       {
         fields: null,
         errors: {
-          non_field_errors: [MESSAGES["en"].form.standard400],
+          non_field_errors: [MESSAGES["ja"].form.standard400],
         },
       },
       { status: 400 }
@@ -92,9 +92,7 @@ export const action = async ({ request }: ActionArgs) => {
         {
           fields: fields,
           errors: {
-            non_field_errors: [
-              "There was a probelm processing this request. Please try and submit another email reset request.",
-            ],
+            non_field_errors: [MESSAGES["ja"].form.standard400],
           },
         },
         { status: 400 }
