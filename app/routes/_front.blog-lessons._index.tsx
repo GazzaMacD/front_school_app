@@ -1,10 +1,12 @@
 import React from "react";
 import { redirect, json } from "@remix-run/node";
-import { BASE_API_URL } from "~/common/constants.server";
+import { useSearchParams } from "@remix-run/react";
 import { Link, useFetcher, useLoaderData } from "@remix-run/react";
+
+import { BASE_API_URL } from "~/common/constants.server";
 import { handlePreview } from "~/common/utils.server";
 import { getGlobalEnv } from "~/common/utils";
-import { useSearchParams } from "@remix-run/react";
+import { HeadingOne } from "~/components/headings";
 
 /*types */
 import type { ActionArgs, LoaderArgs } from "@remix-run/node";
@@ -61,7 +63,7 @@ export async function loader({ request }: LoaderArgs) {
       throw new Response("Oops that's 404", { status: 404 });
     }
     // can now get detail page
-    let detailUrl = `${BASE_API_URL}/pages/?order=-published_date&type=lessons.LessonDetailPage&fields=_,slug,display_title,display_tagline,published_date,title,header_image`;
+    let detailUrl = `${BASE_API_URL}/pages/?order=-published_date&type=lessons.LessonDetailPage&fields=_,slug,display_title,display_tagline,published_date,title,header_image,category`;
     if (category) {
       const filtered = categories.data.filter((c) => c.ja_name === category);
       const target = filtered.length ? filtered[0] : null;
@@ -94,15 +96,18 @@ export default function BlogLessonsIndexPage() {
   const lessons = lessonsData.items;
 
   return (
-    <div>
-      <header className="container">
-        <hgroup className="heading1">
-          <h1>
-            <span>{page.title}</span>
-            {page.display_title}
-          </h1>
-          <p>{page.display_tagline}</p>
-        </hgroup>
+    <div className="container">
+      <header className="g-header1">
+        <HeadingOne
+          enText={page.title}
+          jpText={page.display_title}
+          align="center"
+          bkground="light"
+          level="h1"
+        />
+        <p className="g-header1__tagline">{page.display_tagline}</p>
+      </header>
+      <div>
         <p className="l-short-intro">{page.short_intro}</p>
         <div className="l-cat">
           <div className="l-cat__links">
@@ -137,7 +142,7 @@ export default function BlogLessonsIndexPage() {
             })}
           </div>
         </div>
-      </header>
+      </div>
       <div className="container l-list-wrapper">
         {lessons.length ? (
           <div className="l-list">

@@ -1606,6 +1606,23 @@ label {
   left: 0;
   top: -12px;
 }
+/**
+* Global Headers 
+*/
+.g-header1 {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0 80px 0;
+}
+.g-header1__tagline {
+  text-align: center;
+  max-width: 560px;
+  font-size: var(--r16px);
+  font-weight: 500;
+  margin-top: -60px;
+}
 
 /**
 * Components
@@ -1644,6 +1661,8 @@ label {
   .g-heading1__jp {
     font-size: var(--r18px);
   }
+}
+@media (min-width: 96rem) {
 }
 
 /** 
