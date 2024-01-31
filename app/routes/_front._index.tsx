@@ -138,6 +138,7 @@ export default function Index() {
               jpText={home.why_jp_title}
               align="left"
               bkground="light"
+              level="h2"
             />
 
             <div dangerouslySetInnerHTML={{ __html: home.why_content }}></div>
@@ -153,6 +154,7 @@ export default function Index() {
             jpText={home.service_jp_title}
             align="left"
             bkground="dark"
+            level="h2"
           />
           <div className="ho-services__cards">
             {home.service_cards.map((service) => {
@@ -183,6 +185,7 @@ export default function Index() {
             jpText={home.testimonial_jp_title}
             align="center"
             bkground="light"
+            level="h2"
           />
           <div>
             {home.home_testimonials.map((t) => {
@@ -232,6 +235,7 @@ export default function Index() {
             jpText={home.price_jp_title}
             align="left"
             bkground="dark"
+            level="h2"
           />
           <div className="ho-prices__wrapper">
             <Swiper
@@ -341,6 +345,7 @@ export default function Index() {
             jpText={home.teacher_jp_title}
             align="center"
             bkground="light"
+            level="h2"
           />
           <div className="ho-teachers__list">
             {home.home_teachers.map((item) => {
@@ -384,6 +389,7 @@ export default function Index() {
             jpText="読んで学べるブログ"
             align="left"
             bkground="light"
+            level="h2"
           />
           <div className="ho-blog__slider-wrapper">
             <Swiper
