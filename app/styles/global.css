@@ -704,8 +704,7 @@ Containers, Wrappers and Iframes
 }
 .container {
   margin: 0 auto;
-  max-width: 1140px;
-  padding: 0 var(--component-padding);
+  padding: 0 120px;
 }
 
 .text-container {

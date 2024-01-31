@@ -2,6 +2,7 @@ import React from "react";
 import { redirect, json } from "@remix-run/node";
 import { useSearchParams } from "@remix-run/react";
 import { Link, useFetcher, useLoaderData } from "@remix-run/react";
+import { FaArrowRightLong } from "react-icons/fa6";
 
 import { BASE_API_URL } from "~/common/constants.server";
 import { handlePreview } from "~/common/utils.server";
@@ -63,7 +64,7 @@ export async function loader({ request }: LoaderArgs) {
       throw new Response("Oops that's 404", { status: 404 });
     }
     // can now get detail page
-    let detailUrl = `${BASE_API_URL}/pages/?order=-published_date&type=lessons.LessonDetailPage&fields=_,slug,display_title,display_tagline,published_date,title,header_image,category`;
+    let detailUrl = `${BASE_API_URL}/pages/?order=-published_date&type=lessons.LessonDetailPage&fields=_,id,slug,display_title,display_tagline,published_date,title,header_image,category`;
     if (category) {
       const filtered = categories.data.filter((c) => c.ja_name === category);
       const target = filtered.length ? filtered[0] : null;
@@ -107,17 +108,17 @@ export default function BlogLessonsIndexPage() {
         />
         <p className="g-header1__tagline">{page.display_tagline}</p>
       </header>
-      <div>
-        <p className="l-short-intro">{page.short_intro}</p>
-        <div className="l-cat">
-          <div className="l-cat__links">
+      <div className="bl-cats-wrapper">
+        <div className="bl-cats-inner">
+          <div className="bl-cats-aside">カテゴリで絞り込む</div>
+          <div className="bl-cats">
             {categories.map((category, i) => {
               if (i === 0) {
                 return (
                   <Link
                     to="/blog-lessons"
-                    className={`l-cat__link ${
-                      selectedCat == null ? "l-cat__link--active" : ""
+                    className={`bl-cat ${
+                      selectedCat == null ? "bl-cat--active" : ""
                     }`}
                     key={category.id}
                   >
@@ -129,10 +130,8 @@ export default function BlogLessonsIndexPage() {
                   <Link
                     to={`/blog-lessons?category=${category.ja_name}`}
                     key={category.id}
-                    className={`l-cat__link ${
-                      selectedCat === category.ja_name
-                        ? "l-cat__link--active"
-                        : ""
+                    className={`bl-cat ${
+                      selectedCat === category.ja_name ? "bl-cat--active" : ""
                     }`}
                   >
                     {category.ja_name}
@@ -143,37 +142,44 @@ export default function BlogLessonsIndexPage() {
           </div>
         </div>
       </div>
-      <div className="container l-list-wrapper">
-        {lessons.length ? (
-          <div className="l-list">
-            {lessons.map((lesson) => {
+      <div className="bl-posts">
+        {lessons.length
+          ? lessons.map((lesson) => {
               const pubDate = new Date(lesson.published_date);
               return (
                 <Link
                   to={lesson.meta.slug}
                   key={lesson.id}
-                  className="l-list-link"
+                  className="bl-post-link"
                 >
-                  <div className="l-list-item">
-                    <div className="l-list-item__img">
+                  <article className="bl-post">
+                    <div className="bl-post__img-wrapper">
                       <img
                         src={`${ENV.BASE_BACK_URL}${lesson.header_image.thumbnail.src}`}
                         alt={lesson.header_image.title}
                       />
+                      <div className="bl-post__overlay">
+                        <div className="bl-post__overlay-inner">
+                          <p>Let's learn!</p>
+                          <p>勉強しよう</p>
+                          <FaArrowRightLong />
+                        </div>
+                      </div>
                     </div>
-                    <div className="l-list-item__details">
-                      <h4>{lesson.display_title}</h4>
-                      <p>{lesson.display_tagline}</p>
-                      <span>{`${pubDate.getFullYear()}/${
-                        pubDate.getMonth() + 1
-                      }/${pubDate.getDate()}`}</span>
+                    <div className="bl-post__details">
+                      <p>
+                        {`${pubDate.getFullYear()}.${
+                          pubDate.getMonth() + 1
+                        }.${pubDate.getDate()}`}{" "}
+                        <span>[ {lesson.category.ja_name} ]</span>
+                      </p>
+                      <h2>{lesson.display_title}</h2>
                     </div>
-                  </div>
+                  </article>
                 </Link>
               );
-            })}
-          </div>
-        ) : null}
+            })
+          : null}
       </div>
     </div>
   );
