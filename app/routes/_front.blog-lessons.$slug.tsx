@@ -179,7 +179,7 @@ export default function LessonsDetailPage() {
             <h1 className="l-header__title">{page.display_title}</h1>
             <p className="l-header__intro">{page.display_tagline}</p>
           </div>
-          <div className=" container">
+          <div className="container">
             <div className="bl-detail__sh">
               <div className="bl-detail__sh__author">
                 <Link to={`/staff/${page.author.slug}`}>
