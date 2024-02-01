@@ -703,6 +703,8 @@ Containers, Wrappers and Iframes
   min-height: 100%;
 }
 .container {
+  overflow-x: hidden;
+  max-width: 100%;
   margin: 0 auto;
   padding: 0 120px;
 }
