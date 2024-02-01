@@ -522,95 +522,84 @@ template {
     "Meiryo", "ＭＳ ゴシック", "MS Gothic", "HiraKakuProN-W3", "TakaoExゴシック",
     "TakaoExGothic", "MotoyaLCedar", "Droid Sans Japanese", sans-serif;
   --font-en-primary: "Rubik", sans-serif;
-
-  /* base text sizes IMPORTANT */
-  --text-base-size: 1em;
-  --text-scale-ratio: 1.2;
-
-  /* type scale */
-  --text-xxs: calc(
-    1em /
-      (
-        var(--text-scale-ratio) * var(--text-scale-ratio) *
-          var(--text-scale-ratio)
-      )
-  );
-  --text-xs: calc(1em / (var(--text-scale-ratio) * var(--text-scale-ratio)));
-  --text-sm: calc(1em / var(--text-scale-ratio));
-  --text-md: calc(1em * var(--text-scale-ratio));
-  --text-lg: calc(1em * var(--text-scale-ratio) * var(--text-scale-ratio));
-  --text-xl: calc(
-    1em * var(--text-scale-ratio) * var(--text-scale-ratio) *
-      var(--text-scale-ratio)
-  );
-  --text-xxl: calc(
-    1em * var(--text-scale-ratio) * var(--text-scale-ratio) *
-      var(--text-scale-ratio) * var(--text-scale-ratio)
-  );
-  --text-xxxl: calc(
-    1em * var(--text-scale-ratio) * var(--text-scale-ratio) *
-      var(--text-scale-ratio) * var(--text-scale-ratio) *
-      var(--text-scale-ratio)
-  );
-  /* base text values */
-  --text-line-height: 1.8;
-  --text-letter-spacing: 1px;
-
-  /* heading values */
-  --heading-line-height: 2;
-  --heading-letter-spacing: 2px;
-
-  /*  base space unit IMPORTANT */
-  --space-unit: 1em;
-
-  /*  spacing unit */
-  --space-xxxs: calc(0.25 * var(--space-unit));
-  --space-xxs: calc(0.375 * var(--space-unit));
-  --space-xs: calc(0.5 * var(--space-unit));
-  --space-sm: calc(0.75 * var(--space-unit));
-  --space-md: calc(1.25 * var(--space-unit));
-  --space-lg: calc(2 * var(--space-unit));
-  --space-xl: calc(3.25 * var(--space-unit));
-  --space-xxl: calc(5.25 * var(--space-unit));
-  --space-xxxl: calc(8.5 * var(--space-unit));
-
-  /* components padding */
-  --component-margin: var(--space-sm);
-  --component-padding: var(--space-sm);
+}
+/* base typography values */
+:root {
+  /* font sizes */
+  /*
+  XXS - 0.625rem - 10px
+  XS - 0.75rem - 12px
+  S - 0.875rem - 14px
+  M - 1rem - 16px
+  L - 1.125rem - 18px
+  XL - 1.25rem - 20px
+  2XL - 1.5rem - 24px
+  3XL - 1.75rem - 28px
+  4XL - 2rem - 32px
+  5XL - 2.25rem - 36px
+  6XL - 2.625rem - 42px
+  */
+  --font-size-xxs: var(--r10px);
+  --font-size-xs: var(--r12px);
+  --font-size-s: var(--r14px);
+  --font-size-m: var(--r16px);
+  --font-size-l: var(--r18px);
+  --font-size-xl: var(--r20px);
+  --font-size-2xl: calc(var(--r20px) + var(--r4px));
+  --font-size-3xl: calc(var(--r20px) + var(--r8px));
+  --font-size-4xl: calc(var(--r20px) + var(--r12px));
+  --font-size-5xl: calc(var(--r20px) + var(--r16px));
+  --font-size-6xl: calc(var(--r20px) + var(--r20px) + var(--r2px));
+  /* font weights */
+  --font-w-fine: 300;
+  --font-w-medium: 400;
+  --font-w-semi-bold: 600;
+  --font-w-bold: 700;
+  /* text line-heights */
+  --text-line-height: 1.6;
+  /* text letter spacing */
+  --text-letter-spacing: 1.1px;
+  /* heading line-height */
+  --heading-line-height: 1.2;
+  --heading-letter-spacing: 1.5px;
 }
 
+html,
 body {
-  font-size: var(--text-base-size);
   font-family: var(--font-jp-primary);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--text-line-height);
+}
+body {
   color: var(--color-brand-brown);
   background-color: var(--color-brand-cream);
 }
 .en {
   font-family: var(--font-en-primary);
 }
+
 h1,
 h2,
 h3,
 h4,
+h5,
+h6,
 form,
 legend {
   color: var(--color-brand-brown);
   line-height: var(--heading-line-height);
 }
 /* heading & text styles */
-.text--xxxl {
-  font-size: var(--text-xxxl);
-  margin-bottom: var(--space-lg);
-}
 h1,
-.text--xxl {
-  font-size: var(--text-xl);
-  margin-bottom: var(--space-md);
+.text-xxl {
+  font-size: var(--font-size-5xl);
+  margin-bottom: var(--r18px);
 }
 h2,
 .text--xl {
-  font-size: var(--text-lg);
-  margin-bottom: var(--space-sm);
+  font-size: var(--font-size-4xl);
+  margin-bottom: var(--r16px);
 }
 h3,
 .text--lg {
@@ -625,16 +614,37 @@ h4,
 p {
   line-height: var(--text-line-height);
   letter-spacing: var(--text-letter-spacing);
-  margin-bottom: var(--space-lg);
-  font-weight: 300;
+  margin-bottom: calc(var(--r20px) * 3);
+  font-weight: var(--font-w-medium);
 }
-
-@media (min-width: 992px) {
-  :root {
-    --text-base-size: 1.1em;
-    --text-scale-ratio: 1.3;
+/* large */
+@media (min-width: 64rem) {
+  h1 {
+    font-size: var(--font-size-5xl);
+    margin-bottom: calc(var(--r20px) * 2);
+  }
+  h2 {
+    font-size: var(--font-size-4xl);
+    margin-bottom: calc(var(--r20px) + var(--r10px));
+  }
+  h3 {
+    font-size: var(--font-size-3xl);
+    margin-bottom: calc(var(--r20px) + var(--r10px));
+  }
+  h4 {
+    font-size: var(--font-size-2xl);
+    margin-bottom: calc(var(--r20px) + var(--r10px));
+  }
+  h5 {
+    font-size: var(--font-size-xl);
+    margin-bottom: calc(var(--r20px) + var(--r5px));
+  }
+  h6 {
+    font-size: var(--font-size-l);
+    margin-bottom: calc(var(--r20px) + var(--r5px));
   }
 }
+
 /* links */
 a,
 a:link,
@@ -652,7 +662,7 @@ a:link::before {
   height: 1px;
   border-radius: 1px;
   background-color: var(--color-brand-brown);
-  bottom: 2px;
+  bottom: 1px;
   left: 0;
 }
 a:hover,
@@ -667,7 +677,7 @@ a:active::before {
 /* Lists */
 ul,
 ol {
-  margin: 0 0 var(--space-lg) 0;
+  margin: 0 0 calc(var(--r20px) + var(--r10px)) 0;
   padding: 0;
   list-style-position: inside;
   line-height: var(--text-line-height);
