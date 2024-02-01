@@ -236,7 +236,7 @@ export default function LessonsDetailPage() {
           } else if (block.type === "text_width_img") {
             return (
               <div key={block.id} className="text-container">
-                <figure>
+                <figure className="bl-detail__figure text-width">
                   <img
                     src={`${ENV.BASE_BACK_URL}${block.value.image.original.src}`}
                     alt={block.value.image.original?.alt}
@@ -249,11 +249,8 @@ export default function LessonsDetailPage() {
             );
           } else if (block.type === "full_width_img") {
             return (
-              <div
-                key={block.id}
-                className="full-width-container l-detail-image"
-              >
-                <figure>
+              <div key={block.id}>
+                <figure className="bl-detail__figure full-width">
                   <img
                     src={`${ENV.BASE_BACK_URL}${block.value.image.original.src}`}
                     alt={block.value.image.original?.alt}
@@ -266,8 +263,8 @@ export default function LessonsDetailPage() {
             );
           } else if (block.type === "beyond_text_img") {
             return (
-              <div key={block.id} className="container l-detail-image">
-                <figure>
+              <div key={block.id}>
+                <figure className="bl-detail__figure beyond-text">
                   <img
                     src={`${ENV.BASE_BACK_URL}${block.value.image.original.src}`}
                     alt={block.value.image.original?.alt}
@@ -280,32 +277,32 @@ export default function LessonsDetailPage() {
             );
           } else if (block.type === "block_quote") {
             return (
-              <div key={block.id} className="text-container l-detail-image">
-                <figure className="bquote">
-                  <div className="bquote__inner">
-                    <blockquote cite={block.value?.citation_url}>
-                      <p>{block.value.quote}</p>
-                    </blockquote>
-                    <figcaption>
-                      — {block.value.author},{" "}
-                      <cite>{block.value.citation_source}</cite>
-                    </figcaption>
-                  </div>
+              <div key={block.id} className="text-container">
+                <figure className="bl-detail__bquote">
+                  <blockquote cite={block.value?.citation_url}>
+                    <p>{block.value.quote}</p>
+                  </blockquote>
+                  <figcaption>
+                    — {block.value.author},{" "}
+                    <cite>{block.value.citation_source}</cite>
+                  </figcaption>
                 </figure>
               </div>
             );
           } else if (block.type === "youtube") {
             return (
-              <div key={block.id} className="container">
-                <iframe
-                  className={`youtube-iframe ${
-                    block.value.short ? "youtube-short" : ""
-                  }`}
-                  src={`${block.value.src}?modestbranding=1&controls=0&rel=0`}
-                  title="YouTube video player"
-                  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
+              <div key={block.id}>
+                <div className="bl-detail__youtube">
+                  <iframe
+                    className={`youtube-iframe ${
+                      block.value.short ? "youtube-short" : ""
+                    }`}
+                    src={`${block.value.src}?modestbranding=1&controls=0&rel=0`}
+                    title="YouTube video player"
+                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                </div>
               </div>
             );
           } else if (block.type === "conversation") {
@@ -340,7 +337,7 @@ export default function LessonsDetailPage() {
           } else if (block.type === "examples_list") {
             const examples = block.value.sentences_list;
             return (
-              <div key={block.id} className="text-container blk-examples">
+              <div key={block.id} className="text-container">
                 <div>Let's read and learn!</div>
                 {examples.map((s, i) => (
                   <div key={i} dangerouslySetInnerHTML={{ __html: s }} />
@@ -350,26 +347,30 @@ export default function LessonsDetailPage() {
           } else if (block.type === "wrong_right_list") {
             const list = block.value.wrong_right_list;
             return (
-              <div key={block.id} className="text-container blk-wr-wrapper">
-                <div>Incorrect and Correct!</div>
-                {list.map((s, i) => {
-                  return (
-                    <div key={i} className="blk-wr">
-                      <div className="blk-wr__ex blk-wr__ex--wrong">
-                        <div className="blk-wr__icon">
-                          <RiEmotionUnhappyLine />
+              <div key={block.id} className="text-container">
+                <div className="bl-detail__wr">
+                  <div className="bl-detail__wr__header">
+                    Incorrect and Correct!
+                  </div>
+                  {list.map((s, i) => {
+                    return (
+                      <div key={i} className="blk-wr">
+                        <div className="blk-wr__ex blk-wr__ex--wrong">
+                          <div className="blk-wr__icon">
+                            <RiEmotionUnhappyLine />
+                          </div>
+                          <p>{s.wrong}</p>
                         </div>
-                        <p>{s.wrong}</p>
-                      </div>
-                      <div className="blk-wr__ex blk-wr__ex--right">
-                        <div className="blk-wr__icon">
-                          <RiEmotionHappyLine />
+                        <div className="blk-wr__ex blk-wr__ex--right">
+                          <div className="blk-wr__icon">
+                            <RiEmotionHappyLine />
+                          </div>
+                          <p>{s.right}</p>
                         </div>
-                        <p>{s.right}</p>
                       </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </div>
               </div>
             );
           } else {
