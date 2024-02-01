@@ -215,9 +215,8 @@ export default function LessonsDetailPage() {
               </Link>
             </div>
           </div>
-          <div>
+          <div className="bl-detail__header-img">
             <img
-              className="l-detail-header__img"
               src={`${ENV.BASE_BACK_URL}${page.header_image.medium.src}`}
               alt={page.header_image.title}
             />
