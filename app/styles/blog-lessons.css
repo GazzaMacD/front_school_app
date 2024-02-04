@@ -276,25 +276,55 @@ a.bl-detail__sh__cat::before {
     aspect-ratio: 9 / 16;
   }
 }
-
-/* right wrong block */
-.bl-detail__wr {
+/* teaching blocks */
+.bl-detail__teach {
   position: relative;
-  border: 2px solid var(--color-brand-brown);
+  border: 2px solid var(--color-brand-green);
   border-radius: 20px;
   background-color: var(--color-brand-white);
-  padding: 60px 40px 40px 40px;
+  padding: 70px 40px 40px 40px;
   margin-bottom: 60px;
 }
-.bl-detail__wr__header {
+
+.bl-detail__teach__header {
   position: absolute;
-  background-color: var(--color-brand-brown);
+  background-color: var(--color-brand-green);
   color: var(--color-brand-white);
+  font-size: var(--font-size-xl);
   font-weight: var(--font-w-semi-bold);
-  padding: 6px 60px 6px 20px;
+  padding: 10px 60px 10px 20px;
   border-radius: 20px 0 20px 0;
   top: 0;
   left: -2px;
+}
+/* right wrong block */
+.bl-detail__wr {
+  padding-bottom: 15px;
+}
+.bl-detail__wr > div {
+  position: relative;
+}
+.bl-detail__wr > div > p {
+  margin: 0;
+  padding: 3px 0 3px 30px;
+}
+.bl-detail__wr > div > svg {
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  top: 6px;
+  left: -2px;
+}
+.bl-detail__wr--wrong {
+  color: red;
+}
+.bl-detail__wr--right {
+  color: var(--color-brand-green);
+}
+/* example sentence block */
+.bl-detail__example-s > p {
+  margin: 0;
+  padding: 5px 0;
 }
 
 /* conversation block */
@@ -482,83 +512,4 @@ a.l-rel__card__button:hover {
 }
 a.l-rel__card__button::before {
   content: none;
-}
-/* 
-* Blocks 
-*/
-/* Examples */
-.blk-examples {
-  padding: 30px 10px;
-  background-color: var(--color-base-white);
-  border: solid var(--color-base-brown) 2px;
-  position: relative;
-  margin-bottom: 3rem;
-}
-.blk-examples > div:first-child {
-  position: absolute;
-  top: -21px;
-  padding: 5px 10px;
-  border: solid var(--color-base-brown) 2px;
-  background-color: var(--color-sec-lightlime);
-  border-radius: var(--radius-sm);
-}
-
-.blk-examples p {
-  font-weight: 500;
-  margin-bottom: var(--space-xxs);
-  padding-left: 15px;
-  position: relative;
-  color: inherit;
-}
-.blk-examples p::before {
-  content: "・ ";
-  position: absolute;
-  left: -10px;
-}
-
-/* Wrong Right */
-.blk-wr-wrapper {
-  padding: 30px 10px;
-  background-color: var(--color-base-white);
-  border: solid var(--color-base-brown) 2px;
-  position: relative;
-  margin-bottom: 3rem;
-}
-.blk-wr-wrapper > div:first-child {
-  position: absolute;
-  top: -21px;
-  padding: 5px 10px;
-  border: solid var(--color-base-brown) 2px;
-  background-color: var(--color-sec-lightlime);
-  border-radius: var(--radius-sm);
-}
-.blk-wr {
-  margin-bottom: 2rem;
-}
-.blk-wr:last-child {
-  margin-bottom: 0;
-}
-.blk-wr__ex {
-  display: flex;
-}
-.blk-wr p {
-  margin: 0;
-  font-weight: 500;
-}
-.blk-wr__ex {
-  padding-left: 20px;
-  position: relative;
-}
-.blk-wr__ex--wrong {
-  color: red;
-}
-.blk-wr__ex--right {
-  color: green;
-}
-.blk-wr__icon {
-  position: absolute;
-  height: 25px;
-  width: 25px;
-  left: -4px;
-  top: 8px;
 }

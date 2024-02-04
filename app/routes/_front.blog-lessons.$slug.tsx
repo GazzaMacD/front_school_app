@@ -338,33 +338,37 @@ export default function LessonsDetailPage() {
             const examples = block.value.sentences_list;
             return (
               <div key={block.id} className="text-container">
-                <div>Let's read and learn!</div>
-                {examples.map((s, i) => (
-                  <div key={i} dangerouslySetInnerHTML={{ __html: s }} />
-                ))}
+                <div className="bl-detail__teach">
+                  <div className="bl-detail__teach__header">
+                    Let's read and learn!
+                  </div>
+                  {examples.map((s, i) => (
+                    <div
+                      className="bl-detail__example-s"
+                      key={i}
+                      dangerouslySetInnerHTML={{ __html: s }}
+                    />
+                  ))}
+                </div>
               </div>
             );
           } else if (block.type === "wrong_right_list") {
             const list = block.value.wrong_right_list;
             return (
               <div key={block.id} className="text-container">
-                <div className="bl-detail__wr">
-                  <div className="bl-detail__wr__header">
+                <div className="bl-detail__teach">
+                  <div className="bl-detail__teach__header">
                     Incorrect and Correct!
                   </div>
                   {list.map((s, i) => {
                     return (
-                      <div key={i} className="blk-wr">
-                        <div className="blk-wr__ex blk-wr__ex--wrong">
-                          <div className="blk-wr__icon">
-                            <RiEmotionUnhappyLine />
-                          </div>
+                      <div key={i} className="bl-detail__wr">
+                        <div className="bl-detail__wr--wrong">
+                          <RiEmotionUnhappyLine />
                           <p>{s.wrong}</p>
                         </div>
-                        <div className="blk-wr__ex blk-wr__ex--right">
-                          <div className="blk-wr__icon">
-                            <RiEmotionHappyLine />
-                          </div>
+                        <div className="bl-detail__wr--right">
+                          <RiEmotionHappyLine />
                           <p>{s.right}</p>
                         </div>
                       </div>
@@ -378,6 +382,7 @@ export default function LessonsDetailPage() {
           }
         })}
       </section>
+
       <section className="l-rel">
         <div className="container">
           <h2 className="l-rel__title">Other lessons you might like</h2>
