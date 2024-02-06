@@ -328,7 +328,12 @@ a.bl-detail__sh__cat::before {
 }
 
 /* conversation block */
-.bl-detail__conversation {
+.bl-detail__conversation td {
+  padding: 0 0 5px 0;
+  vertical-align: baseline;
+}
+.bl-detail__conversation td:last-of-type {
+  padding-left: 10px;
 }
 
 /* multiple choice block */

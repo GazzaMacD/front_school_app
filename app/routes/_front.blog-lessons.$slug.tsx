@@ -341,7 +341,7 @@ export default function LessonsDetailPage() {
                   <div className="bl-detail__teach__header">
                     Learn from this conversation!
                   </div>
-                  <table className="l-conv__table">
+                  <table className="bl-detail__conversation">
                     <tbody>
                       {block.value.conversation.map((lines: any) => {
                         return (
