@@ -225,133 +225,200 @@ a.bl-detail__sh__cat::before {
   height: auto;
 }
 /* main blog lesson body */
-.l-list-wrapper {
-  padding: 4rem 0 5rem 0;
+.bl-detail__figure {
+  margin-bottom: 60px;
 }
-.l-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-md);
+.bl-detail__figure > figcaption {
+  margin-top: 20px;
+  font-size: var(--font-size-s);
 }
-.l-list > a::before {
-  content: none;
-}
-.l-list-link {
-  flex: 0 0 49%;
-}
-.l-list-item {
-  display: flex;
-  background-color: white;
-  box-shadow: 0px 0px 5px 0px var(--color-shadow);
-}
-.l-list-item__img {
-  max-width: 40%;
-  height: auto;
-}
-.l-list-item__img > img {
-  object-fit: fill;
-}
-.l-list-item > h3 {
-  color: var(--color-base-text);
-}
-.l-list-item__details {
-  padding: var(--space-xxs) var(--space-sm);
-}
-.l-list-item__details > h3 {
-  color: var(--color-base-green);
-  font-size: var(--text-md);
-  margin: 0;
-}
-.l-list-item__details > p {
-  font-size: var(--text-sm);
-  color: var(--color-base-text);
-  margin: 0;
-  line-height: 1.3;
-}
-.l-list-item__details > span {
-  font-size: var(--text-sm);
-  color: var(--color-base-lightgreen);
-}
-
-/* 
-* Lesson Detail Page 
-*/
-.l-detail-header {
-}
-.l-detail-header__img {
+.bl-detail__figure.full-width {
   width: 100%;
 }
-.l-detail-image {
-  padding: var(--space-md) 0;
+.bl-detail__figure.full-width > figcaption {
+  margin-left: 120px;
 }
-.l-detail-image figcaption {
-  padding: var(--space-xxs) var(--component-padding);
+.bl-detail__figure.beyond-text {
+  margin: 0 auto 60px auto;
+  max-width: 1232px;
 }
-/* Lesson Detail Conversation block */
-.l-conv {
-  background-color: white;
-  padding: var(--space-sm);
-  margin: var(--space-lg) 0;
-  border: 1px solid var(--color-base-limegreen);
-}
-.l-conv__title {
-  text-align: center;
-}
-.l-conv__table td {
-  vertical-align: top;
-  padding: var(--space-xxs);
-}
-.l-detail__img-block {
-  margin: 40px 0;
-}
-/* Lesson Detail Multiple Choice block */
-.l-mc-questions {
-  margin: 40px 0;
-  padding: 50px 0;
-  border-top: 1px var(--color-base-green) solid;
-  border-bottom: 1px var(--color-base-green) solid;
-}
-.l-mc-questions__title {
-  text-align: center;
-}
-.l-mc-questions__instructions {
-  font-size: var(--text-xs);
-}
-.l-question {
-  cursor: pointer;
-}
-.l-question__question {
-  margin: 0 0 var(--space-xs) 0;
-}
-.l-question__choices {
-  padding: 0 0 20px 40px;
-}
-.l-question__choice {
-  padding: var(--space-xxs) 0;
-  margin: var(--space-xxs) 0;
+/* block quote */
+.bl-detail__bquote {
   position: relative;
+  background-color: var(--color-brand-white);
+  padding: 60px;
+  margin: 60px 0 60px 0;
+  border-radius: 20px;
+}
+.bl-detail__bquote > blockquote > p {
+  margin-bottom: 30px;
+}
+.bl-detail__bquote::before {
+  content: "“";
+  color: var(--color-brand-green);
+  position: absolute;
+  font-size: 12rem;
+  top: -101px;
+  left: -23px;
+}
+/* videos */
+.bl-detail__youtube {
+  margin: 60px auto 60px auto;
+  max-width: 1232px;
+}
+.bl-detail__youtube > iframe {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  border: none;
+}
+@media screen and (orientation: portrait) {
+  .bl-detail__youtube .youtube-short {
+    aspect-ratio: 9 / 16;
+  }
+}
+/* teaching blocks */
+.bl-detail__teach {
+  position: relative;
+  border: 2px solid var(--color-brand-green);
+  border-radius: 20px;
+  background-color: var(--color-brand-white);
+  padding: 70px 40px 40px 40px;
+  margin-bottom: 60px;
+}
+
+.bl-detail__teach__header {
+  position: absolute;
+  background-color: var(--color-brand-green);
+  color: var(--color-brand-white);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-w-semi-bold);
+  padding: 10px 60px 10px 20px;
+  border-radius: 20px 0 20px 0;
+  top: 0;
+  left: -2px;
+}
+/* right wrong block */
+.bl-detail__wr {
+  padding-bottom: 15px;
+}
+.bl-detail__wr > div {
+  position: relative;
+}
+.bl-detail__wr > div > p {
+  margin: 0;
+  padding: 3px 0 3px 30px;
+}
+.bl-detail__wr > div > svg {
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  top: 6px;
+  left: -2px;
+}
+.bl-detail__wr--wrong {
+  color: var(--color-sec-red);
+}
+.bl-detail__wr--right {
+  color: var(--color-brand-green);
+}
+/* example sentence block */
+.bl-detail__example-s > p {
+  margin: 0;
+  padding: 5px 0;
+}
+
+/* conversation block */
+.bl-detail__conversation td {
+  padding: 0 0 5px 0;
+  vertical-align: baseline;
+}
+.bl-detail__conversation td:last-of-type {
+  padding-left: 10px;
+}
+
+/* multiple choice block */
+.bl-detail__mctest {
+  position: relative;
+  border: 2px solid var(--color-brand-green);
+  border-radius: 20px;
+  background-color: var(--color-brand-white);
+  padding-top: 70px; /*40px 40px 40px */
+  margin-bottom: 60px;
+}
+
+.bl-detail__mctest__header {
+  position: absolute;
+  background-color: var(--color-brand-green);
+  color: var(--color-brand-white);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-w-semi-bold);
+  padding: 10px 60px 10px 20px;
+  border-radius: 20px 0 20px 0;
+  top: 0;
+  left: -2px;
+}
+.bl-detail__mctest__test {
+  padding: 0 40px 40px 40px;
+}
+.bl-detail__mctest__qa {
+  margin: 0 0 40px 0;
+}
+.bl-detail__mctest__qa > p {
+  margin: 0 0 20px 0;
+  color: var(--color-brand-green);
+}
+.bl-detail__mctest__qa > div {
+  padding: 0 0 0 25px;
+}
+.bl-detail__mctest__choice {
+  padding: 0 0 5px 0;
+  margin-bottom: 5px;
+  position: relative;
+}
+.bl-detail__mctest__choice:hover {
   cursor: pointer;
 }
-.l-question__correct {
-  color: var(--color-base-green);
-}
-.l-question__correct::before {
-  content: "◯";
+.bl-detail__mctest__choice.correct::before {
   position: absolute;
-  color: var(--color-base-green);
-  left: -30px;
+  content: "O";
+  color: var(--color-brand-green);
+  left: -20px;
 }
-.l-question__incorrect {
-  color: var(--color-base-orange);
-}
-.l-question__incorrect::before {
+.bl-detail__mctest__choice.incorrect::before {
+  position: absolute;
   content: "X";
-  position: absolute;
-  color: var(--color-base-orange);
-  left: -30px;
+  color: var(--color-sec-red);
+  left: -20px;
 }
-.l-question__answer p {
+.bl-detail__mctest__results > p {
+  margin-bottom: 30px;
+}
+.bl-detail__mctest__answers {
+  background-color: var(--color-brand-beige);
+  padding: 40px 40px 40px 40px;
+  border-radius: 0 0 20px 20px;
+}
+.bl-detail__mctest__answers > div:first-of-type {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bl-detail__mctest__btn {
+  background-color: var(--color-brand-green);
+  color: var(--color-brand-white);
+  border: none;
+  border-radius: 100px;
+  padding: 5px 15px;
+}
+.bl-detail__mctest__answer {
+  padding: 0 0 20px 0;
+}
+.bl-detail__mctest__answer > p {
   margin: 0;
+}
+.bl-detail__mctest__answer > p:last-of-type {
+  font-weight: 700;
+  padding-left: 20px;
 }
 
 /* Related lesson */
@@ -409,83 +476,4 @@ a.l-rel__card__button:hover {
 }
 a.l-rel__card__button::before {
   content: none;
-}
-/* 
-* Blocks 
-*/
-/* Examples */
-.blk-examples {
-  padding: 30px 10px;
-  background-color: var(--color-base-white);
-  border: solid var(--color-base-brown) 2px;
-  position: relative;
-  margin-bottom: 3rem;
-}
-.blk-examples > div:first-child {
-  position: absolute;
-  top: -21px;
-  padding: 5px 10px;
-  border: solid var(--color-base-brown) 2px;
-  background-color: var(--color-sec-lightlime);
-  border-radius: var(--radius-sm);
-}
-
-.blk-examples p {
-  font-weight: 500;
-  margin-bottom: var(--space-xxs);
-  padding-left: 15px;
-  position: relative;
-  color: inherit;
-}
-.blk-examples p::before {
-  content: "・ ";
-  position: absolute;
-  left: -10px;
-}
-
-/* Wrong Right */
-.blk-wr-wrapper {
-  padding: 30px 10px;
-  background-color: var(--color-base-white);
-  border: solid var(--color-base-brown) 2px;
-  position: relative;
-  margin-bottom: 3rem;
-}
-.blk-wr-wrapper > div:first-child {
-  position: absolute;
-  top: -21px;
-  padding: 5px 10px;
-  border: solid var(--color-base-brown) 2px;
-  background-color: var(--color-sec-lightlime);
-  border-radius: var(--radius-sm);
-}
-.blk-wr {
-  margin-bottom: 2rem;
-}
-.blk-wr:last-child {
-  margin-bottom: 0;
-}
-.blk-wr__ex {
-  display: flex;
-}
-.blk-wr p {
-  margin: 0;
-  font-weight: 500;
-}
-.blk-wr__ex {
-  padding-left: 20px;
-  position: relative;
-}
-.blk-wr__ex--wrong {
-  color: red;
-}
-.blk-wr__ex--right {
-  color: green;
-}
-.blk-wr__icon {
-  position: absolute;
-  height: 25px;
-  width: 25px;
-  left: -4px;
-  top: 8px;
 }

@@ -433,6 +433,7 @@ template {
   --color-sec-lightbrown: hsl(36, 56%, 27%);
   --color-sec-lightorange: hsl(28, 100%, 75%);
   --color-sec-darkgreen: hsl(104, 80%, 28%);
+  --color-sec-red: hsl(9, 100%, 50%);
 
   /*  OLD EXPERIMENTAL COLORS */
   --color-base-white: white;
@@ -448,7 +449,6 @@ template {
   --color-sec-lightlime: #b1d121;
   --color-sec-lightorange: #fe9600;
   --color-sec-paleorange: #fed4b4;
-  --color-sec-red: rgb(171, 18, 28);
   --color-sec-darkorange: #d34a20; /* #f3460f;  #f06232; */
   --color-sec-focusblue: #0085f2;
 

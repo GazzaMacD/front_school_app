@@ -1,18 +1,20 @@
-import { redirect, json } from "@remix-run/node";
-import React from "react";
-import { BASE_API_URL } from "~/common/constants.server";
-import { useLoaderData } from "@remix-run/react";
-import { handlePreview } from "~/common/utils.server";
+import { json } from "@remix-run/node";
 import { AiOutlineCalendar, AiOutlineClockCircle } from "react-icons/ai";
-import { useRouteError, isRouteErrorResponse, Link } from "@remix-run/react";
+import { Link, useLoaderData } from "@remix-run/react";
 import { RiEmotionHappyLine, RiEmotionUnhappyLine } from "react-icons/ri";
+import React from "react";
+
+import { BASE_API_URL } from "~/common/constants.server";
+import { handlePreview } from "~/common/utils.server";
+import { Swoosh1 } from "~/components/swooshes";
 
 /*types */
 import type { LoaderArgs } from "@remix-run/node";
 import type {
   TWagBasicImage,
-  TWagListAllBase,
   TBaseDetailPage,
+  TListPageItemAllMeta,
+  TBaseListPage,
 } from "~/common/types";
 import { getGlobalEnv } from "~/common/utils";
 
@@ -33,23 +35,23 @@ type TLesson = TListPageItemAllMeta & {
 type TLessons = TBaseListPage & {
   items: TLesson[];
 };
+
 type TArrayAnswers = {
   id: number;
   correct: boolean;
   text: string;
 }[];
+
+type TArrayQuestions = {
+  id: number;
+  correct: boolean;
+  text: string;
+}[];
+
 type TMCQuestion = {
   questionNumber: number;
   question: string;
   answers: TArrayAnswers;
-};
-type TMCQuestionProps = TMCQuestion & {
-  handleClick: (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    correct: boolean,
-    questionNumber: number,
-    question: string
-  ) => void;
 };
 
 type TMCValue = {
@@ -57,32 +59,55 @@ type TMCValue = {
   intro: string;
   questions: TMCQuestion[];
 };
+
 type TMCQuestionsProps = {
   value: TMCValue;
+};
+type TTestRecordAnswer = {
+  letter: string;
+  text: string;
+};
+
+type TTestRecordQuestion = {
+  questionNumber: number;
+  question: string;
+  answers: TArrayAnswers;
+  answer: TTestRecordQuestion;
+  answered: boolean;
+  answerCorrect: boolean;
+};
+type TTestRecordQuestions = TTestRecordQuestion[];
+
+type TTestRecord = {
+  title: string;
+  intro: string;
+  questions: TTestRecordQuestions;
+  numQuestions: 3;
+};
+
+type TMCQuestionProps = {
+  questionNumber: number;
+  question: string;
+  answers: TArrayAnswers;
+  answered: boolean;
+  handleClick: (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    correct: boolean,
+    answered: boolean,
+    questionNumber: number,
+    question: string
+  ) => void;
 };
 /*
  * helper functions
  */
 function shuffleQuestions(questionsArray: TArrayQuestions): TArrayQuestions {
-  const array = [...questionsArray];
+  const array: TArrayQuestions = [...questionsArray];
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];
   }
   return array;
-}
-
-function getAnswers(questionsArray: TMCQuestion[]) {
-  return questionsArray.map((question) => {
-    const answer = question.answers.filter((answer) => answer.correct);
-    return {
-      questionNumber: question.questionNumber,
-      question: question.question,
-      answer: answer.length
-        ? answer[0].text
-        : "sorry no answer provided, must be an error",
-    };
-  });
 }
 
 function multipleChoiceCreator(data) {
@@ -236,7 +261,7 @@ export default function LessonsDetailPage() {
           } else if (block.type === "text_width_img") {
             return (
               <div key={block.id} className="text-container">
-                <figure>
+                <figure className="bl-detail__figure text-width">
                   <img
                     src={`${ENV.BASE_BACK_URL}${block.value.image.original.src}`}
                     alt={block.value.image.original?.alt}
@@ -249,11 +274,8 @@ export default function LessonsDetailPage() {
             );
           } else if (block.type === "full_width_img") {
             return (
-              <div
-                key={block.id}
-                className="full-width-container l-detail-image"
-              >
-                <figure>
+              <div key={block.id}>
+                <figure className="bl-detail__figure full-width">
                   <img
                     src={`${ENV.BASE_BACK_URL}${block.value.image.original.src}`}
                     alt={block.value.image.original?.alt}
@@ -266,8 +288,8 @@ export default function LessonsDetailPage() {
             );
           } else if (block.type === "beyond_text_img") {
             return (
-              <div key={block.id} className="container l-detail-image">
-                <figure>
+              <div key={block.id}>
+                <figure className="bl-detail__figure beyond-text">
                   <img
                     src={`${ENV.BASE_BACK_URL}${block.value.image.original.src}`}
                     alt={block.value.image.original?.alt}
@@ -280,32 +302,32 @@ export default function LessonsDetailPage() {
             );
           } else if (block.type === "block_quote") {
             return (
-              <div key={block.id} className="text-container l-detail-image">
-                <figure className="bquote">
-                  <div className="bquote__inner">
-                    <blockquote cite={block.value?.citation_url}>
-                      <p>{block.value.quote}</p>
-                    </blockquote>
-                    <figcaption>
-                      — {block.value.author},{" "}
-                      <cite>{block.value.citation_source}</cite>
-                    </figcaption>
-                  </div>
+              <div key={block.id} className="text-container">
+                <figure className="bl-detail__bquote">
+                  <blockquote cite={block.value?.citation_url}>
+                    <p>{block.value.quote}</p>
+                  </blockquote>
+                  <figcaption>
+                    — {block.value.author},{" "}
+                    <cite>{block.value.citation_source}</cite>
+                  </figcaption>
                 </figure>
               </div>
             );
           } else if (block.type === "youtube") {
             return (
-              <div key={block.id} className="container">
-                <iframe
-                  className={`youtube-iframe ${
-                    block.value.short ? "youtube-short" : ""
-                  }`}
-                  src={`${block.value.src}?modestbranding=1&controls=0&rel=0`}
-                  title="YouTube video player"
-                  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
+              <div key={block.id}>
+                <div className="bl-detail__youtube">
+                  <iframe
+                    className={`youtube-iframe ${
+                      block.value.short ? "youtube-short" : ""
+                    }`}
+                    src={`${block.value.src}?modestbranding=1&controls=0&rel=0`}
+                    title="YouTube video player"
+                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                </div>
               </div>
             );
           } else if (block.type === "conversation") {
@@ -313,24 +335,29 @@ export default function LessonsDetailPage() {
             const p2 = block.value.person_two_name;
             return (
               <div key={block.id} className="text-container">
-                <div className="l-conv">
-                  <h4 className="l-conv__title">{block.value.title}</h4>
-                  <p>{block.value.intro}</p>
-                  <table className="l-conv__table">
-                    {block.value.conversation.map((lines: any) => {
-                      return (
-                        <React.Fragment key={lines.person_one.slice(0, 6)}>
-                          <tr>
-                            <td>{p1}</td>
-                            <td>:</td> <td>{lines.person_one}</td>
-                          </tr>
-                          <tr>
-                            <td>{p2}</td>
-                            <td>:</td> <td>{lines.person_two}</td>
-                          </tr>
-                        </React.Fragment>
-                      );
-                    })}
+                <h3>{block.value.title}</h3>
+                <p>{block.value.intro}</p>
+                <div className="bl-detail__teach">
+                  <div className="bl-detail__teach__header">
+                    Learn from this conversation!
+                  </div>
+                  <table className="bl-detail__conversation">
+                    <tbody>
+                      {block.value.conversation.map((lines: any) => {
+                        return (
+                          <React.Fragment key={lines.person_one.slice(0, 10)}>
+                            <tr>
+                              <td>{p1}</td>
+                              <td>:</td> <td>{lines.person_one}</td>
+                            </tr>
+                            <tr>
+                              <td>{p2}</td>
+                              <td>:</td> <td>{lines.person_two}</td>
+                            </tr>
+                          </React.Fragment>
+                        );
+                      })}
+                    </tbody>
                   </table>
                 </div>
               </div>
@@ -340,36 +367,44 @@ export default function LessonsDetailPage() {
           } else if (block.type === "examples_list") {
             const examples = block.value.sentences_list;
             return (
-              <div key={block.id} className="text-container blk-examples">
-                <div>Let's read and learn!</div>
-                {examples.map((s, i) => (
-                  <div key={i} dangerouslySetInnerHTML={{ __html: s }} />
-                ))}
+              <div key={block.id} className="text-container">
+                <div className="bl-detail__teach">
+                  <div className="bl-detail__teach__header">
+                    Let's read and learn!
+                  </div>
+                  {examples.map((s, i) => (
+                    <div
+                      className="bl-detail__example-s"
+                      key={i}
+                      dangerouslySetInnerHTML={{ __html: s }}
+                    />
+                  ))}
+                </div>
               </div>
             );
           } else if (block.type === "wrong_right_list") {
             const list = block.value.wrong_right_list;
             return (
-              <div key={block.id} className="text-container blk-wr-wrapper">
-                <div>Incorrect and Correct!</div>
-                {list.map((s, i) => {
-                  return (
-                    <div key={i} className="blk-wr">
-                      <div className="blk-wr__ex blk-wr__ex--wrong">
-                        <div className="blk-wr__icon">
+              <div key={block.id} className="text-container">
+                <div className="bl-detail__teach">
+                  <div className="bl-detail__teach__header">
+                    Incorrect and Correct!
+                  </div>
+                  {list.map((s, i) => {
+                    return (
+                      <div key={i} className="bl-detail__wr">
+                        <div className="bl-detail__wr--wrong">
                           <RiEmotionUnhappyLine />
+                          <p>{s.wrong}</p>
                         </div>
-                        <p>{s.wrong}</p>
-                      </div>
-                      <div className="blk-wr__ex blk-wr__ex--right">
-                        <div className="blk-wr__icon">
+                        <div className="bl-detail__wr--right">
                           <RiEmotionHappyLine />
+                          <p>{s.right}</p>
                         </div>
-                        <p>{s.right}</p>
                       </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </div>
               </div>
             );
           } else {
@@ -377,6 +412,7 @@ export default function LessonsDetailPage() {
           }
         })}
       </section>
+
       <section className="l-rel">
         <div className="container">
           <h2 className="l-rel__title">Other lessons you might like</h2>
@@ -413,122 +449,184 @@ export default function LessonsDetailPage() {
   );
 }
 
-type TTestRecord = {
-  questionNumber: number;
-  correct: boolean;
-  answers: string[];
-}[];
-
 function MCQuestions({ value }: TMCQuestionsProps) {
-  const [testRecord, setTestRecord] = React.useState<TTestRecord>([]);
+  const [testRecord, setTestRecord] = React.useState<TTestRecord | null>(null);
   const [showAnswers, setShowAnswers] = React.useState(false);
   const numQuestions = value.questions.length;
-  const numAnswered = testRecord.length;
-  const answers = getAnswers(value.questions);
-  const numCorrect = testRecord.reduce((accumulator, record) => {
-    if (record.correct) {
-      return accumulator + 1;
-    } else {
-      return accumulator + 0;
-    }
-  }, 0);
+  const numCorrect = testRecord ? calculateScore(testRecord.questions) : 0;
+  const numAnswered = testRecord
+    ? calculateNumAnswered(testRecord.questions)
+    : 0;
 
-  function createOrUpdateRecord(
+  function calculateNumAnswered(questions: TTestRecordQuestions) {
+    let numAnswered = 0;
+    questions.forEach((q) => {
+      if (q.answered) {
+        numAnswered += 1;
+      }
+    });
+    return numAnswered;
+  }
+
+  function calculateScore(questions: TTestRecordQuestions) {
+    let score = 0;
+    questions.forEach((q) => {
+      if (q.answerCorrect) {
+        score += 1;
+      }
+    });
+    return score;
+  }
+
+  function getAnswers(answers: TArrayAnswers): TTestRecordAnswer {
+    const answer = {
+      letter: "",
+      text: "",
+    };
+    answers.forEach((q, i) => {
+      const letters = ["a", "b", "c"];
+      if (q.correct) {
+        answer.text = q.text;
+        answer.letter = letters[i];
+      }
+    });
+    return answer;
+  }
+
+  function updateTestRecord(
     testRecord: TTestRecord,
     qNumber: number,
-    correct: boolean,
-    text: string
+    correct: boolean
   ) {
-    let testRecordCpy = [...testRecord];
-    if (testRecordCpy.some((record) => record.questionNumber === qNumber)) {
-      //exists so only update the text
-      testRecordCpy.map((record) => {
-        if (record.questionNumber === qNumber) {
-          record.answers.push(text);
-          return record;
+    const newTestRecord: TTestRecord = JSON.parse(JSON.stringify(testRecord));
+    const updatedQuestions: TTestRecordQuestions = newTestRecord.questions.map(
+      (q) => {
+        if (q.questionNumber === qNumber) {
+          const updatedQ = JSON.parse(JSON.stringify(q));
+          updatedQ.answered = true;
+          updatedQ.answerCorrect = correct;
+          return updatedQ;
+        } else {
+          return q;
         }
-        return record;
-      });
-      return testRecordCpy;
-    } else {
-      //create new record
-      testRecordCpy.push({
-        questionNumber: qNumber,
-        correct: correct,
-        answers: [text],
-      });
-      return testRecordCpy;
-    }
+      }
+    );
+    newTestRecord.questions = updatedQuestions;
+    return newTestRecord;
   }
 
   function handleClick(
     e: React.MouseEvent<HTMLDivElement, MouseEvent>,
     correct: boolean,
+    answered: boolean,
     questionNumber: number,
     text: string
   ) {
+    if (answered || !testRecord) return;
+
     if (correct) {
-      e.currentTarget.classList.toggle("l-question__correct");
-      setTestRecord(
-        createOrUpdateRecord(testRecord, questionNumber, correct, text)
-      );
+      e.currentTarget.classList.add("correct");
+      setTestRecord(updateTestRecord(testRecord, questionNumber, correct));
     } else {
-      e.currentTarget.classList.toggle("l-question__incorrect");
-      setTestRecord(
-        createOrUpdateRecord(testRecord, questionNumber, correct, text)
-      );
+      e.currentTarget.classList.add("incorrect");
+      setTestRecord(updateTestRecord(testRecord, questionNumber, correct));
     }
   }
 
+  React.useEffect(() => {
+    if (testRecord) return;
+    function createTestRecord(value: TMCValue): TTestRecord {
+      const testRecord = JSON.parse(JSON.stringify(value));
+      const questions = testRecord.questions.map((q) => {
+        q.answer = getAnswers(q.answers);
+        q.answered = false;
+        q.answerCorrect = false;
+        return q;
+      });
+      testRecord.questions = questions;
+      testRecord.numQuestions = testRecord.questions.length;
+      return testRecord;
+    }
+    setTestRecord(createTestRecord(value));
+  }, [value, testRecord]);
+
   return (
     <div className="text-container">
-      <div className="l-mc-questions">
-        <h4 className="l-mc-questions__title">{value.title}</h4>
-        <p>{value.intro}</p>
-        <p className="l-mc-questions__instructions">
-          Click on the answer. Only your first try will be recorded for the
-          results. Click on the 'show answers' to see answers.
-        </p>
-        {value.questions.map((question: any) => {
-          return (
-            <MCQuestion
-              key={question.questionNumber}
-              questionNumber={question.questionNumber}
-              question={question.question}
-              answers={question.answers}
-              handleClick={handleClick}
-            />
-          );
-        })}
-        <div>
-          {numAnswered === numQuestions ? (
-            <>
-              <h5>Results</h5>
-              <p>
-                Your result: {numCorrect}/{numAnswered} ={" "}
-                {Math.round((numCorrect / numAnswered) * 100)}%{" "}
-              </p>
-            </>
-          ) : null}
+      <h3>{value.title}</h3>
+      <p>{value.intro}</p>
+      <div className="bl-detail__mctest">
+        <div className="bl-detail__mctest__header">
+          A fun multiple choice test!
         </div>
-        <div>
-          <button
-            className="button"
-            onClick={() => setShowAnswers(!showAnswers)}
-          >
-            {showAnswers ? "Hide Answers" : "Show answers"}
-          </button>
-          {showAnswers &&
-            answers.map((answer) => {
-              return (
-                <div key={answer.questionNumber} className="l-question__answer">
-                  <p>
-                    {answer.questionNumber}: {answer.question}
-                  </p>
-                  <p> - {answer.answer}</p>
+        <div className="bl-detail__mctest__test">
+          <p>
+            Please click on the answer. Only your first try will be recorded for
+            the results. When you have finished, you can see your results and
+            answers by clicking on the button 'results and answers'
+          </p>
+          <div>
+            {testRecord
+              ? testRecord.questions.map((q: any) => {
+                  return (
+                    <MCQuestion
+                      key={q.questionNumber}
+                      questionNumber={q.questionNumber}
+                      question={q.question}
+                      answers={q.answers}
+                      answered={q.answered}
+                      handleClick={handleClick}
+                    />
+                  );
+                })
+              : null}
+          </div>
+        </div>
+        <div className="bl-detail__mctest__answers">
+          <div>
+            <button
+              className="bl-detail__mctest__btn"
+              onClick={() => setShowAnswers(!showAnswers)}
+            >
+              {showAnswers ? "Hide" : "Results & answers"}
+            </button>
+          </div>
+          <div>
+            {showAnswers && (
+              <>
+                <div className="bl-detail__mctest__results">
+                  <h5>Results</h5>
+                  {numAnswered < numQuestions ? (
+                    <p>Please finish the test to see your results.</p>
+                  ) : (
+                    <p>
+                      Your result: {numCorrect}/{numQuestions} ={" "}
+                      {Math.round((numCorrect / numQuestions) * 100)}%{" "}
+                    </p>
+                  )}
                 </div>
-              );
-            })}
+                <div>
+                  <h5>Answers</h5>
+                  {testRecord
+                    ? testRecord.questions.map((q) => {
+                        return (
+                          <div
+                            key={q.question}
+                            className="bl-detail__mctest__answer"
+                          >
+                            <p>
+                              {q.questionNumber}: {q.question}
+                            </p>
+                            <p>
+                              {q.answer.letter}: {q.answer.text}
+                            </p>
+                          </div>
+                        );
+                      })
+                    : null}
+                </div>
+              </>
+            )}
+          </div>
         </div>
       </div>
     </div>
@@ -539,23 +637,30 @@ function MCQuestion({
   questionNumber,
   question,
   answers,
+  answered,
   handleClick,
 }: TMCQuestionProps) {
   return (
-    <div>
-      <p className="l-question__question">
+    <div className="bl-detail__mctest__qa">
+      <p>
         {questionNumber}: {question}
       </p>
-      <div className="l-question__choices">
+      <div>
         {answers.map((question, i) => {
           const letters = ["a", "b", "c"];
           return (
             <div
               key={question.id}
-              onClick={(e) =>
-                handleClick(e, question.correct, questionNumber, question.text)
-              }
-              className="l-question__choice"
+              onClick={(e) => {
+                handleClick(
+                  e,
+                  question.correct,
+                  answered,
+                  questionNumber,
+                  question.text
+                );
+              }}
+              className="bl-detail__mctest__choice"
             >
               <span>{letters[i]}: </span>
               {question.text}
