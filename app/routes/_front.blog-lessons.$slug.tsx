@@ -593,7 +593,7 @@ function MCQuestions({ value }: TMCQuestionsProps) {
           <div>
             {showAnswers && (
               <>
-                <div>
+                <div className="bl-detail__mctest__results">
                   <h5>Results</h5>
                   {numAnswered < numQuestions ? (
                     <p>Please finish the test to see your results.</p>
@@ -605,6 +605,7 @@ function MCQuestions({ value }: TMCQuestionsProps) {
                   )}
                 </div>
                 <div>
+                  <h5>Answers</h5>
                   {testRecord
                     ? testRecord.questions.map((q) => {
                         return (

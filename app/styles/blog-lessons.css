@@ -390,6 +390,9 @@ a.bl-detail__sh__cat::before {
   color: var(--color-sec-red);
   left: -20px;
 }
+.bl-detail__mctest__results > p {
+  margin-bottom: 30px;
+}
 .bl-detail__mctest__answers {
   background-color: var(--color-brand-beige);
   padding: 40px 40px 40px 40px;
