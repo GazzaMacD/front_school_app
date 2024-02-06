@@ -493,19 +493,6 @@ function MCQuestions({ value }: TMCQuestionsProps) {
     return answer;
   }
 
-  function createTestRecord(value: TMCValue): TTestRecord {
-    const testRecord = JSON.parse(JSON.stringify(value));
-    const questions = testRecord.questions.map((q) => {
-      q.answer = getAnswers(q.answers);
-      q.answered = false;
-      q.answerCorrect = false;
-      return q;
-    });
-    testRecord.questions = questions;
-    testRecord.numQuestions = testRecord.questions.length;
-    return testRecord;
-  }
-
   function updateTestRecord(
     testRecord: TTestRecord,
     qNumber: number,
@@ -548,8 +535,20 @@ function MCQuestions({ value }: TMCQuestionsProps) {
 
   React.useEffect(() => {
     if (testRecord) return;
+    function createTestRecord(value: TMCValue): TTestRecord {
+      const testRecord = JSON.parse(JSON.stringify(value));
+      const questions = testRecord.questions.map((q) => {
+        q.answer = getAnswers(q.answers);
+        q.answered = false;
+        q.answerCorrect = false;
+        return q;
+      });
+      testRecord.questions = questions;
+      testRecord.numQuestions = testRecord.questions.length;
+      return testRecord;
+    }
     setTestRecord(createTestRecord(value));
-  }, [value, testRecord, createTestRecord]);
+  }, [value, testRecord]);
 
   return (
     <div className="text-container">
@@ -671,73 +670,3 @@ function MCQuestion({
     </div>
   );
 }
-
-const value = {
-  title: "Do you know Africa?",
-  intro: "A fun test to see how much you know about Africa.",
-  questions: [
-    {
-      questionNumber: 1,
-      question: "What is the most dangerous creature in Africa?",
-      answers: [
-        {
-          id: 1,
-          correct: true,
-          text: "Mosquito",
-        },
-        {
-          id: 2,
-          correct: false,
-          text: "Crocodile",
-        },
-        {
-          id: 3,
-          correct: false,
-          text: "Lion",
-        },
-      ],
-    },
-    {
-      questionNumber: 2,
-      question: "What is the most populous country in Africa?",
-      answers: [
-        {
-          id: 2,
-          correct: false,
-          text: "South Africa",
-        },
-        {
-          id: 1,
-          correct: true,
-          text: "Nigeria",
-        },
-        {
-          id: 3,
-          correct: false,
-          text: "Egypt",
-        },
-      ],
-    },
-    {
-      questionNumber: 3,
-      question: "How many languages are there in Africa?",
-      answers: [
-        {
-          id: 1,
-          correct: true,
-          text: "From 2100 to 3000",
-        },
-        {
-          id: 3,
-          correct: false,
-          text: "From 50 to 150",
-        },
-        {
-          id: 2,
-          correct: false,
-          text: "From 10 to 15",
-        },
-      ],
-    },
-  ],
-};
