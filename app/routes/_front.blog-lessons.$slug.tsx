@@ -445,6 +445,7 @@ export default function LessonsDetailPage() {
           </div>
         </div>
       </section>
+      <Swoosh1 swooshColor="beige" backColor="white" />
     </>
   );
 }
