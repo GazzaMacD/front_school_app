@@ -1,17 +1,17 @@
-import { redirect, json } from "@remix-run/node";
-import React from "react";
-import { BASE_API_URL } from "~/common/constants.server";
-import { useLoaderData } from "@remix-run/react";
-import { handlePreview } from "~/common/utils.server";
+import { json } from "@remix-run/node";
 import { AiOutlineCalendar, AiOutlineClockCircle } from "react-icons/ai";
-import { useRouteError, isRouteErrorResponse, Link } from "@remix-run/react";
+import { Link, useLoaderData } from "@remix-run/react";
 import { RiEmotionHappyLine, RiEmotionUnhappyLine } from "react-icons/ri";
+import React from "react";
+
+import { BASE_API_URL } from "~/common/constants.server";
+import { handlePreview } from "~/common/utils.server";
+import { Swoosh1 } from "~/components/swooshes";
 
 /*types */
 import type { LoaderArgs } from "@remix-run/node";
 import type {
   TWagBasicImage,
-  TWagListAllBase,
   TBaseDetailPage,
   TListPageItemAllMeta,
   TBaseListPage,
