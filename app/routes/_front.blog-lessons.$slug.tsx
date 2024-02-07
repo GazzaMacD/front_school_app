@@ -200,56 +200,55 @@ export default function LessonsDetailPage() {
   const pubDate = new Date(page.published_date);
   return (
     <>
-      <div className="l-header">
-        <header>
-          <div className="container">
-            <h1 className="l-header__title">{page.display_title}</h1>
-            <p className="l-header__intro">{page.display_tagline}</p>
-          </div>
-          <div className="container">
-            <div className="bl-detail__sh">
-              <div className="bl-detail__sh__author">
-                <Link to={`/staff/${page.author.slug}`}>
-                  <img
-                    src={`${ENV.BASE_BACK_URL}${page.author.image.thumbnail.src}`}
-                    alt={page.author.image.thumbnail.alt}
-                  />
-                </Link>
-                <p>
-                  <Link to={`/staff/${page.author.slug}`}>
-                    {page.author.name}
-                  </Link>
-                </p>
-              </div>
-              <div className="bl-detail__sh__date">
-                <AiOutlineCalendar />
-                <p>
-                  {" "}
-                  {`${pubDate.getFullYear()}.${
-                    pubDate.getMonth() + 1
-                  }.${pubDate.getDate()}`}
-                </p>
-              </div>
-              <div className="bl-detail__sh__learn">
-                <AiOutlineClockCircle />
-                <p>この記事は{page.estimated_time}分で読めます</p>
-              </div>
-              <Link
-                to={`/blog-lessons?category=${page.category.ja_name}`}
-                className="bl-detail__sh__cat"
-              >
-                {page.category.ja_name}
+      <header className="bl-detail__header">
+        <div className="container">
+          <h1 className="l-header__title">{page.display_title}</h1>
+          <p className="l-header__intro">{page.display_tagline}</p>
+        </div>
+        <div className="container">
+          <div className="bl-detail__sh">
+            <div className="bl-detail__sh__author">
+              <Link to={`/staff/${page.author.slug}`}>
+                <img
+                  src={`${ENV.BASE_BACK_URL}${page.author.image.thumbnail.src}`}
+                  alt={page.author.image.thumbnail.alt}
+                />
               </Link>
+              <p>
+                <span>By </span>
+                <Link to={`/staff/${page.author.slug}`}>
+                  {page.author.name}
+                </Link>
+              </p>
             </div>
+            <div className="bl-detail__sh__date">
+              <AiOutlineCalendar />
+              <p>
+                {" "}
+                {`${pubDate.getFullYear()}.${
+                  pubDate.getMonth() + 1
+                }.${pubDate.getDate()}`}
+              </p>
+            </div>
+            <div className="bl-detail__sh__learn">
+              <AiOutlineClockCircle />
+              <p>この記事は{page.estimated_time}分で読めます</p>
+            </div>
+            <Link
+              to={`/blog-lessons?category=${page.category.ja_name}`}
+              className="bl-detail__sh__cat"
+            >
+              {page.category.ja_name}
+            </Link>
           </div>
-          <div className="bl-detail__header-img">
-            <img
-              src={`${ENV.BASE_BACK_URL}${page.header_image.medium.src}`}
-              alt={page.header_image.title}
-            />
-          </div>
-        </header>
-      </div>
+        </div>
+        <div className="bl-detail__header-img">
+          <img
+            src={`${ENV.BASE_BACK_URL}${page.header_image.medium.src}`}
+            alt={page.header_image.title}
+          />
+        </div>
+      </header>
       <section>
         {page.lesson_content.map((block: any) => {
           if (block.type === "rich_text") {
