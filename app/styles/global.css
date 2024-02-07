@@ -1312,6 +1312,9 @@ a.g-menu__reglog-link:hover > .g-menu__reglog {
 /** 
 * Footer
 */
+.g-footer__logo {
+  width: 220px;
+}
 .footer {
   margin-top: auto;
   background-color: var(--color-brand-beige);
