@@ -1914,6 +1914,7 @@ a.g-blog-card-link::before {
 .g-blog-card__img-wrapper {
   position: relative;
   border-radius: 40px;
+  overflow: hidden;
 }
 .g-blog-card__overlay {
   position: absolute;
