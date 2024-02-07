@@ -9,28 +9,34 @@ export default function FrontParentRoute() {
         <Outlet />
       </div>
       <footer className="g-footer">
-        <div className="container g-footer__inner">
-          <div className="g-footer__branding-col one">
-            <Link className="g-footer__logo" to="/">
-              <img src="/img/logo_with_tagline.svg" alt="XLingual logo"></img>
-            </Link>
+        <div className="g-grid-container1">
+          <div className="g-footer__branding-col">
+            <div className="g-footer__logo">
+              <Link to="/">
+                <img src="/img/logo_with_tagline.svg" alt="XLingual logo"></img>
+              </Link>
+            </div>
             <div className="g-footer__socials">
-              <Link className="g-footer__social instagram" to="#">
-                <FaInstagram />
-                <span>Instagram | Language Learning</span>
-              </Link>
-              <Link to="#" className="g-footer__social regular">
-                <FaFacebookF />
-                <span>Facebook</span>
-              </Link>
-              <Link className="g-footer__social instagram" to="#">
-                <FaInstagram />
-                <span>Instagram | News</span>
-              </Link>
-              <Link className="g-footer__social regular" to="#">
-                <FaYoutube />
-                <span>Youtube</span>
-              </Link>
+              <div>
+                <Link className="g-footer__social instagram" to="#">
+                  <FaInstagram />
+                  <span>Instagram | Language Learning</span>
+                </Link>
+                <Link className="g-footer__social instagram" to="#">
+                  <FaInstagram />
+                  <span>Instagram | News</span>
+                </Link>
+              </div>
+              <div>
+                <Link to="#" className="g-footer__social regular">
+                  <FaFacebookF />
+                  <span>Facebook</span>
+                </Link>
+                <Link className="g-footer__social regular" to="#">
+                  <FaYoutube />
+                  <span>Youtube</span>
+                </Link>
+              </div>
             </div>
             <div className="g-footer__copyright">
               <p>
