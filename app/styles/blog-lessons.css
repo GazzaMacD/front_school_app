@@ -421,59 +421,13 @@ a.bl-detail__sh__cat::before {
   padding-left: 20px;
 }
 
-/* Related lesson */
-.l-rel {
-  margin: 100px 0;
+/* related lessons */
+.bl-detail__related {
+  padding-top: 116px;
+  background-color: var(--color-brand-white);
 }
-.l-rel__title {
-  text-align: center;
-  margin-bottom: 50px;
-}
-.l-rel__lessons {
-  display: flex;
-  gap: 2%;
-}
-.l-rel__card {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 0;
-  flex-shrink: 0;
-  flex-basis: 23.5%;
-  background-color: white;
-  border-radius: var(--radius-sm);
-  box-shadow: 1px 1px 5px 1px var(--color-shadow);
-}
-.l-rel__card__img {
-  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
-}
-.l-rel__card__details {
-  padding: var(--space-sm) var(--space-xs);
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.l-rel__card__title {
-  font-size: var(--text-base-size);
-  line-height: 1.2;
-}
-.l-rel__card__intro {
-  font-size: var(--text-sm);
-  margin-bottom: var(--space-md);
-}
-a.l-rel__card__button {
-  color: var(--color-base-text);
-  background-color: var(--color-base-limegreen);
-  text-align: center;
-  width: 100%;
-  border-radius: var(--radius-xs);
-  margin: 10px 0;
-  text-transform: capitalize;
-  padding: 6px 15px;
-}
-a.l-rel__card__button:hover {
-  background-color: var(--color-sec-darklime);
-}
-a.l-rel__card__button::before {
-  content: none;
+.bl-detail__related > div:first-of-type h2 {
+  grid-column: 2/8;
+  font-size: var(--font-size-3xl);
+  margin-bottom: 60px;
 }

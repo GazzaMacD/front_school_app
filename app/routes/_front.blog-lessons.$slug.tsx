@@ -7,6 +7,7 @@ import React from "react";
 import { BASE_API_URL } from "~/common/constants.server";
 import { handlePreview } from "~/common/utils.server";
 import { Swoosh1 } from "~/components/swooshes";
+import { BlogCard } from "~/components/cards";
 
 /*types */
 import type { LoaderArgs } from "@remix-run/node";
@@ -175,6 +176,7 @@ export async function loader({ request, params }: LoaderArgs) {
       throw new Response("Oops that's a 404", { status: 404 });
     }
     const apiUrl = `${BASE_API_URL}/pages/?type=lessons.LessonDetailPage&slug=${slug}&fields=*`;
+    console.log(apiUrl);
     const res = await fetch(apiUrl);
     const data = await res.json();
     if (!res.ok || !data.items.length) {
@@ -413,38 +415,28 @@ export default function LessonsDetailPage() {
         })}
       </section>
 
-      <section className="l-rel">
-        <div className="container">
-          <h2 className="l-rel__title">Other lessons you might like</h2>
-          <div className="l-rel__lessons">
-            {page.related_lessons.map((related_lesson) => {
-              return (
-                <div key={related_lesson.id} className="l-rel__card">
-                  <img
-                    src={`${ENV.BASE_BACK_URL}${related_lesson.lesson.image.thumbnail.src}`}
-                    alt={related_lesson.lesson.image.thumbnail?.alt}
-                    className="l-rel__card__img"
-                  />
-                  <div className="l-rel__card__details">
-                    <h4 className="l-rel__card__title">
-                      {related_lesson.lesson.display_title}
-                    </h4>
-                    <p className="l-rel__card__intro">
-                      {related_lesson.lesson.display_tagline}
-                    </p>
-                    <Link
-                      to={`/blog-lessons/${related_lesson.lesson.slug}`}
-                      className="l-rel__card__button"
-                    >
-                      Learn More
-                    </Link>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+      <section className="bl-detail__related">
+        <div className="g-grid-container1">
+          <h2>あなたへのおすすめ記事</h2>
+        </div>
+        <div className="g-grid-container1">
+          {page.related_lessons.map((l, i) => {
+            return (
+              <BlogCard
+                i={`item${i}`}
+                key={l.id}
+                slug={l.lesson.slug}
+                src={`${ENV.BASE_BACK_URL}/${l.lesson.image.thumbnail.src}`}
+                alt={l.lesson.image.thumbnail.alt}
+                date={l.lesson.published_date}
+                title={l.lesson.display_title}
+                category={l.lesson.category}
+              />
+            );
+          })}
         </div>
       </section>
+      <Swoosh1 swooshColor="beige" backColor="white" />
     </>
   );
 }

@@ -8,6 +8,7 @@ import { BASE_API_URL } from "~/common/constants.server";
 import { handlePreview } from "~/common/utils.server";
 import { getGlobalEnv } from "~/common/utils";
 import { HeadingOne } from "~/components/headings";
+import { Swoosh1 } from "~/components/swooshes";
 
 /*types */
 import type { ActionArgs, LoaderArgs } from "@remix-run/node";
@@ -97,90 +98,93 @@ export default function BlogLessonsIndexPage() {
   const lessons = lessonsData.items;
 
   return (
-    <div className="container">
-      <header className="g-header1">
-        <HeadingOne
-          enText={page.title}
-          jpText={page.display_title}
-          align="center"
-          bkground="light"
-          level="h1"
-        />
-        <p className="g-header1__tagline">{page.display_tagline}</p>
-      </header>
-      <div className="bl-cats-wrapper">
-        <div className="bl-cats-inner">
-          <div className="bl-cats-aside">カテゴリで絞り込む</div>
-          <div className="bl-cats">
-            {categories.map((category, i) => {
-              if (i === 0) {
-                return (
-                  <Link
-                    to="/blog-lessons"
-                    className={`bl-cat ${
-                      selectedCat == null ? "bl-cat--active" : ""
-                    }`}
-                    key={category.id}
-                  >
-                    {category.ja_name}
-                  </Link>
-                );
-              } else {
-                return (
-                  <Link
-                    to={`/blog-lessons?category=${category.ja_name}`}
-                    key={category.id}
-                    className={`bl-cat ${
-                      selectedCat === category.ja_name ? "bl-cat--active" : ""
-                    }`}
-                  >
-                    {category.ja_name}
-                  </Link>
-                );
-              }
-            })}
+    <>
+      <div className="container">
+        <header className="g-header1">
+          <HeadingOne
+            enText={page.title}
+            jpText={page.display_title}
+            align="center"
+            bkground="light"
+            level="h1"
+          />
+          <p className="g-header1__tagline">{page.display_tagline}</p>
+        </header>
+        <div className="bl-cats-wrapper">
+          <div className="bl-cats-inner">
+            <div className="bl-cats-aside">カテゴリで絞り込む</div>
+            <div className="bl-cats">
+              {categories.map((category, i) => {
+                if (i === 0) {
+                  return (
+                    <Link
+                      to="/blog-lessons"
+                      className={`bl-cat ${
+                        selectedCat == null ? "bl-cat--active" : ""
+                      }`}
+                      key={category.id}
+                    >
+                      {category.ja_name}
+                    </Link>
+                  );
+                } else {
+                  return (
+                    <Link
+                      to={`/blog-lessons?category=${category.ja_name}`}
+                      key={category.id}
+                      className={`bl-cat ${
+                        selectedCat === category.ja_name ? "bl-cat--active" : ""
+                      }`}
+                    >
+                      {category.ja_name}
+                    </Link>
+                  );
+                }
+              })}
+            </div>
           </div>
         </div>
-      </div>
-      <div className="bl-posts">
-        {lessons.length
-          ? lessons.map((lesson) => {
-              const pubDate = new Date(lesson.published_date);
-              return (
-                <Link
-                  to={lesson.meta.slug}
-                  key={lesson.id}
-                  className="bl-post-link"
-                >
-                  <article className="bl-post">
-                    <div className="bl-post__img-wrapper">
-                      <img
-                        src={`${ENV.BASE_BACK_URL}${lesson.header_image.thumbnail.src}`}
-                        alt={lesson.header_image.title}
-                      />
-                      <div className="bl-post__overlay">
-                        <div className="bl-post__overlay-inner">
-                          <p>Let's learn!</p>
-                          <p>勉強しよう</p>
-                          <FaArrowRightLong />
+        <div className="bl-posts">
+          {lessons.length
+            ? lessons.map((lesson) => {
+                const pubDate = new Date(lesson.published_date);
+                return (
+                  <Link
+                    to={lesson.meta.slug}
+                    key={lesson.id}
+                    className="bl-post-link"
+                  >
+                    <article className="bl-post">
+                      <div className="bl-post__img-wrapper">
+                        <img
+                          src={`${ENV.BASE_BACK_URL}${lesson.header_image.thumbnail.src}`}
+                          alt={lesson.header_image.title}
+                        />
+                        <div className="bl-post__overlay">
+                          <div className="bl-post__overlay-inner">
+                            <p>Let's learn!</p>
+                            <p>勉強しよう</p>
+                            <FaArrowRightLong />
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <div className="bl-post__details">
-                      <p>
-                        {`${pubDate.getFullYear()}.${
-                          pubDate.getMonth() + 1
-                        }.${pubDate.getDate()}`}{" "}
-                        <span>[ {lesson.category.ja_name} ]</span>
-                      </p>
-                      <h2>{lesson.display_title}</h2>
-                    </div>
-                  </article>
-                </Link>
-              );
-            })
-          : null}
+                      <div className="bl-post__details">
+                        <p>
+                          {`${pubDate.getFullYear()}.${
+                            pubDate.getMonth() + 1
+                          }.${pubDate.getDate()}`}{" "}
+                          <span>[ {lesson.category.ja_name} ]</span>
+                        </p>
+                        <h2>{lesson.display_title}</h2>
+                      </div>
+                    </article>
+                  </Link>
+                );
+              })
+            : null}
+        </div>
       </div>
-    </div>
+      <Swoosh1 swooshColor="beige" backColor="cream" />
+    </>
   );
 }
