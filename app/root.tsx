@@ -73,12 +73,13 @@ export default function App() {
                         <span>0561-42-5707</span>
                       </a>
                     </li>
-                    <li className="g-menu__item">
+                    <li className="g-menu__item g-menu__contact">
                       <SolidPillButtonLink
                         to="/contact/form#contact"
                         color="brown"
                       >
-                        お問い合わせフォーム
+                        <span>問合せ</span>
+                        <span>お問い合わせ</span>
                       </SolidPillButtonLink>
                     </li>
                     {user ? (
@@ -97,7 +98,9 @@ export default function App() {
                       <>
                         <li className="g-menu__item">
                           <a className="g-menu__reglog-link" href="/register">
-                            <div className="g-menu__reglog reg">新規登録</div>
+                            <div className="g-menu__reglog reg">
+                              <span>新規</span>登録
+                            </div>
                           </a>
                           <a className="g-menu__reglog-link" href="/login">
                             <div className="g-menu__reglog log">ログイン</div>
@@ -107,108 +110,102 @@ export default function App() {
                     )}
                   </ul>
                 </nav>
-                <div className="mburger">
+                <div>
                   <form>
                     <input
                       type="checkbox"
                       id="navi-toggle"
-                      className="mburger__checkbox"
+                      className="g-sm__checkbox"
                     />
                     <label
                       htmlFor="navi-toggle"
-                      className="mburger__button"
+                      className="g-sm__button"
                       role="button"
                     >
-                      <div className="g-burger__button-inner">
-                        <span className="mburger__icon">&nbsp;</span>
-                        <span className="mburger__text">メニュー</span>
+                      <div>
+                        <span className="g-sm__button__icon">&nbsp;</span>
+                        <span className="g-sm__button__text">メニュー</span>
                       </div>
                     </label>
-                    <div className="mburger__background">&nbsp;</div>
-                    <div className="mburger__menu">
-                      <div className="mburger__left">
-                        <ul className="mburger__list">
-                          <li className="mburger__item">
-                            <a className="mb__link">Courses</a>
-                          </li>
-                          <li className="mburger__item">
-                            <a className="mb__link">Experiences</a>
-                          </li>
-                          <li className="mburger__item">
-                            <a className="mb__link">Prices</a>
-                          </li>
-                          <li className="mburger__item">
-                            <a className="mb__link">About us</a>
-                          </li>
-                          <li className="mburger__item">
-                            <a className="mb__link">Free Lessons</a>
-                          </li>
-                          <li className="mburger__item">
-                            <a className="mb__link">News</a>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="mburger__right">
-                        <h3 className="mburger__subheading">Other Links</h3>
-                        <div className="mburger__subblock">
-                          <nav>
-                            <ul className="mburger__list">
-                              <li className="mburger__item">
-                                <a className="mb__link mb__link--secondary">
-                                  Link 1{" "}
-                                </a>
-                              </li>
-                              <li className="mburger__item">
-                                <a className="mb__link mb__link--secondary">
-                                  Link 1{" "}
-                                </a>
-                              </li>
-                              <li className="mburger__item">
-                                <a className="mb__link mb__link--secondary">
-                                  Link 1{" "}
-                                </a>
-                              </li>
-                              <li className="mburger__item">
-                                <a className="mb__link mb__link--secondary">
-                                  Link 1{" "}
-                                </a>
-                              </li>
-                              <li className="mburger__item">
-                                <a className="mb__link mb__link--secondary">
-                                  Link 1{" "}
-                                </a>
-                              </li>
-                            </ul>
-                          </nav>
+                    <div className="g-sm">
+                      <nav className="g-sm__inner">
+                        <div className="g-sm__inner__menus">
+                          <h3>言語学習</h3>
+                          <ul>
+                            <li>
+                              <Link to="/courses">― コース紹介</Link>
+                            </li>
+                            <li>
+                              <Link to="/prices">― 料金</Link>
+                            </li>
+                            <li>
+                              <Link to="/learning-experiences">
+                                ― ランゲージ・エクスペリエンス
+                              </Link>
+                            </li>
+                            <li>
+                              <Link to="/courses">― 読んで学べるブログ</Link>
+                            </li>
+                          </ul>
+
+                          <h3>会社案内</h3>
+                          <ul>
+                            <li>
+                              <Link to="/about">― 私たちについて</Link>
+                            </li>
+                            <li>
+                              <Link to="/language-schools">― スクール一覧</Link>
+                            </li>
+                            <li>
+                              <Link to="/news">― 最新情報</Link>
+                            </li>
+                          </ul>
+                          <h3>お問い合わせ</h3>
+                          <ul>
+                            <li>
+                              <Link to="/contact/form#contact">
+                                ― フォームでのお問い合わせ
+                              </Link>
+                            </li>
+                            <li>
+                              <Link to="/contact/telephone#contact">
+                                ― 電話でのお問い合わせe
+                              </Link>
+                            </li>
+                            <li>
+                              <Link to="mailto:contact@xlingual.co.jp">
+                                ― Eメールでのお問い合わせ
+                              </Link>
+                            </li>
+                          </ul>
+                          <h3>その他</h3>
+                          <ul>
+                            <li>
+                              <Link to="/privacy-policy">
+                                ― プライバシーポリシー
+                              </Link>
+                            </li>
+                          </ul>
                         </div>
-                        <h3 className="mburger__subheading">Social</h3>
-                        <div className="mburger__subblock">
-                          <nav>
-                            <ul className="mburger__social">
-                              <li>
-                                <a className="mburger__social-link">
-                                  <FaInstagram className="mburger__social-icon" />
-                                </a>
-                              </li>
-                              <li>
-                                <a className="mburger__social-link">
-                                  <FaFacebookF className="mburger__social-icon" />
-                                </a>
-                              </li>
-                              <li>
-                                <a className="mburger__social-link">
-                                  <FaYoutube className="mburger__social-icon" />
-                                </a>
-                              </li>
-                              <li>
-                                <a className="mburger__social-link">
-                                  <FaLinkedinIn className="mburger__social-icon" />
-                                </a>
-                              </li>
-                            </ul>
-                          </nav>
+                        <div className="g-sm__inner__socials">
+                          <Link className="g-sm__social instagram" to="#">
+                            <FaInstagram />
+                            <div>Instagram | Language Learning</div>
+                          </Link>
+                          <Link to="#" className="g-sm__social regular">
+                            <FaFacebookF />
+                            <div>Facebook</div>
+                          </Link>
+                          <Link className="g-sm__social instagram" to="#">
+                            <FaInstagram />
+                            <div>Instagram | News</div>
+                          </Link>
+                          <Link className="g-sm__social regular" to="#">
+                            <FaYoutube />
+                            <div>Youtube</div>
+                          </Link>
                         </div>
-                      </div>
+                      </nav>
                     </div>
                   </form>
                 </div>
