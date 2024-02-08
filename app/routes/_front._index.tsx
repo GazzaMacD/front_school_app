@@ -171,6 +171,7 @@ export default function Index() {
                   <div className="ho-services__details">
                     <h3>{service.value.title}</h3>
                     <p>{service.value.text}</p>
+                    <Link to={service.value.link}>詳しく見る</Link>
                   </div>
                 </article>
               );
