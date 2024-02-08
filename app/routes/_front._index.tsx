@@ -35,7 +35,6 @@ export const links: LinksFunction = () => [
 
 export const loader = async () => {
   const homeUrl = `${BASE_API_URL}/pages/?type=home.HomePage&fields=*`;
-  console.log(homeUrl);
   const blogslUrl = `${BASE_API_URL}/pages/?order=-published_date&limit=8&type=lessons.LessonDetailPage&fields=_,id,slug,display_title,display_tagline,published_date,title,header_image`;
   const urls = [homeUrl, blogslUrl];
   try {
