@@ -294,6 +294,7 @@ Testimonials (test)
   display: flex;
   justify-content: space-between;
   gap: 120px;
+  margin: 0 0 80px 0;
 }
 .ho-teacher__card {
   width: min-content;
@@ -377,8 +378,13 @@ a.ho-teacher__card-link::before {
   font-weight: 600;
 }
 .ho-teacher__card-details > p {
+  margin: 0;
   text-align: center;
   font-size: var(--r14px);
+}
+.ho-teachers__see-more {
+  display: flex;
+  justify-content: center;
 }
 /**
 *   Blog lessons 
