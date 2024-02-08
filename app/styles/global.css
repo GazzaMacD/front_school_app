@@ -1981,7 +1981,7 @@ a.g-lgbi-button-link:before {
   margin-left: 60px;
 }
 
-/* pill type buttons */
+/* ---- pill type buttons ---- */
 a.g-sp-button-link {
   color: var(--color-brand-white);
   font-size: var(--r16px);
@@ -2003,8 +2003,38 @@ a.g-sp-button-link:before {
 }
 a.g-sp-button-link:hover > .g-sp-button {
   background-color: var(--color-brand-white);
+}
+/* brown variant */
+.g-sp-button.brown {
+  background-color: var(--color-brand-brown);
+  border: solid 2px var(--color-brand-brown);
+}
+a.g-sp-button-link:hover > .g-sp-button.brown {
+  color: var(--color-brand-green);
+}
+
+/* green variant */
+.g-sp-button.green {
+  background-color: var(--color-brand-green);
+  border: solid 2px var(--color-brand-green);
+}
+a.g-sp-button-link:hover > .g-sp-button.green {
+  color: var(--color-brand-green);
+}
+/* orange variant */
+.g-sp-button.orange {
+  background-color: var(--color-brand-orange);
+  border: solid 2px var(--color-brand-orange);
+}
+a.g-sp-button-link:hover > .g-sp-button.orange {
+  color: var(--color-brand-orange);
+}
+
+a.g-sp-button-link:hover > .g-sp-button {
+  background-color: var(--color-brand-white);
   color: var(--color-brand-brown);
 }
+
 @media (min-width: 75rem) {
   .g-sp-button {
     padding: 12px 26px;
