@@ -170,8 +170,9 @@ Testimonials (test)
   justify-content: center;
 }
 .ho-test__detail__lead {
-  font-size: calc(var(--r20px) + var(--r16px));
-  font-weight: 600;
+  font-size: var(--font-size-5xl);
+  font-weight: var(--font-w-semi-bold);
+  color: var(--color-brand-green);
   position: relative;
 }
 .ho-test__detail__lead::before {

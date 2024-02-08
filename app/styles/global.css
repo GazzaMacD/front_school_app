@@ -2011,7 +2011,7 @@ a.g-sp-button-link:hover > .g-sp-button {
   border: solid 2px var(--color-brand-brown);
 }
 a.g-sp-button-link:hover > .g-sp-button.brown {
-  color: var(--color-brand-green);
+  color: var(--color-brand-brown);
 }
 
 /* green variant */
