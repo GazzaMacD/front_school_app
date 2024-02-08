@@ -389,6 +389,9 @@ a.ho-teacher__card-link::before {
 .ho-blog-lessons {
   padding: 80px 120px 80px 120px;
 }
+.ho-blog__slider-wrapper {
+  margin: 0 0 80px 0;
+}
 
 /* blog slider */
 .ho-blog-lessons .swiper {
@@ -510,4 +513,9 @@ a.ho-blog-link::before {
 .ho-blog__card-details p:first-of-type > span {
   color: var(--color-brand-brown);
   text-transform: uppercase;
+}
+/* more lesson */
+.ho-blog__more-lessons {
+  display: flex;
+  justify-content: center;
 }

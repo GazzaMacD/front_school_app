@@ -78,7 +78,7 @@ function LgBiButtonLink({ to, color, jp, en }: TLgBiButtonLinkProps) {
     </Link>
   );
 }
-/* Large bilingual button  link*/
+/* Pill Button Links */
 
 type TPillButtonLinkProps = {
   to: string;
@@ -90,6 +90,14 @@ function SolidPillButtonLink({ to, color, children }: TPillButtonLinkProps) {
   return (
     <Link to={to} className="g-sp-button-link">
       <div className={`g-sp-button ${color}`}>{children}</div>
+    </Link>
+  );
+}
+
+function BorderedPillButtonLink({ to, color, children }: TPillButtonLinkProps) {
+  return (
+    <Link to={to} className="g-bp-button-link">
+      <div className={`g-bp-button ${color}`}>{children}</div>
     </Link>
   );
 }

@@ -17,6 +17,7 @@ import {
   ButtonLink,
   RoundButtonLink,
   LgBiButtonLink,
+  SolidPillButtonLink,
 } from "~/components/buttons";
 import { HeadingOne } from "~/components/headings";
 import { getDisplay } from "~/common/utils";
@@ -420,7 +421,7 @@ export default function Index() {
                           />
                           <div className="ho-blog__card-overlay">
                             <div className="ho-blog__card-overlay-inner">
-                              <h3>Read Blog Lesson</h3>
+                              <h3>Let's Learn!</h3>
                               <p>記事を読む</p>
                               <FaArrowRightLong />
                             </div>
@@ -441,6 +442,12 @@ export default function Index() {
                 );
               })}
             </Swiper>
+          </div>
+          <div className="ho-blog__more-lessons">
+            <SolidPillButtonLink to="/blog-lessons" color="green">
+              すべての記事を見る &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <FaArrowRightLong />
+            </SolidPillButtonLink>
           </div>
         </div>
         <Swoosh1 swooshColor="beige" backColor="white" />
