@@ -102,6 +102,7 @@ export default function LoginRoute() {
         enText="Login"
         align="center"
         bkground="light"
+        level="h1"
       />
       <form className="au-form g-form" noValidate method="post">
         <input

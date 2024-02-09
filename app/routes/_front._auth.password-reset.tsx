@@ -90,6 +90,7 @@ export default function PasswordResetRoute() {
         enText="Password Reset"
         align="center"
         bkground="light"
+        level="h1"
       />
       <form className="au-form g-form" noValidate method="post">
         {actionData && actionData?.errors?.non_field_errors ? (
