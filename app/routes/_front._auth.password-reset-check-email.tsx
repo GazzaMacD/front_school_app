@@ -40,13 +40,12 @@ export default function PasswordResetCheckEmailRoute() {
         enText="Check Reset Mail"
         align="center"
         bkground="light"
+        level="h1"
       />
       <div className="au-form">
         <div className="au-form__message">
           <p>
-            Please check your email and follow the instructions to reset your
-            password. Please check your junk mail folder if you didn't recieve
-            the mail.
+            メールをご確認の上、指示に従ってパスワードの再設定を行ってください。メールが届いていない場合は、迷惑メールフォルダをご確認ください。
           </p>
         </div>
       </div>
