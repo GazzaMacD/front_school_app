@@ -42,12 +42,13 @@ export default function PasswordResetDoneRoute() {
         enText="Password Reset Done"
         align="center"
         bkground="light"
+        level="h1"
       />
       <div className="au-form">
         <div className="au-form__message">
           <p>
-            Success! 😄 Your password has been changed. You should now be able
-            to <Link to="/login">login</Link>.
+            パスワードが変更されましたのでお知らせいたします。
+            <Link to="/login">ログイン</Link>が可能な状態となっております。
           </p>
         </div>
       </div>
