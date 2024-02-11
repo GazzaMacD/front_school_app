@@ -1178,15 +1178,28 @@ a.g-sm__social {
     padding-left: 26px;
   }
 }
+@media (min-width: 64rem) {
+  .g-sm {
+    width: 480px;
+    transform: translate(480px);
+    padding: 120px 20px 0px 20px;
+  }
+  .g-sm__inner {
+    position: absolute;
+    height: calc(100% - 100px);
+    width: calc(100% - 19px);
+    overflow-y: auto;
+  }
+}
 @media (min-width: 96rem) {
   .g-sm {
     width: 560px;
     transform: translate(560px);
-    padding: 120px 60px 60px 60px;
+    padding: 100px 60px 0px 60px;
   }
   .g-sm__inner {
     position: absolute;
-    height: calc(100% - 150px);
+    height: calc(100% - 100px);
     width: calc(100% - 60px);
     overflow-y: auto;
   }
