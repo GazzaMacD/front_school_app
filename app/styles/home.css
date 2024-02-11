@@ -89,21 +89,41 @@
 /**
 * Why study with us 
 */
-.ho-why {
+.ho-why__img-wrapper {
+  grid-column: 1/16;
   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ho-why__details {
+  padding: 30px 0 0 0;
+  grid-column: 1/16;
 }
 @media (min-width: 48rem) {
-  .ho-why {
-    flex-direction: row;
-    gap: var(--r20px);
-  }
-  .ho-why > div {
-    flex: 1;
-  }
   .ho-why__img-wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    grid-column: 3/14;
+  }
+  .ho-why__details {
+    padding: 50px 0 0 0;
+    grid-column: 3/14;
+  }
+}
+@media (min-width: 64rem) {
+  .ho-why__img-wrapper {
+    grid-column: 1/8;
+  }
+  .ho-why__details {
+    padding: 50px 0 0 0;
+    grid-column: 9/16;
+  }
+}
+@media (min-width: 96rem) {
+  .ho-why__img-wrapper {
+    grid-column: 3/8;
+  }
+  .ho-why__details {
+    padding: 50px 0 0 0;
+    grid-column: 9/14;
   }
 }
 

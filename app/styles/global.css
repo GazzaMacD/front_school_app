@@ -1881,19 +1881,21 @@ label {
 
 /* Headings */
 .g-heading1 {
-  margin: 0;
+  margin-bottom: calc(var(--r10px) * 5);
   font-family: var(--font-en-primary);
   font-weight: 600;
   text-align: left;
+  font-size: var(--font-size-6xl);
   color: var(--color-brand-green);
   text-transform: capitalize;
 }
 
 .g-heading1__jp {
-  margin: 0;
+  margin-top: calc(var(--r10px) * 3);
   display: block;
   font-family: var(--font-jp-primary);
   font-weight: 600;
+  font-size: var(--font-size-2xl);
   color: var(--color-brand-brown);
 }
 .g-heading1.center {

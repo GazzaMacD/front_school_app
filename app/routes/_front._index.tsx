@@ -126,16 +126,14 @@ export default function Index() {
       </section>
 
       <section id="why">
-        <div className="container ho-why">
+        <div className="g-grid-container1 ho-why">
           <div className="ho-why__img-wrapper">
-            <div>
-              <img
-                src={`${ENV.BASE_BACK_URL}${home.why_image.medium.src}`}
-                alt={home.why_image.medium.alt}
-              />
-            </div>
+            <img
+              src={`${ENV.BASE_BACK_URL}${home.why_image.medium.src}`}
+              alt={home.why_image.medium.alt}
+            />
           </div>
-          <div>
+          <div className="ho-why__details">
             <HeadingOne
               enText={home.why_en_title}
               jpText={home.why_jp_title}
