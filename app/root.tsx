@@ -52,6 +52,7 @@ export default function App() {
         <div className="base-wrapper">
           <header className="g-header">
             <div className="g-header__inner">
+              <div className="g-header__tagline-background"></div>
               <div className="g-header__branding">
                 <Link to="/" className="g-header__logo-link">
                   <img
