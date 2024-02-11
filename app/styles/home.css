@@ -6,6 +6,7 @@
   grid-template-columns: 15px repeat(15, 1fr) 15px;
   margin-top: 60px;
   background-color: var(--color-brand-white);
+  position: relative;
 }
 .ho-hero__video-wrapper {
   grid-column: 1/18;
@@ -53,7 +54,7 @@
     grid-template-columns: 60px repeat(15, 1fr) 60px;
     margin: 0 0 100px 0;
     background-color: var(--color-brand-cream);
-    height: calc(100vh - 200px);
+    height: calc(100vh - 100px);
   }
   .ho-hero__video-wrapper {
     grid-column: 4/18;
@@ -63,29 +64,26 @@
   .ho-hero__video {
     height: 100%;
     border-radius: var(--radius-large) 0 0 var(--radius-large);
-    height: calc(100vh - 200px);
+    height: calc(100vh - 100px);
   }
   .ho-hero__promo {
-    grid-column: 2/8;
-    grid-row: 1/2;
-    align-self: end;
-    padding: 0 0 20px 0;
+    position: absolute;
+    bottom: 0;
+    left: 50px;
+    max-width: 690px;
   }
   .ho-hero__ja-title {
     line-height: 1.5;
   }
 }
 @media (min-width: 75rem) {
-  .ho-hero__promo {
-    grid-column: 2/10;
-    grid-row: 1/2;
-    align-self: end;
-    padding: 0 0 40px 0;
-  }
   .ho-hero__en-title {
     font-size: calc(var(--r10px) * 6);
     line-height: 1.1;
     margin: 0 0 60px 0;
+  }
+  .ho-hero__promo {
+    left: 100px;
   }
 }
 /**
