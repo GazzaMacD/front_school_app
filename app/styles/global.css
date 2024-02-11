@@ -1102,9 +1102,10 @@ a.g-menu__reglog-link:hover > .g-menu__reglog {
   right: 0;
   bottom: 0;
   transform: translate(75vw);
+  opacity: 0;
   background-color: var(--color-base-white);
   z-index: 1900;
-  transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+  transition: transform 0.4s ease-out, opacity 0.1s linear 0.5s;
 }
 .g-sm__inner__menus > h3 {
   font-size: var(--font-size-l);
@@ -1194,6 +1195,8 @@ a.g-sm__social {
 /* functionality */
 .g-sm__checkbox:checked ~ .g-sm {
   transform: translate(0);
+  opacity: 100;
+  transition: transform 0.4s ease-out, opacity 0s linear;
 }
 
 /* styling hamb.g-sm__button__icon */
