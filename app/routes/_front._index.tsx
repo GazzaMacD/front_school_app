@@ -105,21 +105,23 @@ export default function Index() {
   return (
     <>
       <section id="video-banner">
-        <div className="ho-vbanner__wrapper">
-          <video className="ho-vbanner__video" playsInline autoPlay muted loop>
-            <source src="/video/dummy.mp4" type="video/mp4" />
-          </video>
-        </div>
-        <div className="ho-vbanner__promo">
-          <p className="ho-vbanner__title-en">
-            Learn English with our{" "}
-            <span className="ho-vbanner__green">multilingual</span> expert
-            teachers.
-          </p>
-          <h1 className="ho-vbanner__title-ja">
-            <span>XLingual - エクスリンガル語学学校 -</span>
-            マルチリンガルの講師たちと一緒に英語を勉強しましょう
-          </h1>
+        <div className="ho-hero ">
+          <div className="ho-hero__video-wrapper">
+            <video className="ho-hero__video" playsInline autoPlay muted loop>
+              <source src="/video/dummy.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div className="ho-hero__promo">
+            <p className="ho-hero__en-title">
+              Learn English with our{" "}
+              <span className="ho-hero__en-title--green">multilingual</span>{" "}
+              expert teachers
+            </p>
+            <h1 className="ho-hero__ja-title">
+              <span>XLingual - エクスリンガル語学学校 -</span>
+              マルチリンガルの講師たちと一緒に英語を勉強しましょう
+            </h1>
+          </div>
         </div>
       </section>
 
