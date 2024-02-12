@@ -93,6 +93,31 @@ export default function Index() {
     };
   }, [handleWindowResize]);
 
+  function getNumSlides(windowSize: number) {
+    if (windowSize > 2000) return 3.5;
+    else if (windowSize > 1700) return 3.5;
+    else if (windowSize > 1600) return 3.1;
+    else if (windowSize > 1535) return 2.5;
+    else if (windowSize > 1500) return 2.5;
+    else if (windowSize > 1400) return 2.5;
+    else if (windowSize > 1400) return 2.5;
+    else if (windowSize > 1300) return 2.5;
+    else if (windowSize > 1200) return 2.25;
+    else if (windowSize > 1100) return 2.3;
+    else if (windowSize > 1023) return 1.9;
+    else if (windowSize > 1000) return 2.5;
+    else if (windowSize > 900) return 2.3;
+    else if (windowSize > 800) return 1.8;
+    else if (windowSize > 700) return 1.9;
+    else if (windowSize > 600) return 1.7;
+    else if (windowSize > 500) return 1.5;
+    else if (windowSize > 400) return 1.44;
+    else if (windowSize > 300) return 1.35;
+    else return 1.25;
+  }
+
+  let pricesNumSlides = getNumSlides(windowSize);
+
   let sliderSpace =
     windowSize > 1536
       ? 120
@@ -239,117 +264,128 @@ export default function Index() {
         </div>
       </section>
 
-      {/* 
       <section id="prices">
-        <div className="ho-prices">
-          <HeadingOne
-            enText={home.price_en_title}
-            jpText={home.price_jp_title}
-            align="left"
-            bkground="dark"
-            level="h2"
-          />
-          <div className="ho-prices__wrapper">
-            <Swiper
-              // install Swiper modules
-              modules={[Navigation]}
-              spaceBetween={sliderSpace}
-              slidesPerView={2.5}
-              navigation
-              pagination={{ clickable: true }}
-              scrollbar={{ draggable: true }}
-              onSwiper={(swiper) => console.log(swiper)}
-              onSlideChange={() => console.log("slide change")}
-            >
-              {home.home_class_prices.map((p) => {
-                const cp = p.class_price;
-                const pi = p.class_price.price_info;
-                return (
-                  <SwiperSlide key={p.id}>
-                    <article className="ho-price">
-                      <h3>{cp.title}</h3>
-                      <p>{cp.display_title}</p>
-                      <table>
-                        <tbody>
-                          <tr>
-                            <td>料金</td>
-                            <td>￥{pi.posttax_price}</td>
-                          </tr>
-                          <tr>
-                            <td>時間</td>
-                            <td>
-                              {cp.length}
-                              {getDisplay(cp.length_unit, 1)}
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>頻度</td>
-                            <td>
-                              {getDisplay(cp.quantity_unit, 1)}
-                              {cp.quantity}回
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>最大人数</td>
-                            <td>{cp.max_num}</td>
-                          </tr>
-                          <tr>
-                            <td>ネイティブ講師</td>
-                            <td>
-                              {cp.is_native ? <FaRegCircle /> : <FaXmark />}
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>オンライン受講</td>
-                            <td>
-                              {cp.is_online ? <FaRegCircle /> : <FaXmark />}
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>対面受講</td>
-                            <td>
-                              {cp.is_inperson ? <FaRegCircle /> : <FaXmark />}
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>オンラインレッスンノート</td>
-                            <td>
-                              {cp.has_onlinenotes ? (
-                                <FaRegCircle />
-                              ) : (
-                                <FaXmark />
-                              )}
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>オンライン予約</td>
-                            <td>
-                              {cp.bookable_online ? (
-                                <FaRegCircle />
-                              ) : (
-                                <FaXmark />
-                              )}
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </article>
-                  </SwiperSlide>
-                );
-              })}
-            </Swiper>
-          </div>
-          <div className="ho-prices__button-wrapper">
-            <LgBiButtonLink
-              to="/class-prices"
-              color="orange"
-              jp="すべてのプランを見る"
-              en="View All Plans"
-            />
+        <div className="g-grid-container2">
+          <div className="ho-prices">
+            <div className="ho-prices__heading">
+              <HeadingOne
+                enText={home.price_en_title}
+                jpText={home.price_jp_title}
+                align="left"
+                bkground="dark"
+                level="h2"
+              />
+            </div>
+            <div className="ho-prices__wrapper">
+              <Swiper
+                // install Swiper modules
+                modules={[Navigation]}
+                spaceBetween={sliderSpace}
+                slidesPerView={pricesNumSlides}
+                navigation
+                pagination={{ clickable: true }}
+                scrollbar={{ draggable: true }}
+                onSwiper={(swiper) => console.log(swiper)}
+                onSlideChange={() => console.log("slide change")}
+              >
+                {home.home_class_prices.map((p) => {
+                  const cp = p.class_price;
+                  const pi = p.class_price.price_info;
+                  return (
+                    <SwiperSlide key={p.id}>
+                      <article className="ho-price">
+                        <div>
+                          <h3>{cp.title}</h3>
+                        </div>
+                        <p>{cp.display_title}</p>
+                        <table>
+                          <tbody>
+                            <tr>
+                              <td>料金</td>
+                              <td>￥{pi.posttax_price}</td>
+                            </tr>
+                            <tr>
+                              <td>時間</td>
+                              <td>
+                                {cp.length}
+                                {getDisplay(cp.length_unit, 1)}
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>頻度</td>
+                              <td>
+                                {getDisplay(cp.quantity_unit, 1)}
+                                {cp.quantity}回
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>最大人数</td>
+                              <td>{cp.max_num}</td>
+                            </tr>
+                            <tr>
+                              <td>ネイティブ講師</td>
+                              <td>
+                                {cp.is_native ? <FaRegCircle /> : <FaXmark />}
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>オンライン受講</td>
+                              <td>
+                                {cp.is_online ? <FaRegCircle /> : <FaXmark />}
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>対面受講</td>
+                              <td>
+                                {cp.is_inperson ? <FaRegCircle /> : <FaXmark />}
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>オンラインレッスンノート</td>
+                              <td>
+                                {cp.has_onlinenotes ? (
+                                  <FaRegCircle />
+                                ) : (
+                                  <FaXmark />
+                                )}
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>オンライン予約</td>
+                              <td>
+                                {cp.bookable_online ? (
+                                  <FaRegCircle />
+                                ) : (
+                                  <FaXmark />
+                                )}
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </article>
+                    </SwiperSlide>
+                  );
+                })}
+              </Swiper>
+            </div>
+            <div className="ho-prices__button-wrapper">
+              <LgBiButtonLink
+                to="/class-prices"
+                color="orange"
+                jp="すべてのプランを見る"
+                en="View All Plans"
+              />
+            </div>
           </div>
         </div>
+        {/*
+        <div className="ho-prices">
+          <div className="ho-prices__wrapper">
+          </div>
+          */}
       </section>
 
+      {/* 
       <section id="teachers">
         <div className="ho-teachers">
           <HeadingOne
