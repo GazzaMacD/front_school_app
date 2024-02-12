@@ -150,17 +150,22 @@ export default function Index() {
       <section id="services">
         <Swoosh1 backColor="cream" swooshColor="brown" />
         <div className="ho-services">
-          <HeadingOne
-            enText={home.service_en_title}
-            jpText={home.service_jp_title}
-            align="left"
-            bkground="dark"
-            level="h2"
-          />
-          <div className="ho-services__cards">
-            {home.service_cards.map((service) => {
+          <div className="g-grid-container1">
+            <div className="ho-services__heading">
+              <HeadingOne
+                enText={home.service_en_title}
+                jpText={home.service_jp_title}
+                align="left"
+                bkground="dark"
+                level="h2"
+              />
+            </div>
+            {home.service_cards.map((service, i) => {
               return (
-                <article key={service.id} className="ho-services__card">
+                <article
+                  key={service.id}
+                  className={`ho-services__card card${i}`}
+                >
                   <div className="ho-services__card__img-wrap">
                     <img
                       className="ho-services__card__img"
