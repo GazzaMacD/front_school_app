@@ -10,7 +10,10 @@ Media queries
 - rem assumed at 16px == 1rem
 - Mobile first assumed 
 - 3 break points
-
+--------
+small (480px / 16 = 30rem)
+@media (min-width: 30rem) {
+}
 --------
 medium (768px / 16 = 48rem)
 @media (min-width: 48rem) {
@@ -696,7 +699,7 @@ Design Elements
 -------------------------------- */
 :root {
   /* border radiu */
-  --radius-base: 25px;
+  --radius-small: 25px;
   --radius-sm: 15px;
   --radius-xs: 5px;
   --radius-large: 80px;
@@ -2110,8 +2113,8 @@ a.g-lgbi-button-link:before {
 }
 .g-lgbi-button {
   width: max-content;
-  padding: 40px 60px;
-  border-radius: var(--radius-medium);
+  padding: 20px 35px;
+  border-radius: var(--radius-small);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -2123,10 +2126,10 @@ a.g-lgbi-button-link:before {
   background-color: var(--color-brand-green);
 }
 .g-lgbi-button__en {
-  font-size: calc(var(--r12px) + var(--r20px));
+  font-size: var(--font-size-2xl);
   font-family: var(--font-en-primary);
   font-weight: 600;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 .g-lgbi-button__jp {
   font-size: calc(var(--r14px));
@@ -2134,9 +2137,28 @@ a.g-lgbi-button-link:before {
   font-weight: 600;
 }
 .g-lgbi-button svg {
-  width: 40px;
-  height: 40px;
-  margin-left: 60px;
+  width: 32px;
+  height: 32px;
+  margin-left: 30px;
+}
+@media (min-width: 48rem) {
+  .g-lgbi-button {
+    padding: 40px 60px;
+    border-radius: var(--radius-medium);
+  }
+  .g-lgbi-button svg {
+    width: 40px;
+    height: 40px;
+    margin-left: 60px;
+  }
+  .g-lgbi-button__en {
+    font-size: var(--font-size-4xl);
+    margin-bottom: 16px;
+  }
+}
+@media (min-width: 64rem) {
+  .g-lgbi-button {
+  }
 }
 
 /* ---- pill type buttons ---- */
