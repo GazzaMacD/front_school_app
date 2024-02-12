@@ -594,30 +594,26 @@ legend {
   line-height: var(--heading-line-height);
 }
 /* heading & text styles */
-h1,
-.text-xxl {
-  font-size: var(--font-size-5xl);
-  margin-bottom: var(--r18px);
-}
-h2,
-.text--xl {
+h1 {
   font-size: var(--font-size-4xl);
-  margin-bottom: var(--r16px);
+  margin-bottom: calc(var(--r16px) * 2);
 }
-h3,
-.text--lg {
-  font-size: var(--text-md);
-  margin-bottom: var(--space-xs);
+h2 {
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--r20px);
 }
-h4,
-.text--md {
-  font-size: var(--text-base-size);
-  margin-bottom: var(--space-xxs);
+h3 {
+  font-size: var(--font-size-2xl);
+  margin-bottom: var(--r20px);
+}
+h4 {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--r20px);
 }
 p {
   line-height: var(--text-line-height);
   letter-spacing: var(--text-letter-spacing);
-  margin-bottom: calc(var(--r20px) * 3);
+  margin-bottom: calc(var(--r20px) * 2);
   font-weight: var(--font-w-medium);
 }
 /* large */
@@ -716,7 +712,7 @@ Containers, Wrappers and Iframes
   flex-direction: column;
   min-height: 100%;
 }
-/* grid container one */
+/* grid container one - 15 col grid with responsive margins*/
 .g-grid-container1 {
   display: grid;
   grid-template-columns: repeat(15, 1fr);
@@ -737,6 +733,32 @@ Containers, Wrappers and Iframes
     margin: 0 120px;
   }
 }
+/* grid container two - 17 col grid with
+two outer cols matching grid container one's responsive
+margins in terms of with so as to have vertical 
+alignment with container grid 1 
+*/
+.g-grid-container2 {
+  display: grid;
+  grid-template-columns: 15px repeat(15, 1fr) 15px;
+  margin: 0;
+}
+@media (min-width: 48rem) {
+  .g-grid-container2 {
+    grid-template-columns: 30px repeat(15, 1fr) 30px;
+  }
+}
+@media (min-width: 64rem) {
+  .g-grid-container2 {
+    grid-template-columns: 60px repeat(15, 1fr) 60px;
+  }
+}
+@media (min-width: 96rem) {
+  .g-grid-container2 {
+    grid-template-columns: 120px repeat(15, 1fr) 120px;
+  }
+}
+
 /* old container  - to remove*/
 .container {
   overflow-x: hidden;
@@ -1979,8 +2001,8 @@ a.g-button {
 a.g-round-button {
   display: block;
   position: relative;
-  width: 240px;
-  height: 240px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
 }
 a.g-round-button.orange {
@@ -2003,27 +2025,78 @@ a.g-round-button:before {
   justify-content: space-between;
   align-items: center;
   text-align: center;
-  padding: 35px;
+  padding: 18px 10px;
 }
 .g-round-button__en {
   max-width: 150px;
   font-family: var(--font-en-primary);
   font-weight: 600;
-  font-size: calc(var(--r20px) + var(--r10px));
+  font-size: calc(var(--r20px));
   line-height: 1;
   margin: 0;
 }
 .g-round-button__jp {
-  max-width: 180px;
+  max-width: 120px;
   font-family: var(--font-en-primary);
   font-weight: 600;
-  font-size: var(--r14px);
+  font-size: var(--r10px);
   line-height: 1;
   margin: 0;
 }
 .g-round-button svg {
-  width: 40px;
-  height: 40px;
+  width: 28px;
+  height: 28px;
+}
+@media (min-width: 48rem) {
+  a.g-round-button {
+    display: block;
+    position: relative;
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+  }
+  a.g-round-button.orange {
+    background-color: var(--color-brand-orange);
+  }
+  a.g-round-button.green {
+    background-color: var(--color-brand-green);
+  }
+  a.g-round-button {
+    color: white;
+  }
+  a.g-round-button:before {
+    content: none;
+  }
+  .g-round-button > div {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding: 35px;
+  }
+  .g-round-button__en {
+    max-width: 150px;
+    font-family: var(--font-en-primary);
+    font-weight: 600;
+    font-size: calc(var(--r20px) + var(--r10px));
+    line-height: 1;
+    margin: 0;
+  }
+  .g-round-button__jp {
+    max-width: 180px;
+    font-family: var(--font-en-primary);
+    font-weight: 600;
+    font-size: var(--r14px);
+    line-height: 1;
+    margin: 0;
+  }
+  .g-round-button svg {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 /* large bi-lingual button */

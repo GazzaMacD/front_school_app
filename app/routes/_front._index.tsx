@@ -186,34 +186,38 @@ export default function Index() {
       </section>
 
       <section id="testimonials">
-        <div className="ho-tests container">
-          <HeadingOne
-            enText={home.testimonial_en_title}
-            jpText={home.testimonial_jp_title}
-            align="center"
-            bkground="light"
-            level="h2"
-          />
-          <div>
-            {home.home_testimonials.map((t) => {
-              return (
-                <article className="ho-test" key={t.id}>
-                  <div className="ho-test__detail">
-                    <p className="ho-test__detail__lead">
-                      {t.testimonial.lead_sentence}
-                    </p>
-                    <h3 className="ho-test__detail__person">
-                      {t.testimonial.occupation}
-                      <span>{t.testimonial.customer_name}</span>
-                    </h3>
-                    <div
-                      className="ho-test__detail__comment"
-                      dangerouslySetInnerHTML={{
-                        __html: t.testimonial.comment,
-                      }}
-                    />
-                  </div>
-                  <div className="ho-test__img-wrapper">
+        <div className="ho-tests">
+          <div className="g-grid-container1 ">
+            <div className="ho-tests__heading">
+              <HeadingOne
+                enText={home.testimonial_en_title}
+                jpText={home.testimonial_jp_title}
+                align="center"
+                bkground="light"
+                level="h2"
+              />
+            </div>
+          </div>
+          {home.home_testimonials.map((t, i) => {
+            return (
+              <article className="g-grid-container2 ho-test" key={t.id}>
+                <div className="ho-test__detail">
+                  <p className="ho-test__detail__lead">
+                    {t.testimonial.lead_sentence}
+                  </p>
+                  <h3 className="ho-test__detail__person">
+                    {t.testimonial.occupation}
+                    <span>{t.testimonial.customer_name}</span>
+                  </h3>
+                  <div
+                    className="ho-test__detail__comment"
+                    dangerouslySetInnerHTML={{
+                      __html: t.testimonial.comment,
+                    }}
+                  />
+                </div>
+                <div className="ho-test__img-wrapper">
+                  <div>
                     <img
                       className="ho-test__img"
                       src={`${ENV.BASE_BACK_URL}${t.testimonial.image.medium.src}`}
@@ -228,13 +232,14 @@ export default function Index() {
                       color="orange"
                     />
                   </div>
-                </article>
-              );
-            })}
-          </div>
+                </div>
+              </article>
+            );
+          })}
         </div>
       </section>
 
+      {/* 
       <section id="prices">
         <div className="ho-prices">
           <HeadingOne
@@ -464,6 +469,7 @@ export default function Index() {
         </div>
         <Swoosh1 swooshColor="beige" backColor="white" />
       </section>
+*/}
     </>
   );
 }
