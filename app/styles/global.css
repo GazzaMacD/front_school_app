@@ -437,6 +437,7 @@ template {
   --color-brand-yellow: hsl(53, 67%, 72%);
   /* base secondary brand colors */
   --color-sec-lightbrown: hsl(36, 56%, 27%);
+  --color-sec-lightbrown2: hsl(38, 29%, 50%);
   --color-sec-lightorange: hsl(28, 100%, 75%);
   --color-sec-darkgreen: hsl(104, 80%, 28%);
   --color-sec-red: hsl(9, 100%, 50%);
