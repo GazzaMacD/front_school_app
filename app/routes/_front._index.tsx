@@ -378,28 +378,27 @@ export default function Index() {
             </div>
           </div>
         </div>
-        {/*
-        <div className="ho-prices">
-          <div className="ho-prices__wrapper">
-          </div>
-          */}
       </section>
 
-      {/* 
       <section id="teachers">
         <div className="ho-teachers">
-          <HeadingOne
-            enText={home.teacher_en_title}
-            jpText={home.teacher_jp_title}
-            align="center"
-            bkground="light"
-            level="h2"
-          />
-          <div className="ho-teachers__list">
-            {home.home_teachers.map((item) => {
+          <div className="g-grid-container1">
+            <div className="ho-teachers__heading">
+              <HeadingOne
+                enText={home.teacher_en_title}
+                jpText={home.teacher_jp_title}
+                align="center"
+                bkground="light"
+                level="h2"
+              />
+            </div>
+            {home.home_teachers.map((item, i) => {
               const teacher = item.teacher;
               return (
-                <article key={teacher.id} className="ho-teacher__card">
+                <article
+                  key={teacher.id}
+                  className={`ho-teacher__card card${i}`}
+                >
                   <Link
                     to={`/staff/${teacher.slug}`}
                     className="ho-teacher__card-link"
@@ -426,16 +425,17 @@ export default function Index() {
                 </article>
               );
             })}
-          </div>
-          <div className="ho-teachers__see-more">
-            <SolidPillButtonLink to="/about#staff" color="green">
-              すべての講師を見る &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <FaArrowRightLong />
-            </SolidPillButtonLink>
+            <div className="ho-teachers__more">
+              <SolidPillButtonLink to="/about#staff" color="green">
+                すべての講師を見る &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <FaArrowRightLong />
+              </SolidPillButtonLink>
+            </div>
           </div>
         </div>
       </section>
 
+      {/* 
       <section id="blog-lessons">
         <div className="ho-blog-lessons">
           <HeadingOne
