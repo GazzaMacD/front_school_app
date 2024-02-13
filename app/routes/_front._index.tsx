@@ -435,12 +435,11 @@ export default function Index() {
         </div>
       </section>
 
-      {/* 
       <section id="blog-lessons">
         <div className="ho-blog-lessons">
           <HeadingOne
-            enText="Blog Lessons"
-            jpText="読んで学べるブログ"
+            enText={home.bloglesson_en_title}
+            jpText={home.bloglesson_jp_title}
             align="left"
             bkground="light"
             level="h2"
@@ -505,7 +504,6 @@ export default function Index() {
         </div>
         <Swoosh1 swooshColor="beige" backColor="white" />
       </section>
-*/}
     </>
   );
 }
