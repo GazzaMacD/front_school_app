@@ -725,56 +725,68 @@ a.ho-teacher__card-link::before {
 /**
 *   Blog lessons 
 */
-#blog-lessons {
+.ho-blog-lessons {
+  padding: 80px 0 160px 0;
   background-color: var(--color-brand-white);
 }
-.ho-blog-lessons {
-  padding: 80px 120px 80px 120px;
+.ho-blog-lessons__heading {
+  grid-column: 1/16;
 }
-.ho-blog__slider-wrapper {
-  margin: 0 0 80px 0;
+.ho-blog__more {
+  grid-column: 1/16;
+  justify-self: center;
 }
 
 /* blog slider */
+.ho-blog__slider-wrapper {
+  margin: -160px 0 40px 0;
+  grid-column: 1/16;
+}
+.ho-blog-lessons .swiper-wrapper {
+  padding: 70px 0 0 0;
+}
 .ho-blog-lessons .swiper {
   padding: 100px 0 0 0;
 }
 .ho-blog-lessons .swiper-button-prev {
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   background-color: var(--color-brand-brown);
   border-radius: 50%;
-  right: 100px;
+  right: 70px;
   left: auto;
-  top: 30px;
+  top: 60px;
   color: var(--color-base-white);
 }
 .ho-blog-lessons .swiper-button-prev::after {
   content: "➜";
   transform: rotate(180deg);
   padding: 0 0 4px 0;
+  font-size: 22px;
 }
 
 .ho-blog-lessons .swiper-button-next {
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   background-color: var(--color-brand-brown);
   border-radius: 50%;
   right: 10px;
-  top: 30px;
+  top: 60px;
   color: var(--color-base-white);
 }
 .ho-blog-lessons .swiper-button-next::after {
   content: "➜";
   padding: 1px 0 0 0;
+  font-size: 22px;
 }
-
+/* cards */
 a.ho-blog-link::before {
   content: none;
 }
 .ho-blog__card-img-wrapper {
   position: relative;
-  border-radius: 40px;
+  border-radius: var(--radius-small);
+  overflow: hidden;
 }
 .ho-blog__card-overlay {
   position: absolute;
@@ -786,12 +798,11 @@ a.ho-blog-link::before {
   left: 0;
   right: 0;
   background-color: var(--color-brand-green);
-  overflow: hidden;
   width: 0;
   height: 100%;
   opacity: 0;
   transition: 0.5s ease-in-out;
-  border-radius: 40px;
+  border-radius: var(--radius-small);
   z-index: 4;
 }
 .ho-blog__card-img-wrapper:hover .ho-blog__card-overlay {
@@ -806,6 +817,7 @@ a.ho-blog-link::before {
 .ho-blog__card-overlay-inner {
   display: flex;
   flex-direction: column;
+  padding-top: 5px;
   justify-content: space-between;
   align-items: center;
   color: var(--color-brand-white);
@@ -816,48 +828,127 @@ a.ho-blog-link::before {
 .ho-blog__card-overlay-inner > h3 {
   color: var(--color-brand-white);
   font-family: var(--font-en-primary);
-  font-weight: 600;
-  font-size: calc(var(--r12px) + var(--r20px));
+  font-weight: var(--font-w-bold);
+  font-size: 24px;
   line-height: 1;
   margin: 0;
 }
 .ho-blog__card-overlay-inner > p:last-of-type {
-  font-weight: 700;
+  font-weight: var(--font-w-medium);
+  font-size: 14px;
   margin: 0;
   line-height: 1;
-  padding: 40px 0;
+  padding: 10px 0 10px 0;
 }
 .ho-blog__card-overlay-inner > svg {
-  height: calc(var(--r20px) * 2);
-  width: calc(var(--r20px) * 2);
+  height: 30px;
+  width: 30px;
 }
 .ho-blog__card-overlay:hover .ho-blog__card-overlay-inner {
   opacity: 100%;
 }
 .ho-blog__card-img {
-  border-radius: 40px;
+  border-radius: var(--radius-small);
 }
+/* details */
 .ho-blog__card-details {
-  margin-top: 40px;
-  color: var(--color-brand-brown);
+  margin-top: 20px;
 }
-.ho-blog__card-details p {
+/* details header */
+.ho-blog__card-details > div > p {
+  color: var(--color-brand-green);
   line-height: 1;
   margin: 0;
 }
-.ho-blog__card-details p:first-of-type {
-  color: var(--color-brand-green);
-  font-family: var(--font-en-primary);
-  font-weight: 600;
-  font-size: var(--r18px);
-  margin-bottom: 20px;
+.ho-blog__card-details > div > p:first-of-type {
+  font-weight: var(--font-w-bold);
+  margin-bottom: 15px;
+  line-height: 1.2;
 }
-.ho-blog__card-details p:first-of-type > span {
+.ho-blog__card-details > div > p:last-of-type {
+  margin: 0 0 15px 0;
+}
+.ho-blog__card-details > div > p > a {
+  color: var(--color-brand-green);
+  font-weight: var(--font-w-medium);
+  font-size: var(--font-size-xs);
+}
+.ho-blog__card-details > div > p > a:before {
+  content: none;
+}
+/* details title */
+.ho-blog__card-details h3 {
+  margin: 0;
   color: var(--color-brand-brown);
-  text-transform: uppercase;
+  line-height: 1.5;
+  font-size: var(--font-size-s);
 }
 /* more lesson */
 .ho-blog__more-lessons {
   display: flex;
   justify-content: center;
+}
+
+@media (min-width: 48rem) {
+  /* blog slider */
+  .ho-blog__slider-wrapper {
+    margin: -160px 0 80px 0;
+    grid-column: 1/16;
+  }
+  .ho-blog-lessons .swiper-wrapper {
+    padding: 70px 0 0 0;
+  }
+  .ho-blog-lessons .swiper {
+    padding: 100px 0 0 0;
+  }
+  .ho-blog-lessons .swiper-button-prev {
+    width: 60px;
+    height: 60px;
+    right: 100px;
+    top: 30px;
+  }
+  .ho-blog-lessons .swiper-button-prev::after {
+    font-size: 44px;
+  }
+
+  .ho-blog-lessons .swiper-button-next {
+    width: 60px;
+    height: 60px;
+    right: 10px;
+    top: 30px;
+  }
+  .ho-blog-lessons .swiper-button-next::after {
+    content: "➜";
+    padding: 1px 0 0 0;
+    font-size: 44px;
+  }
+  /* cards */
+  /* cards--overlay */
+  .ho-blog__card-overlay-inner > h3 {
+    font-size: 32px;
+  }
+  .ho-blog__card-overlay-inner > p:last-of-type {
+    padding: 15px 0 20px 0;
+  }
+  .ho-blog__card-overlay-inner > svg {
+    height: 40px;
+    width: 40px;
+  }
+  /* cards-detail */
+  .ho-blog__card-details h3 {
+    font-size: var(--font-size-l);
+  }
+}
+@media (min-width: 64rem) {
+  /* cards */
+  .ho-blog__card-img-wrapper {
+    border-radius: var(--radius-medium);
+  }
+  /* cards--overlay */
+  .ho-blog__card-overlay {
+    border-radius: var(--radius-medium);
+  }
+  .ho-blog__card-img {
+    border-radius: var(--radius-medium);
+  }
 }
