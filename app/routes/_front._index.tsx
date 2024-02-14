@@ -161,7 +161,7 @@ export default function Index() {
                 enText={home.service_en_title}
                 jpText={home.service_jp_title}
                 align="left"
-                bkground="dark"
+                bkground="green"
                 level="h2"
               />
             </div>

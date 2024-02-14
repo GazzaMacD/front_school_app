@@ -2,7 +2,7 @@ type THeadingOne = {
   jpText: string;
   enText: string;
   align: "left" | "center";
-  bkground: "light" | "dark";
+  bkground: "light" | "dark" | "green";
   level: "h1" | "h2";
 };
 
