@@ -33,67 +33,78 @@ export async function loader({ request, params }: LoaderArgs) {
 export default function StaffDetailPage() {
   const { data, error } = useLoaderData<typeof loader>();
   const ENV = getGlobalEnv();
-  let ui = (
-    <div>
-      <h1>Sorry there is an error. Try again later.</h1>
-    </div>
-  );
-  if (error) {
-    ui = (
-      <div>
-        <h1>{error.message}</h1>
-      </div>
-    );
-    return ui;
-  } else if (data) {
-    ui = (
-      <div>
-        <h1>{data.title}</h1>
-        <img
-          src={`${ENV.BASE_BACK_URL}${data.profile_image.original.src}`}
-          alt={`${data.profile_image.original.alt}`}
-        />
-        <p>{data.role}</p>
-        <p>{data.country}</p>
-        <p>{data.native_language.name_ja}</p>
-        <ul>
-          {data.languages_spoken.map((language) => {
-            return <li key={language.id}>{language.language.name_ja}</li>;
-          })}
-        </ul>
-        <p>{data.hobbies}</p>
+  return (
+    <div className="st">
+      <div className="g-narrow-container">
+        <header>
+          <div className="st-header__img-wrapper">
+            <img
+              src={`${ENV.BASE_BACK_URL}${data.profile_image.original.src}`}
+              alt={`${data.profile_image.original.alt}`}
+            />
+          </div>
+          <h1 className="st-header__name">{data.title}</h1>
+        </header>
+        <div className="st-summary">
+          <table>
+            <tbody>
+              <tr>
+                <td>出身国</td>
+                <td>{data.country}</td>
+              </tr>
+              <tr>
+                <td>母国語</td>
+                <td>{data.native_language.name_ja}</td>
+              </tr>
+              <tr>
+                <td>その他の言語</td>
+                <td>
+                  {data.languages_spoken
+                    .map((l) => l.language.name_ja)
+                    .join("、")}
+                </td>
+              </tr>
+              <tr>
+                <td>趣味</td>
+                <td>{data.hobbies}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
         <div>
-          {data.interview.map((block) => {
-            if (block.type === "q_and_a") {
-              return block.value.q_and_a_series.map((qa) => {
-                return (
-                  <React.Fragment key={qa.question}>
-                    <p>{qa.question}</p>
-                    <p>{qa.answer}</p>
-                  </React.Fragment>
-                );
-              });
-            } else if (block.type === "youtube") {
-              return (
-                <div key={block.id}>
-                  <iframe
-                    className={`youtube-iframe ${
-                      block.value.short ? "youtube-short" : ""
-                    }`}
-                    src={`${block.value.src}?modestbranding=1&controls=0&rel=0`}
-                    title="YouTube video player"
-                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  ></iframe>
-                </div>
-              );
-            }
-          })}
+          {" "}
+          <div>
+            <div>
+              {data.interview.map((block) => {
+                if (block.type === "q_and_a") {
+                  return block.value.q_and_a_series.map((qa) => {
+                    return (
+                      <React.Fragment key={qa.question}>
+                        <p>{qa.question}</p>
+                        <p>{qa.answer}</p>
+                      </React.Fragment>
+                    );
+                  });
+                } else if (block.type === "youtube") {
+                  return (
+                    <div key={block.id}>
+                      <iframe
+                        className={`youtube-iframe ${
+                          block.value.short ? "youtube-short" : ""
+                        }`}
+                        src={`${block.value.src}?modestbranding=1&controls=0&rel=0`}
+                        title="YouTube video player"
+                        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      ></iframe>
+                    </div>
+                  );
+                }
+              })}
+            </div>
+          </div>
         </div>
       </div>
-    );
-    return ui;
-  } else {
-    return ui;
-  }
+    </div>
+  );
 }
