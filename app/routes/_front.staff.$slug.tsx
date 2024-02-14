@@ -71,38 +71,33 @@ export default function StaffDetailPage() {
             </tbody>
           </table>
         </div>
-        <div>
-          {" "}
-          <div>
-            <div>
-              {data.interview.map((block) => {
-                if (block.type === "q_and_a") {
-                  return block.value.q_and_a_series.map((qa) => {
-                    return (
-                      <React.Fragment key={qa.question}>
-                        <p>{qa.question}</p>
-                        <p>{qa.answer}</p>
-                      </React.Fragment>
-                    );
-                  });
-                } else if (block.type === "youtube") {
-                  return (
-                    <div key={block.id}>
-                      <iframe
-                        className={`youtube-iframe ${
-                          block.value.short ? "youtube-short" : ""
-                        }`}
-                        src={`${block.value.src}?modestbranding=1&controls=0&rel=0`}
-                        title="YouTube video player"
-                        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                      ></iframe>
-                    </div>
-                  );
-                }
-              })}
-            </div>
-          </div>
+        <div className="st-interview">
+          {data.interview.map((block) => {
+            if (block.type === "q_and_a") {
+              return block.value.q_and_a_series.map((qa) => {
+                return (
+                  <div key={qa.question} className="st-interview__qa">
+                    <p>{qa.question}</p>
+                    <p>{qa.answer}</p>
+                  </div>
+                );
+              });
+            } else if (block.type === "youtube") {
+              return (
+                <div key={block.id}>
+                  <iframe
+                    className={`youtube-iframe ${
+                      block.value.short ? "youtube-short" : ""
+                    }`}
+                    src={`${block.value.src}?modestbranding=1&controls=0&rel=0`}
+                    title="YouTube video player"
+                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                </div>
+              );
+            }
+          })}
         </div>
       </div>
     </div>

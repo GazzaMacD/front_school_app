@@ -1941,6 +1941,13 @@ label {
 .g-heading1.dark > span {
   color: var(--color-brand-white);
 }
+/* green background */
+.g-heading1.green {
+  color: var(--color-brand-white);
+}
+.g-heading1.green > span {
+  color: var(--color-brand-white);
+}
 
 @media (min-width: 48rem) {
   .g-heading1 {
