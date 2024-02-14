@@ -13,6 +13,7 @@ import { getTitle } from "~/common/utils";
 import { Swoosh1 } from "~/components/swooshes";
 import { BASE_API_URL } from "~/common/constants.server";
 import { getGlobalEnv } from "~/common/utils";
+import { BlogCard } from "~/components/cards";
 import {
   ButtonLink,
   RoundButtonLink,
@@ -35,7 +36,7 @@ export const links: LinksFunction = () => [
 
 export const loader = async () => {
   const homeUrl = `${BASE_API_URL}/pages/?type=home.HomePage&fields=*`;
-  const blogslUrl = `${BASE_API_URL}/pages/?order=-published_date&limit=8&type=lessons.LessonDetailPage&fields=_,id,slug,display_title,display_tagline,published_date,title,header_image`;
+  const blogslUrl = `${BASE_API_URL}/pages/?order=-published_date&limit=8&type=lessons.LessonDetailPage&fields=_,id,slug,display_title,display_tagline,published_date,title,category,header_image`;
   const urls = [homeUrl, blogslUrl];
   try {
     const [home, blogs] = await Promise.all(
@@ -93,29 +94,6 @@ export default function Index() {
     };
   }, [handleWindowResize]);
 
-  function getNumSlides(windowSize: number) {
-    if (windowSize > 2000) return 3.5;
-    else if (windowSize > 1700) return 3.5;
-    else if (windowSize > 1600) return 3.1;
-    else if (windowSize > 1535) return 2.5;
-    else if (windowSize > 1500) return 2.5;
-    else if (windowSize > 1400) return 2.5;
-    else if (windowSize > 1400) return 2.5;
-    else if (windowSize > 1300) return 2.5;
-    else if (windowSize > 1200) return 2.25;
-    else if (windowSize > 1100) return 2.3;
-    else if (windowSize > 1023) return 1.9;
-    else if (windowSize > 1000) return 2.5;
-    else if (windowSize > 900) return 2.3;
-    else if (windowSize > 800) return 1.8;
-    else if (windowSize > 700) return 1.9;
-    else if (windowSize > 600) return 1.7;
-    else if (windowSize > 500) return 1.5;
-    else if (windowSize > 400) return 1.44;
-    else if (windowSize > 300) return 1.35;
-    else return 1.25;
-  }
-
   let pricesNumSlides = getNumSlides(windowSize);
 
   let sliderSpace =
@@ -126,6 +104,8 @@ export default function Index() {
       : windowSize > 768
       ? 40
       : 20;
+  let blogNumSlides = windowSize > 1400 ? 4 : windowSize > 1024 ? 3 : 2;
+  let blogSlideGap = getBlogSlideGap(windowSize);
 
   return (
     <>
@@ -437,73 +417,129 @@ export default function Index() {
 
       <section id="blog-lessons">
         <div className="ho-blog-lessons">
-          <HeadingOne
-            enText={home.bloglesson_en_title}
-            jpText={home.bloglesson_jp_title}
-            align="left"
-            bkground="light"
-            level="h2"
-          />
-          <div className="ho-blog__slider-wrapper">
-            <Swiper
-              // install Swiper modules
-              modules={[Navigation]}
-              spaceBetween={sliderSpace}
-              slidesPerView={3}
-              navigation
-              pagination={{ clickable: true }}
-              scrollbar={{ draggable: true }}
-              onSwiper={(swiper) => console.log(swiper)}
-              onSlideChange={() => console.log("slide change")}
-            >
-              {blogs.map((blog, i) => {
-                const date = new Date(blog.published_date);
-                return (
-                  <SwiperSlide key={blog.id}>
-                    <Link
-                      className="ho-blog-link"
-                      to={`/blog-lessons/${blog.meta.slug}`}
-                    >
-                      <div className="ho-blog__card">
-                        <div className="ho-blog__card-img-wrapper">
-                          <img
-                            className="ho-blog__card-img"
-                            src={`${ENV.BASE_BACK_URL}${blog.header_image.medium.src}`}
-                            alt={blog.header_image.medium.alt}
-                          />
-                          <div className="ho-blog__card-overlay">
-                            <div className="ho-blog__card-overlay-inner">
-                              <h3>Let's Learn!</h3>
-                              <p>記事を読む</p>
-                              <FaArrowRightLong />
+          <div className="g-grid-container1">
+            <div className="ho-blog-lessons__heading">
+              <HeadingOne
+                enText={home.bloglesson_en_title}
+                jpText={home.bloglesson_jp_title}
+                align="left"
+                bkground="light"
+                level="h2"
+              />
+            </div>
+            <div className="ho-blog__slider-wrapper">
+              <Swiper
+                // install Swiper modules
+                modules={[Navigation]}
+                spaceBetween={blogSlideGap}
+                slidesPerView={blogNumSlides}
+                navigation
+                pagination={{ clickable: true }}
+                scrollbar={{ draggable: true }}
+                onSwiper={(swiper) => console.log(swiper)}
+                onSlideChange={() => console.log("slide change")}
+              >
+                {blogs.map((blog, i) => {
+                  const d = new Date(blog.published_date);
+                  return (
+                    <SwiperSlide key={blog.id}>
+                      <Link
+                        className="ho-blog-link"
+                        to={`/blog-lessons/${blog.meta.slug}`}
+                      >
+                        <div className="ho-blog__card">
+                          <div className="ho-blog__card-img-wrapper">
+                            <img
+                              className="ho-blog__card-img"
+                              src={`${ENV.BASE_BACK_URL}${blog.header_image.medium.src}`}
+                              alt={blog.header_image.medium.alt}
+                            />
+                            <div className="ho-blog__card-overlay">
+                              <div className="ho-blog__card-overlay-inner">
+                                <h3>Let's Learn!</h3>
+                                <p>記事を読む</p>
+                                <FaArrowRightLong />
+                              </div>
                             </div>
                           </div>
+                          <div className="ho-blog__card-details">
+                            <div>
+                              <p>{`${d.getFullYear()}.${
+                                d.getMonth() + 1
+                              }.${d.getDate()}`}</p>
+                              <p>
+                                <Link
+                                  to={`/blog-lessons?category=${blog.category.ja_name}`}
+                                >
+                                  [ {blog.category.ja_name} ]
+                                </Link>
+                              </p>
+                            </div>
+                            <h3>{blog.display_title}</h3>
+                          </div>
                         </div>
-                        <div className="ho-blog__card-details">
-                          <p>
-                            {`${date.getFullYear()}.${
-                              date.getMonth() + 1
-                            }.${date.getDate()}`}{" "}
-                            <span>blog lesson</span>
-                          </p>
-                          <h3>{blog.display_title}</h3>
-                        </div>
-                      </div>
-                    </Link>
-                  </SwiperSlide>
-                );
-              })}
-            </Swiper>
-          </div>
-          <div className="ho-blog__more-lessons">
-            <SolidPillButtonLink to="/blog-lessons" color="green">
-              すべての記事を見る &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <FaArrowRightLong />
-            </SolidPillButtonLink>
+                      </Link>
+                    </SwiperSlide>
+                  );
+                })}
+              </Swiper>
+            </div>
+            <div className="ho-blog__more">
+              <SolidPillButtonLink to="/blog-lessons" color="green">
+                すべての記事を見る &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <FaArrowRightLong />
+              </SolidPillButtonLink>
+            </div>
           </div>
         </div>
         <Swoosh1 swooshColor="beige" backColor="white" />
       </section>
     </>
   );
+}
+
+/* helper functions */
+function getBlogSlideGap(windowSize: number) {
+  if (windowSize > 2000) return 3.5;
+  else if (windowSize > 1800) return 103;
+  else if (windowSize > 1700) return 96;
+  else if (windowSize > 1600) return 90;
+  else if (windowSize > 1535) return 85;
+  else if (windowSize > 1500) return 89;
+  else if (windowSize > 1400) return 83;
+  else if (windowSize > 1300) return 77;
+  else if (windowSize > 1200) return 71;
+  else if (windowSize > 1100) return 63;
+  else if (windowSize > 1023) return 60;
+  else if (windowSize > 1000) return 185;
+  else if (windowSize > 900) return 164;
+  else if (windowSize > 800) return 145;
+  else if (windowSize > 700) return 48;
+  else if (windowSize > 600) return 36;
+  else if (windowSize > 500) return 29;
+  else if (windowSize > 400) return 27;
+  else if (windowSize > 300) return 20;
+  else return 20;
+}
+function getNumSlides(windowSize: number) {
+  if (windowSize > 2000) return 3.5;
+  else if (windowSize > 1700) return 3.5;
+  else if (windowSize > 1600) return 3.1;
+  else if (windowSize > 1535) return 2.5;
+  else if (windowSize > 1500) return 2.5;
+  else if (windowSize > 1400) return 2.5;
+  else if (windowSize > 1400) return 2.5;
+  else if (windowSize > 1300) return 2.5;
+  else if (windowSize > 1200) return 2.25;
+  else if (windowSize > 1100) return 2.3;
+  else if (windowSize > 1023) return 1.9;
+  else if (windowSize > 1000) return 2.5;
+  else if (windowSize > 900) return 2.3;
+  else if (windowSize > 800) return 1.8;
+  else if (windowSize > 700) return 1.9;
+  else if (windowSize > 600) return 1.7;
+  else if (windowSize > 500) return 1.5;
+  else if (windowSize > 400) return 1.44;
+  else if (windowSize > 300) return 1.35;
+  else return 1.25;
 }
