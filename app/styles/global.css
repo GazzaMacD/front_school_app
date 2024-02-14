@@ -762,6 +762,17 @@ alignment with container grid 1
     grid-template-columns: 120px repeat(15, 1fr) 120px;
   }
 }
+/* narrow container - text etc */
+.g-narrow-container {
+  margin: 0 auto;
+  max-width: 700px;
+  padding: 0 20px;
+}
+@media (min-width: 48rem) {
+  .g-narrow-container {
+    padding: 0 30px;
+  }
+}
 
 /* old container  - to remove*/
 .container {
