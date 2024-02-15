@@ -44,7 +44,6 @@ export default function AboutPage() {
           <p>{data.mission_tagline}</p>
           <p>{data.mission_content}</p>
         </section>
-
         <section>
           <h2>{data.staff_title}</h2>
           <p>{data.staff_tagline}</p>
