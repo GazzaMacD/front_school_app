@@ -756,7 +756,7 @@ a.ho-teacher__card-link::before {
   right: 70px;
   left: auto;
   top: 60px;
-  color: var(--color-base-white);
+  color: var(--color-brand-white);
 }
 .ho-blog-lessons .swiper-button-prev::after {
   content: "➜";
@@ -772,7 +772,7 @@ a.ho-teacher__card-link::before {
   border-radius: 50%;
   right: 10px;
   top: 60px;
-  color: var(--color-base-white);
+  color: var(--color-brand-white);
 }
 .ho-blog-lessons .swiper-button-next::after {
   content: "➜";
