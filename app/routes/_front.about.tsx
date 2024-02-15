@@ -3,14 +3,18 @@ import { Link, useLoaderData } from "@remix-run/react";
 import { getGlobalEnv } from "~/common/utils";
 
 import { SlidingHeaderPage } from "~/components/pages";
-import aboutStyles from "~/styles/about.css";
-import pageCStyles from "~/styles/components/pages.css";
 import { BASE_API_URL } from "~/common/constants.server";
 import { HeadingOne } from "~/components/headings";
+import { StaffRoundPicCard } from "~/components/cards";
+import aboutStyles from "~/styles/about.css";
+import pageCStyles from "~/styles/components/pages.css";
+import cardStyles from "~/styles/components/cards.css";
+import { getDivisor4LetterHash } from "~/common/utils";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: aboutStyles },
   { rel: "stylesheet", href: pageCStyles },
+  { rel: "stylesheet", href: cardStyles },
 ];
 
 export async function loader() {
@@ -31,6 +35,8 @@ export async function loader() {
 export default function AboutPage() {
   const { page } = useLoaderData<typeof loader>();
   const ENV = getGlobalEnv();
+
+  const teacherHash = getDivisor4LetterHash(page.staff_members.length);
   return (
     <>
       <SlidingHeaderPage
@@ -55,31 +61,39 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
-        <section>
-          <h2>{page.staff_title}</h2>
-          <p>{page.staff_tagline}</p>
-          <div>
-            {page.staff_members.map((member) => {
-              return (
-                <div key={member.id}>
-                  <div>
-                    <img
-                      src={`${ENV.BASE_BACK_URL}${member.staff.image.original.src}`}
-                      alt={member.staff.image.original.alt}
-                    />
-                    <div>
-                      <p>{member.staff.intro}</p>
-                      <Link to={`/staff/${member.staff.slug}`}>
-                        More about {member.staff.name}
-                      </Link>
+        <section id="teachers">
+          <div className="ab-teachers">
+            <div className="g-grid-container1">
+              <div className="ab-teachers__heading">
+                <HeadingOne
+                  enText={page.staff_en_title}
+                  jpText={page.staff_jp_title}
+                  align="center"
+                  bkground="light"
+                  level="h2"
+                />
+              </div>
+              {page.staff_members.length ? (
+                page.staff_members.map((member, i) => {
+                  return (
+                    <div
+                      key={member.id}
+                      className={`ab-teachers__card-wrapper ${teacherHash[i]}`}
+                    >
+                      <StaffRoundPicCard
+                        url={`/staff/${member.staff.slug}`}
+                        src={`${ENV.BASE_BACK_URL}${member.staff.image.original.src}`}
+                        alt={member.staff.image.original.alt}
+                        name={member.staff.name}
+                        tagline={member.staff.display_tagline}
+                      />
                     </div>
-                  </div>
-                  <div>
-                    <h3>{member.staff.name}</h3>
-                  </div>
-                </div>
-              );
-            })}
+                  );
+                })
+              ) : (
+                <p>Please at least one staff member</p>
+              )}
+            </div>
           </div>
         </section>
         <section>

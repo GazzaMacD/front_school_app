@@ -48,3 +48,21 @@ export function getDateString(start: string, end: string) {
 export function getDisplay(str: string, langNum: number) {
   return str.split(",")[langNum];
 }
+
+/*
+ * Hash creators
+ *
+ * For creating hash map objects to map numbers
+ * to letters primarily for grid css layouts
+ */
+export function getDivisor4LetterHash(length: number) {
+  const hash: Record<string, string> = {};
+  const letters = "abcd";
+  let count = 0;
+  for (let i = 0; i < length; i++) {
+    hash[i] = letters[count];
+    count += 1;
+    if (count > 3) count = 0;
+  }
+  return hash;
+}
