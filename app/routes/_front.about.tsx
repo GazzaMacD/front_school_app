@@ -6,7 +6,7 @@ import { SlidingHeaderPage } from "~/components/pages";
 import aboutStyles from "~/styles/about.css";
 import pageCStyles from "~/styles/components/pages.css";
 import { BASE_API_URL } from "~/common/constants.server";
-import { Swoosh1 } from "~/components/swooshes";
+import { HeadingOne } from "~/components/headings";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: aboutStyles },
@@ -21,34 +21,45 @@ export async function loader() {
     if (!response.ok || !aboutPageData.items.length) {
       throw new Response("Oops that's a 404", { status: 404 });
     }
-    const data = aboutPageData.items[0];
-    return json({ data: data });
+    const page = aboutPageData.items[0];
+    return json({ page });
   } catch (error) {
     return null;
   }
 }
 
 export default function AboutPage() {
-  const { data } = useLoaderData<typeof loader>();
+  const { page } = useLoaderData<typeof loader>();
   const ENV = getGlobalEnv();
   return (
     <>
       <SlidingHeaderPage
-        mainTitle={data.title}
-        subTitle={data.display_title}
+        mainTitle={page.title}
+        subTitle={page.display_title}
         swooshBackColor="cream"
         swooshFrontColor="beige"
       >
         <section>
-          <h2>{data.mission_title}</h2>
-          <p>{data.mission_tagline}</p>
-          <p>{data.mission_content}</p>
+          <div className="ab-mission">
+            <div className="g-narrow-container">
+              <HeadingOne
+                enText={page.mission_en_title}
+                jpText={page.mission_jp_title}
+                align="center"
+                bkground="light"
+                level="h2"
+              />
+              <h2>{page.mission_title}</h2>
+              <p>{page.mission_tagline}</p>
+              <p>{page.mission_content}</p>
+            </div>
+          </div>
         </section>
         <section>
-          <h2>{data.staff_title}</h2>
-          <p>{data.staff_tagline}</p>
+          <h2>{page.staff_title}</h2>
+          <p>{page.staff_tagline}</p>
           <div>
-            {data.staff_members.map((member) => {
+            {page.staff_members.map((member) => {
               return (
                 <div key={member.id}>
                   <div>
@@ -72,10 +83,10 @@ export default function AboutPage() {
           </div>
         </section>
         <section>
-          <h2>{data.values_title}</h2>
-          <p>{data.values_tagline}</p>
+          <h2>{page.values_title}</h2>
+          <p>{page.values_tagline}</p>
           <div>
-            {data.values_content.map((block) => {
+            {page.values_content.map((block) => {
               if (block.type === "rich_text") {
                 return (
                   <div
@@ -100,10 +111,10 @@ export default function AboutPage() {
           </div>
         </section>
         <section>
-          <h2>{data.history_title}</h2>
-          <p>{data.history_tagline}</p>
+          <h2>{page.history_title}</h2>
+          <p>{page.history_tagline}</p>
           <div>
-            {data.history_content.map((block) => {
+            {page.history_content.map((block) => {
               if (block.type === "rich_text") {
                 return (
                   <div
