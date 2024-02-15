@@ -1,6 +1,6 @@
 import { brandColors } from "~/common/brandColors";
 
-type TSwooshColors = "brown" | "beige" | "cream" | "white" | "green";
+export type TSwooshColors = "brown" | "beige" | "cream" | "white" | "green";
 type TSwoosh = {
   swooshColor: TSwooshColors;
   backColor: TSwooshColors;
