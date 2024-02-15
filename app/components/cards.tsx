@@ -1,6 +1,9 @@
 import { FaArrowRightLong } from "react-icons/fa6";
 import { Link } from "@remix-run/react";
 
+/**
+ * Blog Lesson Card
+ */
 type TBlogCardProps = {
   i: string;
   slug: string;
@@ -55,4 +58,42 @@ function BlogCard({
   );
 }
 
-export { BlogCard };
+/**
+ * Staff Rounded Picture Card
+ */
+
+type TStaffRoundPicCardProps = {
+  url: string;
+  src: string;
+  alt: string;
+  name: string;
+  tagline: string;
+};
+
+function StaffRoundPicCard({
+  url,
+  src,
+  alt,
+  name,
+  tagline,
+}: TStaffRoundPicCardProps) {
+  return (
+    <article className="c-staff-card">
+      <Link to={url} className="c-staff-card__link">
+        <div className="c-staff-card__img-wrapper">
+          <img className="c-staff-card__img" src={src} alt={alt} />
+          <div className="c-staff-card__overlay">
+            <h3>View Details</h3>
+            <p>詳細を見る</p>
+            <FaArrowRightLong />
+          </div>
+        </div>
+      </Link>
+      <div className="c-staff-card__details">
+        <h3>{name}</h3>
+        <p>{tagline}</p>
+      </div>
+    </article>
+  );
+}
+export { BlogCard, StaffRoundPicCard };

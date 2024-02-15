@@ -1,3 +1,25 @@
+/* mission */
 .ab-mission {
   padding-bottom: 120px;
+}
+
+/* teachers */
+.ab-teachers {
+  padding-bottom: 160px;
+}
+.ab-teachers__heading {
+  grid-column: 1/16;
+}
+/* teachers--card layout */
+.ab-teachers__card-wrapper.a {
+  grid-column: 1/4;
+}
+.ab-teachers__card-wrapper.b {
+  grid-column: 5/8;
+}
+.ab-teachers__card-wrapper.c {
+  grid-column: 9/12;
+}
+.ab-teachers__card-wrapper.d {
+  grid-column: 13/16;
 }
