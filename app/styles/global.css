@@ -4,6 +4,8 @@ BEM - prefix identifiers for class names accross the app
 g- | global styles
 ho- home styles
 bl- blog lessons styles
+st - staff styles
+ab - about styles
 
 ========
 Media queries
@@ -441,59 +443,6 @@ template {
   --color-sec-lightorange: hsl(28, 100%, 75%);
   --color-sec-darkgreen: hsl(104, 80%, 28%);
   --color-sec-red: hsl(9, 100%, 50%);
-
-  /*  OLD EXPERIMENTAL COLORS */
-  --color-base-white: white;
-  --color-base-orange: #e54e20; /* #f3460f;  #f06232; */
-  --color-base-brown: #331a00; /*#35302a; /*#133e16; #2f2426; /* #341911 */
-  --color-base-text: #352f2c;
-  /* secondary brand colors */
-  --color-sec-darkcream: #ccc7b3;
-  --color-sec-lightlime: #b1d121;
-  --color-sec-darklime: #6e9424;
-  --color-sec-olive: #3e5e1f;
-  --color-sec-palegreen: #c6d5a1;
-  --color-sec-lightlime: #b1d121;
-  --color-sec-lightorange: #fe9600;
-  --color-sec-paleorange: #fed4b4;
-  --color-sec-darkorange: #d34a20; /* #f3460f;  #f06232; */
-  --color-sec-focusblue: #0085f2;
-
-  /* --color-base-cream: rgb(250, 245, 234); */
-  /* --color-base-cream: #f5fdef; */
-  --color-base-green: #331a00; /* #35302a;  #133e16; #2f2426 */
-  --color-base-limegreen: #74a12e; /* #89b72d; */
-  --color-base-cream: #fff8ee; /*#ffefd5; /* #ffe5b4; /*#fdfcf8; /*rgb(244, 241, 235);*/
-  --color-base-dbrown: rgb(58, 35, 0);
-  --color-base-lbrown: rgb(109, 66, 0);
-  --color-base-yellow: rgb(255, 193, 37);
-  --color-base-yellow2: #f2ad00;
-  /* play */
-  /* --color-base-orange: #f95422; */
-  --color-base-lightorange: #fe9600;
-  --color-base-bluegreen: #0c4a46;
-  --color-base-lightgreen: #c6d5a1;
-  --color-base-darkgreen: #32604f;
-  --color-base-slate: #4c483e;
-  --color-base-darkslate: #2d2223;
-  /* --color-base-bluegreen2: #097472; */
-  --color-base-tint-green: #d8ddcd;
-  --color-base-orange2: #fc5c00;
-  --color-base-black: #000;
-  /* tints and shades */
-  --color-shade-green1: rgb(56, 103, 7);
-  --color-shade-green2: rgb(50, 92, 6);
-  --color-shade-green6: rgb(25, 46, 3);
-  --color-shade-red1: rgb(153, 16, 25);
-  --color-shade-yellow1: rgb(229, 173, 33);
-  --color-tint-green1: rgb(82, 129, 57);
-  --color-tint-green6: rgb(229, 231, 216);
-  /* base text colors */
-  --color-text-dark: var(--color-base-dbrown);
-  --color-text-heading-dark: var(--color-base-green);
-  --color-text-light: var(--color-base-cream);
-  --color-text-heading-light: var(--color-base-yellow);
-
   /*shadows*/
   --color-shadow: rgba(0, 0, 0, 0.1);
 }
@@ -530,7 +479,7 @@ template {
     "TakaoExGothic", "MotoyaLCedar", "Droid Sans Japanese", sans-serif;
   --font-en-primary: "Rubik", sans-serif;
 }
-/* base typography values */
+/* Base typography values */
 :root {
   /* font sizes */
   /*
@@ -773,8 +722,19 @@ alignment with container grid 1
     padding: 0 30px;
   }
 }
+/* youtube iframe */
+.youtube-iframe {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  border: none;
+}
+@media screen and (orientation: portrait) {
+  .youtube-short {
+    aspect-ratio: 9 / 16;
+  }
+}
 
-/* old container  - to remove*/
+/* old containers  - to remove*/
 .container {
   overflow-x: hidden;
   max-width: 100%;
@@ -791,16 +751,6 @@ alignment with container grid 1
   margin: 0;
   padding: 0 var(--component-padding);
   width: 100%;
-}
-.youtube-iframe {
-  aspect-ratio: 16 / 9;
-  width: 100%;
-  border: none;
-}
-@media screen and (orientation: portrait) {
-  .youtube-short {
-    aspect-ratio: 9 / 16;
-  }
 }
 
 /* ----------------------------- 
@@ -1141,7 +1091,7 @@ a.g-menu__reglog-link:hover > .g-menu__reglog {
   padding: 100px 10px 0px 20px;
   transform: translate(320px);
   opacity: 0;
-  background-color: var(--color-base-white);
+  background-color: var(--color-brand-white);
   z-index: 1900;
   transition: transform 0.4s ease-out, opacity 0.1s linear 0.5s;
 }
@@ -1820,7 +1770,7 @@ label {
 }
 
 .form-nonfield-errors {
-  background-color: var(--color-sec-paleorange);
+  background-color: var(--color-sec-lightorange);
   border-radius: var(--radius-xs);
   padding: var(--space-xxxs) var(--space-xs);
   list-style: none;
