@@ -23,3 +23,19 @@
 .ab-teachers__card-wrapper.d {
   grid-column: 13/16;
 }
+
+/* values */
+.ab-values {
+  padding-bottom: 160px;
+}
+.ab-values > div:first-of-type {
+  padding-bottom: 80px;
+}
+
+/* values--card layout */
+.ab-values__card-wrapper.t0 {
+  grid-column: 1/8;
+}
+.ab-values__card-wrapper.t1 {
+  grid-column: 9/16;
+}

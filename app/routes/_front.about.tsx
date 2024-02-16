@@ -5,7 +5,7 @@ import { getGlobalEnv } from "~/common/utils";
 import { SlidingHeaderPage } from "~/components/pages";
 import { BASE_API_URL } from "~/common/constants.server";
 import { HeadingOne } from "~/components/headings";
-import { StaffRoundPicCard } from "~/components/cards";
+import { StaffRoundPicCard, NumberedHorizontalCards } from "~/components/cards";
 import aboutStyles from "~/styles/about.css";
 import pageCStyles from "~/styles/components/pages.css";
 import cardStyles from "~/styles/components/cards.css";
@@ -96,34 +96,42 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
-        <section>
-          <h2>{page.values_title}</h2>
-          <p>{page.values_tagline}</p>
-          <div>
-            {page.values_content.map((block) => {
-              if (block.type === "rich_text") {
+
+        <section id="values">
+          <div className="ab-values">
+            <div className="g-narrow-container">
+              <HeadingOne
+                enText={page.values_en_title}
+                jpText={page.values_jp_title}
+                align="center"
+                bkground="light"
+                level="h2"
+              />
+              <div dangerouslySetInnerHTML={{ __html: page.values_intro }} />
+            </div>
+            <div className="g-grid-container1">
+              {page.values_list.map((block, i) => {
+                const classType = i % 2;
                 return (
                   <div
                     key={block.id}
-                    dangerouslySetInnerHTML={{ __html: block.value }}
-                  />
+                    className={`ab-values__card-wrapper t${classType}`}
+                  >
+                    <NumberedHorizontalCards
+                      number={`0${i + 1}`}
+                      enTitle={block.value.title}
+                      jaTitle={block.value.jp_title}
+                      text={block.value.text}
+                      src={`${ENV.BASE_BACK_URL}${block.value.image.thumbnail.src}`}
+                      alt={block.value.image.medium.alt}
+                    />
+                  </div>
                 );
-              }
-              if (block.type === "value_cards") {
-                return block.value.cards.map((card) => {
-                  return (
-                    <div key={card.title}>
-                      <img
-                        src={`${ENV.BASE_BACK_URL}${card.image.medium.src}`}
-                        alt={card.image.medium.alt}
-                      />
-                    </div>
-                  );
-                });
-              }
-            })}
+              })}
+            </div>
           </div>
         </section>
+
         <section>
           <h2>{page.history_title}</h2>
           <p>{page.history_tagline}</p>

@@ -96,4 +96,44 @@ function StaffRoundPicCard({
     </article>
   );
 }
-export { BlogCard, StaffRoundPicCard };
+
+/**
+ * Numbered Bilingual Horizontal Layout Cards
+ */
+
+type TNumberedHorizontalProps = {
+  number: string;
+  enTitle: string;
+  jaTitle: string;
+  text: string;
+  src: string;
+  alt: string;
+};
+
+function NumberedHorizontalCards({
+  number,
+  enTitle,
+  jaTitle,
+  text,
+  src,
+  alt,
+}: TNumberedHorizontalProps) {
+  return (
+    <article className="c-nh-card">
+      <div className="c-nh-card__details">
+        <div className="c-nh-card__titles">
+          <p>{number}</p>
+          <h4>{enTitle}</h4>
+          <p>{jaTitle}</p>
+        </div>
+        <div className="c-nh-card__text">
+          <p>{text}</p>
+        </div>
+      </div>
+      <div className="c-nh-card__img-wrapper">
+        <img src={src} alt={alt} />
+      </div>
+    </article>
+  );
+}
+export { BlogCard, StaffRoundPicCard, NumberedHorizontalCards };
