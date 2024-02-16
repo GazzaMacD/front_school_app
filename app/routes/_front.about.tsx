@@ -45,7 +45,7 @@ export default function AboutPage() {
         swooshBackColor="cream"
         swooshFrontColor="beige"
       >
-        <section>
+        <section id="mission">
           <div className="ab-mission">
             <div className="g-narrow-container">
               <HeadingOne
@@ -132,20 +132,29 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section>
-          <h2>{page.history_title}</h2>
-          <p>{page.history_tagline}</p>
-          <div>
-            {page.history_content.map((block) => {
-              if (block.type === "rich_text") {
-                return (
-                  <div
-                    key={block.id}
-                    dangerouslySetInnerHTML={{ __html: block.value }}
-                  />
-                );
-              }
-            })}
+        <section id="history">
+          <div className="ab-history">
+            <div className="g-narrow-container">
+              <HeadingOne
+                enText={page.history_en_title}
+                jpText={page.history_jp_title}
+                align="center"
+                bkground="light"
+                level="h2"
+              />
+              <div className="ab-history__content">
+                {page.history_content.map((block) => {
+                  if (block.type === "rich_text") {
+                    return (
+                      <div
+                        key={block.id}
+                        dangerouslySetInnerHTML={{ __html: block.value }}
+                      />
+                    );
+                  }
+                })}
+              </div>
+            </div>
           </div>
         </section>
       </SlidingHeaderPage>

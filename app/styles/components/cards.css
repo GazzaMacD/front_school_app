@@ -75,7 +75,7 @@ a.c-staff-card__link:before {
   border-radius: var(--radius-medium);
   justify-content: space-between;
   align-items: center;
-  gap: 40px;
+  gap: 5%;
 }
 .c-nh-card__details {
   flex: 1 1 64%;
@@ -90,7 +90,7 @@ a.c-staff-card__link:before {
   margin: 0;
   font-family: var(--font-en-primary);
   font-weight: var(--font-w-semi-bold);
-  font-size: var(--font-size-5xl);
+  font-size: var(--font-size-4xl);
   color: var(--color-brand-green);
   line-height: 1;
 }
@@ -102,7 +102,7 @@ a.c-staff-card__link:before {
 }
 .c-nh-card__titles > p:last-of-type {
   font-family: var(--font-jp-primary);
-  font-size: var(--font-size-l);
+  font-size: var(--font-size-m);
 }
 .c-nh-card__text > p {
   margin: 0;

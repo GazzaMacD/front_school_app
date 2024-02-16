@@ -406,7 +406,7 @@ export default function Index() {
               );
             })}
             <div className="ho-teachers__more">
-              <SolidPillButtonLink to="/about#staff" color="green">
+              <SolidPillButtonLink to="/about#teachers" color="green">
                 すべての講師を見る &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <FaArrowRightLong />
               </SolidPillButtonLink>
