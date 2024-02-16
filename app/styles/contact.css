@@ -1,10 +1,57 @@
-.accordian__open {
-  display: block;
+/* header  and navigation*/
+.ct-nav {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(200px, 1fr));
+  gap: 20px;
+  margin: 0 20px;
 }
-.accordian__closed {
-  display: none;
+
+@media (min-width: 48rem) {
+  .ct-nav {
+    margin: 0 30px;
+  }
 }
-/* Contact Page (cf) */
+@media (min-width: 64rem) {
+  .ct-nav {
+    margin: 0 60px;
+  }
+}
+@media (min-width: 96rem) {
+  .ct-nav {
+    margin: 0 120px;
+  }
+}
+
+a.ct-nav__link::before {
+  content: none;
+}
+.ct-nav__btn {
+  height: 80px;
+  border: 2px solid var(--color-brand-brown);
+  border-radius: var(--radius-small);
+  width: 100%;
+  background-color: var(--color-brand-cream);
+  color: var(--color-brand-brown);
+  display: flex;
+  align-items: center;
+  padding: 20px 30px 20px 20px;
+  transition: color 0.3s ease-in, background-color 0.3s ease-in;
+}
+.ct-nav__icon {
+  width: 30px;
+}
+.ct-nav__text {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ct-nav__link:hover .ct-nav__btn {
+  background-color: var(--color-brand-brown);
+  color: var(--color-brand-cream);
+  transition: color 0.3s ease-out, background-color 0.3s ease-out;
+}
+/* old code */
 .cf__title {
   text-align: center;
   margin-top: 50px;
