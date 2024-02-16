@@ -649,7 +649,7 @@ Design Elements
 -------------------------------- */
 :root {
   /* border radiu */
-  --radius-small: 25px;
+  --radius-small: 20px;
   --radius-sm: 15px;
   --radius-xs: 5px;
   --radius-large: 80px;
