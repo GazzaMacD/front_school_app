@@ -514,7 +514,7 @@ template {
   /* text line-heights */
   --text-line-height: 1.6;
   /* text letter spacing */
-  --text-letter-spacing: 1.1px;
+  --text-letter-spacing: 1px;
   /* heading line-height */
   --heading-line-height: 1.2;
   --heading-letter-spacing: 1.5px;
