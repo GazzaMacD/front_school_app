@@ -1,11 +1,8 @@
 /* mission */
-.ab-mission {
-  padding-bottom: 120px;
-}
 
 /* teachers */
 .ab-teachers {
-  padding-bottom: 160px;
+  padding: 140px 0 160px 0;
 }
 .ab-teachers__heading {
   grid-column: 1/16;
@@ -35,7 +32,11 @@
 /* values--card layout */
 .ab-values__card-wrapper.t0 {
   grid-column: 1/8;
+  margin-bottom: 40px;
 }
 .ab-values__card-wrapper.t1 {
   grid-column: 9/16;
+  margin-bottom: 40px;
 }
+
+/* history */
