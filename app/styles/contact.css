@@ -52,20 +52,20 @@ a.ct-nav__link::before {
   transition: color 0.3s ease-out, background-color 0.3s ease-out;
 }
 
-/* trial lesson section */
-.ct-trial {
+/* trial lesson  and experiences section */
+.ct-texp {
   padding: 120px 0 0 0;
 }
-.ct-trial__intro {
+.ct-texp__intro {
   padding-bottom: 20px;
 }
-.ct-trial__step__caret {
+.ct-texp__step__caret {
   display: flex;
   justify-content: center;
   align-items: center;
   color: var(--color-brand-beige);
 }
-.ct-trial__step__caret > svg {
+.ct-texp__step__caret > svg {
   height: 50px;
   width: 50px;
 }

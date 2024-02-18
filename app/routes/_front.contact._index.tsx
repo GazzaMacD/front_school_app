@@ -73,9 +73,9 @@ export default function ContactIndexPage() {
       </div>
 
       <section id="trial">
-        <div className="ct-trial">
+        <div className="ct-texp">
           <div className="g-narrow-container">
-            <div className="ct-trial__heading">
+            <div className="ct-texp__heading">
               <HeadingOne
                 enText={page.trial_en_title}
                 jpText={page.trial_jp_title}
@@ -85,10 +85,10 @@ export default function ContactIndexPage() {
               />
             </div>
             <div
-              className="ct-trial__intro"
+              className="ct-texp__intro"
               dangerouslySetInnerHTML={{ __html: page.trial_intro }}
             />
-            <div className="ct-trial__steps">
+            <div className="ct-texp__steps">
               {page.trial_steps.map((step, i, arr) => {
                 const len = arr.length;
                 return (
@@ -107,7 +107,54 @@ export default function ContactIndexPage() {
                       }
                     />
                     {i + 1 < len ? (
-                      <div className="ct-trial__step__caret">
+                      <div className="ct-texp__step__caret">
+                        <FaCaretDown />
+                      </div>
+                    ) : null}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="lexp">
+        <div className="ct-texp">
+          <div className="g-narrow-container">
+            <div className="ct-texp__heading">
+              <HeadingOne
+                enText={page.exp_en_title}
+                jpText={page.exp_jp_title}
+                align="center"
+                bkground="light"
+                level="h2"
+              />
+            </div>
+            <div
+              className="ct-texp__intro"
+              dangerouslySetInnerHTML={{ __html: page.trial_intro }}
+            />
+            <div className="ct-texp__steps">
+              {page.trial_steps.map((step, i, arr) => {
+                const len = arr.length;
+                return (
+                  <div key={step.id}>
+                    <NumberedHorizontalCards
+                      number={`0${i + 1}`}
+                      jaTitle={step.value.title}
+                      text={step.value.text}
+                      src={
+                        step.value.image
+                          ? `${ENV.BASE_BACK_URL}${step.value.image.thumbnail.src}`
+                          : null
+                      }
+                      alt={
+                        step.value.image ? step.value.image.medium.alt : null
+                      }
+                    />
+                    {i + 1 < len ? (
+                      <div className="ct-texp__step__caret">
                         <FaCaretDown />
                       </div>
                     ) : null}
