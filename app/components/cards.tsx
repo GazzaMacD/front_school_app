@@ -103,11 +103,11 @@ function StaffRoundPicCard({
 
 type TNumberedHorizontalProps = {
   number: string;
-  enTitle: string;
+  enTitle?: string;
   jaTitle: string;
   text: string;
-  src: string;
-  alt: string;
+  src: string | null;
+  alt: string | null;
 };
 
 function NumberedHorizontalCards({
@@ -123,16 +123,18 @@ function NumberedHorizontalCards({
       <div className="c-nh-card__details">
         <div className="c-nh-card__titles">
           <p>{number}</p>
-          <h4>{enTitle}</h4>
+          {enTitle ? <h4>{enTitle}</h4> : null}
           <p>{jaTitle}</p>
         </div>
         <div className="c-nh-card__text">
           <p>{text}</p>
         </div>
       </div>
-      <div className="c-nh-card__img-wrapper">
-        <img src={src} alt={alt} />
-      </div>
+      {src && alt ? (
+        <div className="c-nh-card__img-wrapper">
+          <img src={src} alt={alt} />
+        </div>
+      ) : null}
     </article>
   );
 }
