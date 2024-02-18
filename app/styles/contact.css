@@ -51,6 +51,25 @@ a.ct-nav__link::before {
   color: var(--color-brand-cream);
   transition: color 0.3s ease-out, background-color 0.3s ease-out;
 }
+
+/* trial lesson section */
+.ct-trial {
+  padding: 120px 0 0 0;
+}
+.ct-trial__intro {
+  padding-bottom: 20px;
+}
+.ct-trial__step__caret {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-brand-beige);
+}
+.ct-trial__step__caret > svg {
+  height: 50px;
+  width: 50px;
+}
+
 /* old code */
 .cf__title {
   text-align: center;

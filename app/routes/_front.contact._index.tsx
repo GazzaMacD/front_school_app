@@ -4,7 +4,9 @@ import { json } from "@remix-run/node";
 import { BASE_API_URL } from "~/common/constants.server";
 import { getGlobalEnv } from "~/common/utils";
 import { SlidingHeaderPage } from "~/components/pages";
-import { FaArrowDown } from "react-icons/fa6";
+import { FaCaretDown, FaArrowDown } from "react-icons/fa6";
+import { HeadingOne } from "~/components/headings";
+import { NumberedHorizontalCards } from "~/components/cards";
 /**
  *  Utils and helper functions
  */
@@ -69,6 +71,53 @@ export default function ContactIndexPage() {
           return <PageNav key={item.id} text={item.text} url={item.url} />;
         })}
       </div>
+
+      <section id="trial">
+        <div className="ct-trial">
+          <div className="g-narrow-container">
+            <div className="ct-trial__heading">
+              <HeadingOne
+                enText={page.trial_en_title}
+                jpText={page.trial_jp_title}
+                align="center"
+                bkground="light"
+                level="h2"
+              />
+            </div>
+            <div
+              className="ct-trial__intro"
+              dangerouslySetInnerHTML={{ __html: page.trial_intro }}
+            />
+            <div className="ct-trial__steps">
+              {page.trial_steps.map((step, i, arr) => {
+                const len = arr.length;
+                return (
+                  <div key={step.id}>
+                    <NumberedHorizontalCards
+                      number={`0${i + 1}`}
+                      jaTitle={step.value.title}
+                      text={step.value.text}
+                      src={
+                        step.value.image
+                          ? `${ENV.BASE_BACK_URL}${step.value.image.thumbnail.src}`
+                          : null
+                      }
+                      alt={
+                        step.value.image ? step.value.image.medium.alt : null
+                      }
+                    />
+                    {i + 1 < len ? (
+                      <div className="ct-trial__step__caret">
+                        <FaCaretDown />
+                      </div>
+                    ) : null}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
     </SlidingHeaderPage>
   );
 }
