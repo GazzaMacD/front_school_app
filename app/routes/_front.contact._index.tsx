@@ -5,6 +5,7 @@ import { BASE_API_URL } from "~/common/constants.server";
 import { getGlobalEnv } from "~/common/utils";
 import { SlidingHeaderPage } from "~/components/pages";
 import { FaCaretDown, FaArrowDown } from "react-icons/fa6";
+import { FaMobileAlt } from "react-icons/fa";
 import { HeadingOne } from "~/components/headings";
 import { NumberedHorizontalCards } from "~/components/cards";
 /**
@@ -188,6 +189,50 @@ export default function ContactIndexPage() {
                   </div>
                 );
               })}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="telephone">
+        <div className="ct-tel">
+          <div className="g-narrow-container">
+            <div className="ct-tel__heading">
+              <HeadingOne
+                enText={page.tel_en_title}
+                jpText={page.tel_jp_title}
+                align="center"
+                bkground="light"
+                level="h2"
+              />
+            </div>
+
+            <div className="ct-tel__details">
+              <Link className="ct-tel__link" to={`tel:${page.tel_number}`}>
+                <FaMobileAlt />
+                {page.tel_display_number}
+              </Link>
+              <div className="ct-tel__times">
+                <div>
+                  <span>営業時間</span>
+                </div>
+                <div>
+                  <span>火/木/金</span>
+                  <span>13:00-17:00</span>
+                </div>
+                <div>
+                  <span>水</span>
+                  <span>09:00-17:00</span>
+                </div>
+                <div>
+                  <span>土</span>
+                  <span>09:00-17:00</span>
+                </div>
+                <div>
+                  <span>日/月/祝</span>
+                  <span>休業</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
