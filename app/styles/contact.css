@@ -107,12 +107,63 @@ a.ct-nav__link::before {
   color: var(--color-brand-green);
 }
 
+/* telephone section */
+.ct-tel {
+  padding: 120px 0 0 0;
+}
+.ct-tel__details {
+  padding: 40px;
+  border-radius: var(--radius-medium);
+  background-color: var(--color-brand-beige);
+}
+/* tel section -- number */
+a.ct-tel__link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 46px;
+  font-family: var(--font-en-primary);
+  font-weight: var(--font-w-semi-bold);
+}
+a.ct-tel__link::before {
+  content: none;
+}
+a.ct-tel__link > svg {
+  height: 28px;
+  width: 28px;
+  margin-right: 5px;
+}
+/* tel section -- details */
+.ct-tel__times {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+}
+.ct-tel__times > div > span:first-of-type {
+  white-space: nowrap;
+  font-size: var(--font-size-xs);
+  border: solid 1px var(--color-brand-brown);
+  border-radius: 100px;
+  background-color: var(--color-brand-white);
+  padding: 2px 5px;
+  margin-right: 5px;
+}
+.ct-tel__times > div > span:last-of-type {
+  font-size: var(--font-size-xs);
+  white-space: nowrap;
+}
+.ct-tel__times > div:first-of-type > span:first-of-type {
+  background-color: var(--color-brand-brown);
+  color: var(--color-brand-white);
+}
+
 /* old code */
 .cf__title {
   text-align: center;
   margin-top: 50px;
 }
-.cp__accordian-heading {
+cp__accordian-heading {
   background-color: var(--color-sec-darkcream);
   border: 1px solid var(--color-base-limegreen);
   border-radius: var(--radius-sm) var(--radius-sm) 0 0;
