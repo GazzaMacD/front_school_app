@@ -75,10 +75,7 @@ export default function App() {
                       </a>
                     </li>
                     <li className="g-menu__item g-menu__contact">
-                      <SolidPillButtonLink
-                        to="/contact/form#contact"
-                        color="brown"
-                      >
+                      <SolidPillButtonLink to="/contact#form" color="brown">
                         <span>問合せ</span>
                         <span>お問い合わせ</span>
                       </SolidPillButtonLink>
@@ -164,12 +161,12 @@ export default function App() {
                           <h3>お問い合わせ</h3>
                           <ul>
                             <li>
-                              <Link to="/contact/form#contact">
+                              <Link to="/contact#form">
                                 ― フォームでのお問い合わせ
                               </Link>
                             </li>
                             <li>
-                              <Link to="/contact/telephone#contact">
+                              <Link to="/contact#telephone">
                                 ― 電話でのお問い合わせe
                               </Link>
                             </li>
