@@ -443,6 +443,8 @@ template {
   --color-sec-lightorange: hsl(28, 100%, 75%);
   --color-sec-darkgreen: hsl(104, 80%, 28%);
   --color-sec-red: hsl(9, 100%, 50%);
+  --color-sec-lightgrey: hsl(0, 0%, 89%);
+  --color-sec-mediumgrey: hsl(0, 0%, 70%);
   /*shadows*/
   --color-shadow: rgba(0, 0, 0, 0.1);
 }
@@ -1642,6 +1644,10 @@ fieldset {
 }
 .g-form__text-label {
   margin-bottom: 10px;
+}
+.g-form__input-group input::placeholder {
+  color: var(--color-sec-mediumgrey);
+  font-size: var(--font-size-s);
 }
 /* form validation errors */
 .g-form__validation-errors {

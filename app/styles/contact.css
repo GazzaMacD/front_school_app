@@ -157,6 +157,93 @@ a.ct-tel__link > svg {
   background-color: var(--color-brand-brown);
   color: var(--color-brand-white);
 }
+/* form section */
+.ct-form {
+  padding: 120px 0 80px 0;
+}
+.ct-form__wrapper {
+  padding: 80px;
+  border-radius: var(--radius-large);
+  background-color: var(--color-brand-white);
+}
+.ct-form__msg {
+  padding-bottom: 60px;
+}
+.ct-form__form {
+  display: flex;
+  flex-direction: column;
+}
+.ct-form__textarea {
+  position: relative;
+}
+.ct-form__textarea__remaining {
+  position: absolute;
+  right: 0;
+  font-size: var(--font-size-xs);
+}
+.ct-form__textarea__remaining.no {
+  color: var(--color-brand-orange);
+}
+.ct-form__textarea > textarea {
+  min-height: calc(var(--r10px) * 20);
+}
+/* privacy */
+.ct-form__privacy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-brand-beige);
+  padding: 40px;
+  border-radius: 20px;
+}
+.ct-form__privacy label {
+  font-size: var(--font-size-s);
+  margin-left: 5px;
+}
+.ct-form__privacy > div:last-of-type {
+  margin-top: 20px;
+  font-size: var(--font-size-s);
+}
+.ct-form__submit {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 40px;
+}
+.ct-form__submit > button {
+  background-color: var(--color-brand-green);
+  color: var(--color-brand-white);
+  min-width: 250px;
+  text-align: center;
+  position: relative;
+  border: 2px solid var(--color-brand-green);
+  border-radius: 100px;
+  line-height: 1;
+  font-weight: 600;
+  padding: 12px 26px;
+  transition: all 0.25s ease-in-out;
+}
+.ct-form__submit > button:hover {
+  background-color: var(--color-brand-white);
+  color: var(--color-brand-green);
+}
+.ct-form__submit > button > svg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto 30px auto 0;
+  width: 24px;
+  height: 24px;
+}
+.ct-form__submit > button:disabled {
+  background-color: var(--color-sec-lightgrey);
+  color: var(--color-brand-white);
+  border: 2px solid var(--color-sec-lightgrey);
+  cursor: not-allowed;
+}
 
 /* old code */
 .cf__title {
