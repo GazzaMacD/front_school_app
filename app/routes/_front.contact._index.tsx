@@ -24,7 +24,7 @@ const contactMenu = [
   {
     id: 3,
     text: "よくある質問",
-    url: "#qanda",
+    url: "#q&a",
   },
   {
     id: 4,
@@ -119,7 +119,7 @@ export default function ContactIndexPage() {
         </div>
       </section>
 
-      <section id="lexp">
+      <section id="experience">
         <div className="ct-texp">
           <div className="g-narrow-container">
             <div className="ct-texp__heading">
@@ -158,6 +158,33 @@ export default function ContactIndexPage() {
                         <FaCaretDown />
                       </div>
                     ) : null}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="q&a">
+        <div className="ct-qas">
+          <div className="g-narrow-container">
+            <div className="ct-qa__heading">
+              <HeadingOne
+                enText={page.qa_en_title}
+                jpText={page.qa_jp_title}
+                align="center"
+                bkground="light"
+                level="h2"
+              />
+            </div>
+
+            <div className="ct-qa__qas">
+              {page.qas.map((block) => {
+                return (
+                  <div className="ct-qas__qa" key={block.id}>
+                    <p>{block.value.question}</p>
+                    <p>{block.value.answer}</p>
                   </div>
                 );
               })}

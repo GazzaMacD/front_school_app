@@ -70,6 +70,43 @@ a.ct-nav__link::before {
   width: 50px;
 }
 
+/* q & q section */
+.ct-qas {
+  padding: 120px 0 0 0;
+}
+.ct-qas__qa {
+  background-color: var(--color-brand-white);
+  border-radius: var(--radius-medium);
+  padding: 40px 40px 40px 90px;
+  margin-bottom: 40px;
+}
+.ct-qas__qa > p {
+  position: relative;
+  margin-bottom: 0;
+}
+.ct-qas__qa > p:first-of-type {
+  font-size: var(--font-size-l);
+  font-weight: var(--font-w-semi-bold);
+  margin-bottom: 45px;
+}
+.ct-qas__qa > p:first-of-type::before,
+.ct-qas__qa > p:last-of-type::before {
+  position: absolute;
+  font-family: var(--font-en-primary);
+  font-size: var(--font-size-5xl);
+  font-weight: var(--font-w-semi-bold);
+  top: -18px;
+  left: -50px;
+}
+.ct-qas__qa > p:first-of-type::before {
+  content: "Q.";
+  color: var(--color-brand-orange);
+}
+.ct-qas__qa > p:last-of-type::before {
+  content: "A.";
+  color: var(--color-brand-green);
+}
+
 /* old code */
 .cf__title {
   text-align: center;
