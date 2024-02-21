@@ -48,41 +48,40 @@ export default function LearningExperiencesIndexPage() {
   const { listPage, detailPages } = useLoaderData<typeof loader>();
   const ENV = getGlobalEnv();
   return (
-    <div id="lexix">
+    <div id="le">
       <header>
-        <hgroup className="lexdp__heading">
-          <h1>
-            <span>Learning Experiences</span>
-            {listPage.display_title}
-          </h1>
-          <p>{listPage.display_tagline}</p>
-        </hgroup>
+        <h1>
+          h1 {listPage.title}
+          <br />
+          <span>{listPage.display_title}</span>
+        </h1>
+        <div>
+          Introduction paragraphs explaining concepts around learning
+          experiences
+        </div>
+        <div dangerouslySetInnerHTML={{ __html: listPage.intro }} />
       </header>
-      <section></section>
-      <div dangerouslySetInnerHTML={{ __html: listPage.intro }} />
-      <section>
-        <hgroup className="lexdp__heading">
-          <h2>
-            <span>Upcoming Learning Experiences</span>
-            Upcoming Learning Experiences in Japanese
-          </h2>
-          <p>Blurb here in Japanese sellling upcoming experiences</p>
-        </hgroup>
-        <div className="lexix-cards">
+
+      <section id="upcoming">
+        <h2>
+          h2 - {listPage.upcoming_en_title}
+          <br />
+          <span>{listPage.upcoming_jp_title}</span>
+        </h2>
+        <div>
           {detailPages.map((page) => {
             const dateString = getDateString(page.start_date, page.end_date);
             return (
               <Link
-                className="lexix-card-link"
                 key={page.id}
                 to={`/learning-experiences/${page.meta.slug}`}
               >
-                <article className="lexix-card">
+                <article>
                   <img
                     src={`${ENV.BASE_BACK_URL}${page.header_image.thumbnail.src}`}
                     alt={page.header_image.thumbnail.alt}
                   />
-                  <div className="lexix-card__details">
+                  <div>
                     <p>{dateString}</p>
                     <h3>{page.display_title}</h3>
                     <p>{page.display_tagline}</p>
@@ -94,18 +93,17 @@ export default function LearningExperiencesIndexPage() {
           })}
         </div>
       </section>
-      <section>
-        <hgroup className="lexdp__heading">
-          <h2>
-            <span>Learning Experiences Photos</span>
-            Learning Experience Photos (日本語)
-          </h2>
-          <p>Blurb here about photos</p>
-        </hgroup>
+
+      <section id="gallery">
+        <h2>
+          h2 - {listPage.gallery_en_title}
+          <br />
+          <span>{listPage.gallery_jp_title}</span>
+        </h2>
         <div className="lexix__photos">
           {listPage.experiences_gallery.map((figure) => {
             return (
-              <figure key={figure.id} className="lexix__figure">
+              <figure key={figure.id}>
                 <img
                   src={`${ENV.BASE_BACK_URL}${figure.value.image.medium.src}`}
                   alt={figure.value.image.medium.alt}
