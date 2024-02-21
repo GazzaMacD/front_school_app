@@ -7,8 +7,8 @@ import { redirect, type LoaderArgs } from "@remix-run/node";
  */
 export function loader({ request }: LoaderArgs) {
   const referer = request.headers.get("referer");
-  if (!referer || new URL(referer).pathname !== "/contact/form") {
-    return redirect("/contact");
+  if (!referer || new URL(referer).pathname !== "/contact") {
+    return redirect("/");
   }
   return null;
 }
