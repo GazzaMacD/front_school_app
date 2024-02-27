@@ -1022,8 +1022,8 @@ a.g-menu__reglog-link:before {
   color: var(--color-brand-white);
   background-color: var(--color-brand-orange);
   border: 2px solid var(--color-brand-orange);
-  padding: 10px 20px;
-  font-size: 16px;
+  padding: 8px 16px;
+  font-size: 11px;
   font-weight: 600;
   white-space: nowrap;
   line-height: 1;
@@ -1060,6 +1060,18 @@ a.g-menu__reglog-link:hover > .g-menu__reglog {
   color: var(--color-brand-orange);
   background-color: var(--color-brand-white);
   border: 2px solid var(--color-brand-orange);
+}
+@media (min-width: 48rem) {
+  .g-menu__reglog {
+    padding: 12px 26px;
+    font-size: 16px;
+  }
+  .g-menu__reglog.reg span:first-of-type {
+    display: inline;
+  }
+  .g-menu__logout {
+    padding: 12px 26px;
+  }
 }
 @media (min-width: 75rem) {
   .g-menu__reglog {
@@ -2169,7 +2181,7 @@ a.g-lgbi-button-link:before {
 /* ---- pill type buttons ---- */
 a.g-sp-button-link {
   color: var(--color-brand-white);
-  font-size: var(--r16px);
+  font-size: var(--r11px);
   font-weight: 600;
   line-height: 1;
 }
@@ -2179,11 +2191,11 @@ a.g-sp-button-link:before {
 .g-sp-button {
   background-color: var(--color-brand-brown);
   border: solid 2px var(--color-brand-brown);
-  padding: 10px 20px;
+  padding: 8px 16px;
   border-radius: 100px;
   white-space: nowrap;
   display: flex;
-  transition: all 0.25s ease-in-out;
+  transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
   justify-content: space-between;
   gap: 5px;
 }
@@ -2219,6 +2231,14 @@ a.g-sp-button-link:hover > .g-sp-button.orange {
 a.g-sp-button-link:hover > .g-sp-button {
   background-color: var(--color-brand-white);
   color: var(--color-brand-brown);
+}
+@media (min-width: 48rem) {
+  a.g-sp-button-link {
+    font-size: var(--r16px);
+  }
+  .g-sp-button {
+    padding: 10px 20px;
+  }
 }
 
 @media (min-width: 75rem) {
