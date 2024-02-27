@@ -838,7 +838,7 @@ Block quotes
 .g-header__inner {
   display: flex;
   width: 100%;
-  padding: 0 15px;
+  padding: 0 5px;
   align-items: center;
   justify-content: space-between;
   position: relative;
@@ -850,7 +850,7 @@ Block quotes
   position: absolute;
   left: 0;
   right: 0;
-  bottom: -35px;
+  bottom: -39px;
 }
 @media (min-width: 48rem) {
   .g-header {
@@ -859,6 +859,9 @@ Block quotes
   .g-header__tagline-background {
     height: 60px;
     bottom: -90px;
+  }
+  .g-header__inner {
+    padding: 0 15px;
   }
 }
 /* logo & branding */
@@ -875,7 +878,7 @@ Block quotes
 }
 .g-header__tagline {
   position: absolute;
-  bottom: -30px;
+  bottom: -35px;
   color: var(--color-brand-brown);
   font-size: var(--r12px);
   font-weight: var(--font-w-bold);
@@ -943,13 +946,13 @@ a.g-header__logo-link:before {
 
 /* main menu  menu*/
 .g-menu {
-  padding: 0 100px 0 0;
+  padding: 0 50px 0 0;
   position: relative;
 }
 .g-menu__list {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
 }
 .g-menu__item {
   display: flex;
@@ -974,6 +977,15 @@ a.g-menu__phone:before {
   margin-right: 10px;
   width: 25px;
   height: 25px;
+}
+@media (min-width: 48rem) {
+  .g-menu__list {
+    gap: 12px;
+  }
+  .g-menu {
+    padding: 0 150px 0 0;
+    position: relative;
+  }
 }
 @media (min-width: 64rem) {
   .g-menu {
@@ -1022,7 +1034,7 @@ a.g-menu__reglog-link:before {
   color: var(--color-brand-white);
   background-color: var(--color-brand-orange);
   border: 2px solid var(--color-brand-orange);
-  padding: 8px 16px;
+  padding: 8px 12px;
   font-size: 11px;
   font-weight: 600;
   white-space: nowrap;
@@ -1095,15 +1107,14 @@ a.g-menu__reglog-link:hover > .g-menu__reglog {
 }
 .g-sm__button {
   background-color: var(--color-brand-beige);
-  min-width: 100px;
-  min-height: 100px;
+  width: 50px;
+  height: 50px;
   position: fixed;
   top: 0;
   right: 0;
   z-index: 2000;
   text-align: center;
   cursor: pointer;
-  padding: 12px 20px;
   line-height: 1;
 }
 .g-sm__button > div {
@@ -1112,6 +1123,7 @@ a.g-menu__reglog-link:hover > .g-menu__reglog {
 .g-sm__button__text {
   display: none;
 }
+
 /* sliding menu */
 .g-sm {
   min-height: 100%;
@@ -1174,6 +1186,18 @@ a.g-sm__social {
   font-size: var(--font-size-s);
 }
 @media (min-width: 48rem) {
+  .g-sm__button {
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 2000;
+    text-align: center;
+    cursor: pointer;
+    padding: 12px 20px;
+    line-height: 1;
+  }
   .g-sm__inner__socials {
     display: grid;
     grid-template-columns: 290px 140px;
@@ -1187,22 +1211,22 @@ a.g-sm__social {
     border: solid 2px var(--color-brand-brown);
     color: var(--color-brand-brown);
     border-radius: 100px;
-    min-width: 100px;
-    min-height: 10px;
+    width: 140px;
+    height: 44px;
     position: fixed;
-    top: 27px;
+    top: 28px;
     right: 15px;
     z-index: 2000;
     text-align: center;
     cursor: pointer;
     padding: 12px 20px;
     line-height: 1;
-    transition: all 0.3s ease-in;
+    transition: background-color 0.3s ease-in, color 0.3s ease-in;
   }
   .g-sm__button:hover {
     background-color: var(--color-brand-brown);
     color: var(--color-brand-white);
-    transition: all 0.3s ease-out;
+    transition: background-color 0.3s ease-out, color 0.3s ease-out;
   }
   .g-sm__button__text {
     display: inline;
@@ -1248,15 +1272,15 @@ a.g-sm__social {
 /* styling hamb.g-sm__button__icon */
 .g-sm__button__icon {
   position: absolute;
-  top: 38px;
-  left: 35px;
+  top: 25px;
+  left: 26px;
   transform: translate(-50%, -50%);
 }
 
 .g-sm__button__icon,
 .g-sm__button__icon::before,
 .g-sm__button__icon::after {
-  width: 40px;
+  width: 25px;
   height: 2px;
   background-color: var(--color-brand-brown);
   display: inline-block;
@@ -1269,10 +1293,28 @@ a.g-sm__social {
   transition: all 0.2s;
 }
 .g-sm__button__icon::before {
-  top: -10px;
+  top: -8px;
 }
 .g-sm__button__icon::after {
-  top: 10px;
+  top: 8px;
+}
+@media (min-width: 48rem) {
+  .g-sm__button__icon {
+    top: 38px;
+    left: 35px;
+  }
+  .g-sm__button__icon,
+  .g-sm__button__icon::before,
+  .g-sm__button__icon::after {
+    width: 40px;
+    height: 2px;
+  }
+  .g-sm__button__icon::before {
+    top: -10px;
+  }
+  .g-sm__button__icon::after {
+    top: 10px;
+  }
 }
 
 /* button - not open hover state */
@@ -2191,7 +2233,7 @@ a.g-sp-button-link:before {
 .g-sp-button {
   background-color: var(--color-brand-brown);
   border: solid 2px var(--color-brand-brown);
-  padding: 8px 16px;
+  padding: 8px 12px;
   border-radius: 100px;
   white-space: nowrap;
   display: flex;
@@ -2237,15 +2279,10 @@ a.g-sp-button-link:hover > .g-sp-button {
     font-size: var(--r16px);
   }
   .g-sp-button {
-    padding: 10px 20px;
-  }
-}
-
-@media (min-width: 75rem) {
-  .g-sp-button {
     padding: 12px 26px;
   }
 }
+
 /* old button */
 .button {
   margin: var(--space-lg) auto;
