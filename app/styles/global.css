@@ -825,7 +825,7 @@ Block quotes
 */
 
 .g-header {
-  height: 100px;
+  height: 50px;
   width: 100%;
   background-color: var(--color-brand-cream);
   position: fixed;
@@ -845,12 +845,21 @@ Block quotes
 }
 .g-header__tagline-background {
   background-color: var(--color-brand-white);
-  height: 60px;
+  height: 30px;
   width: 100%;
   position: absolute;
   left: 0;
   right: 0;
-  bottom: -90px;
+  bottom: -35px;
+}
+@media (min-width: 48rem) {
+  .g-header {
+    height: 100px;
+  }
+  .g-header__tagline-background {
+    height: 60px;
+    bottom: -90px;
+  }
 }
 /* logo & branding */
 .g-header__branding {
@@ -866,9 +875,9 @@ Block quotes
 }
 .g-header__tagline {
   position: absolute;
-  bottom: -72px;
+  bottom: -30px;
   color: var(--color-brand-brown);
-  font-size: var(--r14px);
+  font-size: var(--r12px);
   font-weight: var(--font-w-bold);
 }
 .g-header-space {
@@ -878,7 +887,16 @@ a.g-header__logo-link:before {
   content: none;
 }
 .g-header__logo {
-  height: 40px;
+  height: 25px;
+}
+@media (min-width: 48rem) {
+  .g-header__logo {
+    height: 40px;
+  }
+  .g-header__tagline {
+    bottom: -72px;
+    font-size: var(--r14px);
+  }
 }
 @media (min-width: 64rem) {
   .g-header__tagline-background {
