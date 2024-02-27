@@ -250,5 +250,8 @@ a.ct-tel__link > svg {
 */
 .ct-success {
 }
-.ct-success h3 {
+.ct-success__details {
+  background-color: var(--color-brand-white);
+  border-radius: var(--radius-medium);
+  padding: 40px;
 }
