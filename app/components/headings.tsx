@@ -30,7 +30,7 @@ function HeadingOne({
         <h1 className={`g-heading1 ${align} ${bkground} h1`} lang="en">
           {enText}
           <span lang="ja" className={`g-heading1__jp`}>
-            ― {jpText}
+            {jpText}
           </span>
         </h1>
       </>
