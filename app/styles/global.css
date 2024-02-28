@@ -884,7 +884,7 @@ Block quotes
 }
 .g-header__tagline {
   position: absolute;
-  bottom: -35px;
+  bottom: -33px;
   color: var(--color-brand-brown);
   font-size: var(--r12px);
   font-weight: var(--font-w-bold);

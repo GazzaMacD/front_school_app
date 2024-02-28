@@ -77,7 +77,7 @@ a.ct-nav__link::before {
 
 /* trial lesson  and experiences section */
 .ct-texp {
-  padding: 60px 0 0 0;
+  padding: 80px 0 0 0;
 }
 .ct-texp__intro {
   padding-bottom: 20px;
@@ -100,13 +100,16 @@ a.ct-nav__link::before {
 
 /* q & q section */
 .ct-qas {
-  padding: 60px 0 0 0;
+  padding: 80px 0 0 0;
 }
 .ct-qas__qa {
   background-color: var(--color-brand-white);
   border-radius: var(--radius-medium);
   padding: 40px 40px 40px 65px;
   margin-bottom: 40px;
+}
+.ct-qas__qa:last-of-type {
+  margin-bottom: 0;
 }
 .ct-qas__qa > p {
   position: relative;
@@ -152,7 +155,7 @@ a.ct-nav__link::before {
 
 /* telephone section */
 .ct-tel {
-  padding: 60px 0 0 0;
+  padding: 80px 0 0 0;
 }
 .ct-tel__details {
   padding: 40px;
@@ -282,11 +285,11 @@ a.ct-tel__link > div > span {
 
 /* form section */
 .ct-form {
-  padding: 120px 0 80px 0;
+  padding: 80px 0 60px 0;
 }
 .ct-form__wrapper {
-  padding: 80px;
-  border-radius: var(--radius-large);
+  padding: 30px;
+  border-radius: var(--radius-medium);
   background-color: var(--color-brand-white);
 }
 .ct-form__msg {
@@ -367,11 +370,22 @@ a.ct-tel__link > div > span {
   border: 2px solid var(--color-sec-lightgrey);
   cursor: not-allowed;
 }
+@media (min-width: 48rem) {
+  .ct-form {
+    padding: 120px 0 80px 0;
+  }
+  .ct-form__wrapper {
+    padding: 80px;
+    border-radius: var(--radius-large);
+    background-color: var(--color-brand-white);
+  }
+}
 
 /* 
 * Success page 
 */
 .ct-success {
+  padding: 40px 0 120px 0;
 }
 .ct-success__details {
   background-color: var(--color-brand-white);
