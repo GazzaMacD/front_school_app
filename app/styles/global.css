@@ -858,7 +858,7 @@ Block quotes
   }
   .g-header__tagline-background {
     height: 60px;
-    bottom: -90px;
+    bottom: -88px;
   }
   .g-header__inner {
     padding: 0 15px;
@@ -1426,8 +1426,19 @@ a.g-sm__social {
 * Base grids, containers  & figure/ img / classes
 */
 .content-wrapper {
-  padding-top: 100px;
+  padding-top: 79px;
 }
+@media (min-width: 48rem) {
+  .content-wrapper {
+    padding-top: 160px;
+  }
+}
+@media (min-width: 64rem) {
+  .content-wrapper {
+    padding-top: 100px;
+  }
+}
+
 .bgrid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
