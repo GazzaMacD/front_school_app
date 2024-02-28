@@ -152,7 +152,7 @@ a.ct-nav__link::before {
 
 /* telephone section */
 .ct-tel {
-  padding: 120px 0 0 0;
+  padding: 60px 0 0 0;
 }
 .ct-tel__details {
   padding: 40px;
@@ -163,25 +163,72 @@ a.ct-nav__link::before {
 a.ct-tel__link {
   display: flex;
   justify-content: center;
-  align-items: center;
-  font-size: 46px;
+  align-items: flex-start;
+  font-size: 28px;
   font-family: var(--font-en-primary);
   font-weight: var(--font-w-semi-bold);
+  padding: 20px;
+  line-height: 1;
+  border-radius: var(--radius-small);
+  background-color: var(--color-brand-orange);
+  color: var(--color-brand-white);
 }
 a.ct-tel__link::before {
   content: none;
 }
 a.ct-tel__link > svg {
-  height: 28px;
-  width: 28px;
-  margin-right: 5px;
+  height: 18px;
+  width: 18px;
+  margin: 4px 5px 0 0;
 }
+a.ct-tel__link > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+a.ct-tel__link > div > span {
+  display: block;
+  font-size: 12px;
+}
+
+@media (min-width: 48rem) {
+  .ct-tel {
+    padding: 120px 0 0 0;
+  }
+  a.ct-tel__link {
+    padding: 0;
+    border-radius: 0;
+    background-color: var(--color-brand-beige);
+    color: var(--color-brand-brown);
+    font-size: 46px;
+    align-items: center;
+  }
+  a.ct-tel__link > svg {
+    height: 28px;
+    width: 28px;
+    margin: 0 5px 0 0;
+  }
+  a.ct-tel__link > div > span {
+    display: none;
+  }
+}
+
 /* tel section -- details */
 .ct-tel__times {
   display: flex;
+  flex-wrap: wrap;
+  position: relative;
   justify-content: space-between;
   align-items: center;
-  padding-top: 20px;
+  padding-top: 40px;
+  gap: 8px 0;
+}
+.ct-tel__times__time {
+  flex: 1 1 50%;
+  display: grid;
+  grid-template-columns: 45% 55%;
+  align-items: center;
 }
 .ct-tel__times > div > span:first-of-type {
   white-space: nowrap;
@@ -189,8 +236,9 @@ a.ct-tel__link > svg {
   border: solid 1px var(--color-brand-brown);
   border-radius: 100px;
   background-color: var(--color-brand-white);
-  padding: 2px 5px;
+  padding: 2px 0;
   margin-right: 5px;
+  text-align: center;
 }
 .ct-tel__times > div > span:last-of-type {
   font-size: var(--font-size-xs);
@@ -200,6 +248,38 @@ a.ct-tel__link > svg {
   background-color: var(--color-brand-brown);
   color: var(--color-brand-white);
 }
+.ct-tel__times__label {
+  position: absolute;
+  top: 10px;
+  width: 100%;
+}
+.ct-tel__times__label > span {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+@media (min-width: 48rem) {
+  .ct-tel__times {
+    padding-top: 20px;
+    flex-wrap: nowrap;
+    gap: 4px;
+  }
+  .ct-tel__times__label {
+    position: relative;
+    width: auto;
+    top: unset;
+  }
+  .ct-tel__times__time {
+    position: relative;
+    width: auto;
+    grid-template-columns: auto auto;
+  }
+  .ct-tel__times > div > span:first-of-type {
+    padding: 2px 5px;
+  }
+}
+
 /* form section */
 .ct-form {
   padding: 120px 0 80px 0;
