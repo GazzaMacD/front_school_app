@@ -60,8 +60,13 @@ a.ct-nav__link::before {
 @media (min-width: 64rem) {
   .ct-nav {
     margin: 0 60px;
-    grid-template-columns: repeat(5, minmax(200px, 1fr));
+    grid-template-columns: repeat(3, minmax(200px, 1fr));
     gap: 20px;
+  }
+}
+@media (min-width: 75rem) {
+  .ct-nav {
+    grid-template-columns: repeat(5, minmax(200px, 1fr));
   }
 }
 @media (min-width: 96rem) {
@@ -72,7 +77,7 @@ a.ct-nav__link::before {
 
 /* trial lesson  and experiences section */
 .ct-texp {
-  padding: 120px 0 0 0;
+  padding: 60px 0 0 0;
 }
 .ct-texp__intro {
   padding-bottom: 20px;
@@ -86,6 +91,11 @@ a.ct-nav__link::before {
 .ct-texp__step__caret > svg {
   height: 50px;
   width: 50px;
+}
+@media (min-width: 48rem) {
+  .ct-texp {
+    padding: 120px 0 0 0;
+  }
 }
 
 /* q & q section */

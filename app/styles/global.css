@@ -525,9 +525,15 @@ template {
 html,
 body {
   font-family: var(--font-jp-primary);
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-s);
   font-weight: var(--font-weight-medium);
   line-height: var(--text-line-height);
+}
+@media (min-width: 48rem) {
+  html,
+  body {
+    font-size: var(--font-size-m);
+  }
 }
 body {
   color: var(--color-brand-brown);
