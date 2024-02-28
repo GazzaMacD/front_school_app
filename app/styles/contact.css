@@ -1,36 +1,20 @@
 /* header  and navigation*/
 .ct-nav {
   display: grid;
-  grid-template-columns: repeat(5, minmax(200px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(2, minmax(150px, 1fr));
+  gap: 10px;
   margin: 0 20px;
-}
-
-@media (min-width: 48rem) {
-  .ct-nav {
-    margin: 0 30px;
-  }
-}
-@media (min-width: 64rem) {
-  .ct-nav {
-    margin: 0 60px;
-  }
-}
-@media (min-width: 96rem) {
-  .ct-nav {
-    margin: 0 120px;
-  }
 }
 
 a.ct-nav__link::before {
   content: none;
 }
 .ct-nav__btn {
-  height: 80px;
+  height: 60px;
   border: 2px solid var(--color-brand-brown);
   border-radius: var(--radius-small);
   width: 100%;
-  background-color: var(--color-brand-cream);
+  background-color: var(--color-brand-white);
   color: var(--color-brand-brown);
   display: flex;
   align-items: center;
@@ -38,10 +22,12 @@ a.ct-nav__link::before {
   transition: color 0.3s ease-in, background-color 0.3s ease-in;
 }
 .ct-nav__icon {
-  width: 30px;
+  width: 20px;
+  margin-right: 10px;
 }
 .ct-nav__text {
   width: 100%;
+  font-size: var(--font-size-xs);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -50,6 +36,38 @@ a.ct-nav__link::before {
   background-color: var(--color-brand-brown);
   color: var(--color-brand-cream);
   transition: color 0.3s ease-out, background-color 0.3s ease-out;
+}
+@media (min-width: 48rem) {
+  .ct-nav {
+    margin: 0 30px;
+  }
+  .ct-nav__btn {
+    height: 80px;
+    padding: 20px 30px 20px 20px;
+  }
+  .ct-nav__icon {
+    width: 30px;
+  }
+  .ct-nav__text {
+    font-size: var(--font-size-m);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 64rem) {
+  .ct-nav {
+    margin: 0 60px;
+    grid-template-columns: repeat(5, minmax(200px, 1fr));
+    gap: 20px;
+  }
+}
+@media (min-width: 96rem) {
+  .ct-nav {
+    margin: 0 120px;
+  }
 }
 
 /* trial lesson  and experiences section */
