@@ -85,7 +85,7 @@ function validateRequired(value: unknown): string[] {
 
 export const meta: V2_MetaFunction = () => {
   return [
-    { title: getTitle({ title: "Contact | お問い合わせ", isHome: false }) },
+    { title: getTitle({ title: "Contact・お問い合わせ", isHome: false }) },
   ];
 };
 
