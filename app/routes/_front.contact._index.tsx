@@ -85,7 +85,7 @@ function validateRequired(value: unknown): string[] {
 
 export const meta: V2_MetaFunction = () => {
   return [
-    { title: getTitle({ title: "Contact | お問い合わせ", isHome: false }) },
+    { title: getTitle({ title: "Contact・お問い合わせ", isHome: false }) },
   ];
 };
 
@@ -370,25 +370,28 @@ export default function ContactIndexPage() {
             <div className="ct-tel__details">
               <Link className="ct-tel__link" to={`tel:${page.tel_number}`}>
                 <FaMobileAlt />
-                {page.tel_display_number}
+                <div>
+                  {page.tel_display_number}
+                  <span>タップして電話をかける</span>
+                </div>
               </Link>
               <div className="ct-tel__times">
-                <div>
+                <div className="ct-tel__times__label">
                   <span>営業時間</span>
                 </div>
-                <div>
+                <div className="ct-tel__times__time">
                   <span>火/木/金</span>
                   <span>13:00-17:00</span>
                 </div>
-                <div>
+                <div className="ct-tel__times__time">
                   <span>水</span>
                   <span>09:00-17:00</span>
                 </div>
-                <div>
+                <div className="ct-tel__times__time">
                   <span>土</span>
                   <span>09:00-17:00</span>
                 </div>
-                <div>
+                <div className="ct-tel__times__time">
                   <span>日/月/祝</span>
                   <span>休業</span>
                 </div>

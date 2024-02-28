@@ -525,9 +525,15 @@ template {
 html,
 body {
   font-family: var(--font-jp-primary);
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-s);
   font-weight: var(--font-weight-medium);
   line-height: var(--text-line-height);
+}
+@media (min-width: 48rem) {
+  html,
+  body {
+    font-size: var(--font-size-m);
+  }
 }
 body {
   color: var(--color-brand-brown);
@@ -858,7 +864,7 @@ Block quotes
   }
   .g-header__tagline-background {
     height: 60px;
-    bottom: -90px;
+    bottom: -88px;
   }
   .g-header__inner {
     padding: 0 15px;
@@ -878,7 +884,7 @@ Block quotes
 }
 .g-header__tagline {
   position: absolute;
-  bottom: -35px;
+  bottom: -33px;
   color: var(--color-brand-brown);
   font-size: var(--r12px);
   font-weight: var(--font-w-bold);
@@ -1426,8 +1432,19 @@ a.g-sm__social {
 * Base grids, containers  & figure/ img / classes
 */
 .content-wrapper {
-  padding-top: 100px;
+  padding-top: 79px;
 }
+@media (min-width: 48rem) {
+  .content-wrapper {
+    padding-top: 160px;
+  }
+}
+@media (min-width: 64rem) {
+  .content-wrapper {
+    padding-top: 100px;
+  }
+}
+
 .bgrid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);

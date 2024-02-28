@@ -1,5 +1,3 @@
-import * as React from "react";
-import { AiOutlineSmile } from "react-icons/ai";
 import { Link } from "@remix-run/react";
 import { redirect, type LoaderArgs } from "@remix-run/node";
 
@@ -11,11 +9,9 @@ import { Swoosh1 } from "~/components/swooshes";
  */
 export function loader({ request }: LoaderArgs) {
   const referer = request.headers.get("referer");
-  /*
   if (!referer || new URL(referer).pathname !== "/contact") {
     return redirect("/");
   }
-  */
   return null;
 }
 
