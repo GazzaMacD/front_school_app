@@ -1,3 +1,4 @@
+import * as React from "react";
 import { Link } from "@remix-run/react";
 import { redirect, type LoaderArgs } from "@remix-run/node";
 
@@ -9,13 +10,19 @@ import { Swoosh1 } from "~/components/swooshes";
  */
 export function loader({ request }: LoaderArgs) {
   const referer = request.headers.get("referer");
-  if (!referer || new URL(referer).pathname !== "/contact") {
-    return redirect("/");
+  const pathname = referer ? new URL(referer).pathname : "";
+  if (pathname === "/contact") {
+    return null;
   }
-  return null;
+  return redirect("/");
 }
 
 export default function ContactSuccessPage() {
+  React.useEffect(() => {
+    // To compensate for preventScrollReset in Form
+    // Feels hacky
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <div className="ct-success">
