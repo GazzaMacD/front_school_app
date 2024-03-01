@@ -1,10 +1,21 @@
-import { type LinksFunction, json } from "@remix-run/node";
+import {
+  type V2_MetaFunction,
+  type LinksFunction,
+  json,
+} from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 
 import { SlidingHeaderPage } from "~/components/pages";
 import { BASE_API_URL } from "~/common/constants.server";
 import pageCStyles from "~/styles/components/pages.css";
 import singlesStyles from "~/styles/about.css";
+import { getTitle } from "~/common/utils";
+
+export const meta: V2_MetaFunction = () => {
+  return [
+    { title: getTitle({ title: "Privacy・個人情報保護方針", isHome: false }) },
+  ];
+};
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: singlesStyles },
