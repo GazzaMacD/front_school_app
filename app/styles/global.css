@@ -1762,15 +1762,13 @@ fieldset {
 }
 .g-form__submit {
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: 40px;
+  padding-top: 20px;
 }
 .g-form__submit > button {
   background-color: var(--color-brand-green);
   color: var(--color-brand-white);
-  min-width: 250px;
+  width: 100%;
+  min-width: 200px;
   text-align: center;
   position: relative;
   border: 2px solid var(--color-brand-green);
@@ -1792,6 +1790,11 @@ fieldset {
   margin: auto 30px auto 0;
   width: 24px;
   height: 24px;
+}
+@media (min-width: 48rem) {
+  .g-form__submit {
+    padding-top: 40px;
+  }
 }
 
 .input-group {

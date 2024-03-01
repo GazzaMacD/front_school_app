@@ -25,7 +25,7 @@ function isLoginOk(data: TLoginFail | TLoginOk): data is TLoginOk {
 }
 
 export const meta: V2_MetaFunction = () => {
-  return [{ title: getTitle({ title: "Login ログイン", isHome: false }) }];
+  return [{ title: getTitle({ title: "Login・ログイン", isHome: false }) }];
 };
 
 /*
