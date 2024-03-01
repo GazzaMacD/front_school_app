@@ -599,7 +599,13 @@ export default function ContactIndexPage() {
                   </div>
                   <div>
                     当社のプライバシーポリシーは
-                    <Link to="/privacy-policy">こちら</Link>
+                    <Link
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      to="/privacy"
+                    >
+                      こちら
+                    </Link>
                   </div>
                 </div>
                 <div className="ct-form__submit">
