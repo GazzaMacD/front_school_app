@@ -324,12 +324,12 @@ a.ct-tel__link > div > span {
   border-radius: 20px;
 }
 .ct-form__privacy label {
-  font-size: var(--font-size-s);
+  font-size: var(--font-size-xs);
   margin-left: 5px;
 }
 .ct-form__privacy > div:last-of-type {
   margin-top: 20px;
-  font-size: var(--font-size-s);
+  font-size: var(--font-size-xs);
 }
 .ct-form__submit {
   width: 100%;
@@ -378,6 +378,14 @@ a.ct-tel__link > div > span {
     padding: 80px;
     border-radius: var(--radius-large);
     background-color: var(--color-brand-white);
+  }
+  .ct-form__privacy label {
+    font-size: var(--font-size-s);
+    margin-left: 5px;
+  }
+  .ct-form__privacy > div:last-of-type {
+    margin-top: 20px;
+    font-size: var(--font-size-s);
   }
 }
 
