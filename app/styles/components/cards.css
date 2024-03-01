@@ -12,7 +12,7 @@ a.c-staff-card__link:before {
   overflow: hidden;
   position: relative;
   border-radius: 50%;
-  margin-bottom: 40px;
+  margin-bottom: 15px;
 }
 /* overlay */
 .c-staff-card__overlay {
@@ -34,19 +34,19 @@ a.c-staff-card__link:before {
   color: var(--color-brand-white);
   font-family: var(--font-en-primary);
   font-weight: var(--font-w-semi-bold);
-  font-size: var(--font-size-5xl);
-  margin: 16px 0 16px 0;
+  font-size: 4.5vw;
+  margin: 10px 0 16px 0;
 }
 .c-staff-card__overlay p {
   color: var(--color-brand-white);
   font-family: var(--font-en-primary);
   font-weight: var(--font-w-bold);
-  font-size: var(--font-size-m);
-  margin-bottom: 25px;
+  font-size: 3vw;
+  margin-bottom: 15px;
 }
 .c-staff-card__overlay svg {
-  width: 40px;
-  height: 40px;
+  width: 4.5vw;
+  height: 4.5vw;
 }
 /* animation */
 .c-staff-card__link:hover .c-staff-card__overlay {
@@ -59,10 +59,69 @@ a.c-staff-card__link:before {
   text-align: center;
 }
 .c-staff-card__details > h3 {
-  font-size: var(--font-size-3xl);
+  font-size: var(--font-size-l);
 }
 .c-staff-card__details > p {
-  font-size: var(--font-size-s);
+  font-size: var(--font-size-xs);
+  margin-bottom: 0;
+}
+
+@media (min-width: 48rem) {
+  .c-staff-card__img-wrapper {
+    margin-bottom: 40px;
+  }
+  .c-staff-card__overlay h3 {
+    font-size: 3.8vw;
+  }
+  .c-staff-card__overlay p {
+    font-size: 1.8vw;
+  }
+  .c-staff-card__overlay svg {
+    width: 3.5vw;
+    height: 3.5vw;
+  }
+  .c-staff-card__details > h3 {
+    font-size: var(--font-size-3xl);
+  }
+  .c-staff-card__details > p {
+    font-size: var(--font-size-s);
+  }
+}
+@media (min-width: 64rem) {
+  .c-staff-card__overlay h3 {
+    font-size: 2.3vw;
+  }
+  .c-staff-card__overlay p {
+    font-size: 1.1vw;
+  }
+  .c-staff-card__overlay svg {
+    width: 2.8vw;
+    height: 2.8vw;
+  }
+}
+@media (min-width: 75rem) {
+  .c-staff-card__overlay h3 {
+    font-size: 1.8vw;
+  }
+  .c-staff-card__overlay p {
+    font-size: 0.8vw;
+  }
+  .c-staff-card__overlay svg {
+    width: 2vw;
+    height: 2vw;
+  }
+}
+@media (min-width: 96rem) {
+  .c-staff-card__overlay h3 {
+    font-size: var(--font-size-5xl);
+  }
+  .c-staff-card__overlay p {
+    font-size: var(--font-size-xl);
+  }
+  .c-staff-card__overlay svg {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 /**
