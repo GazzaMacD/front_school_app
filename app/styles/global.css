@@ -1760,6 +1760,39 @@ fieldset {
   list-style: none;
   font-size: var(--text-sm);
 }
+.g-form__submit {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 40px;
+}
+.g-form__submit > button {
+  background-color: var(--color-brand-green);
+  color: var(--color-brand-white);
+  min-width: 250px;
+  text-align: center;
+  position: relative;
+  border: 2px solid var(--color-brand-green);
+  border-radius: 100px;
+  line-height: 1;
+  font-weight: 600;
+  padding: 12px 26px;
+  transition: all 0.25s ease-in-out;
+}
+.g-form__submit > button:hover {
+  background-color: var(--color-brand-white);
+  color: var(--color-brand-green);
+}
+.g-form__submit > button > svg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto 30px auto 0;
+  width: 24px;
+  height: 24px;
+}
 
 .input-group {
   display: flex;

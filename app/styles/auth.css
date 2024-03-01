@@ -1,18 +1,19 @@
 .au-wrapper {
-  min-height: calc(100% - 100px);
-  margin: 0 auto;
-  max-width: 600px;
-  min-width: 300px;
-  padding: 20px 0 60px 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  margin: 0 20px;
 }
+@media (min-width: 48rem) {
+  .au-wrapper {
+    margin: 0 30px;
+  }
+}
+.au-wrapper__inner {
+  margin: 0 auto;
+  max-width: 480px;
+}
+
 .au-form {
-  margin-top: -40px;
   background-color: var(--color-brand-white);
-  padding: 80px 110px;
+  padding: 80px;
   border-radius: var(--radius-large);
 }
 .au-form__bottom-message {
