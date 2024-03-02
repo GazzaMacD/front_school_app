@@ -14,7 +14,6 @@ import type {
   TPasswordResetActionResponse,
 } from "~/common/types";
 import { getTitle } from "~/common/utils";
-import { HeadingOne } from "~/components/headings";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { SlidingHeaderPage } from "~/components/pages";
 
@@ -28,7 +27,14 @@ function isPasswordResetOk(
 }
 
 export const meta: V2_MetaFunction = () => {
-  return [{ title: getTitle({ title: "Password Reset", isHome: false }) }];
+  return [
+    {
+      title: getTitle({
+        title: "Password Reset・パスワード再設定",
+        isHome: false,
+      }),
+    },
+  ];
 };
 
 /*
