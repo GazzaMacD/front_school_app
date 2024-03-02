@@ -6,14 +6,21 @@ import {
 import { Link } from "@remix-run/react";
 
 import { getTitle } from "~/common/utils";
-import { HeadingOne } from "~/components/headings";
+import { SlidingHeaderPage } from "~/components/pages";
 
 /*
  * Helper functions
  */
 
 export const meta: V2_MetaFunction = () => {
-  return [{ title: getTitle({ title: "Password Reset Done", isHome: false }) }];
+  return [
+    {
+      title: getTitle({
+        title: "Password Reset Done・パスワードリセット完了",
+        isHome: false,
+      }),
+    },
+  ];
 };
 
 /*
@@ -37,21 +44,26 @@ export function loader({ request }: LoaderArgs) {
 export default function PasswordResetDoneRoute() {
   return (
     <>
-      <HeadingOne
-        jpText="パスワードリセット完了"
-        enText="Password Reset Done"
-        align="center"
-        bkground="light"
-        level="h1"
-      />
-      <div className="au-form">
-        <div className="au-form__message">
-          <p>
-            パスワードが変更されましたのでお知らせいたします。
-            <Link to="/login">ログイン</Link>が可能な状態となっております。
-          </p>
+      <SlidingHeaderPage
+        mainTitle="Password Reset Done"
+        subTitle="パスワードリセット完了"
+        swooshBackColor="cream"
+        swooshFrontColor="beige"
+      >
+        <div className="au-wrapper">
+          <div className="au-wrapper__inner">
+            <div className="au-form">
+              <div className="au-form__message">
+                <p>
+                  パスワードが変更されましたのでお知らせいたします。
+                  <Link to="/login">ログイン</Link>
+                  が可能な状態となっております。
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
+      </SlidingHeaderPage>
     </>
   );
 }
