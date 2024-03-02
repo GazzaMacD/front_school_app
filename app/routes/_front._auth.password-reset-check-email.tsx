@@ -27,11 +27,9 @@ export const meta: V2_MetaFunction = () => {
  */
 export function loader({ request }: LoaderArgs) {
   const referer = request.headers.get("referer");
-  /*
   if (!referer || new URL(referer).pathname !== "/password-reset") {
     return redirect("/");
   }
-  */
   return null;
 }
 

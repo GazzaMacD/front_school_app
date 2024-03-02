@@ -1,7 +1,6 @@
 import { type LinksFunction } from "@remix-run/node";
 import { Outlet } from "@remix-run/react";
 
-import { Swoosh1 } from "~/components/swooshes";
 import authStyles from "../styles/auth.css";
 import pageCStyles from "~/styles/components/pages.css";
 
