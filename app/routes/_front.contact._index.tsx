@@ -610,7 +610,7 @@ export default function ContactIndexPage() {
                 </div>
                 <div className="ct-form__submit">
                   <button disabled={!privacyRead} type="submit">
-                    ログイン
+                    送信する
                     <FaArrowRightLong />
                   </button>
                 </div>

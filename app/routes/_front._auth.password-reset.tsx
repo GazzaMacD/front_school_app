@@ -16,6 +16,7 @@ import type {
 import { getTitle } from "~/common/utils";
 import { HeadingOne } from "~/components/headings";
 import { FaArrowRightLong } from "react-icons/fa6";
+import { SlidingHeaderPage } from "~/components/pages";
 
 /*
  * Helper functions
@@ -85,62 +86,68 @@ export default function PasswordResetRoute() {
 
   return (
     <>
-      <HeadingOne
-        jpText="パスワード再設定"
-        enText="Password Reset"
-        align="center"
-        bkground="light"
-        level="h1"
-      />
-      <form className="au-form g-form" noValidate method="post">
-        {actionData && actionData?.errors?.non_field_errors ? (
-          <div className="g-form__nonfield-errors">
-            <ul>
-              {actionData.errors.non_field_errors.map((error) => (
-                <li role="alert" key={error}>
-                  {error}
-                </li>
-              ))}
-            </ul>
+      <SlidingHeaderPage
+        mainTitle="Password Reset"
+        subTitle="パスワード再設定"
+        swooshBackColor="cream"
+        swooshFrontColor="beige"
+      >
+        <div className="au-wrapper">
+          <div className="au-wrapper__inner">
+            <form className="au-form g-form" noValidate method="post">
+              {actionData && actionData?.errors?.non_field_errors ? (
+                <div className="g-form__nonfield-errors">
+                  <ul>
+                    {actionData.errors.non_field_errors.map((error) => (
+                      <li role="alert" key={error}>
+                        {error}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+
+              <div className="g-form__input-group">
+                <label
+                  className="g-form__text-label g-required"
+                  htmlFor="email-input"
+                >
+                  Eメールアドレス
+                </label>
+                <input
+                  type="email"
+                  id="email-input"
+                  name="email"
+                  required
+                  defaultValue={actionData?.fields?.email}
+                  aria-invalid={Boolean(actionData?.errors?.email?.length)}
+                  aria-errormessage={
+                    actionData?.errors?.email?.length
+                      ? "email-errors"
+                      : undefined
+                  }
+                />
+                {actionData?.errors?.email?.length ? (
+                  <ul
+                    className="g-form__validation-errors"
+                    role="alert"
+                    id="email-errors"
+                  >
+                    {actionData.errors.email.map((error: string) => {
+                      return <li key={error}>{error}</li>;
+                    })}
+                  </ul>
+                ) : null}
+              </div>
+
+              <button className="au-form__submit " type="submit">
+                送信する
+                <FaArrowRightLong />
+              </button>
+            </form>
           </div>
-        ) : null}
-
-        <div className="g-form__input-group">
-          <label
-            className="g-form__text-label g-required"
-            htmlFor="email-input"
-          >
-            Eメールアドレス
-          </label>
-          <input
-            type="email"
-            id="email-input"
-            name="email"
-            required
-            defaultValue={actionData?.fields?.email}
-            aria-invalid={Boolean(actionData?.errors?.email?.length)}
-            aria-errormessage={
-              actionData?.errors?.email?.length ? "email-errors" : undefined
-            }
-          />
-          {actionData?.errors?.email?.length ? (
-            <ul
-              className="g-form__validation-errors"
-              role="alert"
-              id="email-errors"
-            >
-              {actionData.errors.email.map((error: string) => {
-                return <li key={error}>{error}</li>;
-              })}
-            </ul>
-          ) : null}
         </div>
-
-        <button className="au-form__submit " type="submit">
-          送信する
-          <FaArrowRightLong />
-        </button>
-      </form>
+      </SlidingHeaderPage>
     </>
   );
 }
