@@ -4,7 +4,6 @@
 .ho-hero {
   display: grid;
   grid-template-columns: 15px repeat(15, 1fr) 15px;
-  margin-top: 60px;
   background-color: var(--color-brand-white);
   position: relative;
 }
@@ -16,16 +15,16 @@
   object-fit: cover;
 }
 .ho-hero__promo {
-  padding: 40px 0 80px 0;
+  padding: 20px 0 40px 0;
   grid-column: 2/17;
 }
 .ho-hero__en-title {
   color: var(--color-brand-brown);
   font-family: var(--font-en-primary);
   font-weight: 600;
-  font-size: var(--font-size-6xl);
+  font-size: var(--font-size-4xl);
   line-height: 1.1;
-  margin: 0 0 40px 0;
+  margin: 0 0 20px 0;
 }
 .ho-hero__en-title--green {
   color: var(--color-brand-green);
@@ -33,7 +32,7 @@
 .ho-hero__ja-title {
   color: var(--color-brand-brown);
   font-weight: 600;
-  font-size: var(--font-size-3xl);
+  font-size: var(--font-size-m);
   line-height: 1.3;
   padding: 0 40px 0 0;
   margin: 0;
@@ -47,6 +46,16 @@
   }
   .ho-hero__promo {
     grid-column: 2/11;
+  }
+  .ho-hero__en-title {
+    font-size: var(--font-size-6xl);
+    line-height: 1.1;
+    margin: 0 0 40px 0;
+  }
+  .ho-hero__ja-title {
+    font-size: var(--font-size-3xl);
+    line-height: 1.3;
+    padding: 0 40px 0 0;
   }
 }
 @media (min-width: 64rem) {
