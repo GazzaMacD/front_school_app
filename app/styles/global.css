@@ -2057,7 +2057,7 @@ label {
 * Swooshes 
 */
 .g-swoosh1 {
-  margin: -100px 0 -10px 0;
+  margin: -100px 0 -6px 0;
   position: relative;
   z-index: -1;
 }
