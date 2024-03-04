@@ -464,33 +464,35 @@
   padding: 100px 0 0 0;
 }
 .ho-prices__wrapper .swiper-button-prev {
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   background-color: var(--color-brand-white);
   border-radius: 50%;
-  right: 100px;
+  right: 80px;
   left: auto;
-  top: 30px;
+  top: 40px;
   color: var(--color-brand-brown);
 }
 .ho-prices__wrapper .swiper-button-prev::after {
   content: "➜";
   transform: rotate(180deg);
   padding: 0 0 4px 0;
+  font-size: 22px;
 }
 
 .ho-prices__wrapper .swiper-button-next {
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   background-color: var(--color-brand-white);
   border-radius: 50%;
-  right: 10px;
-  top: 30px;
+  right: 15px;
+  top: 40px;
   color: var(--color-brand-brown);
 }
 .ho-prices__wrapper .swiper-button-next::after {
   content: "➜";
   padding: 1px 0 0 0;
+  font-size: 22px;
 }
 
 .ho-price {
@@ -542,6 +544,7 @@
   min-width: 80px;
   justify-content: center;
   align-items: center;
+  color: var(--color-sec-lightyellow);
 }
 /* see more prices button */
 .ho-prices__button-wrapper {
@@ -589,6 +592,28 @@
     position: absolute;
     bottom: -74px;
     right: 120px;
+  }
+  .ho-prices__wrapper .swiper-button-prev {
+    width: 60px;
+    height: 60px;
+    right: 100px;
+    left: auto;
+    top: 22px;
+  }
+  .ho-prices__wrapper .swiper-button-prev::after {
+    padding: 0 0 4px 0;
+    font-size: 44px;
+  }
+
+  .ho-prices__wrapper .swiper-button-next {
+    width: 60px;
+    height: 60px;
+    right: 10px;
+    top: 22px;
+  }
+  .ho-prices__wrapper .swiper-button-next::after {
+    padding: 1px 0 0 0;
+    font-size: 44px;
   }
 }
 @media (min-width: 64rem) {
@@ -679,6 +704,7 @@
     grid-column: 13/16;
   }
 }
+
 /**
 *   Blog lessons 
 */
@@ -824,14 +850,9 @@ a.ho-blog-link::before {
 }
 .ho-blog__card-details > div > p:last-of-type {
   margin: 0 0 15px 0;
-}
-.ho-blog__card-details > div > p > a {
   color: var(--color-brand-green);
   font-weight: var(--font-w-medium);
   font-size: var(--font-size-xs);
-}
-.ho-blog__card-details > div > p > a:before {
-  content: none;
 }
 /* details title */
 .ho-blog__card-details h3 {
