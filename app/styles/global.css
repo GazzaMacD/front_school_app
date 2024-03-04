@@ -2044,7 +2044,7 @@ label {
 }
 @media (min-width: 64rem) {
   .g-heading1 {
-    font-size: calc(var(--r20px) * 2 + var(--r16px));
+    font-size: calc(var(--r20px) * 2 + var(--r8px));
     margin-bottom: calc(var(--r10px) * 8);
   }
 
