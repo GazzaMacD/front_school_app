@@ -8,14 +8,14 @@ import { FaArrowRightLong, FaXmark, FaRegCircle } from "react-icons/fa6";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 
-import homeStyles from "../styles/home.css";
+import homeStyles from "~/styles/home.css";
+import cardStyles from "~/styles/components/cards.css";
+import { StaffRoundPicCard } from "~/components/cards";
 import { getTitle } from "~/common/utils";
 import { Swoosh1 } from "~/components/swooshes";
 import { BASE_API_URL } from "~/common/constants.server";
 import { getGlobalEnv } from "~/common/utils";
-import { BlogCard } from "~/components/cards";
 import {
-  ButtonLink,
   RoundButtonLink,
   LgBiButtonLink,
   SolidPillButtonLink,
@@ -32,6 +32,7 @@ export const links: LinksFunction = () => [
   { rel: "stylesheet", href: swipperNavStyles },
   { rel: "stylesheet", href: swipperStyles },
   { rel: "stylesheet", href: homeStyles },
+  { rel: "stylesheet", href: cardStyles },
 ];
 
 export const loader = async () => {
@@ -375,34 +376,15 @@ export default function Index() {
             {home.home_teachers.map((item, i) => {
               const teacher = item.teacher;
               return (
-                <article
-                  key={teacher.id}
-                  className={`ho-teacher__card card${i}`}
-                >
-                  <Link
-                    to={`/staff/${teacher.slug}`}
-                    className="ho-teacher__card-link"
-                  >
-                    <div className="ho-teacher__card-img-wrapper">
-                      <img
-                        className="ho-teacher__card-img"
-                        src={`${ENV.BASE_BACK_URL}${teacher.image.thumbnail.src}`}
-                        alt={teacher.image.thumbnail.alt}
-                      />
-                      <div className="ho-teacher__card-overlay">
-                        <div className="ho-teacher__card-overlay-inner">
-                          <h3>View Details</h3>
-                          <p>詳細を見る</p>
-                          <FaArrowRightLong />
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
-                  <div className="ho-teacher__card-details">
-                    <h3>{teacher.display_name}</h3>
-                    <p>{teacher.display_tagline}</p>
-                  </div>
-                </article>
+                <div key={teacher.id} className={`ho-teacher__card card${i}`}>
+                  <StaffRoundPicCard
+                    url={`/staff/${teacher.slug}`}
+                    src={`${ENV.BASE_BACK_URL}${teacher.image.thumbnail.src}`}
+                    alt={teacher.image.original.alt}
+                    name={teacher.display_name}
+                    tagline={teacher.display_tagline}
+                  />
+                </div>
               );
             })}
             <div className="ho-teachers__more">
