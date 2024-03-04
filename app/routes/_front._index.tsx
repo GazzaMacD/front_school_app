@@ -153,7 +153,7 @@ export default function Index() {
       </section>
 
       <section id="services">
-        <Swoosh1 backColor="cream" swooshColor="green" />
+        <Swoosh1 backColor="cream" swooshColor="brown" />
         <div className="ho-services">
           <div className="g-grid-container1">
             <div className="ho-services__heading">
