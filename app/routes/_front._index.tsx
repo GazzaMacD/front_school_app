@@ -449,13 +449,7 @@ export default function Index() {
                               <p>{`${d.getFullYear()}.${
                                 d.getMonth() + 1
                               }.${d.getDate()}`}</p>
-                              <p>
-                                <Link
-                                  to={`/blog-lessons?category=${blog.category.ja_name}`}
-                                >
-                                  [ {blog.category.ja_name} ]
-                                </Link>
-                              </p>
+                              <p>[ {blog.category.ja_name} ]</p>
                             </div>
                             <h3>{blog.display_title}</h3>
                           </div>
