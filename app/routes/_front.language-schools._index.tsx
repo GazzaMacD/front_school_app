@@ -1,12 +1,30 @@
 import { Link, useLoaderData } from "@remix-run/react";
-import { type LinksFunction, json } from "@remix-run/node";
+import {
+  type LinksFunction,
+  json,
+  type V2_MetaFunction,
+} from "@remix-run/node";
 
 import { BASE_API_URL } from "~/common/constants.server";
+import { getGlobalEnv } from "~/common/utils";
+import { getTitle } from "~/common/utils";
 
+/**
+ *  Utils and helper functions
+ */
+export const meta: V2_MetaFunction = () => {
+  return [
+    { title: getTitle({ title: "Language Schools・語学学校", isHome: false }) },
+  ];
+};
+
+/**
+ * Server functions
+ */
 export async function loader() {
   try {
     const lPageUrl = `${BASE_API_URL}/pages/?type=languageschools.LanguageSchoolListPage&fields=*`;
-    const dPageUrl = `${BASE_API_URL}/pages/?type=languageschools.LanguageSchoolDetailPage&fields=title,display_title,ls`;
+    const dPageUrl = `${BASE_API_URL}/pages/?type=languageschools.LanguageSchoolDetailPage&fields=_,id,title,display_title,slug,display_city,header_image`;
     const urls = [lPageUrl, dPageUrl];
     const [lPage, dPage] = await Promise.all(
       urls.map((url) =>
@@ -38,26 +56,31 @@ export async function loader() {
 }
 
 export default function LanguageSchoolsListPage() {
+  const ENV = getGlobalEnv();
   const { listPage: lp, dPages: dp } = useLoaderData<typeof loader>();
 
   return (
     <div>
-      <h1>{lp.display_title}</h1>
+      <h1>{lp.title}</h1>
+      <p>{lp.display_title}</p>
       <div dangerouslySetInnerHTML={{ __html: lp.display_intro }} />
       <div>
         {dp.map((school) => {
-          const address = school.ls.address;
           return (
-            <Link to={`/language-schools/${school.meta.slug}`} key={school.id}>
-              <div>
-                <p>{school.display_title}英会話教室</p>
+            <Link
+              className="ls-lp-school"
+              to={`/language-schools/${school.meta.slug}`}
+              key={school.id}
+            >
+              <article>
+                <p>{school.display_title}語学学校</p>
                 <h3>{school.title} Language School</h3>
-                <p>{address.code}</p>
-                <p>{address.state}</p>
-                <p>{address.city}</p>
-                {address.line_two && <p>{address.line_two}</p>}
-                <p>{address.line_one}</p>
-              </div>
+                <p>{school.display_city}</p>
+                <img
+                  src={`${ENV.BASE_BACK_URL}${school.header_image.thumbnail.src}`}
+                  alt={school.display_title}
+                />
+              </article>
             </Link>
           );
         })}
