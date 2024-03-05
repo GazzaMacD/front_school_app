@@ -75,10 +75,10 @@ export default function App() {
                       </a>
                     </li>
                     <li className="g-menu__item g-menu__contact">
-                      <SolidPillButtonLink to="/contact#form" color="brown">
+                      <Link to="/contact#form">
                         <span>問合せ</span>
                         <span>お問い合わせ</span>
-                      </SolidPillButtonLink>
+                      </Link>
                     </li>
                     {user ? (
                       <li className="g-menu__item">
