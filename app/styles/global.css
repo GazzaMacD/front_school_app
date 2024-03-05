@@ -1450,12 +1450,12 @@ a.g-sm__social {
 }
 @media (min-width: 48rem) {
   .content-wrapper {
-    padding-top: 160px;
+    padding-top: 130px;
   }
 }
 @media (min-width: 64rem) {
   .content-wrapper {
-    padding-top: 100px;
+    padding-top: 80px;
   }
 }
 
