@@ -861,11 +861,11 @@ Block quotes
 }
 @media (min-width: 48rem) {
   .g-header {
-    height: 100px;
+    height: 80px;
   }
   .g-header__tagline-background {
-    height: 60px;
-    bottom: -88px;
+    height: 50px;
+    bottom: -70px;
   }
   .g-header__inner {
     padding: 0 15px;
@@ -904,7 +904,7 @@ a.g-header__logo-link:before {
     height: 40px;
   }
   .g-header__tagline {
-    bottom: -72px;
+    bottom: -56px;
     font-size: var(--r14px);
   }
 }
@@ -926,7 +926,7 @@ a.g-header__logo-link:before {
   .g-header__tagline {
     position: static;
     color: var(--color-brand-brown);
-    font-size: var(--r14px);
+    font-size: var(--r12px);
   }
   .g-header-space {
     height: 78px;
@@ -939,9 +939,6 @@ a.g-header__logo-link:before {
   }
 }
 @media (min-width: 75rem) {
-  .g-header__logo {
-    height: 50px;
-  }
   .g-header__branding {
     display: flex;
     justify-content: space-between;
@@ -953,7 +950,7 @@ a.g-header__logo-link:before {
 
 /* main menu  menu*/
 .g-menu {
-  padding: 0 50px 0 0;
+  padding: 0 54px 0 0;
   position: relative;
 }
 .g-menu__list {
@@ -971,7 +968,7 @@ a.g-header__logo-link:before {
 }
 a.g-menu__phone {
   font-family: var(--font-en-primary);
-  font-size: var(--font-size-5xl);
+  font-size: var(--font-size-4xl);
   font-weight: 600;
   color: var(--color-brand-brown);
   display: flex;
@@ -986,12 +983,12 @@ a.g-menu__phone:before {
   height: 25px;
 }
 @media (min-width: 48rem) {
+  .g-menu {
+    padding: 0 80px 0 0;
+    position: relative;
+  }
   .g-menu__list {
     gap: 12px;
-  }
-  .g-menu {
-    padding: 0 150px 0 0;
-    position: relative;
   }
 }
 @media (min-width: 64rem) {
@@ -1007,11 +1004,34 @@ a.g-menu__phone:before {
     gap: 18px;
   }
 }
-/* hide longer contact */
+/* contact button */
+.g-menu__contact > a::before {
+  content: none;
+}
+.g-menu__contact > a {
+  background-color: var(--color-brand-brown);
+  color: var(--color-brand-white);
+  white-space: nowrap;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+  padding: 8px 12px;
+  border: 2px solid var(--color-brand-brown);
+  border-radius: 100px;
+  transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
+}
+.g-menu__contact > a:hover {
+  background-color: var(--color-brand-white);
+  color: var(--color-brand-brown);
+}
 .g-menu__contact span:last-of-type {
   display: none;
 }
-@media (min-width: 64rem) {
+@media (min-width: 48rem) {
+  .g-menu__contact > a {
+    font-size: 16px;
+    padding: 10px 22px;
+  }
 }
 @media (min-width: 75rem) {
   .g-menu__contact span:first-of-type {
@@ -1028,6 +1048,7 @@ a.g-menu__phone:before {
 }
 
 /* registration, logout & login buttons*/
+
 a.g-menu__reglog-link {
   display: block;
 }
@@ -1082,28 +1103,20 @@ a.g-menu__reglog-link:hover > .g-menu__reglog {
 }
 @media (min-width: 48rem) {
   .g-menu__reglog {
-    padding: 12px 26px;
+    padding: 10px 22px;
     font-size: 16px;
   }
   .g-menu__reglog.reg span:first-of-type {
     display: inline;
   }
   .g-menu__logout {
-    padding: 12px 26px;
+    padding: 10px 22px;
   }
 }
 @media (min-width: 75rem) {
-  .g-menu__reglog {
-    padding: 12px 26px;
-  }
   .g-menu__reglog.reg span:first-of-type {
     display: inline;
   }
-  .g-menu__logout {
-    padding: 12px 26px;
-  }
-}
-@media (min-width: 96rem) {
 }
 
 /* 
@@ -1194,8 +1207,8 @@ a.g-sm__social {
 }
 @media (min-width: 48rem) {
   .g-sm__button {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     position: fixed;
     top: 0;
     right: 0;
@@ -1219,14 +1232,14 @@ a.g-sm__social {
     color: var(--color-brand-brown);
     border-radius: 100px;
     width: 140px;
-    height: 44px;
+    height: 40px;
     position: fixed;
-    top: 28px;
+    top: 21px;
     right: 15px;
     z-index: 2000;
     text-align: center;
     cursor: pointer;
-    padding: 12px 20px;
+    padding: 10px 20px;
     line-height: 1;
     transition: background-color 0.3s ease-in, color 0.3s ease-in;
   }
@@ -1280,7 +1293,7 @@ a.g-sm__social {
 .g-sm__button__icon {
   position: absolute;
   top: 25px;
-  left: 26px;
+  left: 25px;
   transform: translate(-50%, -50%);
 }
 
@@ -1307,8 +1320,8 @@ a.g-sm__social {
 }
 @media (min-width: 48rem) {
   .g-sm__button__icon {
-    top: 38px;
-    left: 35px;
+    top: 29px;
+    left: 22px;
   }
   .g-sm__button__icon,
   .g-sm__button__icon::before,
