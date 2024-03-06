@@ -35,9 +35,9 @@ export function getDateString(start: string, end: string) {
   const endDate = new Date(end);
   let dateString: string;
   if (startDate.getTime() === endDate.getTime()) {
-    dateString = `${startDate.getFullYear()}/${startDate.getMonth()}/${startDate.getDay()}`;
+    dateString = `${startDate.getFullYear()}.${startDate.getMonth()}.${startDate.getDay()}`;
   } else {
-    dateString = `${startDate.getFullYear()}/${startDate.getMonth()}/${startDate.getDay()} ~ ${endDate.getFullYear()}/${endDate.getMonth()}/${endDate.getDay()}`;
+    dateString = `${startDate.getFullYear()}.${startDate.getMonth()}.${startDate.getDay()} ~ ${endDate.getFullYear()}.${endDate.getMonth()}.${endDate.getDay()}`;
   }
   return dateString;
 }
@@ -63,6 +63,18 @@ export function getDivisor4LetterHash(length: number) {
     hash[i] = letters[count];
     count += 1;
     if (count > 3) count = 0;
+  }
+  return hash;
+}
+
+export function getDivisor3LetterHash(length: number) {
+  const hash: Record<string, string> = {};
+  const letters = "abc";
+  let count = 0;
+  for (let i = 0; i < length; i++) {
+    hash[i] = letters[count];
+    count += 1;
+    if (count > 2) count = 0;
   }
   return hash;
 }
