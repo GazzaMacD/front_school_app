@@ -1,8 +1,11 @@
-.frle-upcoming {
-}
 /*
-* Index Page (learning exprience index page = lexix)
+* List Page
 */
+
+/*
+* Detail Page
+*/
+
 .lexix-cards {
   display: flex;
 }
