@@ -1,8 +1,15 @@
 import { Link, useLoaderData } from "@remix-run/react";
-import { json } from "@remix-run/node";
+import { json, type LinksFunction } from "@remix-run/node";
 
 import { BASE_API_URL } from "~/common/constants.server";
 import { getGlobalEnv, getDateString } from "~/common/utils";
+import { SlidingHeaderPage } from "~/components/pages";
+import pageCStyles from "~/styles/components/pages.css";
+import { HeadingOne } from "~/components/headings";
+
+export const links: LinksFunction = () => [
+  { rel: "stylesheet", href: pageCStyles },
+];
 
 export async function loader() {
   try {
@@ -48,19 +55,28 @@ export default function LearningExperiencesIndexPage() {
   const { listPage, detailPages } = useLoaderData<typeof loader>();
   const ENV = getGlobalEnv();
   return (
-    <div id="le">
-      <header>
-        <h1>
-          h1 {listPage.title}
-          <br />
-          <span>{listPage.display_title}</span>
-        </h1>
+    <SlidingHeaderPage
+      mainTitle={listPage.title}
+      subTitle={listPage.display_title}
+      swooshBackColor="cream"
+      swooshFrontColor="beige"
+    >
+      <section id="intro">
         <div>
-          Introduction paragraphs explaining concepts around learning
-          experiences
+          <div className="g-narrow-container">
+            <div>
+              <HeadingOne
+                enText={listPage.intro_en_title}
+                jpText={listPage.intro_jp_title}
+                align="center"
+                bkground="light"
+                level="h2"
+              />
+            </div>
+            <div dangerouslySetInnerHTML={{ __html: listPage.intro }} />
+          </div>
         </div>
-        <div dangerouslySetInnerHTML={{ __html: listPage.intro }} />
-      </header>
+      </section>
 
       <section id="upcoming">
         <h2>
@@ -114,6 +130,6 @@ export default function LearningExperiencesIndexPage() {
           })}
         </div>
       </section>
-    </div>
+    </SlidingHeaderPage>
   );
 }
