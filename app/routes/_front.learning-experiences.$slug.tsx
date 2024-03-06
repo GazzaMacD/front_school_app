@@ -25,6 +25,7 @@ export async function loader({ params }: LoaderArgs) {
   const { slug } = params;
   try {
     const url = `${BASE_API_URL}/pages/?slug=${slug}&type=products.LearningExperienceDetailPage&fields=*`;
+    console.log(url);
     const res = await fetch(url);
     const data = await res.json();
     if (!res.ok || !data.items.length) {

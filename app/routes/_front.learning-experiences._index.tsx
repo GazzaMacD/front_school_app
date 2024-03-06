@@ -6,6 +6,8 @@ import { getGlobalEnv, getDateString } from "~/common/utils";
 import { SlidingHeaderPage } from "~/components/pages";
 import pageCStyles from "~/styles/components/pages.css";
 import { HeadingOne } from "~/components/headings";
+import { getDivisor3LetterHash } from "~/common/utils";
+import { FaRegCalendar } from "react-icons/fa6";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: pageCStyles },
@@ -54,6 +56,7 @@ export async function loader() {
 export default function LearningExperiencesIndexPage() {
   const { listPage, detailPages } = useLoaderData<typeof loader>();
   const ENV = getGlobalEnv();
+  const upcomingHash = getDivisor3LetterHash(detailPages.length);
   return (
     <SlidingHeaderPage
       mainTitle={listPage.title}
@@ -79,34 +82,57 @@ export default function LearningExperiencesIndexPage() {
       </section>
 
       <section id="upcoming">
-        <h2>
-          h2 - {listPage.upcoming_en_title}
-          <br />
-          <span>{listPage.upcoming_jp_title}</span>
-        </h2>
         <div>
-          {detailPages.map((page) => {
-            const dateString = getDateString(page.start_date, page.end_date);
-            return (
-              <Link
-                key={page.id}
-                to={`/learning-experiences/${page.meta.slug}`}
-              >
-                <article>
-                  <img
-                    src={`${ENV.BASE_BACK_URL}${page.header_image.thumbnail.src}`}
-                    alt={page.header_image.thumbnail.alt}
-                  />
-                  <div>
-                    <p>{dateString}</p>
-                    <h3>{page.display_title}</h3>
-                    <p>{page.display_tagline}</p>
-                    <button>Learn more..</button>
+          <div>
+            <HeadingOne
+              enText={listPage.upcoming_en_title}
+              jpText={listPage.upcoming_jp_title}
+              align="center"
+              bkground="light"
+              level="h2"
+            />
+          </div>
+          <div className="le-lp-upcoming__exps">
+            <div className="g-grid-container1">
+              {detailPages.map((page, i) => {
+                const dateString = getDateString(
+                  page.start_date,
+                  page.end_date
+                );
+                return (
+                  <div
+                    key={page.id}
+                    className={`le-lp-upcoming__exp-wrapper ${upcomingHash[i]}`}
+                  >
+                    <article className="le-lp-upcoming__exp">
+                      <div className="le-lp-upcoming__exp__img-wrap">
+                        <img
+                          className="le-lp-upcoming__exp__img"
+                          src={`${ENV.BASE_BACK_URL}${page.header_image.thumbnail.src}`}
+                          alt={page.header_image.thumbnail.alt}
+                        />
+                      </div>
+                      <div className="le-lp-upcoming__exp__details">
+                        <div className="le-lp-upcoming__exp__dt">
+                          <FaRegCalendar />
+                          {dateString}
+                        </div>
+                        <h3 className="le-lp-upcoming__exp__title">
+                          {page.display_title}
+                        </h3>
+                        <Link
+                          className="le-lp-upcoming__exp__link"
+                          to={`/learning-experiences/${page.meta.slug}`}
+                        >
+                          詳しく見る
+                        </Link>
+                      </div>
+                    </article>
                   </div>
-                </article>
-              </Link>
-            );
-          })}
+                );
+              })}
+            </div>
+          </div>
         </div>
       </section>
 
