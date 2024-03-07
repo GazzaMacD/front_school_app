@@ -141,18 +141,20 @@ export default function LearningExperiencesDetailPage() {
         </div>
       </section>
 
-      <section id="lexdp-pics">
-        <hgroup className="lexdp__heading">
-          <h2>
-            <span>Past pictures</span>
-            過去の写真
-          </h2>
-          <p>過去の学習体験の写真を見てみよう</p>
-        </hgroup>
-        <div className="lexdp__past-pictures">
+      <section id="past-photos">
+        <div className="g-narrow-container">
+          <HeadingOne
+            enText="Past Pictures"
+            jpText="過去の写真"
+            align="center"
+            bkground="light"
+            level="h2"
+          />
+        </div>
+        <div className="le-dp-past-photos">
           {page.past_photos.map((p) => {
             return (
-              <figure key={p.id}>
+              <figure className="le-dp-past-photos__figure" key={p.id}>
                 <img
                   src={`${ENV.BASE_BACK_URL}${p.value.image.medium.src}`}
                   alt={p.value.image.medium.src}
@@ -163,7 +165,8 @@ export default function LearningExperiencesDetailPage() {
           })}
         </div>
       </section>
-      <section id="lexdp-details">
+
+      <section id="details">
         <hgroup className="lexdp__heading">
           <h2>
             <span>Experience details</span>
@@ -247,7 +250,8 @@ export default function LearningExperiencesDetailPage() {
           </ul>
         </div>
       </section>
-      <section id="lexdp-place">
+
+      <section id="access">
         <hgroup className="lexdp__heading">
           <h2>
             <span>Where are we going to be?</span>
