@@ -1,13 +1,10 @@
 import { Link, useLoaderData } from "@remix-run/react";
 import { type LinksFunction, json, type LoaderArgs } from "@remix-run/node";
-import {
-  AiOutlineCalendar,
-  AiOutlineClockCircle,
-  AiOutlineInfo,
-} from "react-icons/ai";
 
 import { BASE_API_URL } from "~/common/constants.server";
+import { BlogCard } from "~/components/cards";
 import { StaffRoundPicCard } from "~/components/cards";
+import { Swoosh1 } from "~/components/swooshes";
 import {
   getDateStringWithDays,
   getDivisor4LetterHash,
@@ -314,35 +311,31 @@ export default function LearningExperiencesDetailPage() {
         )}
       </section>
 
-      <section id="lexdp-lessons">
-        <hgroup className="lexdp__heading">
-          <h2>
-            <span>Free lessons to help you</span>
-            お役に立てるような無料ブログレッスン？
-          </h2>
-          <p>
-            これらのブログレッスンは、あなたがネイティブのように話すのを助けるために設計されており、この経験はあなたの助けになるでしょう。
-          </p>
-        </hgroup>
-        <div className="lexdp__lessons">
-          {page.related_lessons.map((item) => {
+      <section id="related-lessons">
+        <div className="g-grid-container1">
+          <div className="le-dp-related__heading">
+            <h2>あなたへのおすすめ記事</h2>
+          </div>
+          {page.related_lessons.map((item, i) => {
             const lesson = item.lesson;
             return (
-              <div key={lesson.id} className="lexdp__lesson">
-                <img
-                  src={`${ENV.BASE_BACK_URL}${lesson.image.thumbnail.src}`}
-                  alt={lesson.image.thumbnail?.alt}
+              <>
+                <BlogCard
+                  i={`item${i}`}
+                  key={lesson.id}
+                  slug={lesson.slug}
+                  src={`${ENV.BASE_BACK_URL}/${lesson.image.thumbnail.src}`}
+                  alt={lesson.image.thumbnail.alt}
+                  date={lesson.published_date}
+                  title={lesson.display_title}
+                  category={lesson.category}
                 />
-                <div className="lexdp__lesson-details">
-                  <h4>{lesson.ja_title}</h4>
-                  <p>{lesson.short_intro}</p>
-                  <Link to={`/lessons/${lesson.slug}`}>Learn More</Link>
-                </div>
-              </div>
+              </>
             );
           })}
         </div>
       </section>
+      <Swoosh1 swooshColor="beige" backColor="white" />
     </>
   );
 }
