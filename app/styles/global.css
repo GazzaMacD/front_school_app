@@ -676,6 +676,25 @@ Containers, Wrappers and Iframes
   flex-direction: column;
   min-height: 100%;
 }
+/* basic container */
+.g-basic-container {
+  margin: 0 20px;
+}
+@media (min-width: 48rem) {
+  .g-basic-container {
+    margin: 0 30px;
+  }
+}
+@media (min-width: 64rem) {
+  .g-basic-container {
+    margin: 0 60px;
+  }
+}
+@media (min-width: 96rem) {
+  .g-basic-container {
+    margin: 0 120px;
+  }
+}
 /* grid container one - 15 col grid with responsive margins*/
 .g-grid-container1 {
   display: grid;

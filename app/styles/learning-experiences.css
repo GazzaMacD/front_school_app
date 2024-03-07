@@ -86,6 +86,36 @@ a.le-lp-upcoming__exp__link:hover {
 /*
 * Detail Page
 */
+.le-dp-header {
+  padding-top: 100px;
+}
+.le-dp-header__titles > h1 {
+  margin: 0;
+  font-size: var(--font-size-5xl);
+  font-weight: var(--font-w-bold);
+}
+.le-dp-header__titles > h1 > span {
+  margin-top: 22px;
+  display: block;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-w-bold);
+}
+.le-dp-header__titles > p {
+  margin: 22px 0 0 0;
+  font-size: var(--font-size-m);
+}
+.le-dp-header__titles > div {
+  display: flex;
+  align-items: baseline;
+  margin: 40px 0 80px 0;
+  font-size: var(--font-size-m);
+}
+.le-dp-header__titles > div > svg {
+  width: 16px;
+  height: 16px;
+  color: var(--color-brand-orange);
+  margin-right: 10px;
+}
 
 .lexix-cards {
   display: flex;
