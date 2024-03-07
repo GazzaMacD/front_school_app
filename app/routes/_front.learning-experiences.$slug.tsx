@@ -1,5 +1,5 @@
 import { Link, useLoaderData } from "@remix-run/react";
-import { type LinksFunction, json, LoaderArgs } from "@remix-run/node";
+import { type LinksFunction, json, type LoaderArgs } from "@remix-run/node";
 import {
   AiOutlineCalendar,
   AiOutlineClockCircle,
@@ -7,7 +7,8 @@ import {
 } from "react-icons/ai";
 
 import { BASE_API_URL } from "~/common/constants.server";
-import { getDateString, getGlobalEnv } from "~/common/utils";
+import { getDateStringWithDays, getGlobalEnv } from "~/common/utils";
+import { FaRegCalendar } from "react-icons/fa6";
 
 function getValidPrices(prices) {
   const now = new Date().getTime();
@@ -42,24 +43,33 @@ export async function loader({ params }: LoaderArgs) {
 export default function LearningExperiencesDetailPage() {
   const { page } = useLoaderData<typeof loader>();
   const ENV = getGlobalEnv();
-  const dateString = getDateString(page.start_date, page.end_date);
+  const dateString = getDateStringWithDays(page.start_date, page.end_date);
 
   return (
-    <div id="lexdp">
-      <header>
-        <hgroup className="lexdp__heading">
-          <h1>
-            <span>{page.title}</span>
-            {page.display_title}
-          </h1>
-          <p>{page.display_tagline}</p>
-        </hgroup>
-        <img
-          src={`${ENV.BASE_BACK_URL}${page.header_image.original.src}`}
-          alt={page.header_image.original.alt}
-          className="lexdp__top-img"
-        />
+    <>
+      <header className="le-dp-header">
+        <div className="g-basic-container">
+          <div className="le-dp-header__titles">
+            <h1>
+              {page.display_title}
+              <span>{page.title}</span>
+            </h1>
+            <p>{page.display_tagline}</p>
+            <div>
+              <FaRegCalendar />
+              {dateString}
+            </div>
+          </div>
+        </div>
+        <div>
+          <img
+            src={`${ENV.BASE_BACK_URL}${page.header_image.original.src}`}
+            alt={page.header_image.original.alt}
+            className="lexdp__top-img"
+          />
+        </div>
       </header>
+
       <section id="lexdp-will-do">
         <hgroup className="lexdp__heading">
           <h2>
@@ -258,6 +268,6 @@ export default function LearningExperiencesDetailPage() {
           })}
         </div>
       </section>
-    </div>
+    </>
   );
 }
