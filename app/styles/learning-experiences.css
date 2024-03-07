@@ -117,8 +117,37 @@ a.le-lp-upcoming__exp__link:hover {
   color: var(--color-brand-orange);
   margin-right: 10px;
 }
+/* will do */
+#will-do {
+  margin: 0 0 120px 0;
+}
 
 /* teachers */
+#teachers {
+  margin: 0 0 120px 0;
+}
+.le-dp-teachers__heading {
+  grid-column: 1 /16;
+}
+/* teachers--layout*/
+.le-dp-teachers__teacher-wrap {
+  grid-column: 7 / 10;
+}
+
+.le-dp-teachers__teacher-wrap.a {
+  grid-column: 5 / 8;
+}
+.le-dp-teachers__teacher-wrap.b {
+  grid-column: 9 / 12;
+}
+.le-dp-teachers__teacher-wrap.c {
+  grid-column: 1 / 4;
+}
+.le-dp-teachers__teacher-wrap.d {
+  grid-column: 13 / 16;
+}
+
+/* past pictures */
 
 .lexix-cards {
   display: flex;

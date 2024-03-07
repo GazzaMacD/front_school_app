@@ -7,9 +7,15 @@ import {
 } from "react-icons/ai";
 
 import { BASE_API_URL } from "~/common/constants.server";
-import { getDateStringWithDays, getGlobalEnv } from "~/common/utils";
+import { StaffRoundPicCard } from "~/components/cards";
+import {
+  getDateStringWithDays,
+  getDivisor4LetterHash,
+  getGlobalEnv,
+} from "~/common/utils";
 import { FaRegCalendar } from "react-icons/fa6";
 import { HeadingOne } from "~/components/headings";
+import cardStyles from "~/styles/components/cards.css";
 
 function getValidPrices(prices) {
   const now = new Date().getTime();
@@ -23,11 +29,14 @@ function getValidPrices(prices) {
   return validPrices;
 }
 
+export const links: LinksFunction = () => [
+  { rel: "stylesheet", href: cardStyles },
+];
+
 export async function loader({ params }: LoaderArgs) {
   const { slug } = params;
   try {
     const url = `${BASE_API_URL}/pages/?slug=${slug}&type=products.LearningExperienceDetailPage&fields=*`;
-    console.log(url);
     const res = await fetch(url);
     const data = await res.json();
     if (!res.ok || !data.items.length) {
@@ -45,6 +54,7 @@ export default function LearningExperiencesDetailPage() {
   const { page } = useLoaderData<typeof loader>();
   const ENV = getGlobalEnv();
   const dateString = getDateStringWithDays(page.start_date, page.end_date);
+  const teacherHash = getDivisor4LetterHash(page.staff_members.length);
 
   return (
     <>
@@ -87,31 +97,50 @@ export default function LearningExperiencesDetailPage() {
         </div>
       </section>
 
-      <section id="lexdp-who">
-        <hgroup className="lexdp__heading">
-          <h2>
-            <span>Who are your teachers?</span>
-            先生とは？
-          </h2>
-          <p>
-            この体験に参加する素晴らしいバイリンガルまたはマルチリンガルの先生たちは、あなたを指導し、より良い英語スピーカーになるための手助けをしてくれます
-          </p>
-        </hgroup>
-        <div className="container">
-          {page.staff_members.map((sm) => {
-            return (
-              <article key={sm.id} className="lexdp__staff-card">
-                <img
-                  src={`${ENV.BASE_BACK_URL}${sm.staff.image.thumbnail.src}`}
-                  alt={sm.staff.image.thumbnail.alt}
-                />
-                <h3>{sm.staff.name}</h3>
-                <Link to={`/staff/${sm.staff.slug}`}>Learn more...</Link>
-              </article>
-            );
+      <section id="teachers">
+        <div className="g-grid-container1">
+          <div className="le-dp-teachers__heading">
+            <HeadingOne
+              enText="Who are your teachers?"
+              jpText="担当の講師"
+              align="center"
+              bkground="light"
+              level="h2"
+            />
+          </div>
+          {page.staff_members.map((sm, i, arr) => {
+            if (arr.length === 1) {
+              return (
+                <div className="le-dp-teachers__teacher-wrap" key={sm.id}>
+                  <StaffRoundPicCard
+                    url={`/staff/${sm.staff.slug}`}
+                    src={`${ENV.BASE_BACK_URL}${sm.staff.image.thumbnail.src}`}
+                    alt={sm.staff.image.thumbnail.alt}
+                    name={sm.staff.name}
+                    tagline={sm.staff.tagline}
+                  />
+                </div>
+              );
+            } else {
+              return (
+                <div
+                  className={`le-dp-teachers__teacher-wrap ${teacherHash[i]} `}
+                  key={sm.id}
+                >
+                  <StaffRoundPicCard
+                    url={`/staff/${sm.staff.slug}`}
+                    src={`${ENV.BASE_BACK_URL}${sm.staff.image.thumbnail.src}`}
+                    alt={sm.staff.image.thumbnail.alt}
+                    name={sm.staff.name}
+                    tagline={sm.staff.tagline}
+                  />
+                </div>
+              );
+            }
           })}
         </div>
       </section>
+
       <section id="lexdp-pics">
         <hgroup className="lexdp__heading">
           <h2>
