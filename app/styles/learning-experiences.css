@@ -214,6 +214,21 @@ a.le-lp-upcoming__exp__link:hover {
   font-size: 8px;
 }
 
+/* access */
+.le-dp-access__map {
+  margin-bottom: 40px;
+}
+.le-dp-access__map iframe {
+  width: 100%;
+  min-height: 450px;
+}
+.le-dp-access__address {
+  font-size: var(--font-size-s);
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+}
+
 .lexix-cards {
   display: flex;
 }

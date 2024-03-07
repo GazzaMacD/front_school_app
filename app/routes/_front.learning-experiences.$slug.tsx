@@ -281,28 +281,39 @@ export default function LearningExperiencesDetailPage() {
       </section>
 
       <section id="access">
-        <hgroup className="lexdp__heading">
-          <h2>
-            <span>Where are we going to be?</span>
-            どこにあるのか？
-          </h2>
-          <p>体験の開催場所を示す地図と、必要であれば住所</p>
-        </hgroup>
+        <div className="g-narrow-container">
+          <HeadingOne
+            enText="Access"
+            jpText="アクセス"
+            align="center"
+            bkground="light"
+            level="h2"
+          />
+        </div>
         <div
-          className="lexdp__map"
+          className="le-dp-access__map"
           dangerouslySetInnerHTML={{ __html: page.display_map }}
         />
         {page.address && (
-          <div className="text-container">
-            <h3>Address</h3>
-            <p>{page.address.postal_code}</p>
-            <p>{page.address.city_town_village}</p>
-            <p>{page.address.line_two}</p>
-            <p>{page.address.line_one}</p>
-            <p>{page.address.name}</p>
+          <div className="g-basic-container">
+            <div className="le-dp-access__address">
+              <span>
+                {page.address.postal_code} {page.address.city_town_village}{" "}
+                {page.address.line_two} {page.address.line_one}{" "}
+                {page.address.name}
+              </span>
+              <span>TEL: 0561-42-5707</span>
+              <span>
+                メールアドレス:{" "}
+                <a href="mailto:contact@xlingual.co.jp">
+                  contact@xlingual.co.jp
+                </a>
+              </span>
+            </div>
           </div>
         )}
       </section>
+
       <section id="lexdp-lessons">
         <hgroup className="lexdp__heading">
           <h2>
