@@ -9,6 +9,7 @@ import {
 import { BASE_API_URL } from "~/common/constants.server";
 import { getDateStringWithDays, getGlobalEnv } from "~/common/utils";
 import { FaRegCalendar } from "react-icons/fa6";
+import { HeadingOne } from "~/components/headings";
 
 function getValidPrices(prices) {
   const now = new Date().getTime();
@@ -70,21 +71,22 @@ export default function LearningExperiencesDetailPage() {
         </div>
       </header>
 
-      <section id="lexdp-will-do">
-        <hgroup className="lexdp__heading">
-          <h2>
-            <span>What will we do?</span>
-            どうするんだろう？
-          </h2>
-          <p>
-            どのようなエキサイティングなアクティビティや学習に参加できるかをご覧ください。
-          </p>
-        </hgroup>
-        <div
-          className="text-container"
-          dangerouslySetInnerHTML={{ __html: page.will_do }}
-        />
+      <section id="will-do">
+        <div className="g-narrow-container">
+          <HeadingOne
+            enText="What will we do?"
+            jpText="何をするか"
+            align="center"
+            bkground="light"
+            level="h2"
+          />
+          <div
+            className="text-container"
+            dangerouslySetInnerHTML={{ __html: page.will_do }}
+          />
+        </div>
       </section>
+
       <section id="lexdp-who">
         <hgroup className="lexdp__heading">
           <h2>

@@ -86,8 +86,9 @@ a.le-lp-upcoming__exp__link:hover {
 /*
 * Detail Page
 */
+/* header */
 .le-dp-header {
-  padding-top: 100px;
+  margin: 100px 0 120px 0;
 }
 .le-dp-header__titles > h1 {
   margin: 0;
@@ -116,6 +117,8 @@ a.le-lp-upcoming__exp__link:hover {
   color: var(--color-brand-orange);
   margin-right: 10px;
 }
+
+/* teachers */
 
 .lexix-cards {
   display: flex;
