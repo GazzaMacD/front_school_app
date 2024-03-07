@@ -215,6 +215,9 @@ a.le-lp-upcoming__exp__link:hover {
 }
 
 /* access */
+#access {
+  padding-bottom: 120px;
+}
 .le-dp-access__map {
   margin-bottom: 40px;
 }
@@ -229,76 +232,12 @@ a.le-lp-upcoming__exp__link:hover {
   gap: 20px;
 }
 
-.lexix-cards {
-  display: flex;
+/* related lesson */
+#related-lessons {
+  background-color: var(--color-brand-white);
+  padding-top: 100px;
 }
-a.lexix-card-link {
-}
-a.lexix-card-link::before {
-  content: none;
-}
-.lexix-card {
-  max-width: 400px;
-  background-color: white;
-}
-.lexix-card__details {
-  display: flex;
-  flex-direction: column;
-  padding: 15px;
-  color: black;
-}
-.lexix-card__details p {
-  margin: 0;
-}
-.lexix-card__details button {
-  align-self: flex-end;
-  cursor: pointer;
-}
-.lexix__photos {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 1%;
-}
-.lexix__figure {
-  flex: 0 0 24%;
-}
-
-/* Detail Page (learning exprience detail page = lexdp)*/
-.lexdp__heading {
-  text-align: center;
-  margin: 6rem auto 4rem auto;
-  max-width: 700px;
-}
-
-.lexdp__heading h1,
-.lexdp__heading h2 {
-  margin: 0;
-}
-
-.lexdp__heading span {
-  display: block;
-  font-size: var(--text-xs);
-  color: var(--color-base-limegreen);
-  margin-bottom: -5px;
-}
-.lexdp__past-pictures {
-  display: flex;
-  gap: var(--space-sm);
-}
-.lexdp__map iframe {
-  width: 100%;
-  min-height: 400px;
-}
-
-/* related lessons */
-#lexdp-lessons {
-  margin-bottom: 5rem;
-}
-.lexdp__lessons {
-  display: flex;
-}
-.lexdp__lesson {
-  background-color: white;
-  flex: 0 0 350px;
+.le-dp-related__heading {
+  grid-column: 1 / 16;
+  padding-bottom: 60px;
 }
