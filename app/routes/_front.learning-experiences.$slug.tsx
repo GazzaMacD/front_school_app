@@ -13,7 +13,13 @@ import {
   getDivisor4LetterHash,
   getGlobalEnv,
 } from "~/common/utils";
-import { FaRegCalendar } from "react-icons/fa6";
+import {
+  FaRegCalendar,
+  FaRegHandPointRight,
+  FaYenSign,
+  FaRegClock,
+  FaInfo,
+} from "react-icons/fa6";
 import { HeadingOne } from "~/components/headings";
 import cardStyles from "~/styles/components/cards.css";
 
@@ -167,14 +173,14 @@ export default function LearningExperiencesDetailPage() {
       </section>
 
       <section id="details">
-        <hgroup className="lexdp__heading">
-          <h2>
-            <span>Experience details</span>
-            エクスペリエンスの詳細
-          </h2>
-          <p>時間、スケジュール、料金、その他の情報はこちらから</p>
-        </hgroup>
-        <div className="lexdp__details text-container">
+        <div className="g-narrow-container">
+          <HeadingOne
+            enText="Experience Details"
+            jpText="エクスペリエンスの詳細"
+            align="center"
+            bkground="light"
+            level="h2"
+          />
           {page.details.map((block) => {
             if (block.type === "limited_rich_text_block") {
               return (
@@ -190,64 +196,87 @@ export default function LearningExperiencesDetailPage() {
               );
               return (
                 <div key={block.id}>
-                  <h3>{block.value.title}</h3>
+                  <h4>スケジュール</h4>
                   {block.value.intro && <p>{block.value.intro}</p>}
-                  <table className="lexdp__schedule-table">
-                    {hasDate ? (
-                      <tr>
-                        <th>
-                          <span>
-                            <AiOutlineCalendar /> Date
-                          </span>
-                        </th>
-                        <th>
-                          <span>
-                            <AiOutlineClockCircle /> Time
-                          </span>
-                        </th>
-                        <th>
-                          <span>
-                            <AiOutlineInfo /> Information
-                          </span>
-                        </th>
-                      </tr>
-                    ) : (
-                      <tr>
-                        <th>
-                          <AiOutlineClockCircle /> Time
-                        </th>
-                        <th>
-                          <AiOutlineInfo /> Information
-                        </th>
-                      </tr>
-                    )}
-                    {block.value.schedule.map((row) => {
-                      return (
-                        <tr key={row.detail.slice(0, 12)}>
-                          {hasDate && <td>{row?.date}</td>}
-                          <td>{row.time.slice(0, 5)}</td>
-                          <td>{row.detail}</td>
+                  <table className="le-dp-details__schedule-table">
+                    <tbody>
+                      {hasDate ? (
+                        <tr>
+                          <th className="date">
+                            <span>
+                              <FaRegCalendar /> Date
+                            </span>
+                          </th>
+                          <th className="time">
+                            <span>
+                              <FaRegClock /> Time
+                            </span>
+                          </th>
+                          <th className="info">
+                            <span>
+                              <FaInfo /> Information
+                            </span>
+                          </th>
                         </tr>
-                      );
-                    })}
+                      ) : (
+                        <tr>
+                          <th className="time">
+                            <FaRegClock /> Time
+                          </th>
+                          <th className="info">
+                            <FaInfo /> Information
+                          </th>
+                        </tr>
+                      )}
+                      {block.value.schedule.map((row) => {
+                        return (
+                          <tr key={row.detail.slice(0, 12)}>
+                            {hasDate && <td className="date">{row?.date}</td>}
+                            <td className="">{row.time.slice(0, 5)}</td>
+                            <td className="info">{row.detail}</td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
                   </table>
                 </div>
               );
             }
           })}
-          <h3>料金</h3>
-          <ul>
-            {getValidPrices(
-              page.learning_experience.product_service.prices
-            ).map((price) => {
-              return (
-                <li key={price.id}>
-                  {price.display_name} - ￥{price.posttax_price}
-                  <span> (税込)</span>
-                </li>
-              );
-            })}
-          </ul>
+          <div className="le-dp-details__prices">
+            <h4>料金</h4>
+            <table className="le-dp-details__price-table">
+              <thead>
+                <tr>
+                  <th className="choice">
+                    <span>
+                      <FaRegHandPointRight /> Option
+                    </span>
+                  </th>
+                  <th className="price">
+                    <span>
+                      <FaYenSign /> Price
+                    </span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {getValidPrices(
+                  page.learning_experience.product_service.prices
+                ).map((price) => {
+                  return (
+                    <tr key={price.id}>
+                      <td>{price.display_name}</td>
+                      <td>
+                        ￥{price.posttax_price} <span>(税込)</span>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+            <ul></ul>
+          </div>
         </div>
       </section>
 

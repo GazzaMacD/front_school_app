@@ -152,6 +152,67 @@ a.le-lp-upcoming__exp__link:hover {
 
 /* past photos */
 /* details  */
+/* details--schedules  */
+.le-dp-details__schedule-table th,
+.le-dp-details__schedule-table td {
+  padding: 5px 10px;
+  font-size: var(--font-size-s);
+}
+.le-dp-details__schedule-table th.date,
+.le-dp-details__schedule-table td.date {
+  padding: 5px 10px 5px 0;
+  min-width: 100px;
+  text-align: center;
+}
+.le-dp-details__schedule-table th.time,
+.le-dp-details__schedule-table td.time {
+  padding: 5px 10px 5px 0;
+  min-width: 80px;
+  text-align: center;
+}
+
+.le-dp-details__schedule-table th {
+  text-align: center;
+}
+.le-dp-details__schedule-table th > span {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 4px;
+}
+.le-dp-details__schedule-table th > span > svg {
+  color: var(--color-brand-orange);
+}
+
+/* details--prices  */
+.le-dp-details__prices {
+  margin: 60px 0 0 0;
+}
+.le-dp-details__prices ul {
+  padding: 0;
+}
+.le-dp-details__prices li {
+  list-style: none;
+  padding: 0 0 10px 0;
+}
+/* details--prices--table */
+.le-dp-details__price-table th,
+.le-dp-details__price-table td {
+  padding: 5px 10px;
+  font-size: var(--font-size-s);
+}
+.le-dp-details__price-table th > span {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+}
+.le-dp-details__price-table th > span > svg {
+  color: var(--color-brand-orange);
+  margin-right: 4px;
+}
+.le-dp-details__price-table td:last-of-type > span {
+  font-size: 8px;
+}
 
 .lexix-cards {
   display: flex;
@@ -213,15 +274,6 @@ a.lexix-card-link::before {
 .lexdp__map iframe {
   width: 100%;
   min-height: 400px;
-}
-.lexdp__schedule-table th,
-.lexdp__schedule-table td {
-  padding: 5px 10px;
-}
-.lexdp__schedule-table th > span {
-  display: flex;
-  align-items: center;
-  gap: 5px;
 }
 
 /* related lessons */
