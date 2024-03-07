@@ -1,13 +1,37 @@
 /*
+* Both Pages
+*/
+/* general layout */
+#intro,
+#upcoming,
+#will-do,
+#teachers,
+#past-photos,
+#details {
+  margin-bottom: 120px;
+}
+
+/* list page gallery & detail page past photos */
+.le-lp-gallery__photos,
+.le-dp-past-photos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.6vw;
+  margin: 0 120px;
+}
+.le-lp-gallery__figure > img,
+.le-dp-past-photos__figure > img {
+  border-radius: var(--radius-small);
+  margin-bottom: 15px;
+}
+.le-lp-gallery__figure > figcaption,
+.le-dp-past-photos__figure > figcaption {
+  font-size: var(--font-size-xs);
+}
+
+/*
 * List Page
 */
-#intro {
-  margin-bottom: 120px;
-}
-/* upcomimg */
-#upcoming {
-  margin-bottom: 120px;
-}
 /* upcomimg--layout */
 .le-lp-upcoming__exp-wrapper.a {
   grid-column: 3/6;
@@ -68,21 +92,6 @@ a.le-lp-upcoming__exp__link:hover {
   background-color: var(--color-brand-brown);
 }
 
-/* gallery */
-.le-lp-gallery__photos {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.6vw;
-  margin: 0 120px;
-}
-.le-lp-gallery__figure > img {
-  border-radius: var(--radius-small);
-  margin-bottom: 15px;
-}
-.le-lp-gallery__figure > figcaption {
-  font-size: var(--font-size-xs);
-}
-
 /*
 * Detail Page
 */
@@ -118,14 +127,8 @@ a.le-lp-upcoming__exp__link:hover {
   margin-right: 10px;
 }
 /* will do */
-#will-do {
-  margin: 0 0 120px 0;
-}
 
 /* teachers */
-#teachers {
-  margin: 0 0 120px 0;
-}
 .le-dp-teachers__heading {
   grid-column: 1 /16;
 }
@@ -147,7 +150,8 @@ a.le-lp-upcoming__exp__link:hover {
   grid-column: 13 / 16;
 }
 
-/* past pictures */
+/* past photos */
+/* details  */
 
 .lexix-cards {
   display: flex;
