@@ -137,15 +137,19 @@ export default function LearningExperiencesIndexPage() {
       </section>
 
       <section id="gallery">
-        <h2>
-          h2 - {listPage.gallery_en_title}
-          <br />
-          <span>{listPage.gallery_jp_title}</span>
-        </h2>
-        <div className="lexix__photos">
+        <div>
+          <HeadingOne
+            enText={listPage.gallery_en_title}
+            jpText={listPage.gallery_jp_title}
+            align="center"
+            bkground="light"
+            level="h2"
+          />
+        </div>
+        <div className="le-lp-gallery__photos">
           {listPage.experiences_gallery.map((figure) => {
             return (
-              <figure key={figure.id}>
+              <figure className="le-lp-gallery__figure" key={figure.id}>
                 <img
                   src={`${ENV.BASE_BACK_URL}${figure.value.image.medium.src}`}
                   alt={figure.value.image.medium.alt}
@@ -155,6 +159,7 @@ export default function LearningExperiencesIndexPage() {
             );
           })}
         </div>
+        <div className="lexix__photos"></div>
       </section>
     </SlidingHeaderPage>
   );
