@@ -1,5 +1,9 @@
 import { Link, useLoaderData } from "@remix-run/react";
-import { json, type LinksFunction } from "@remix-run/node";
+import {
+  json,
+  type LinksFunction,
+  type V2_MetaFunction,
+} from "@remix-run/node";
 
 import { BASE_API_URL } from "~/common/constants.server";
 import { getGlobalEnv, getDateString } from "~/common/utils";
@@ -8,10 +12,22 @@ import pageCStyles from "~/styles/components/pages.css";
 import { HeadingOne } from "~/components/headings";
 import { getDivisor3LetterHash } from "~/common/utils";
 import { FaRegCalendar } from "react-icons/fa6";
+import { getTitle } from "~/common/utils";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: pageCStyles },
 ];
+
+export const meta: V2_MetaFunction = () => {
+  return [
+    {
+      title: getTitle({
+        title: "Learning Experiences・ラーニングエクスペリエンス",
+        isHome: false,
+      }),
+    },
+  ];
+};
 
 export async function loader() {
   try {
