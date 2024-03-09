@@ -1,5 +1,10 @@
 import { Link, useLoaderData } from "@remix-run/react";
-import { type LinksFunction, json, type LoaderArgs } from "@remix-run/node";
+import {
+  type LinksFunction,
+  json,
+  type LoaderArgs,
+  type V2_MetaFunction,
+} from "@remix-run/node";
 
 import { BASE_API_URL } from "~/common/constants.server";
 import { BlogCard } from "~/components/cards";
@@ -19,6 +24,7 @@ import {
 } from "react-icons/fa6";
 import { HeadingOne } from "~/components/headings";
 import cardStyles from "~/styles/components/cards.css";
+import { getTitle } from "~/common/utils";
 
 function getValidPrices(prices) {
   const now = new Date().getTime();
@@ -35,6 +41,13 @@ function getValidPrices(prices) {
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: cardStyles },
 ];
+
+export const meta: V2_MetaFunction = ({ data }) => {
+  const { page } = data;
+  return [
+    { title: getTitle({ title: `${page.display_title}`, isHome: false }) },
+  ];
+};
 
 export async function loader({ params }: LoaderArgs) {
   const { slug } = params;
@@ -196,7 +209,7 @@ export default function LearningExperiencesDetailPage() {
                   <h4>スケジュール</h4>
                   {block.value.intro && <p>{block.value.intro}</p>}
                   <table className="le-dp-details__schedule-table">
-                    <tbody>
+                    <thead>
                       {hasDate ? (
                         <tr>
                           <th className="date">
@@ -225,6 +238,8 @@ export default function LearningExperiencesDetailPage() {
                           </th>
                         </tr>
                       )}
+                    </thead>
+                    <tbody>
                       {block.value.schedule.map((row) => {
                         return (
                           <tr key={row.detail.slice(0, 12)}>
@@ -319,18 +334,16 @@ export default function LearningExperiencesDetailPage() {
           {page.related_lessons.map((item, i) => {
             const lesson = item.lesson;
             return (
-              <>
-                <BlogCard
-                  i={`item${i}`}
-                  key={lesson.id}
-                  slug={lesson.slug}
-                  src={`${ENV.BASE_BACK_URL}/${lesson.image.thumbnail.src}`}
-                  alt={lesson.image.thumbnail.alt}
-                  date={lesson.published_date}
-                  title={lesson.display_title}
-                  category={lesson.category}
-                />
-              </>
+              <BlogCard
+                i={`item${i}`}
+                key={lesson.id}
+                slug={lesson.slug}
+                src={`${ENV.BASE_BACK_URL}/${lesson.image.thumbnail.src}`}
+                alt={lesson.image.thumbnail.alt}
+                date={lesson.published_date}
+                title={lesson.display_title}
+                category={lesson.category}
+              />
             );
           })}
         </div>
