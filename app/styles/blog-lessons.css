@@ -500,26 +500,26 @@ a.bl-dp-header__details__cat::before {
   border: 2px solid var(--color-brand-green);
   border-radius: 20px;
   background-color: var(--color-brand-white);
-  padding-top: 70px; /*40px 40px 40px */
-  margin-bottom: 60px;
+  padding-top: 50px; /*40px 40px 40px */
+  margin-bottom: 20px;
 }
 
 .bl-dp__mctest__header {
   position: absolute;
   background-color: var(--color-brand-green);
   color: var(--color-brand-white);
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-m);
   font-weight: var(--font-w-semi-bold);
-  padding: 10px 60px 10px 20px;
+  padding: 6px 40px 6px 20px;
   border-radius: 20px 0 20px 0;
   top: 0;
   left: -2px;
 }
 .bl-dp__mctest__test {
-  padding: 0 40px 40px 40px;
+  padding: 0 20px 20px 20px;
 }
 .bl-dp__mctest__qa {
-  margin: 0 0 40px 0;
+  margin: 0 0 20px 0;
 }
 .bl-dp__mctest__qa > p {
   margin: 0 0 20px 0;
@@ -577,6 +577,25 @@ a.bl-dp-header__details__cat::before {
 .bl-dp__mctest__answer > p:last-of-type {
   font-weight: 700;
   padding-left: 20px;
+}
+@media (min-width: 48rem) {
+  .bl-dp__mctest {
+    padding-top: 70px; /*40px 40px 40px */
+    margin-bottom: 60px;
+  }
+
+  .bl-dp__mctest__header {
+    font-size: var(--font-size-xl);
+    padding: 10px 60px 10px 20px;
+    top: 0;
+    left: -2px;
+  }
+  .bl-dp__mctest__test {
+    padding: 0 40px 40px 40px;
+  }
+  .bl-dp__mctest__qa {
+    margin: 0 0 40px 0;
+  }
 }
 
 /* related lessons */
