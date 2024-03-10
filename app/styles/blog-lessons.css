@@ -300,16 +300,25 @@ a.bl-dp-header__details__cat::before {
 }
 
 /* header--image */
-.bl-detail__header-img {
-  width: 100%;
-  margin-bottom: 120px;
+.bl-dp-header__img-wrap {
+  margin-bottom: 40px;
 }
-.bl-detail__header-img > img {
+.bl-dp-header__img-wrap > img {
   width: 100%;
-  height: auto;
+}
+@media (min-width: 48rem) {
+  .bl-dp-header__img-wrap {
+    margin-bottom: 80px;
+  }
+}
+@media (min-width: 48rem) {
+  .bl-dp-header__img-wrap {
+    margin-bottom: 120px;
+  }
 }
 
-/* main blog lesson body */
+/* main body */
+/* main--figure */
 .bl-detail__figure {
   margin-bottom: 60px;
 }

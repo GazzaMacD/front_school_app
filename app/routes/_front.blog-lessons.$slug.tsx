@@ -259,7 +259,7 @@ export default function LessonsDetailPage() {
           </div>
         </div>
 
-        <div className="bl-detail__header-img">
+        <div className="bl-dp-header__img-wrap">
           <img
             src={`${ENV.BASE_BACK_URL}${page.header_image.medium.src}`}
             alt={page.header_image.title}
@@ -272,7 +272,7 @@ export default function LessonsDetailPage() {
           if (block.type === "rich_text") {
             return (
               <div
-                className="text-container"
+                className="g-narrow-container"
                 key={block.id}
                 dangerouslySetInnerHTML={{ __html: block.value }}
               />
