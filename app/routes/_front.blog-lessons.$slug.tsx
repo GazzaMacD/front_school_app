@@ -1,4 +1,4 @@
-import { json } from "@remix-run/node";
+import { json, type V2_MetaFunction } from "@remix-run/node";
 import { AiOutlineCalendar, AiOutlineClockCircle } from "react-icons/ai";
 import { Link, useLoaderData } from "@remix-run/react";
 import { RiEmotionHappyLine, RiEmotionUnhappyLine } from "react-icons/ri";
@@ -8,6 +8,7 @@ import { BASE_API_URL } from "~/common/constants.server";
 import { handlePreview } from "~/common/utils.server";
 import { Swoosh1 } from "~/components/swooshes";
 import { BlogCard } from "~/components/cards";
+import { getTitle } from "~/common/utils";
 
 /*types */
 import type { LoaderArgs } from "@remix-run/node";
@@ -159,6 +160,12 @@ function multipleChoiceCreator(data) {
   return data;
 }
 
+export const meta: V2_MetaFunction = ({ data }) => {
+  const { page } = data;
+  return [
+    { title: getTitle({ title: `${page.display_title}`, isHome: false }) },
+  ];
+};
 /*
  * Serverside functions
  */
@@ -200,14 +207,20 @@ export default function LessonsDetailPage() {
   const pubDate = new Date(page.published_date);
   return (
     <>
-      <header className="bl-detail__header">
-        <div className="container">
-          <h1 className="l-header__title">{page.display_title}</h1>
-          <p className="l-header__intro">{page.display_tagline}</p>
+      <header className="bl-dp-header">
+        <div className="g-basic-container">
+          <div className="bl-dp-header__titles">
+            <h1>
+              {page.display_title}
+              <span>{page.title}</span>
+            </h1>
+            <p>{page.display_tagline}</p>
+          </div>
         </div>
-        <div className="container">
-          <div className="bl-detail__sh">
-            <div className="bl-detail__sh__author">
+
+        <div className="g-basic-container">
+          <div className="bl-dp-header__details">
+            <div className="bl-dp-header__details__author">
               <Link to={`/staff/${page.author.slug}`}>
                 <img
                   src={`${ENV.BASE_BACK_URL}${page.author.image.thumbnail.src}`}
@@ -221,7 +234,7 @@ export default function LessonsDetailPage() {
                 </Link>
               </p>
             </div>
-            <div className="bl-detail__sh__date">
+            <div className="bl-dp-header__details__date">
               <AiOutlineCalendar />
               <p>
                 {" "}
@@ -230,18 +243,22 @@ export default function LessonsDetailPage() {
                 }.${pubDate.getDate()}`}
               </p>
             </div>
-            <div className="bl-detail__sh__learn">
+            <div className="bl-dp-header__details__learn">
               <AiOutlineClockCircle />
-              <p>この記事は{page.estimated_time}分で読めます</p>
+              <p>
+                <span>この記事は</span>
+                {page.estimated_time}分で読めます
+              </p>
             </div>
             <Link
               to={`/blog-lessons?category=${page.category.ja_name}`}
-              className="bl-detail__sh__cat"
+              className="bl-dp-header__details__cat"
             >
               {page.category.ja_name}
             </Link>
           </div>
         </div>
+
         <div className="bl-detail__header-img">
           <img
             src={`${ENV.BASE_BACK_URL}${page.header_image.medium.src}`}
@@ -249,6 +266,7 @@ export default function LessonsDetailPage() {
           />
         </div>
       </header>
+
       <section>
         {page.lesson_content.map((block: any) => {
           if (block.type === "rich_text") {
