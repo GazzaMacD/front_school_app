@@ -403,7 +403,7 @@ a.bl-dp-header__details__cat::before {
 }
 /* videos */
 .bl-detail__youtube {
-  margin: 60px auto 60px auto;
+  margin: 40px auto 40px auto;
   max-width: 1232px;
 }
 .bl-detail__youtube > iframe {
@@ -414,6 +414,11 @@ a.bl-dp-header__details__cat::before {
 @media screen and (orientation: portrait) {
   .bl-detail__youtube .youtube-short {
     aspect-ratio: 9 / 16;
+  }
+}
+@media (min-width: 48rem) {
+  .bl-detail__youtube {
+    margin: 60px auto 60px auto;
   }
 }
 /* teaching blocks */
