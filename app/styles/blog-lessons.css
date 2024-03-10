@@ -359,24 +359,47 @@ a.bl-dp-header__details__cat::before {
     align-self: flex-start;
   }
 }
-/* block quote */
-.bl-detail__bquote {
+
+/* main--block quote */
+.bl-dp__bquote {
   position: relative;
   background-color: var(--color-brand-white);
-  padding: 60px;
-  margin: 60px 0 60px 0;
+  padding: 20px;
+  margin: 40px 0 40px 0;
   border-radius: 20px;
 }
-.bl-detail__bquote > blockquote > p {
+.bl-dp__bquote > blockquote > p {
   margin-bottom: 30px;
 }
-.bl-detail__bquote::before {
+.bl-dp__bquote::before {
   content: "“";
   color: var(--color-brand-green);
   position: absolute;
-  font-size: 12rem;
-  top: -101px;
-  left: -23px;
+  font-size: 8rem;
+  top: -58px;
+  left: -12px;
+}
+@media (min-width: 48rem) {
+  .bl-dp__bquote {
+    position: relative;
+    background-color: var(--color-brand-white);
+    padding: 60px;
+    margin: 60px 0 60px 0;
+    border-radius: 20px;
+  }
+  .bl-dp__bquote > blockquote > p {
+    margin-bottom: 30px;
+  }
+  .bl-dp__bquote::before {
+    content: "“";
+    color: var(--color-brand-green);
+    position: absolute;
+    font-size: 12rem;
+    top: -101px;
+    left: -23px;
+  }
+}
+@media (min-width: 64rem) {
 }
 /* videos */
 .bl-detail__youtube {

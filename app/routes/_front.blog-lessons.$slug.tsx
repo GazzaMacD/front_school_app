@@ -321,8 +321,8 @@ export default function LessonsDetailPage() {
             );
           } else if (block.type === "block_quote") {
             return (
-              <div key={block.id} className="text-container">
-                <figure className="bl-detail__bquote">
+              <div key={block.id} className="g-narrow-container">
+                <figure className="bl-dp__bquote">
                   <blockquote cite={block.value?.citation_url}>
                     <p>{block.value.quote}</p>
                   </blockquote>
