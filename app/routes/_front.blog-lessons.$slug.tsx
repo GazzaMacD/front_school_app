@@ -360,7 +360,7 @@ export default function LessonsDetailPage() {
                   <div className="bl-dp__teach__header">
                     Learn from this conversation!
                   </div>
-                  <table className="bl-detail__conversation">
+                  <table className="bl-dp__conversation">
                     <tbody>
                       {block.value.conversation.map((lines: any) => {
                         return (
@@ -393,7 +393,7 @@ export default function LessonsDetailPage() {
                   </div>
                   {examples.map((s, i) => (
                     <div
-                      className="bl-detail__example-s"
+                      className="bl-dp__example-s"
                       key={i}
                       dangerouslySetInnerHTML={{ __html: s }}
                     />
@@ -411,12 +411,12 @@ export default function LessonsDetailPage() {
                   </div>
                   {list.map((s, i) => {
                     return (
-                      <div key={i} className="bl-detail__wr">
-                        <div className="bl-detail__wr--wrong">
+                      <div key={i} className="bl-dp__wr">
+                        <div className="bl-dp__wr--wrong">
                           <RiEmotionUnhappyLine />
                           <p>{s.wrong}</p>
                         </div>
-                        <div className="bl-detail__wr--right">
+                        <div className="bl-dp__wr--right">
                           <RiEmotionHappyLine />
                           <p>{s.right}</p>
                         </div>
@@ -432,7 +432,7 @@ export default function LessonsDetailPage() {
         })}
       </section>
 
-      <section className="bl-detail__related">
+      <section className="bl-dp__related">
         <div className="g-grid-container1">
           <h2>あなたへのおすすめ記事</h2>
         </div>
@@ -563,11 +563,9 @@ function MCQuestions({ value }: TMCQuestionsProps) {
     <div className="g-narrow-container">
       <h3>{value.title}</h3>
       <p>{value.intro}</p>
-      <div className="bl-detail__mctest">
-        <div className="bl-detail__mctest__header">
-          A fun multiple choice test!
-        </div>
-        <div className="bl-detail__mctest__test">
+      <div className="bl-dp__mctest">
+        <div className="bl-dp__mctest__header">A fun multiple choice test!</div>
+        <div className="bl-dp__mctest__test">
           <p>
             Please click on the answer. Only your first try will be recorded for
             the results. When you have finished, you can see your results and
@@ -590,10 +588,10 @@ function MCQuestions({ value }: TMCQuestionsProps) {
               : null}
           </div>
         </div>
-        <div className="bl-detail__mctest__answers">
+        <div className="bl-dp__mctest__answers">
           <div>
             <button
-              className="bl-detail__mctest__btn"
+              className="bl-dp__mctest__btn"
               onClick={() => setShowAnswers(!showAnswers)}
             >
               {showAnswers ? "Hide" : "Results & answers"}
@@ -602,7 +600,7 @@ function MCQuestions({ value }: TMCQuestionsProps) {
           <div>
             {showAnswers && (
               <>
-                <div className="bl-detail__mctest__results">
+                <div className="bl-dp__mctest__results">
                   <h5>Results</h5>
                   {numAnswered < numQuestions ? (
                     <p>Please finish the test to see your results.</p>
@@ -620,7 +618,7 @@ function MCQuestions({ value }: TMCQuestionsProps) {
                         return (
                           <div
                             key={q.question}
-                            className="bl-detail__mctest__answer"
+                            className="bl-dp__mctest__answer"
                           >
                             <p>
                               {q.questionNumber}: {q.question}
@@ -650,7 +648,7 @@ function MCQuestion({
   handleClick,
 }: TMCQuestionProps) {
   return (
-    <div className="bl-detail__mctest__qa">
+    <div className="bl-dp__mctest__qa">
       <p>
         {questionNumber}: {question}
       </p>
@@ -669,7 +667,7 @@ function MCQuestion({
                   question.text
                 );
               }}
-              className="bl-detail__mctest__choice"
+              className="bl-dp__mctest__choice"
             >
               <span>{letters[i]}: </span>
               {question.text}
