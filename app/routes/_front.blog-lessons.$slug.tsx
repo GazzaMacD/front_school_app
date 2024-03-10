@@ -336,7 +336,7 @@ export default function LessonsDetailPage() {
           } else if (block.type === "youtube") {
             return (
               <div key={block.id}>
-                <div className="bl-detail__youtube">
+                <div className="bl-dp__youtube">
                   <iframe
                     className={`youtube-iframe ${
                       block.value.short ? "youtube-short" : ""

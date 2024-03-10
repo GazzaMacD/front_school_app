@@ -402,22 +402,22 @@ a.bl-dp-header__details__cat::before {
 @media (min-width: 64rem) {
 }
 /* videos */
-.bl-detail__youtube {
+.bl-dp__youtube {
   margin: 40px auto 40px auto;
   max-width: 1232px;
 }
-.bl-detail__youtube > iframe {
+.bl-dp__youtube > iframe {
   aspect-ratio: 16 / 9;
   width: 100%;
   border: none;
 }
 @media screen and (orientation: portrait) {
-  .bl-detail__youtube .youtube-short {
+  .bl-dp__youtube .youtube-short {
     aspect-ratio: 9 / 16;
   }
 }
 @media (min-width: 48rem) {
-  .bl-detail__youtube {
+  .bl-dp__youtube {
     margin: 60px auto 60px auto;
   }
 }
@@ -441,6 +441,8 @@ a.bl-dp-header__details__cat::before {
   border-radius: 20px 0 20px 0;
   top: 0;
   left: -2px;
+}
+@media (min-width: 48rem) {
 }
 /* right wrong block */
 .bl-detail__wr {
