@@ -30,26 +30,22 @@ function BlogCard({
 }: TBlogCardProps) {
   const d = new Date(date);
   return (
-    <Link to={`/blog-lessons/${slug}`} className={`g-blog-card-link ${i}`}>
-      <div className="g-blog-card">
-        <div className="g-blog-card__img-wrapper">
-          <img className="g-blog-card__img" src={`${src}`} alt={alt} />
-          <div className="g-blog-card__overlay">
-            <div className="g-blog-card__overlay-inner">
+    <Link to={`/blog-lessons/${slug}`} className={`c-blog-card-link ${i}`}>
+      <div className="c-blog-card">
+        <div className="c-blog-card__img-wrapper">
+          <img className="c-blog-card__img" src={`${src}`} alt={alt} />
+          <div className="c-blog-card__overlay">
+            <div className="c-blog-card__overlay-inner">
               <h3>Let's Learn!</h3>
               <p>記事を読む</p>
               <FaArrowRightLong />
             </div>
           </div>
         </div>
-        <div className="g-blog-card__details">
-          <div className="g-blog-card__details__top">
+        <div className="c-blog-card__details">
+          <div className="c-blog-card__details__top">
             <p>{`${d.getFullYear()}.${d.getMonth() + 1}.${d.getDate()}`}</p>
-            <p>
-              <Link to={`/blog-lessons?category=${category.ja_name}`}>
-                [ {category.ja_name} ]
-              </Link>
-            </p>
+            <p>[ {category.ja_name} ]</p>
           </div>
           <h3>{title}</h3>
         </div>
