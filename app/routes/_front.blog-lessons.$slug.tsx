@@ -353,11 +353,11 @@ export default function LessonsDetailPage() {
             const p1 = block.value.person_one_name;
             const p2 = block.value.person_two_name;
             return (
-              <div key={block.id} className="text-container">
+              <div key={block.id} className="g-narrow-container">
                 <h3>{block.value.title}</h3>
                 <p>{block.value.intro}</p>
-                <div className="bl-detail__teach">
-                  <div className="bl-detail__teach__header">
+                <div className="bl-dp__teach">
+                  <div className="bl-dp__teach__header">
                     Learn from this conversation!
                   </div>
                   <table className="bl-detail__conversation">
@@ -386,9 +386,9 @@ export default function LessonsDetailPage() {
           } else if (block.type === "examples_list") {
             const examples = block.value.sentences_list;
             return (
-              <div key={block.id} className="text-container">
-                <div className="bl-detail__teach">
-                  <div className="bl-detail__teach__header">
+              <div key={block.id} className="g-narrow-container">
+                <div className="bl-dp__teach">
+                  <div className="bl-dp__teach__header">
                     Let's read and learn!
                   </div>
                   {examples.map((s, i) => (
@@ -404,9 +404,9 @@ export default function LessonsDetailPage() {
           } else if (block.type === "wrong_right_list") {
             const list = block.value.wrong_right_list;
             return (
-              <div key={block.id} className="text-container">
-                <div className="bl-detail__teach">
-                  <div className="bl-detail__teach__header">
+              <div key={block.id} className="g-narrow-container">
+                <div className="bl-dp__teach">
+                  <div className="bl-dp__teach__header">
                     Incorrect and Correct!
                   </div>
                   {list.map((s, i) => {
@@ -560,7 +560,7 @@ function MCQuestions({ value }: TMCQuestionsProps) {
   }, [value, testRecord]);
 
   return (
-    <div className="text-container">
+    <div className="g-narrow-container">
       <h3>{value.title}</h3>
       <p>{value.intro}</p>
       <div className="bl-detail__mctest">
