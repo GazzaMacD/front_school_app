@@ -259,7 +259,7 @@ export default function LessonsDetailPage() {
           </div>
         </div>
 
-        <div className="bl-detail__header-img">
+        <div className="bl-dp-header__img-wrap">
           <img
             src={`${ENV.BASE_BACK_URL}${page.header_image.medium.src}`}
             alt={page.header_image.title}
@@ -272,15 +272,15 @@ export default function LessonsDetailPage() {
           if (block.type === "rich_text") {
             return (
               <div
-                className="text-container"
+                className="g-narrow-container"
                 key={block.id}
                 dangerouslySetInnerHTML={{ __html: block.value }}
               />
             );
           } else if (block.type === "text_width_img") {
             return (
-              <div key={block.id} className="text-container">
-                <figure className="bl-detail__figure text-width">
+              <div key={block.id} className="g-narrow-container">
+                <figure className="bl-dp__figure text-width">
                   <img
                     src={`${ENV.BASE_BACK_URL}${block.value.image.original.src}`}
                     alt={block.value.image.original?.alt}
@@ -294,7 +294,7 @@ export default function LessonsDetailPage() {
           } else if (block.type === "full_width_img") {
             return (
               <div key={block.id}>
-                <figure className="bl-detail__figure full-width">
+                <figure className="bl-dp__figure full-width">
                   <img
                     src={`${ENV.BASE_BACK_URL}${block.value.image.original.src}`}
                     alt={block.value.image.original?.alt}
@@ -308,7 +308,7 @@ export default function LessonsDetailPage() {
           } else if (block.type === "beyond_text_img") {
             return (
               <div key={block.id}>
-                <figure className="bl-detail__figure beyond-text">
+                <figure className="bl-dp__figure beyond-text">
                   <img
                     src={`${ENV.BASE_BACK_URL}${block.value.image.original.src}`}
                     alt={block.value.image.original?.alt}
@@ -321,8 +321,8 @@ export default function LessonsDetailPage() {
             );
           } else if (block.type === "block_quote") {
             return (
-              <div key={block.id} className="text-container">
-                <figure className="bl-detail__bquote">
+              <div key={block.id} className="g-narrow-container">
+                <figure className="bl-dp__bquote">
                   <blockquote cite={block.value?.citation_url}>
                     <p>{block.value.quote}</p>
                   </blockquote>
@@ -336,7 +336,7 @@ export default function LessonsDetailPage() {
           } else if (block.type === "youtube") {
             return (
               <div key={block.id}>
-                <div className="bl-detail__youtube">
+                <div className="bl-dp__youtube">
                   <iframe
                     className={`youtube-iframe ${
                       block.value.short ? "youtube-short" : ""
@@ -353,14 +353,14 @@ export default function LessonsDetailPage() {
             const p1 = block.value.person_one_name;
             const p2 = block.value.person_two_name;
             return (
-              <div key={block.id} className="text-container">
+              <div key={block.id} className="g-narrow-container">
                 <h3>{block.value.title}</h3>
                 <p>{block.value.intro}</p>
-                <div className="bl-detail__teach">
-                  <div className="bl-detail__teach__header">
+                <div className="bl-dp__teach">
+                  <div className="bl-dp__teach__header">
                     Learn from this conversation!
                   </div>
-                  <table className="bl-detail__conversation">
+                  <table className="bl-dp__conversation">
                     <tbody>
                       {block.value.conversation.map((lines: any) => {
                         return (
@@ -386,14 +386,14 @@ export default function LessonsDetailPage() {
           } else if (block.type === "examples_list") {
             const examples = block.value.sentences_list;
             return (
-              <div key={block.id} className="text-container">
-                <div className="bl-detail__teach">
-                  <div className="bl-detail__teach__header">
+              <div key={block.id} className="g-narrow-container">
+                <div className="bl-dp__teach">
+                  <div className="bl-dp__teach__header">
                     Let's read and learn!
                   </div>
                   {examples.map((s, i) => (
                     <div
-                      className="bl-detail__example-s"
+                      className="bl-dp__example-s"
                       key={i}
                       dangerouslySetInnerHTML={{ __html: s }}
                     />
@@ -404,19 +404,19 @@ export default function LessonsDetailPage() {
           } else if (block.type === "wrong_right_list") {
             const list = block.value.wrong_right_list;
             return (
-              <div key={block.id} className="text-container">
-                <div className="bl-detail__teach">
-                  <div className="bl-detail__teach__header">
+              <div key={block.id} className="g-narrow-container">
+                <div className="bl-dp__teach">
+                  <div className="bl-dp__teach__header">
                     Incorrect and Correct!
                   </div>
                   {list.map((s, i) => {
                     return (
-                      <div key={i} className="bl-detail__wr">
-                        <div className="bl-detail__wr--wrong">
+                      <div key={i} className="bl-dp__wr">
+                        <div className="bl-dp__wr--wrong">
                           <RiEmotionUnhappyLine />
                           <p>{s.wrong}</p>
                         </div>
-                        <div className="bl-detail__wr--right">
+                        <div className="bl-dp__wr--right">
                           <RiEmotionHappyLine />
                           <p>{s.right}</p>
                         </div>
@@ -432,7 +432,7 @@ export default function LessonsDetailPage() {
         })}
       </section>
 
-      <section className="bl-detail__related">
+      <section className="bl-dp__related">
         <div className="g-grid-container1">
           <h2>あなたへのおすすめ記事</h2>
         </div>
@@ -560,14 +560,12 @@ function MCQuestions({ value }: TMCQuestionsProps) {
   }, [value, testRecord]);
 
   return (
-    <div className="text-container">
+    <div className="g-narrow-container">
       <h3>{value.title}</h3>
       <p>{value.intro}</p>
-      <div className="bl-detail__mctest">
-        <div className="bl-detail__mctest__header">
-          A fun multiple choice test!
-        </div>
-        <div className="bl-detail__mctest__test">
+      <div className="bl-dp__mctest">
+        <div className="bl-dp__mctest__header">A fun multiple choice test!</div>
+        <div className="bl-dp__mctest__test">
           <p>
             Please click on the answer. Only your first try will be recorded for
             the results. When you have finished, you can see your results and
@@ -590,10 +588,10 @@ function MCQuestions({ value }: TMCQuestionsProps) {
               : null}
           </div>
         </div>
-        <div className="bl-detail__mctest__answers">
+        <div className="bl-dp__mctest__answers">
           <div>
             <button
-              className="bl-detail__mctest__btn"
+              className="bl-dp__mctest__btn"
               onClick={() => setShowAnswers(!showAnswers)}
             >
               {showAnswers ? "Hide" : "Results & answers"}
@@ -602,7 +600,7 @@ function MCQuestions({ value }: TMCQuestionsProps) {
           <div>
             {showAnswers && (
               <>
-                <div className="bl-detail__mctest__results">
+                <div className="bl-dp__mctest__results">
                   <h5>Results</h5>
                   {numAnswered < numQuestions ? (
                     <p>Please finish the test to see your results.</p>
@@ -620,7 +618,7 @@ function MCQuestions({ value }: TMCQuestionsProps) {
                         return (
                           <div
                             key={q.question}
-                            className="bl-detail__mctest__answer"
+                            className="bl-dp__mctest__answer"
                           >
                             <p>
                               {q.questionNumber}: {q.question}
@@ -650,7 +648,7 @@ function MCQuestion({
   handleClick,
 }: TMCQuestionProps) {
   return (
-    <div className="bl-detail__mctest__qa">
+    <div className="bl-dp__mctest__qa">
       <p>
         {questionNumber}: {question}
       </p>
@@ -669,7 +667,7 @@ function MCQuestion({
                   question.text
                 );
               }}
-              className="bl-detail__mctest__choice"
+              className="bl-dp__mctest__choice"
             >
               <span>{letters[i]}: </span>
               {question.text}
