@@ -279,8 +279,8 @@ export default function LessonsDetailPage() {
             );
           } else if (block.type === "text_width_img") {
             return (
-              <div key={block.id} className="text-container">
-                <figure className="bl-detail__figure text-width">
+              <div key={block.id} className="g-narrow-container">
+                <figure className="bl-dp__figure text-width">
                   <img
                     src={`${ENV.BASE_BACK_URL}${block.value.image.original.src}`}
                     alt={block.value.image.original?.alt}
@@ -294,7 +294,7 @@ export default function LessonsDetailPage() {
           } else if (block.type === "full_width_img") {
             return (
               <div key={block.id}>
-                <figure className="bl-detail__figure full-width">
+                <figure className="bl-dp__figure full-width">
                   <img
                     src={`${ENV.BASE_BACK_URL}${block.value.image.original.src}`}
                     alt={block.value.image.original?.alt}
@@ -308,7 +308,7 @@ export default function LessonsDetailPage() {
           } else if (block.type === "beyond_text_img") {
             return (
               <div key={block.id}>
-                <figure className="bl-detail__figure beyond-text">
+                <figure className="bl-dp__figure beyond-text">
                   <img
                     src={`${ENV.BASE_BACK_URL}${block.value.image.original.src}`}
                     alt={block.value.image.original?.alt}
