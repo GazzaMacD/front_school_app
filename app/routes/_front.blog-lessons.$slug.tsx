@@ -1,4 +1,8 @@
-import { json, type V2_MetaFunction } from "@remix-run/node";
+import {
+  json,
+  type V2_MetaFunction,
+  type LinksFunction,
+} from "@remix-run/node";
 import { AiOutlineCalendar, AiOutlineClockCircle } from "react-icons/ai";
 import { Link, useLoaderData } from "@remix-run/react";
 import { RiEmotionHappyLine, RiEmotionUnhappyLine } from "react-icons/ri";
@@ -9,6 +13,8 @@ import { handlePreview } from "~/common/utils.server";
 import { Swoosh1 } from "~/components/swooshes";
 import { BlogCard } from "~/components/cards";
 import { getTitle } from "~/common/utils";
+import { getGlobalEnv } from "~/common/utils";
+import cardStyles from "~/styles/components/cards.css";
 
 /*types */
 import type { LoaderArgs } from "@remix-run/node";
@@ -18,7 +24,10 @@ import type {
   TListPageItemAllMeta,
   TBaseListPage,
 } from "~/common/types";
-import { getGlobalEnv } from "~/common/utils";
+
+export const links: LinksFunction = () => [
+  { rel: "stylesheet", href: cardStyles },
+];
 
 type TLessonDetailOptions = {
   jp_title: string;

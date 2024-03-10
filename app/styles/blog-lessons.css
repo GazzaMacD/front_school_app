@@ -600,11 +600,23 @@ a.bl-dp-header__details__cat::before {
 
 /* related lessons */
 .bl-dp__related {
-  padding: 116px 0 80px 0;
+  margin: 0 0 60px 0;
+  padding: 40px 0 40px 0;
   background-color: var(--color-brand-white);
 }
 .bl-dp__related > div:first-of-type h2 {
   grid-column: 1/16;
-  font-size: var(--font-size-3xl);
-  margin-bottom: 60px;
+  font-size: var(--font-size-xl);
+  margin-bottom: 40px;
+}
+
+@media (min-width: 48rem) {
+  .bl-dp__related {
+    padding: 116px 0 80px 0;
+    background-color: var(--color-brand-white);
+  }
+  .bl-dp__related > div:first-of-type h2 {
+    font-size: var(--font-size-3xl);
+    margin-bottom: 60px;
+  }
 }
