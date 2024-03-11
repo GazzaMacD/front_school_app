@@ -202,7 +202,7 @@ a.bl-post-link::before {
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center;
-  margin: 20px 0 60px 0;
+  margin: 15px 0 30px 0;
   gap: 15px;
 }
 .bl-dp-header__details__author {
@@ -236,12 +236,12 @@ a.bl-post-link::before {
 .bl-dp-header__details__learn {
   color: var(--color-brand-orange);
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: center;
 }
 .bl-dp-header__details__date p,
 .bl-dp-header__details__learn p {
-  margin: 0 0 0 10px;
+  margin: 0 0 0 6px;
   color: var(--color-brand-brown);
   font-size: var(--font-size-s);
 }
