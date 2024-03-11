@@ -8,7 +8,17 @@
 #teachers,
 #past-photos,
 #details {
-  margin-bottom: 120px;
+  margin-bottom: 40px;
+}
+@media (min-width: 48rem) {
+  #intro,
+  #upcoming,
+  #will-do,
+  #teachers,
+  #past-photos,
+  #details {
+    margin-bottom: 120px;
+  }
 }
 
 /* list page gallery & detail page past photos */
@@ -97,7 +107,7 @@ a.le-lp-upcoming__exp__link:hover {
 */
 /* header */
 .le-dp-header {
-  margin: 100px 0 120px 0;
+  margin: 40px 0 40px 0;
 }
 .le-dp-header__titles > h1 {
   margin: 0;
@@ -125,6 +135,11 @@ a.le-lp-upcoming__exp__link:hover {
   height: 16px;
   color: var(--color-brand-orange);
   margin-right: 10px;
+}
+@media (min-width: 48rem) {
+  .le-dp-header {
+    margin: 100px 0 120px 0;
+  }
 }
 /* will do */
 
