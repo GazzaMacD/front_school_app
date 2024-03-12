@@ -1,13 +1,108 @@
 /*
 * List page
 */
-.ls-lp {
+/* intro */
+.ls-lp-intro {
+  margin-bottom: 60px;
+}
+@media (min-width: 48rem) {
+  .ls-lp-intro {
+    margin-bottom: 120px;
+  }
 }
 /* schools list */
 .ls-lp-schools {
 }
-.ls-lp-school {
-  background-color: var(--color-brand-white);
+/* schools list -- layout */
+.ls-lp-school.t0,
+.ls-lp-school.t1 {
+  grid-column: 1 / 16;
+}
+@media (min-width: 64rem) {
+  .ls-lp-school.t0 {
+    grid-column: 1 /8;
+  }
+  .ls-lp-school.t1 {
+    grid-column: 9 /16;
+  }
+}
+/* schools list -- card */
+.ls-lp-school__img-wrap {
+  width: 100%;
+  display: flex;
+  margin-bottom: 20px;
+}
+.ls-lp-school__img-wrap > img {
+  border-radius: var(--radius-medium);
+  object-fit: cover;
+  max-height: 400px;
+  flex: 1;
+}
+.ls-lp-school__details {
+  display: flex;
+  flex-direction: column;
+}
+.ls-lp-school__heading {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 15px 0;
+}
+.ls-lp-school__heading > h3 {
+  color: var(--color-brand-green);
+  font-size: var(--font-size-xl);
+  margin: 0 0 10px 0;
+}
+.ls-lp-school__heading > p {
+  font-size: var(--font-size-s);
+  margin: 0;
+}
+.ls-lp-school__tagline {
+  margin: 0 0 15px 0;
+}
+a.ls-lp-school__link {
+  align-self: flex-end;
+  color: var(--color-brand-green);
+  border: 2px solid var(--color-brand-green);
+  border-radius: 50px;
+  padding: 4px 12px;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+a.ls-lp-school__link:hover {
+  color: var(--color-brand-white);
+  background-color: var(--color-brand-green);
+}
+a.ls-lp-school__link::before {
+  content: none;
+}
+@media (min-width: 48rem) {
+  .ls-lp-school__img-wrap {
+    margin-bottom: 40px;
+  }
+  .ls-lp-school__heading {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin: 0 0 22px 0;
+  }
+  .ls-lp-school__heading > h3 {
+    color: var(--color-brand-green);
+    font-size: var(--font-size-4xl);
+    margin: 0 40px 0 0;
+  }
+  .ls-lp-school__heading > p {
+    font-size: var(--font-size-l);
+    margin: 0;
+  }
+  a.ls-lp-school__link {
+    align-self: flex-end;
+    color: var(--color-brand-green);
+    border: 2px solid var(--color-brand-green);
+    border-radius: 50px;
+    padding: 8px 16px;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  }
+}
+@media (min-width: 64rem) {
 }
 
 /*
