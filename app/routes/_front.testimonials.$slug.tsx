@@ -37,8 +37,8 @@ export default function TestimonialsDetailPage() {
         <div className="test-testimonial__headimage">
           <img
             className="test-testimonial__image"
-            src={`${ENV.BASE_BACK_URL}${testimonial.customer_image.thumbnail.src}`}
-            alt={testimonial.customer_image.thumbnail.alt}
+            src={`${ENV.BASE_BACK_URL}${testimonial.customer_square_image.thumbnail.src}`}
+            alt={testimonial.customer_square_image.thumbnail.alt}
           />
         </div>
         <div className="test-testimonial__headtext">
@@ -53,9 +53,7 @@ export default function TestimonialsDetailPage() {
         </div>
       </header>
 
-      <div>
-        <p className="test-testimonial__comment">{testimonial.comment}</p>
-      </div>
+      <div dangerouslySetInnerHTML={{ __html: testimonial.comment }} />
       <section>
         {testimonial.customer_interview.map((block) => {
           if (block.type === "youtube") {
