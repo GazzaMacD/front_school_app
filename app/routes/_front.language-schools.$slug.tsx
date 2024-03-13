@@ -10,6 +10,13 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import { BASE_API_URL } from "~/common/constants.server";
 import { getGlobalEnv, getTitle } from "~/common/utils";
 import { HeadingOne } from "~/components/headings";
+import { SimpleImageGallery } from "~/components/galleries";
+import galleryStyles from "~/styles/components/galleries.css";
+import { Swoosh1 } from "~/components/swooshes";
+
+export const links: LinksFunction = () => [
+  { rel: "stylesheet", href: galleryStyles },
+];
 
 export const meta: V2_MetaFunction = ({ data }) => {
   const { page } = data;
@@ -41,6 +48,7 @@ export default function LanguageSchoolDetailPage() {
   const { page } = useLoaderData<typeof loader>();
   const ENV = getGlobalEnv();
   const ad = page.ls.address;
+
   return (
     <>
       <header className="ls-dp-header">
@@ -58,7 +66,6 @@ export default function LanguageSchoolDetailPage() {
           />
         </div>
       </header>
-
       <section id="intro">
         <div className="g-narrow-container">
           <HeadingOne
@@ -78,7 +85,6 @@ export default function LanguageSchoolDetailPage() {
           </div>
         </div>
       </section>
-
       <section id="access">
         <div className="g-narrow-container">
           <HeadingOne
@@ -116,25 +122,22 @@ export default function LanguageSchoolDetailPage() {
         </div>
       </section>
 
-      <section>
-        <h2>Photos of our School</h2>
-        <h4>学校の写真</h4>
-        <div>
-          {page.ls_photos.map((block) => {
-            if (block.type === "simple_image_block") {
-              return (
-                <figure key={block.id}>
-                  <img
-                    src={`${ENV.BASE_BACK_URL}${block.value.image.medium.src}`}
-                    alt={block.value.image.medium.alt}
-                  />
-                  <figcaption>{block.value.caption}</figcaption>
-                </figure>
-              );
-            }
-          })}
+      <section id="gallery">
+        <div className="g-narrow-container">
+          <HeadingOne
+            enText="Gallery"
+            jpText="ギャラリー"
+            align="center"
+            bkground="light"
+            level="h2"
+          />
         </div>
+        <SimpleImageGallery
+          images={page.ls_photos}
+          baseUrl={ENV.BASE_BACK_URL}
+        />
       </section>
+      <Swoosh1 swooshColor="beige" backColor="cream" />
     </>
   );
 }
