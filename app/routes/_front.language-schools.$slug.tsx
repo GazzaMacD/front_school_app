@@ -80,21 +80,39 @@ export default function LanguageSchoolDetailPage() {
       </section>
 
       <section id="access">
-        <h2>Location and Access</h2>
-        <h4>場所とアクセス</h4>
-        <div dangerouslySetInnerHTML={{ __html: page.display_map }} />
-        <div>
-          <h5>Address</h5>
-          <p>{ad.code}</p>
-          <p>{ad.country}</p>
-          <p>{ad.state}</p>
-          <p>{ad.city}</p>
-          {ad.line_two && <p>{ad.line_two}</p>}
-          <p>{ad.line_one}</p>
+        <div className="g-narrow-container">
+          <HeadingOne
+            enText="Access"
+            jpText="アクセス"
+            align="center"
+            bkground="light"
+            level="h2"
+          />
         </div>
-        <div>
-          <h5>Access</h5>
-          <p>{page.access_info}</p>
+        <div
+          className="ls-dp-access__map"
+          dangerouslySetInnerHTML={{ __html: page.display_map }}
+        />
+        <div className="g-basic-container">
+          <div className="ls-dp-access__contact">
+            <p>
+              〒{ad.code} {ad.state}
+              {ad.city}
+              {ad.line_two}
+              {ad.line_one}
+            </p>
+            <p>TEL：0561-42-5707</p>
+            <p>
+              メールアドレス：
+              <Link to="mailto:contact@xlingual.co.jp">
+                contact@xlingual.co.jp
+              </Link>
+            </p>
+          </div>
+          <div className="ls-dp-access__directions">
+            <p>[ 電車でお越しの方 ] {page.access_train} </p>
+            <p>[ お車でお越しの方 ] {page.access_car} </p>
+          </div>
         </div>
       </section>
 
