@@ -260,3 +260,8 @@ a.ls-lp-school__link::before {
     flex-direction: row;
   }
 }
+
+/* gallery */
+#gallery {
+  padding-bottom: 60px;
+}
