@@ -5,9 +5,11 @@ import {
   type LoaderArgs,
   type V2_MetaFunction,
 } from "@remix-run/node";
+import { FaArrowRightLong } from "react-icons/fa6";
 
 import { BASE_API_URL } from "~/common/constants.server";
 import { getGlobalEnv, getTitle } from "~/common/utils";
+import { HeadingOne } from "~/components/headings";
 
 export const meta: V2_MetaFunction = ({ data }) => {
   const { page } = data;
@@ -58,12 +60,23 @@ export default function LanguageSchoolDetailPage() {
       </header>
 
       <section id="intro">
-        <h2>Introduction</h2>
-        <h4>学校の紹介</h4>
-        <div dangerouslySetInnerHTML={{ __html: page.display_intro }} />
-        <Link to="/contact">無料体験レッスン</Link>
-        <Link to="/courses">Our Courses</Link>
-        <Link to="/language-schools">See more schools</Link>
+        <div className="g-narrow-container">
+          <HeadingOne
+            enText="Introduction"
+            jpText="学校紹介"
+            align="center"
+            bkground="light"
+            level="h2"
+          />
+          <div dangerouslySetInnerHTML={{ __html: page.display_intro }} />
+          <div className="ls-dp-intro__links">
+            <Link to="/contact">
+              無料体験レッスン <FaArrowRightLong />
+            </Link>
+            <Link to="/courses">コース一覧</Link>
+            <Link to="/language-schools">スクール一覧</Link>
+          </div>
+        </div>
       </section>
 
       <section id="access">
