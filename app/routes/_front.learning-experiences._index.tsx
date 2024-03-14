@@ -13,9 +13,12 @@ import { HeadingOne } from "~/components/headings";
 import { getDivisor3LetterHash } from "~/common/utils";
 import { FaRegCalendar } from "react-icons/fa6";
 import { getTitle } from "~/common/utils";
+import { SimpleImageGallery } from "~/components/galleries";
+import galleryStyles from "~/styles/components/galleries.css";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: pageCStyles },
+  { rel: "stylesheet", href: galleryStyles },
 ];
 
 export const meta: V2_MetaFunction = () => {
@@ -162,20 +165,10 @@ export default function LearningExperiencesIndexPage() {
             level="h2"
           />
         </div>
-        <div className="le-lp-gallery__photos">
-          {listPage.experiences_gallery.map((figure) => {
-            return (
-              <figure className="le-lp-gallery__figure" key={figure.id}>
-                <img
-                  src={`${ENV.BASE_BACK_URL}${figure.value.image.medium.src}`}
-                  alt={figure.value.image.medium.alt}
-                />
-                <figcaption>{figure.value.caption}</figcaption>
-              </figure>
-            );
-          })}
-        </div>
-        <div className="lexix__photos"></div>
+        <SimpleImageGallery
+          images={listPage.experiences_gallery}
+          baseUrl={ENV.BASE_BACK_URL}
+        />
       </section>
     </SlidingHeaderPage>
   );
