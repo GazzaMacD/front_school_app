@@ -186,25 +186,22 @@ export async function loader({ request, params }: LoaderArgs) {
     return json({ data: previewResponse.data });
   }
   //NOTE : deal with preview errrors here
-  try {
-    const { slug } = params;
-    if (!slug) {
-      throw new Response("Oops that's a 404", { status: 404 });
-    }
-    const apiUrl = `${BASE_API_URL}/pages/?type=lessons.LessonDetailPage&slug=${slug}&fields=*`;
-    console.log(apiUrl);
-    const res = await fetch(apiUrl);
-    const data = await res.json();
-    if (!res.ok || !data.items.length) {
-      throw new Response("Oops that's a 404", { status: 404 });
-    }
-    let page = data.items[0];
-    page = multipleChoiceCreator(page);
-    return json({ page });
-  } catch (error) {
-    console.error(error);
-    throw new Response("Oops sorry something went wrong", { status: 500 });
+  const { slug } = params;
+  if (!slug) {
+    throw new Response("Oops that's a 404", { status: 404 });
   }
+  const apiUrl = `${BASE_API_URL}/pages/?type=lessons.LessonDetailPage&slug=${slug}&fields=*`;
+  const res = await fetch(apiUrl);
+  const data = await res.json();
+  if (!res.ok || !data.items.length) {
+    throw new Response(
+      "Sorry, that's a 404. Seems there is nothing on this url",
+      { status: 404 }
+    );
+  }
+  let page = data.items[0];
+  page = multipleChoiceCreator(page);
+  return json({ page });
 } //loader
 
 /*
