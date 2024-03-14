@@ -10,6 +10,15 @@ ls - language school styles
 le - learning experiences
 
 ========
+Section  & Heading Bottom Margins
+Section 40px (s) > 80px (m) > 120px ( L ~ )
+Page heading (h1 brown) t = to menu & b = to next content (img) 
+ .    s - 30px t | 30px b  
+      m - 70px t | 40px b 
+      l - 100px t | 80px b 
+Heading1 (h2 green) 30px (s) > 40px (m) > 80px (l ~ ) 
+
+========
 Media queries
 - rem assumed at 16px == 1rem
 - Mobile first assumed 
@@ -2070,7 +2079,7 @@ label {
 @media (min-width: 48rem) {
   .g-heading1 {
     font-size: var(--font-size-5xl);
-    margin-bottom: calc(var(--r20px) * 5);
+    margin-bottom: calc(var(--r20px) * 2);
   }
   .g-heading1__jp {
     margin-top: var(--r15px);
