@@ -302,19 +302,19 @@ export default function LearningExperiencesDetailPage() {
         />
         {page.address && (
           <div className="g-basic-container">
-            <div className="le-dp-access__address">
-              <span>
+            <div className="le-dp-access__contact">
+              <p>
                 {page.address.postal_code} {page.address.city_town_village}{" "}
                 {page.address.line_two} {page.address.line_one}{" "}
                 {page.address.name}
-              </span>
-              <span>TEL: 0561-42-5707</span>
-              <span>
+              </p>
+              <p>TEL: 0561-42-5707</p>
+              <p>
                 メールアドレス:{" "}
                 <a href="mailto:contact@xlingual.co.jp">
                   contact@xlingual.co.jp
                 </a>
-              </span>
+              </p>
             </div>
           </div>
         )}

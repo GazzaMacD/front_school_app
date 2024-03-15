@@ -236,7 +236,7 @@ a.ls-lp-school__link::before {
 }
 .ls-dp-access__map > iframe {
   width: 100%;
-  min-height: 500px;
+  min-height: 450px;
 }
 .ls-dp-access__contact {
   display: flex;
