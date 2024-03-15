@@ -209,20 +209,54 @@ a.le-lp-upcoming__exp__link:hover {
 }
 /* teachers--layout*/
 .le-dp-teachers__teacher-wrap {
-  grid-column: 7 / 10;
+  grid-column: 5 / 12;
 }
 
 .le-dp-teachers__teacher-wrap.a {
-  grid-column: 5 / 8;
+  grid-column: 1 / 8;
 }
 .le-dp-teachers__teacher-wrap.b {
-  grid-column: 9 / 12;
+  grid-column: 9 / 16;
 }
 .le-dp-teachers__teacher-wrap.c {
-  grid-column: 1 / 4;
+  grid-column: 1 / 8;
 }
 .le-dp-teachers__teacher-wrap.d {
-  grid-column: 13 / 16;
+  grid-column: 9 / 16;
+}
+@media (min-width: 48rem) {
+  .le-dp-teachers__teacher-wrap {
+    grid-column: 6 / 11;
+  }
+  .le-dp-teachers__teacher-wrap.a {
+    grid-column: 2 / 7;
+  }
+  .le-dp-teachers__teacher-wrap.b {
+    grid-column: 10 / 15;
+  }
+  .le-dp-teachers__teacher-wrap.c {
+    grid-column: 2 / 7;
+  }
+  .le-dp-teachers__teacher-wrap.d {
+    grid-column: 10 / 15;
+  }
+}
+@media (min-width: 64rem) {
+  .le-dp-teachers__teacher-wrap {
+    grid-column: 7 / 10;
+  }
+  .le-dp-teachers__teacher-wrap.a {
+    grid-column: 5 / 8;
+  }
+  .le-dp-teachers__teacher-wrap.b {
+    grid-column: 9 / 12;
+  }
+  .le-dp-teachers__teacher-wrap.c {
+    grid-column: 1 / 4;
+  }
+  .le-dp-teachers__teacher-wrap.d {
+    grid-column: 13 / 16;
+  }
 }
 
 /* past photos */
