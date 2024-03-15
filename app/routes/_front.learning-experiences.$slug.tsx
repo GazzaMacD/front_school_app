@@ -10,6 +10,8 @@ import { BASE_API_URL } from "~/common/constants.server";
 import { BlogCard } from "~/components/cards";
 import { StaffRoundPicCard } from "~/components/cards";
 import { Swoosh1 } from "~/components/swooshes";
+import { SimpleImageGallery } from "~/components/galleries";
+import galleryStyles from "~/styles/components/galleries.css";
 import {
   getDateStringWithDays,
   getDivisor4LetterHash,
@@ -40,6 +42,7 @@ function getValidPrices(prices) {
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: cardStyles },
+  { rel: "stylesheet", href: galleryStyles },
 ];
 
 export const meta: V2_MetaFunction = ({ data }) => {
@@ -167,19 +170,10 @@ export default function LearningExperiencesDetailPage() {
             level="h2"
           />
         </div>
-        <div className="le-dp-past-photos">
-          {page.past_photos.map((p) => {
-            return (
-              <figure className="le-dp-past-photos__figure" key={p.id}>
-                <img
-                  src={`${ENV.BASE_BACK_URL}${p.value.image.medium.src}`}
-                  alt={p.value.image.medium.src}
-                />
-                {p.value.caption && <figcaption>{p.value.caption}</figcaption>}
-              </figure>
-            );
-          })}
-        </div>
+        <SimpleImageGallery
+          images={page.past_photos}
+          baseUrl={ENV.BASE_BACK_URL}
+        />
       </section>
 
       <section id="details">
