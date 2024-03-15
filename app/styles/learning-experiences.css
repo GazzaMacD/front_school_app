@@ -265,19 +265,21 @@ a.le-lp-upcoming__exp__link:hover {
 .le-dp-details__schedule-table th,
 .le-dp-details__schedule-table td {
   padding: 5px 10px;
-  font-size: var(--font-size-s);
+  font-size: var(--font-size-xs);
 }
 .le-dp-details__schedule-table th.date,
 .le-dp-details__schedule-table td.date {
   padding: 5px 10px 5px 0;
-  min-width: 100px;
+  min-width: 60px;
   text-align: center;
+  vertical-align: top;
 }
 .le-dp-details__schedule-table th.time,
 .le-dp-details__schedule-table td.time {
   padding: 5px 10px 5px 0;
-  min-width: 80px;
+  min-width: 50px;
   text-align: center;
+  vertical-align: top;
 }
 
 .le-dp-details__schedule-table th {
@@ -291,6 +293,26 @@ a.le-lp-upcoming__exp__link:hover {
 }
 .le-dp-details__schedule-table th > span > svg {
   color: var(--color-brand-orange);
+}
+@media (min-width: 48rem) {
+  .le-dp-details__schedule-table th,
+  .le-dp-details__schedule-table td {
+    font-size: var(--font-size-s);
+  }
+  .le-dp-details__schedule-table th.date,
+  .le-dp-details__schedule-table td.date {
+    padding: 5px 10px 5px 0;
+    min-width: 100px;
+    text-align: center;
+    vertical-align: top;
+  }
+  .le-dp-details__schedule-table th.time,
+  .le-dp-details__schedule-table td.time {
+    padding: 5px 10px 5px 0;
+    min-width: 80px;
+    text-align: center;
+    vertical-align: top;
+  }
 }
 
 /* details--prices  */
@@ -308,7 +330,7 @@ a.le-lp-upcoming__exp__link:hover {
 .le-dp-details__price-table th,
 .le-dp-details__price-table td {
   padding: 5px 10px;
-  font-size: var(--font-size-s);
+  font-size: var(--font-size-xs);
 }
 .le-dp-details__price-table th > span {
   display: flex;
@@ -321,6 +343,13 @@ a.le-lp-upcoming__exp__link:hover {
 }
 .le-dp-details__price-table td:last-of-type > span {
   font-size: 8px;
+}
+@media (min-width: 48rem) {
+  .le-dp-details__price-table th,
+  .le-dp-details__price-table td {
+    padding: 5px 10px;
+    font-size: var(--font-size-s);
+  }
 }
 
 /* access */

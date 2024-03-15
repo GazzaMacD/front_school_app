@@ -238,7 +238,7 @@ export default function LearningExperiencesDetailPage() {
                         return (
                           <tr key={row.detail.slice(0, 12)}>
                             {hasDate && <td className="date">{row?.date}</td>}
-                            <td className="">{row.time.slice(0, 5)}</td>
+                            <td className="time">{row.time.slice(0, 5)}</td>
                             <td className="info">{row.detail}</td>
                           </tr>
                         );
