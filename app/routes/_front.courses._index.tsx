@@ -44,70 +44,13 @@ export default function CoursesIndexPage() {
 
   return (
     <>
-      <header className="container">
-        <hgroup className="heading1">
-          <h1>
-            <span>{lp.title}</span>
-            {lp.display_title}
-          </h1>
-          <p>{lp.display_tagline}</p>
-        </hgroup>
+      <header>
+        <h1>
+          <span>{lp.title}</span>
+          {lp.display_title}
+        </h1>
+        <p>{lp.display_tagline}</p>
       </header>
-      <section>
-        <hgroup>
-          <h2>
-            <span>{lp.en_sec_title}</span>
-            <br />
-            {lp.en_sec_dis_title}
-          </h2>
-        </hgroup>
-        <section>
-          <h3>{lp.en_sec_pop_title}</h3>
-          <div>
-            {lp.pop_en_courses.map((cs) => {
-              return (
-                <Link
-                  key={cs.id}
-                  to={`/courses/${cs.course.subject_slug}/${cs.course.slug}`}
-                >
-                  <article>
-                    <img
-                      src={`${ENV.BASE_BACK_URL}${cs.course.image.thumbnail.src}`}
-                      alt={cs.course.image.thumbnail.alt}
-                    />
-                    <section>
-                      <hgroup>
-                        <h4>
-                          {cs.course.title} <br /> {cs.course.display_title}
-                        </h4>
-                      </hgroup>
-                    </section>
-                  </article>
-                </Link>
-              );
-            })}
-          </div>
-        </section>
-        <section>
-          <h3>{lp.en_sec_other_title}</h3>
-          <div>
-            {dp.map((cs) => {
-              return (
-                <Link
-                  key={cs.id}
-                  to={`/courses/${cs.subject_slug}/${cs.meta.slug}`}
-                >
-                  <div>
-                    {cs.title}
-                    <br />
-                    {cs.display_title}
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-        </section>
-      </section>
     </>
   );
 }
