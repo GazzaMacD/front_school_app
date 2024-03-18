@@ -1,20 +1,32 @@
-import { json, redirect } from "@remix-run/node";
+import { json, redirect, type V2_MetaFunction } from "@remix-run/node";
 import React from "react";
 import { Link, useLoaderData, useActionData } from "@remix-run/react";
 
 import { verifyEmail } from "~/common/session.server";
+import { getTitle } from "~/common/utils";
 //types
 import type { ActionArgs, LoaderArgs } from "@remix-run/node";
 import type { TVerifyResponse } from "~/common/types";
+import { SlidingHeaderPage } from "~/components/pages";
+import { FaArrowRightLong } from "react-icons/fa6";
 /*
-import stylesUrl from "~/styles/login.css";
-*/
-/*
-export const links: LinksFunction = () => [
-  { rel: "stylesheet", href: stylesUrl },
-];
-*/
+ * Helper functions
+ */
 
+export const meta: V2_MetaFunction = () => {
+  return [
+    {
+      title: getTitle({
+        title: "Confirm Email・Eメールを確認する",
+        isHome: false,
+      }),
+    },
+  ];
+};
+
+/*
+ * Server Functions
+ */
 export const action = async ({ request }: ActionArgs) => {
   const form = await request.formData();
   const key = form.get("key");
@@ -46,41 +58,66 @@ export const loader = async ({ params }: LoaderArgs) => {
   return json({ key });
 };
 
-export default function ConfirmEmailRoute() {
+/*
+ * Client Functions
+ */
+export default function ConfirmEmailPage() {
   const { key } = useLoaderData();
   const actionData = useActionData<TVerifyResponse>();
 
   let ui = (
-    <>
-      <p>
-        Thanks very much for signing up with us. Please click the button below
-        to confirm your account.
-      </p>
-      <form method="post" noValidate>
-        <div>
-          <input type="hidden" id="key-input" name="key" defaultValue={key} />
-        </div>
-        <button type="submit" className="button submit">
-          Confirm
+    <form className="au-form g-form" noValidate method="post">
+      <div className="au-form__top-message">
+        <p>
+          Thanks very much for signing up with us. Please click the button below
+          to confirm your account.
+        </p>
+      </div>
+      <div>
+        <input type="hidden" id="key-input" name="key" defaultValue={key} />
+      </div>
+      <div className="g-form__submit">
+        <button type="submit">
+          Eメールを確認する
+          <FaArrowRightLong />
         </button>
-      </form>
-    </>
+      </div>
+    </form>
   );
 
   if (actionData && !actionData.success) {
     ui = (
-      <ul className="form-nonfield-errors">
-        <li role="alert">
-          Oops we are sorry! There seems to be an error with your confirmation.
-          Please try again.
-        </li>
-      </ul>
+      <form className="au-form g-form" noValidate method="post">
+        <div className="g-form__nonfield-errors">
+          <ul>
+            <li role="alert">
+              There seems to be a problem with confirming your email. Please
+              contact us on the contact form.
+            </li>
+          </ul>
+        </div>
+        <div>
+          <input type="hidden" id="key-input" name="key" defaultValue={key} />
+        </div>
+        <div className="g-form__submit">
+          <button type="submit" disabled={true}>
+            Eメールを確認する
+            <FaArrowRightLong />
+          </button>
+        </div>
+      </form>
     );
   }
   return (
-    <>
-      <h1 className="auth__heading">Confirm Email</h1>
-      {ui}
-    </>
+    <SlidingHeaderPage
+      mainTitle="Confirm Email"
+      subTitle="Eメールを確認する"
+      swooshBackColor="cream"
+      swooshFrontColor="beige"
+    >
+      <div className="au-wrapper">
+        <div className="au-wrapper__inner">{ui}</div>
+      </div>
+    </SlidingHeaderPage>
   );
 }
