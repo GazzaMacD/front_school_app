@@ -50,7 +50,11 @@ export default function CourseDetailPage() {
   return (
     <>
       <header>
-        <h1>{data.display_title}</h1>
+        <h1>
+          {data.title}
+          <br></br>
+          {data.display_title}
+        </h1>
         <img
           src={`${ENV.BASE_BACK_URL}${data.header_image.original.src}`}
           alt={data.header_image.original.alt}
