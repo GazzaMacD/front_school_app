@@ -1,6 +1,6 @@
 import { json, redirect, type V2_MetaFunction } from "@remix-run/node";
 import React from "react";
-import { Link, useLoaderData, useActionData } from "@remix-run/react";
+import { useLoaderData, useActionData } from "@remix-run/react";
 
 import { verifyEmail } from "~/common/session.server";
 import { getTitle } from "~/common/utils";

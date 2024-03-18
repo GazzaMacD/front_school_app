@@ -1,4 +1,4 @@
-import { Link, useActionData, useSearchParams } from "@remix-run/react";
+import { Link, useActionData } from "@remix-run/react";
 import {
   type V2_MetaFunction,
   type ActionArgs,
@@ -7,7 +7,7 @@ import {
 } from "@remix-run/node";
 import React from "react";
 
-import { register, createUserSession } from "~/common/session.server";
+import { register } from "~/common/session.server";
 import { MESSAGES } from "~/common/languageDictionary";
 import { getTitle } from "~/common/utils";
 import { SlidingHeaderPage } from "~/components/pages";
@@ -55,7 +55,6 @@ export const action = async ({ request }: ActionArgs) => {
   }
   const fields = { email, password1, password2 };
   const response = await register({ email, password1, password2 });
-  console.log(response);
   if (!response.success) {
     return json<TRegisterActionResponse>(
       {
