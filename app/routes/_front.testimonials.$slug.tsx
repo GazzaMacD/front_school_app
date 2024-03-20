@@ -3,12 +3,7 @@ import { type LinksFunction, type LoaderArgs, json } from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
 import { getGlobalEnv } from "~/common/utils";
 
-import aboutStyles from "../styles/about.css";
 import { BASE_API_URL } from "~/common/constants.server";
-
-export const links: LinksFunction = () => [
-  { rel: "stylesheet", href: aboutStyles },
-];
 
 export async function loader({ params }: LoaderArgs) {
   const { slug } = params;
@@ -28,32 +23,36 @@ export default function TestimonialsDetailPage() {
   const { testimonial } = useLoaderData<typeof loader>();
   const ENV = getGlobalEnv();
   return (
-    <div className="container">
-      <header className="test-testimonial__header">
-        <hgroup>
-          <p>Testimonial and Interview - {testimonial.title}</p>
-          <h1>お客様の声と面接 - {testimonial.customer_name}</h1>
-        </hgroup>
-        <div className="test-testimonial__headimage">
-          <img
-            className="test-testimonial__image"
-            src={`${ENV.BASE_BACK_URL}${testimonial.customer_square_image.thumbnail.src}`}
-            alt={testimonial.customer_square_image.thumbnail.alt}
-          />
-        </div>
-        <div className="test-testimonial__headtext">
-          {testimonial.occupation && (
-            <p className="test-testimonial__occu">{testimonial.occupation}</p>
-          )}
-          {testimonial.organization_name && (
-            <p className="test-testimonial__org">
-              {testimonial.organization_name}
-            </p>
-          )}
+    <>
+      <header className="te-dp-header">
+        <div className="g-grid-container1">
+          <div className="te-dp-header__img-wrapper">
+            <img
+              src={`${ENV.BASE_BACK_URL}${testimonial.customer_portrait_image.thumbnail.src}`}
+              alt={testimonial.customer_portrait_image.thumbnail.alt}
+            />
+          </div>
+          <div className="te-dp-header__details">
+            <h1>{testimonial.customer_name}</h1>
+            {testimonial.occupation && <p>{testimonial.occupation}</p>}
+            {testimonial.organization_name && (
+              <p className="test-testimonial__org">
+                {testimonial.organization_name}
+              </p>
+            )}
+          </div>
         </div>
       </header>
 
-      <div dangerouslySetInnerHTML={{ __html: testimonial.comment }} />
+      <section>
+        <div>
+          <div
+            className=""
+            dangerouslySetInnerHTML={{ __html: testimonial.comment }}
+          />
+        </div>
+      </section>
+
       <section>
         {testimonial.customer_interview.map((block) => {
           if (block.type === "youtube") {
@@ -100,6 +99,6 @@ export default function TestimonialsDetailPage() {
           }
         })}
       </section>
-    </div>
+    </>
   );
 }

@@ -1,4 +1,9 @@
-import { type LinksFunction, json, type LoaderArgs } from "@remix-run/node";
+import {
+  type LinksFunction,
+  json,
+  type LoaderArgs,
+  redirect,
+} from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
 import { getGlobalEnv } from "~/common/utils";
 
@@ -10,6 +15,8 @@ export const links: LinksFunction = () => [
 ];
 
 export async function loader({ params }: LoaderArgs) {
+  return redirect("/");
+  /*
   const { slug } = params;
   try {
     const testimonialsUrl = `${BASE_API_URL}/pages/?type=testimonials.TestimonialDetailPage&fields=*`;
@@ -21,8 +28,9 @@ export async function loader({ params }: LoaderArgs) {
   } catch (error) {
     throw new Response("sorry, that is a 500", { status: 500 });
   }
+  */
 }
-
+/*
 export default function TestimonialsIndexPage() {
   const { testimonials } = useLoaderData<typeof loader>();
   const ENV = getGlobalEnv();
@@ -67,3 +75,4 @@ export default function TestimonialsIndexPage() {
     </>
   );
 }
+*/
