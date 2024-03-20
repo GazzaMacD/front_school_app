@@ -56,3 +56,17 @@
 }
 
 /* testimonial */
+#testimonial {
+  margin-bottom: 40px;
+}
+
+@media (min-width: 48rem) {
+  #testimonial {
+    margin-bottom: 80px;
+  }
+}
+@media (min-width: 48rem) {
+  #testimonial {
+    margin-bottom: 120px;
+  }
+}

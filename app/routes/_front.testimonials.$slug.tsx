@@ -44,10 +44,10 @@ export default function TestimonialsDetailPage() {
         </div>
       </header>
 
-      <section>
+      <section id="testimonial">
         <div>
           <div
-            className=""
+            className="g-narrow-container"
             dangerouslySetInnerHTML={{ __html: testimonial.comment }}
           />
         </div>
