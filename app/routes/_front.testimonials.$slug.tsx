@@ -4,6 +4,7 @@ import { Link, useLoaderData } from "@remix-run/react";
 import { getGlobalEnv } from "~/common/utils";
 
 import { BASE_API_URL } from "~/common/constants.server";
+import { Swoosh1 } from "~/components/swooshes";
 
 export async function loader({ params }: LoaderArgs) {
   const { slug } = params;
@@ -53,45 +54,49 @@ export default function TestimonialsDetailPage() {
         </div>
       </section>
 
-      <section>
+      <section id="interview">
         {testimonial.customer_interview.map((block) => {
           if (block.type === "youtube") {
             return (
-              <div key={block.id} className="container">
-                <iframe
-                  className={`youtube-iframe ${
-                    block.value.short ? "youtube-short" : ""
-                  }`}
-                  src={`${block.value.src}?modestbranding=1&controls=0&rel=0`}
-                  title="YouTube video player"
-                  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
+              <div key={block.id} className="g-basic-container">
+                <div className="te-dp-interview__video">
+                  <iframe
+                    className={`g-youtube-iframe ${
+                      block.value.short ? "g-youtube-short" : ""
+                    }`}
+                    src={`${block.value.src}?modestbranding=1&controls=0&rel=0`}
+                    title="YouTube video player"
+                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                </div>
               </div>
             );
           } else if (block.type === "conversation") {
             const p1 = block.value.person_one_name;
             const p2 = block.value.person_two_name;
             return (
-              <div key={block.id} className="text-container">
-                <div className="l-conv">
-                  <h4 className="l-conv__title">{block.value.title}</h4>
+              <div key={block.id} className="g-narrow-container">
+                <div className="te-dp-interview__text">
+                  <h4>{block.value.title}</h4>
                   <p>{block.value.intro}</p>
-                  <table className="l-conv__table">
-                    {block.value.conversation.map((lines: any) => {
-                      return (
-                        <React.Fragment key={lines.person_one.slice(0, 6)}>
-                          <tr>
-                            <td>{p1}</td>
-                            <td>:</td> <td>{lines.person_one}</td>
-                          </tr>
-                          <tr>
-                            <td>{p2}</td>
-                            <td>:</td> <td>{lines.person_two}</td>
-                          </tr>
-                        </React.Fragment>
-                      );
-                    })}
+                  <table className="te-dp-interview__text__table">
+                    <tbody>
+                      {block.value.conversation.map((lines: any) => {
+                        return (
+                          <React.Fragment key={lines.person_one.slice(0, 6)}>
+                            <tr>
+                              <td>{p1}</td>
+                              <td>:</td> <td>{lines.person_one}</td>
+                            </tr>
+                            <tr>
+                              <td>{p2}</td>
+                              <td>:</td> <td>{lines.person_two}</td>
+                            </tr>
+                          </React.Fragment>
+                        );
+                      })}
+                    </tbody>
                   </table>
                 </div>
               </div>
@@ -99,6 +104,7 @@ export default function TestimonialsDetailPage() {
           }
         })}
       </section>
+      <Swoosh1 swooshColor="beige" backColor="cream" />
     </>
   );
 }

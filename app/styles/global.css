@@ -763,6 +763,18 @@ alignment with container grid 1
   }
 }
 /* youtube iframe */
+.g-youtube-iframe {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  border: none;
+}
+@media screen and (orientation: portrait) {
+  .g-youtube-short {
+    aspect-ratio: 9 / 16;
+  }
+}
+
+/* youtube iframe */
 .youtube-iframe {
   aspect-ratio: 16 / 9;
   width: 100%;

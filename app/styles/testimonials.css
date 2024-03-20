@@ -65,8 +65,41 @@
     margin-bottom: 80px;
   }
 }
-@media (min-width: 48rem) {
+@media (min-width: 64rem) {
   #testimonial {
+    margin-bottom: 120px;
+  }
+}
+
+/* interview */
+/* interview--video */
+.te-dp-interview__video {
+  margin: 0 auto 40px auto;
+  max-width: 1232px;
+}
+@media (min-width: 48rem) {
+  .te-dp-interview__video {
+    margin: 0 auto 60px auto;
+  }
+}
+
+/* interview--text */
+.te-dp-interview__text__table td {
+  vertical-align: top;
+}
+
+#interview {
+  margin-bottom: 40px;
+  padding-bottom: 60px;
+}
+
+@media (min-width: 48rem) {
+  #interview {
+    margin-bottom: 80px;
+  }
+}
+@media (min-width: 64rem) {
+  #interview {
     margin-bottom: 120px;
   }
 }
