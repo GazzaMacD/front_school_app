@@ -2,6 +2,10 @@
 * List Page 
 */
 /* popular courses */
+#popular {
+  margin-bottom: 40px;
+}
+
 .cs-lp-popular__heading {
   grid-column: 1 /16;
 }
@@ -14,6 +18,9 @@
 }
 
 @media (min-width: 48rem) {
+  #popular {
+    margin-bottom: 80px;
+  }
   .cs-lp-popular__card.a,
   .cs-lp-popular__card.c {
     grid-column: 1 / 8;
@@ -24,6 +31,9 @@
   }
 }
 @media (min-width: 75rem) {
+  #popular {
+    margin-bottom: 120px;
+  }
   .cs-lp-popular__card.a {
     grid-column: 1 / 4;
   }
@@ -35,5 +45,101 @@
   }
   .cs-lp-popular__card.d {
     grid-column: 13 / 16;
+  }
+}
+
+/* popular courses */
+.cs-lp-language__heading {
+  grid-column: 1 /16;
+}
+
+.cs-lp-language__col.a,
+.cs-lp-language__col.b,
+.cs-lp-language__col.c,
+.cs-lp-language__col.d {
+  grid-column: 1 / 16;
+  margin-bottom: 20px;
+}
+
+@media (min-width: 48rem) {
+  #popular {
+    margin-bottom: 80px;
+  }
+  .cs-lp-language__col.a,
+  .cs-lp-language__col.c {
+    grid-column: 1 / 8;
+    margin-bottom: 40px;
+  }
+  .cs-lp-language__col.b,
+  .cs-lp-language__col.d {
+    grid-column: 9 / 16;
+    margin-bottom: 40px;
+  }
+}
+@media (min-width: 75rem) {
+  #popular {
+    margin-bottom: 120px;
+  }
+  .cs-lp-language__col.a {
+    grid-column: 1 / 4;
+  }
+  .cs-lp-language__col.b {
+    grid-column: 5 / 8;
+  }
+  .cs-lp-language__col.c {
+    grid-column: 9 / 12;
+  }
+  .cs-lp-language__col.d {
+    grid-column: 13 / 16;
+  }
+}
+.cs-lp-language__col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.cs-lp-language__col > h3 {
+  font-size: var(--font-size-2xl);
+  margin-bottom: 10px;
+}
+
+a.cs-lp-language__link::before {
+  content: none;
+}
+a.cs-lp-language__link {
+  display: block;
+  position: relative;
+  padding: 10px 50px 10px 20px;
+  border-radius: 10px;
+  border: 2px solid var(--color-brand-green);
+  font-size: var(--font-size-s);
+  color: var(--color-brand-green);
+  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+a.cs-lp-language__link svg {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  right: 15px;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+}
+a.cs-lp-language__link:hover {
+  background-color: var(--color-brand-green);
+  color: var(--color-brand-cream);
+}
+
+@media (min-width: 48rem) {
+  .cs-lp-language__col {
+    gap: 20px;
+  }
+  .cs-lp-language__col > h3 {
+    font-size: var(--font-size-2xl);
+    margin-bottom: 10px;
+  }
+  a.cs-lp-language__link {
+    max-width: 260px;
+    border-radius: 25px;
   }
 }
