@@ -3,6 +3,20 @@ import { type LinksFunction, json } from "@remix-run/node";
 
 import { BASE_API_URL } from "~/common/constants.server";
 import { getGlobalEnv } from "~/common/utils";
+import { SlidingHeaderPage } from "~/components/pages";
+import pageStyles from "~/styles/components/pages.css";
+
+/**
+ *  Utils and helper functions
+ */
+
+export const links: LinksFunction = () => [
+  { rel: "stylesheet", href: pageStyles },
+];
+
+/**
+ *  Server functions
+ */
 
 export async function loader() {
   try {
@@ -38,19 +52,21 @@ export async function loader() {
   }
 }
 
+/**
+ * Page
+ */
 export default function CoursesIndexPage() {
   const { listPage: lp, dPages: dp } = useLoaderData<typeof loader>();
   const ENV = getGlobalEnv();
 
   return (
-    <>
-      <header>
-        <h1>
-          <span>{lp.title}</span>
-          {lp.display_title}
-        </h1>
-        <p>{lp.display_tagline}</p>
-      </header>
-    </>
+    <SlidingHeaderPage
+      mainTitle={lp.title}
+      subTitle={lp.display_title}
+      swooshBackColor="cream"
+      swooshFrontColor="beige"
+    >
+      content
+    </SlidingHeaderPage>
   );
 }
