@@ -1,3 +1,39 @@
-/*
-* Courses with prefix cs- 
+/**
+* List Page 
 */
+/* popular courses */
+.cs-lp-popular__heading {
+  grid-column: 1 /16;
+}
+/* popular courses--cards-layout */
+.cs-lp-popular__card.a,
+.cs-lp-popular__card.b,
+.cs-lp-popular__card.c,
+.cs-lp-popular__card.d {
+  grid-column: 1 / 16;
+}
+
+@media (min-width: 48rem) {
+  .cs-lp-popular__card.a,
+  .cs-lp-popular__card.c {
+    grid-column: 1 / 8;
+  }
+  .cs-lp-popular__card.b,
+  .cs-lp-popular__card.d {
+    grid-column: 9 / 16;
+  }
+}
+@media (min-width: 75rem) {
+  .cs-lp-popular__card.a {
+    grid-column: 1 / 4;
+  }
+  .cs-lp-popular__card.b {
+    grid-column: 5 / 8;
+  }
+  .cs-lp-popular__card.c {
+    grid-column: 9 / 12;
+  }
+  .cs-lp-popular__card.d {
+    grid-column: 13 / 16;
+  }
+}
