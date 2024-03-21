@@ -4,7 +4,11 @@ import { type LinksFunction, json } from "@remix-run/node";
 import { BASE_API_URL } from "~/common/constants.server";
 import { getGlobalEnv } from "~/common/utils";
 import { SlidingHeaderPage } from "~/components/pages";
+import { DetailLinkCard } from "~/components/cards";
+import { HeadingOne } from "~/components/headings";
+import { getDivisor4LetterHash } from "~/common/utils";
 import pageStyles from "~/styles/components/pages.css";
+import cardStyles from "~/styles/components/cards.css";
 
 /**
  *  Utils and helper functions
@@ -12,6 +16,7 @@ import pageStyles from "~/styles/components/pages.css";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: pageStyles },
+  { rel: "stylesheet", href: cardStyles },
 ];
 
 /**
@@ -58,6 +63,7 @@ export async function loader() {
 export default function CoursesIndexPage() {
   const { listPage: lp, dPages: dp } = useLoaderData<typeof loader>();
   const ENV = getGlobalEnv();
+  const popularHash = getDivisor4LetterHash(lp.popular_courses.length);
 
   return (
     <SlidingHeaderPage
@@ -66,7 +72,37 @@ export default function CoursesIndexPage() {
       swooshBackColor="cream"
       swooshFrontColor="beige"
     >
-      content
+      <section id="popular">
+        <div className="cs-lp-popular">
+          <div className="g-grid-container1">
+            <div className="cs-lp-popular__heading">
+              <HeadingOne
+                enText={lp.popular_en_title}
+                jpText={lp.popular_jp_title}
+                align="center"
+                bkground="light"
+                level="h2"
+              />
+            </div>
+            {lp.popular_courses.map((c, i) => {
+              return (
+                <div
+                  key={c.id}
+                  className={`cs-lp-popular__card ${popularHash[i]}`}
+                >
+                  <DetailLinkCard
+                    title={c.course.display_title}
+                    tagline={c.course.display_tagline}
+                    src={`${ENV.BASE_BACK_URL}${c.course.image.thumbnail.src}`}
+                    alt={`${c.course.image.thumbnail.alt}`}
+                    url={`/courses/${c.course.subject_slug}/${c.course.slug}`}
+                  />
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
     </SlidingHeaderPage>
   );
 }

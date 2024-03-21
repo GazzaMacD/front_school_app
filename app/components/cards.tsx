@@ -134,4 +134,36 @@ function NumberedHorizontalCards({
     </article>
   );
 }
-export { BlogCard, StaffRoundPicCard, NumberedHorizontalCards };
+
+/**
+ * Detail Link Card
+ */
+type TDetailLinkCard = {
+  title: string;
+  tagline?: string;
+  src: string;
+  alt: string;
+  url: string;
+};
+
+function DetailLinkCard({ title, url, tagline, src, alt }: TDetailLinkCard) {
+  return (
+    <article className="c-dl-card">
+      <div className="c-dl-card__img-wrapper">
+        <img src={src} alt={alt} />
+      </div>
+      <div className="c-dl-card__details">
+        <h3>{title}</h3>
+        {tagline && (
+          <p>
+            {tagline.length > 30 ? `${tagline.slice(0, 30)}。。。` : tagline}
+          </p>
+        )}
+      </div>
+      <Link className="c-dl-card__link" to={url}>
+        詳しく見る
+      </Link>
+    </article>
+  );
+}
+export { BlogCard, StaffRoundPicCard, NumberedHorizontalCards, DetailLinkCard };
