@@ -3,6 +3,8 @@ import { useLoaderData, Link } from "@remix-run/react";
 
 import { BASE_API_URL } from "~/common/constants.server";
 import { getGlobalEnv } from "~/common/utils";
+import { FaGlobe, FaArrowUpWideShort } from "react-icons/fa6";
+import { BsFillBarChartFill, BsGlobe, BsJournalText } from "react-icons/bs";
 
 /*
  * types
@@ -27,139 +29,78 @@ export async function loader({ request, params }: LoaderArgs) {
         status: 404,
       });
     }
-    const data = pagesData.items[0];
-    return { data };
+    const page = pagesData.items[0];
+    return { page };
   } catch (error) {
     throw new Response("Oops sorry something went wrong", {
       status: 500,
     });
   }
 }
-/*
- * page function
+/**
+ * Page
  */
 
 export default function CourseDetailPage() {
-  const { data } = useLoaderData<typeof loader>();
+  const { page } = useLoaderData<typeof loader>();
   const ENV = getGlobalEnv();
-  const subject = data.course.subject as "english" | "japanese" | "french";
-  const subjectDisplay = data.course.subject_display.split(",");
-  const categoryDisplay = data.course.course_category_display.split(",");
-  const levelFromDisplay = data.level_from.display.split(",");
-  const levelToDisplay = data.level_to.display.split(",");
+  const subject = page.course.subject as "english" | "japanese" | "french";
+  const subjectDisplay = page.course.subject_display.split(",");
+  const categoryDisplay = page.course.course_category_display.split(",");
+  const levelFromDisplay = page.level_from.display.split(",");
+  const levelToDisplay = page.level_to.display.split(",");
   return (
     <>
-      <header>
-        <h1>
-          {data.title}
-          <br></br>
-          {data.display_title}
-        </h1>
-        <img
-          src={`${ENV.BASE_BACK_URL}${data.header_image.original.src}`}
-          alt={data.header_image.original.alt}
-        />
-        <p>{data.display_intro}</p>
-        <p>
-          course subject:{" "}
-          {subject === "japanese" ? subjectDisplay[1] : subjectDisplay[2]}
-        </p>
-        <p>
-          course type:{" "}
-          {subject === "japanese" ? categoryDisplay[0] : categoryDisplay[1]}
-        </p>
-        <p>
-          course level:{" "}
-          {subject === "japanese" ? levelFromDisplay[0] : levelFromDisplay[1]}
-          {data.level_to.number < 2 ||
-          data.level_to.number <= data.level_from.number
-            ? ""
-            : subject === "japanese"
-            ? ` ~ ${levelToDisplay[0]}`
-            : ` ~ ${levelToDisplay[1]}`}
-        </p>
-      </header>
-      <section className="text-container">
-        <h2>What skills I will learn</h2>
-        <ul>
-          {data.course_content_points.map((block) => {
-            return <li key={block.id}>{block.value.text}</li>;
-          })}
-        </ul>
-      </section>
-      <section>
-        <h2>Course description</h2>
-        {data.course_description.map((block: any) => {
-          if (block.type === "rich_text") {
-            return (
-              <div
-                className="text-container"
-                key={block.id}
-                dangerouslySetInnerHTML={{ __html: block.value }}
-              />
-            );
-          } else if (block.type === "text_width_img") {
-            return (
-              <div key={block.id} className="text-container">
-                <figure>
-                  <img
-                    src={`${ENV.BASE_BACK_URL}${block.value.image.original.src}`}
-                    alt={block.value.image.original?.alt}
-                  />
-                  {block.value?.caption ? (
-                    <figcaption>{block.value.caption}</figcaption>
-                  ) : null}
-                </figure>
-              </div>
-            );
-          } else if (block.type === "youtube") {
-            return (
-              <div key={block.id} className="container">
-                <iframe
-                  className={`youtube-iframe ${
-                    block.value.short ? "youtube-short" : ""
-                  }`}
-                  src={`${block.value.src}?modestbranding=1&controls=0&rel=0`}
-                  title="YouTube video player"
-                  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              </div>
-            );
-          } else {
-            return <></>;
-          }
-        })}
-      </section>
-      <section>
-        <h2>Other interesting courses</h2>
-        <div>
-          {data.related_courses.length ? (
-            data.related_courses.map((item) => {
-              const course = item.course;
-              return (
-                <Link
-                  to={`/courses/${course.subject_slug}/${course.slug}`}
-                  key={course.id}
-                >
-                  <div>
-                    <img
-                      src={`${ENV.BASE_BACK_URL}${course.image.thumbnail.src}`}
-                      alt={course.display_title}
-                    />
-                    <div>
-                      <p>{course.subject_slug} course</p>
-                      <h3>{course.display_title}</h3>
-                    </div>
-                  </div>
-                </Link>
-              );
-            })
-          ) : (
-            <p>Courses coming soon.</p>
-          )}
+      <header className="cs-dp-header">
+        <div className="g-basic-container">
+          <div className="cs-dp-header__titles">
+            <h1>
+              {page.display_title}
+              <span>{page.title}</span>
+            </h1>
+            <p>{page.display_tagline}</p>
+          </div>
+          <div className="cs-dp-header__info">
+            <div>
+              <BsGlobe />
+              <span>言語 : </span>
+              <span>
+                {subject === "japanese" ? subjectDisplay[1] : subjectDisplay[2]}
+              </span>
+            </div>
+            <div>
+              <BsJournalText />
+              <span>コース種別 : </span>
+              <span>
+                {subject === "japanese"
+                  ? categoryDisplay[0]
+                  : categoryDisplay[1]}
+              </span>
+            </div>
+            <div>
+              <BsFillBarChartFill />
+              <span>レベル : </span>
+              <span>
+                {subject === "japanese"
+                  ? levelFromDisplay[0]
+                  : levelFromDisplay[1]}
+                {page.level_to.number < 2 ||
+                page.level_to.number <= page.level_from.number
+                  ? ""
+                  : subject === "japanese"
+                  ? ` ~ ${levelToDisplay[0]}`
+                  : ` ~ ${levelToDisplay[1]}`}
+              </span>
+            </div>
+          </div>
         </div>
-      </section>
+        <div className="cs-dp-header__img-wrap">
+          <img
+            src={`${ENV.BASE_BACK_URL}${page.header_image.medium.src}`}
+            alt={page.header_image.medium.alt}
+          />
+        </div>
+      </header>
     </>
   );
 }
