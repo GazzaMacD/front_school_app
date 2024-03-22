@@ -3,8 +3,8 @@ import { useLoaderData, Link } from "@remix-run/react";
 
 import { BASE_API_URL } from "~/common/constants.server";
 import { getGlobalEnv } from "~/common/utils";
-import { FaGlobe, FaArrowUpWideShort } from "react-icons/fa6";
 import { BsFillBarChartFill, BsGlobe, BsJournalText } from "react-icons/bs";
+import { HeadingOne } from "~/components/headings";
 
 /*
  * types
@@ -63,14 +63,14 @@ export default function CourseDetailPage() {
           <div className="cs-dp-header__info">
             <div>
               <BsGlobe />
-              <span>言語 : </span>
+              <span>言語 :</span>
               <span>
                 {subject === "japanese" ? subjectDisplay[1] : subjectDisplay[2]}
               </span>
             </div>
             <div>
               <BsJournalText />
-              <span>コース種別 : </span>
+              <span>コース種別 :</span>
               <span>
                 {subject === "japanese"
                   ? categoryDisplay[0]
@@ -79,7 +79,7 @@ export default function CourseDetailPage() {
             </div>
             <div>
               <BsFillBarChartFill />
-              <span>レベル : </span>
+              <span>レベル :</span>
               <span>
                 {subject === "japanese"
                   ? levelFromDisplay[0]
@@ -101,6 +101,18 @@ export default function CourseDetailPage() {
           />
         </div>
       </header>
+
+      <section id="skills">
+        <div className="g-narrow-container">
+          <HeadingOne
+            enText="What skills will I learn"
+            jpText="学べるスキル"
+            align="center"
+            bkground="light"
+            level="h2"
+          />
+        </div>
+      </section>
     </>
   );
 }
