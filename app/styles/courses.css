@@ -147,6 +147,19 @@ a.cs-lp-language__link:hover {
 /*
 * Detail Page 
 */
+#skills {
+  margin-bottom: 60px;
+}
+@media (min-width: 48rem) {
+  #skills {
+    margin-bottom: 80px;
+  }
+}
+@media (min-width: 64rem) {
+  #skills {
+    margin-bottom: 120px;
+  }
+}
 
 /* header */
 .cs-dp-header {
