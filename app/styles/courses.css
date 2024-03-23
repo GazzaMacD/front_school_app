@@ -1,4 +1,52 @@
 /**
+*  Common Elements  
+*/
+/* popular courses and related courses */
+.cs-lp-popular__card.a,
+.cs-lp-popular__card.b,
+.cs-lp-popular__card.c,
+.cs-lp-popular__card.d,
+.cs-dp-related__card.a,
+.cs-dp-related__card.b,
+.cs-dp-related__card.c,
+.cs-dp-related__card.d {
+  grid-column: 1 / 16;
+  margin: 0 0 20px 0;
+}
+
+@media (min-width: 48rem) {
+  .cs-lp-popular__card.a,
+  .cs-lp-popular__card.c,
+  .cs-dp-related__card.a,
+  .cs-dp-related__card.c {
+    grid-column: 1 / 8;
+  }
+  .cs-lp-popular__card.b,
+  .cs-lp-popular__card.d,
+  .cs-dp-related__card.b,
+  .cs-dp-related__card.d {
+    grid-column: 9 / 16;
+  }
+}
+@media (min-width: 75rem) {
+  .cs-lp-popular__card.a,
+  .cs-dp-related__card.a {
+    grid-column: 1 / 4;
+  }
+  .cs-lp-popular__card.b,
+  .cs-dp-related__card.b {
+    grid-column: 5 / 8;
+  }
+  .cs-lp-popular__card.c,
+  .cs-dp-related__card.c {
+    grid-column: 9 / 12;
+  }
+  .cs-lp-popular__card.d,
+  .cs-dp-related__card.d {
+    grid-column: 13 / 16;
+  }
+}
+/**
 * List Page 
 */
 /* popular courses */
@@ -8,44 +56,6 @@
 
 .cs-lp-popular__heading {
   grid-column: 1 /16;
-}
-/* popular courses--cards-layout */
-.cs-lp-popular__card.a,
-.cs-lp-popular__card.b,
-.cs-lp-popular__card.c,
-.cs-lp-popular__card.d {
-  grid-column: 1 / 16;
-}
-
-@media (min-width: 48rem) {
-  #popular {
-    margin-bottom: 80px;
-  }
-  .cs-lp-popular__card.a,
-  .cs-lp-popular__card.c {
-    grid-column: 1 / 8;
-  }
-  .cs-lp-popular__card.b,
-  .cs-lp-popular__card.d {
-    grid-column: 9 / 16;
-  }
-}
-@media (min-width: 75rem) {
-  #popular {
-    margin-bottom: 120px;
-  }
-  .cs-lp-popular__card.a {
-    grid-column: 1 / 4;
-  }
-  .cs-lp-popular__card.b {
-    grid-column: 5 / 8;
-  }
-  .cs-lp-popular__card.c {
-    grid-column: 9 / 12;
-  }
-  .cs-lp-popular__card.d {
-    grid-column: 13 / 16;
-  }
 }
 
 /* popular courses */
@@ -93,6 +103,7 @@
     grid-column: 13 / 16;
   }
 }
+/* language col--design */
 .cs-lp-language__col {
   display: flex;
   flex-direction: column;
@@ -283,5 +294,32 @@ a.cs-lp-language__link:hover {
 @media (min-width: 48rem) {
   .cs-dp-intro__youtube {
     margin: 60px auto 60px auto;
+  }
+}
+
+/* plans */
+
+/* related */
+#related {
+  margin: 0 0 60px 0;
+  padding: 40px 0 40px 0;
+  background-color: var(--color-brand-white);
+}
+.cs-dp-related {
+}
+.cs-dp-related__heading {
+  grid-column: 1 / 16;
+}
+.cs-dp-related__heading > h2 {
+  font-size: var(--font-size-xl);
+  margin-bottom: 40px;
+}
+@media (min-width: 48rem) {
+  #related {
+    padding: 116px 0 80px 0;
+  }
+  .cs-dp-related__heading > h2 {
+    font-size: var(--font-size-3xl);
+    margin-bottom: 60px;
   }
 }
