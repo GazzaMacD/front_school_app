@@ -113,6 +113,61 @@ export default function CourseDetailPage() {
           />
         </div>
       </section>
+
+      <section id="about">
+        <div className="g-narrow-container">
+          <HeadingOne
+            enText="About course"
+            jpText="このコースについて"
+            align="center"
+            bkground="light"
+            level="h2"
+          />
+        </div>
+        {page.course_description.map((block: any) => {
+          if (block.type === "rich_text") {
+            return (
+              <div
+                className="g-narrow-container"
+                key={block.id}
+                dangerouslySetInnerHTML={{ __html: block.value }}
+              />
+            );
+          } else if (block.type === "text_width_img") {
+            return (
+              <div key={block.id} className="g-narrow-container">
+                <figure className="cs-dp-about__img-wrapper text-width">
+                  <img
+                    src={`${ENV.BASE_BACK_URL}${block.value.image.original.src}`}
+                    alt={block.value.image.original?.alt}
+                  />
+                  {block.value?.caption ? (
+                    <figcaption>{block.value.caption}</figcaption>
+                  ) : null}
+                </figure>
+              </div>
+            );
+          } else if (block.type === "youtube") {
+            return (
+              <div key={block.id}>
+                <div className="cs-dp-intro__youtube">
+                  <iframe
+                    className={`g-youtube-iframe ${
+                      block.value.short ? "g-youtube-short" : ""
+                    }`}
+                    src={`${block.value.src}?modestbranding=1&controls=0&rel=0`}
+                    title="YouTube video player"
+                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                </div>
+              </div>
+            );
+          } else {
+            return null;
+          }
+        })}
+      </section>
     </>
   );
 }
