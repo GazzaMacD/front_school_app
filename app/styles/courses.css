@@ -147,16 +147,19 @@ a.cs-lp-language__link:hover {
 /*
 * Detail Page 
 */
-#skills {
+#skills,
+#about {
   margin-bottom: 60px;
 }
 @media (min-width: 48rem) {
-  #skills {
+  #skills,
+  #about {
     margin-bottom: 80px;
   }
 }
 @media (min-width: 64rem) {
-  #skills {
+  #skills,
+  #about {
     margin-bottom: 120px;
   }
 }
@@ -235,5 +238,50 @@ a.cs-lp-language__link:hover {
 @media (min-width: 64rem) {
   .cs-dp-header {
     margin: 100px 0 120px 0;
+  }
+}
+
+/* about */
+
+/* about--figure images */
+.cs-dp-about__img-wrapper {
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+}
+.cs-dp-about__img-wrapper > figcaption {
+  margin-top: 10px;
+  font-size: var(--font-size-xs);
+}
+.cs-dp-about__img-wrapper.text-width > figcaption {
+  align-self: center;
+}
+@media (min-width: 48rem) {
+  .cs-dp-about__img-wrapper {
+    margin-bottom: 60px;
+  }
+  .cs-dp-about__img-wrapper > figcaption {
+    margin-top: 20px;
+    font-size: var(--font-size-s);
+  }
+}
+@media (min-width: 64rem) {
+  .cs-dp-about__img-wrapper.full-width > figcaption {
+    align-self: flex-start;
+    margin-left: 60px;
+  }
+  .cs-dp-about__img-wrapper.text-width > figcaption {
+    align-self: flex-start;
+  }
+}
+
+/* about--youtube */
+.cs-dp-intro__youtube {
+  margin: 40px auto 40px auto;
+  max-width: 1232px;
+}
+@media (min-width: 48rem) {
+  .cs-dp-intro__youtube {
+    margin: 60px auto 60px auto;
   }
 }
