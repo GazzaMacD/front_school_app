@@ -9,7 +9,6 @@ import { HeadingOne } from "~/components/headings";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { getDivisor4LetterHash } from "~/common/utils";
 import pageStyles from "~/styles/components/pages.css";
-import cardStyles from "~/styles/components/cards.css";
 
 /**
  *  Utils and helper functions
@@ -59,7 +58,6 @@ function createLanguageDictionary(items) {
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: pageStyles },
-  { rel: "stylesheet", href: cardStyles },
 ];
 
 /**

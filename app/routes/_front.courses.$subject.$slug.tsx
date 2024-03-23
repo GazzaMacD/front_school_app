@@ -5,6 +5,9 @@ import { BASE_API_URL } from "~/common/constants.server";
 import { getGlobalEnv } from "~/common/utils";
 import { BsFillBarChartFill, BsGlobe, BsJournalText } from "react-icons/bs";
 import { HeadingOne } from "~/components/headings";
+import { Swoosh1 } from "~/components/swooshes";
+import { DetailLinkCard } from "~/components/cards";
+import { getDivisor4LetterHash } from "~/common/utils";
 
 /*
  * types
@@ -49,6 +52,7 @@ export default function CourseDetailPage() {
   const categoryDisplay = page.course.course_category_display.split(",");
   const levelFromDisplay = page.level_from.display.split(",");
   const levelToDisplay = page.level_to.display.split(",");
+  const relatedHash = getDivisor4LetterHash(page.related_courses.length);
   return (
     <>
       <header className="cs-dp-header">
@@ -112,6 +116,9 @@ export default function CourseDetailPage() {
             level="h2"
           />
         </div>
+        <div style={{ textAlign: "center" }}>
+          <p>Max 9 skills + one ...nado in list form here</p>
+        </div>
       </section>
 
       <section id="about">
@@ -168,6 +175,49 @@ export default function CourseDetailPage() {
           }
         })}
       </section>
+
+      <section id="plans">
+        <div className="g-narrow-container">
+          <HeadingOne
+            enText="Popular Price Plans"
+            jpText="人気のプラン"
+            align="center"
+            bkground="light"
+            level="h2"
+          />
+        </div>
+        <div style={{ textAlign: "center" }}>
+          <p>Three plans here </p>
+          <p>Link button to all plans here</p>
+        </div>
+      </section>
+
+      <section id="related">
+        <div className="cs-dp-related">
+          <div className="g-grid-container1">
+            <div className="cs-dp-related__heading">
+              <h2>その他のおすすめコース</h2>
+            </div>
+            {page.related_courses.map((c, i) => {
+              return (
+                <div
+                  key={c.id}
+                  className={`cs-dp-related__card ${relatedHash[i]}`}
+                >
+                  <DetailLinkCard
+                    title={c.course.display_title}
+                    tagline={c.course.display_tagline}
+                    src={`${ENV.BASE_BACK_URL}${c.course.image.thumbnail.src}`}
+                    alt={`${c.course.image.thumbnail.alt}`}
+                    url={`/courses/${c.course.subject_slug}/${c.course.slug}`}
+                  />
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+      <Swoosh1 swooshColor="beige" backColor="white" />
     </>
   );
 }
