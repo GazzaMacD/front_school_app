@@ -48,9 +48,7 @@ export default function RegisterSuccessPage() {
             <div className="au-form">
               <div className="au-form__message">
                 <p>
-                  Thank you for making an account with us. Please check your
-                  email and confirm your account using the instructions
-                  provided.
+                  アカウントを作成いただき誠にありがとうございます。Eメールをご確認後、記載されている手順でアカウントをご確認ください。
                 </p>
               </div>
             </div>
