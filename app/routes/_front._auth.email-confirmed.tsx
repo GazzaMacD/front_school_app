@@ -35,9 +35,9 @@ export default function EmailConfirmedSuccessPage() {
             <div className="au-form">
               <div className="au-form__message">
                 <p>
-                  Thanks for confirming your email. Please{" "}
-                  <Link to="/login">login</Link> or start browsing our site from
-                  the <Link to="/">home page</Link>.
+                  Eメールアドレスをご確認いただきありがとうございます。
+                  <Link to="/login">ログイン</Link>または
+                  <Link to="/">スクールホームページ</Link>をご利用くださいませ。
                 </p>
               </div>
             </div>

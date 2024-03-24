@@ -69,8 +69,7 @@ export default function ConfirmEmailPage() {
     <form className="au-form g-form" noValidate method="post">
       <div className="au-form__top-message">
         <p>
-          Thanks very much for signing up with us. Please click the button below
-          to confirm your account.
+          ご登録いただき誠にありがとうございます。下記のボタンをクリックしてあなたのアカウントをご確認ください。
         </p>
       </div>
       <div>
@@ -91,8 +90,7 @@ export default function ConfirmEmailPage() {
         <div className="g-form__nonfield-errors">
           <ul>
             <li role="alert">
-              There seems to be a problem with confirming your email. Please
-              contact us on the contact form.
+              メールの確認において問題があるようです。大変お手数ですが、お問い合わせフォームからご連絡ください。
             </li>
           </ul>
         </div>
