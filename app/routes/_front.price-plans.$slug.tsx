@@ -24,7 +24,7 @@ export async function loader({ params }: LoaderArgs) {
   }
 }
 
-export default function ClassPricesDetailPage() {
+export default function PricePlansDetailPage() {
   const { page: p } = useLoaderData<typeof loader>();
   const ENV = getGlobalEnv();
   return (

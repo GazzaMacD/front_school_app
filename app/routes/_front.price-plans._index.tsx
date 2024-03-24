@@ -55,7 +55,7 @@ export async function loader() {
   }
 }
 
-export default function ClassPricesListPage() {
+export default function PricePlansIndexPage() {
   const {
     listPage: lp,
     privateClasses: pc,
