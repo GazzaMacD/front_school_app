@@ -1,11 +1,39 @@
 import React from "react";
 
 import { useLoaderData } from "@remix-run/react";
-import { json } from "@remix-run/node";
+import {
+  json,
+  type V2_MetaFunction,
+  type LinksFunction,
+} from "@remix-run/node";
 
 import { BASE_API_URL } from "~/common/constants.server";
+import { getTitle } from "~/common/utils";
 import { PriceTable } from "~/components/price-table";
+import pageStyles from "~/styles/components/pages.css";
+import { SlidingHeaderPage } from "~/components/pages";
 
+/**
+ * Helper functions
+ */
+export const links: LinksFunction = () => [
+  { rel: "stylesheet", href: pageStyles },
+];
+
+export const meta: V2_MetaFunction = () => {
+  return [
+    {
+      title: getTitle({
+        title: "Price Plans・料金プラン",
+        isHome: false,
+      }),
+    },
+  ];
+};
+
+/**
+ * Loader and Action functions
+ */
 export async function loader() {
   try {
     const lPageUrl = `${BASE_API_URL}/pages/?type=products.ClassPricesListPage&fields=*`;
@@ -55,50 +83,49 @@ export async function loader() {
   }
 }
 
-export default function ClassPricesListPage() {
+/**
+ *  Page
+ */
+
+export default function PricePlansIndexPage() {
   const {
     listPage: lp,
     privateClasses: pc,
     regularClasses: rc,
   } = useLoaderData<typeof loader>();
   return (
-    <div>
-      <header>
+    <SlidingHeaderPage
+      mainTitle={lp.title}
+      subTitle={lp.display_title}
+      swooshBackColor="cream"
+      swooshFrontColor="beige"
+    >
+      <section>
         <hgroup>
-          <h1>
-            <span>{lp.title} </span>
-            {lp.display_title}
-          </h1>
-          <p>{lp.display_tagline}</p>
+          <h2>
+            <span>Private Classes </span>
+            {lp.private_title}
+          </h2>
+          <p>{lp.private_tagline}</p>
         </hgroup>
-        <div dangerouslySetInnerHTML={{ __html: lp.intro }} />
-        <section>
-          <hgroup>
-            <h2>
-              <span>Private Classes </span>
-              {lp.private_title}
-            </h2>
-            <p>{lp.private_tagline}</p>
-          </hgroup>
-          <div dangerouslySetInnerHTML={{ __html: lp.private_intro }} />
-          <div>
-            <PriceTable classes={pc} hasLink={true} />
-          </div>
-        </section>
-        <section>
-          <hgroup>
-            <h2>
-              <span>Regular Classes </span>
-              {lp.regular_title}
-            </h2>
-            <p>{lp.regular_tagline}</p>
-          </hgroup>
-          <div dangerouslySetInnerHTML={{ __html: lp.regular_intro }} />
-          <div>
-            <PriceTable classes={rc} hasLink={true} />
-          </div>
-        </section>
-      </header>
-    </div>
+        <div dangerouslySetInnerHTML={{ __html: lp.private_intro }} />
+        <div>
+          <PriceTable classes={pc} hasLink={true} />
+        </div>
+      </section>
+      <section>
+        <hgroup>
+          <h2>
+            <span>Regular Classes </span>
+            {lp.regular_title}
+          </h2>
+          <p>{lp.regular_tagline}</p>
+        </hgroup>
+        <div dangerouslySetInnerHTML={{ __html: lp.regular_intro }} />
+        <div>
+          <PriceTable classes={rc} hasLink={true} />
+        </div>
+      </section>
+    </SlidingHeaderPage>
   );
 }
