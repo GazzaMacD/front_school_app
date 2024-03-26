@@ -9,9 +9,10 @@ import {
 
 import { BASE_API_URL } from "~/common/constants.server";
 import { getTitle } from "~/common/utils";
-import { PriceTable } from "~/components/price-table";
+import { ClassPricePlanTable } from "~/components/prices";
 import pageStyles from "~/styles/components/pages.css";
 import { SlidingHeaderPage } from "~/components/pages";
+import { HeadingOne } from "~/components/headings";
 
 /**
  * Helper functions
@@ -100,30 +101,53 @@ export default function PricePlansIndexPage() {
       swooshBackColor="cream"
       swooshFrontColor="beige"
     >
-      <section>
-        <hgroup>
-          <h2>
-            <span>Private Classes </span>
-            {lp.private_title}
-          </h2>
-          <p>{lp.private_tagline}</p>
-        </hgroup>
-        <div dangerouslySetInnerHTML={{ __html: lp.private_intro }} />
-        <div>
-          <PriceTable classes={pc} hasLink={true} />
-        </div>
-      </section>
-      <section>
-        <hgroup>
-          <h2>
-            <span>Regular Classes </span>
-            {lp.regular_title}
-          </h2>
-          <p>{lp.regular_tagline}</p>
-        </hgroup>
-        <div dangerouslySetInnerHTML={{ __html: lp.regular_intro }} />
-        <div>
-          <PriceTable classes={rc} hasLink={true} />
+      <section id="private">
+        <div className="pp-lp-private">
+          <div className="pp-lp-private__intro">
+            <div className="g-basic-container">
+              <HeadingOne
+                enText={lp.private_en_title}
+                jpText={lp.private_jp_title}
+                align="left"
+                bkground="light"
+                level="h2"
+              />
+              <div dangerouslySetInnerHTML={{ __html: lp.private_intro }} />
+            </div>
+          </div>
+          <div>
+            {lp.private_price_plans.map((item) => {
+              const p = item.price_plan;
+              const pi = item.price_plan.price_info;
+              return (
+                <div key={item.id}>
+                  <ClassPricePlanTable
+                    color="beige"
+                    slug={p.slug}
+                    titleEn={p.title}
+                    titleJa={p.display_title}
+                    duration={p.length}
+                    durationUnit={p.length_unit}
+                    stdQuantity={p.quantity}
+                    stdQuantityUnit={p.quantity_unit}
+                    maxNum={p.max_num}
+                    isNative={p.is_native}
+                    isOnline={p.is_online}
+                    isInperson={p.is_inperson}
+                    hasOnlineNotes={p.has_onlinenotes}
+                    bookableOnline={p.bookable_online}
+                    preTaxPrice={pi.pretax_price}
+                    postTaxPrice={pi.posttax_price}
+                    onSale={pi.is_sale}
+                    preSalePreTaxPrice={pi.before_sale_pretax_price}
+                    preSalePostTaxPrice={pi.before_sale_posttax_price}
+                    priceStartDate={pi.start_date}
+                    priceEndDate={pi.end_date}
+                  />
+                </div>
+              );
+            })}
+          </div>
         </div>
       </section>
     </SlidingHeaderPage>
