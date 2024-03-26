@@ -4,7 +4,7 @@ import { useLoaderData } from "@remix-run/react";
 import { type LoaderArgs, json } from "@remix-run/node";
 
 import { BASE_API_URL } from "~/common/constants.server";
-import { PriceTable } from "~/components/price-table";
+import { ClassPricePlanTable } from "~/components/prices";
 import { getGlobalEnv } from "~/common/utils";
 
 export async function loader({ params }: LoaderArgs) {
@@ -57,7 +57,7 @@ export default function PricePlansDetailPage() {
         ))}
 
         <div>
-          <PriceTable classes={[p]} hasLink={false} />
+          <ClassPricePlanTable />
         </div>
       </section>
     </div>

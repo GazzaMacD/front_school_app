@@ -1,0 +1,137 @@
+/*
+* Price table
+*/
+.c-pricetable-wrapper {
+  width: max-content;
+  margin-top: 40px;
+  position: relative;
+  padding: 25px;
+  border-radius: var(--radius-small);
+}
+.c-pricetable {
+  border-collapse: collapse;
+  width: 200px;
+}
+@media (min-width: 48rem) {
+  .c-pricetable-wrapper {
+    margin-top: 40px;
+    padding: 50px;
+    border-radius: var(--radius-medium);
+  }
+  .c-pricetable {
+    border-collapse: collapse;
+    width: 270px;
+  }
+}
+@media (min-width: 64rem) {
+}
+@media (min-width: 48rem) {
+}
+/* heading */
+.c-pricetable-sale {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  top: -20px;
+  left: 0;
+  right: 0;
+  width: 70%;
+  margin: 0 auto;
+  border-radius: 5px;
+  background-color: var(--color-brand-orange);
+  color: var(--color-brand-white);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-w-bold);
+  padding: 5px 20px;
+  text-align: center;
+}
+.c-pricetable__heading--en > td {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-w-semi-bold);
+  font-family: var(--font-en-primary);
+  line-height: 1.2;
+  text-align: center;
+}
+.c-pricetable__heading--jp > td {
+  font-size: var(--font-size-s);
+  line-height: 1.2;
+  text-align: center;
+  padding: 5px 5px 20px 5px;
+}
+@media (min-width: 48rem) {
+  .c-pricetable__heading--en > td {
+    font-size: var(--font-size-4xl);
+  }
+}
+/* tbody */
+.c-pricetable > tbody > tr {
+  border-top: solid 1px;
+}
+.c-pricetable > tbody > tr > td {
+  padding: 8px 5px 8px 0;
+  vertical-align: center;
+  font-size: var(--font-size-s);
+  font-weight: var(--font-w-semi-bold);
+}
+.c-pricetable > tbody > tr > td:last-of-type {
+  vertical-align: center;
+  text-align: center;
+  padding: 8px 5px 8px 5px;
+}
+.c-pricetable > tbody > tr > td:last-of-type > div {
+  display: flex;
+  justify-content: center;
+}
+.c-pricetable > tbody > tr > td:last-of-type > div > svg {
+  height: 22px;
+  width: 22px;
+}
+.c-pricetable > tbody > tr:first-of-type > td {
+  height: 50px;
+}
+/* tbody -- sale price */
+.c-pricetable > tbody > tr:first-of-type > td > div:first-of-type {
+  text-decoration: line-through;
+  color: var(--color-brand-orange);
+}
+/* button */
+a.c-pricetable__link::before {
+  content: none;
+}
+a.c-pricetable__link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  color: var(--color-brand-white);
+  font-size: var(--font-size-s);
+  font-weight: var(--font-w-semi-bold);
+  margin-top: 15px;
+  padding: 10px 40px 10px 10px;
+  background-color: var(--color-brand-green);
+  width: 100%;
+  border-radius: 100px;
+}
+a.c-pricetable__link > svg {
+  position: absolute;
+  right: 20px;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  height: 25px;
+  width: 25px;
+}
+
+/* color variants--beige */
+.c-pricetable-wrapper.beige {
+  background-color: var(--color-brand-beige);
+}
+.c-pricetable-wrapper.beige .c-pricetable > tbody > tr {
+  border-color: #a5895a;
+}
+
+/* color variants--brown */
+.c-pricetable.brown {
+}
