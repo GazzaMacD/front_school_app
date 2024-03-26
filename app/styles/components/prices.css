@@ -2,9 +2,8 @@
 * Price table
 */
 .c-pricetable-wrapper {
-  margin: 30px;
   width: max-content;
-  /*temp */
+  margin-top: 40px;
   position: relative;
   padding: 50px;
   border-radius: var(--radius-medium);
