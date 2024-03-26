@@ -5,15 +5,23 @@
   width: max-content;
   margin-top: 40px;
   position: relative;
-  padding: 50px;
-  border-radius: var(--radius-medium);
+  padding: 25px;
+  border-radius: var(--radius-small);
 }
 .c-pricetable {
   border-collapse: collapse;
-  min-width: 270px;
-  max-width: 300px;
+  width: 200px;
 }
 @media (min-width: 48rem) {
+  .c-pricetable-wrapper {
+    margin-top: 40px;
+    padding: 50px;
+    border-radius: var(--radius-medium);
+  }
+  .c-pricetable {
+    border-collapse: collapse;
+    width: 270px;
+  }
 }
 @media (min-width: 64rem) {
 }
@@ -40,7 +48,7 @@
   text-align: center;
 }
 .c-pricetable__heading--en > td {
-  font-size: var(--font-size-5xl);
+  font-size: var(--font-size-2xl);
   font-weight: var(--font-w-semi-bold);
   font-family: var(--font-en-primary);
   line-height: 1.2;
@@ -51,6 +59,11 @@
   line-height: 1.2;
   text-align: center;
   padding: 5px 5px 20px 5px;
+}
+@media (min-width: 48rem) {
+  .c-pricetable__heading--en > td {
+    font-size: var(--font-size-4xl);
+  }
 }
 /* tbody */
 .c-pricetable > tbody > tr {
