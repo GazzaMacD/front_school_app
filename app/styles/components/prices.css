@@ -23,10 +23,6 @@
     width: 270px;
   }
 }
-@media (min-width: 64rem) {
-}
-@media (min-width: 48rem) {
-}
 /* heading */
 .c-pricetable-sale {
   position: absolute;
