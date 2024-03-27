@@ -129,7 +129,7 @@ export default function PricePlansIndexPage() {
     <SlidingHeaderPage
       mainTitle={lp.title}
       subTitle={lp.display_title}
-      swooshBackColor="cream"
+      swooshBackColor="white"
       swooshFrontColor="beige"
     >
       <section id="private">
@@ -158,6 +158,67 @@ export default function PricePlansIndexPage() {
                 onSlideChange={() => console.log("slide change")}
               >
                 {lp.private_price_plans.map((item) => {
+                  const p = item.price_plan;
+                  const pi = item.price_plan.price_info;
+                  return (
+                    <SwiperSlide key={item.id}>
+                      <ClassPricePlanTable
+                        color="beige"
+                        slug={p.slug}
+                        titleEn={p.title}
+                        titleJa={p.display_title}
+                        duration={p.length}
+                        durationUnit={p.length_unit}
+                        stdQuantity={p.quantity}
+                        stdQuantityUnit={p.quantity_unit}
+                        maxNum={p.max_num}
+                        isNative={p.is_native}
+                        isOnline={p.is_online}
+                        isInperson={p.is_inperson}
+                        hasOnlineNotes={p.has_onlinenotes}
+                        bookableOnline={p.bookable_online}
+                        preTaxPrice={pi.pretax_price}
+                        postTaxPrice={pi.posttax_price}
+                        onSale={pi.is_sale}
+                        preSalePreTaxPrice={pi.before_sale_pretax_price}
+                        preSalePostTaxPrice={pi.before_sale_posttax_price}
+                        priceStartDate={pi.start_date}
+                        priceEndDate={pi.end_date}
+                      />
+                    </SwiperSlide>
+                  );
+                })}
+              </Swiper>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="regular">
+        <div className="pp-lp-regular">
+          <div className="g-basic-container">
+            <div className="pp-lp-regular__intro">
+              <HeadingOne
+                enText={lp.regular_en_title}
+                jpText={lp.regular_jp_title}
+                align="left"
+                bkground="light"
+                level="h2"
+              />
+              <div dangerouslySetInnerHTML={{ __html: lp.regular_intro }} />
+            </div>
+            <div className="pp-lp-swiper__wrapper">
+              <Swiper
+                modules={[Navigation]}
+                spaceBetween={sliderSpace}
+                slidesPerView={pricesNumSlides}
+                navigation
+                pagination={{ clickable: true }}
+                scrollbar={{ draggable: true }}
+                onSwiper={(swiper) => console.log(swiper)}
+                onSlideChange={() => console.log("slide change")}
+              >
+                {lp.regular_price_plans.map((item) => {
                   const p = item.price_plan;
                   const pi = item.price_plan.price_info;
                   return (

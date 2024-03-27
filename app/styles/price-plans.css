@@ -1,6 +1,10 @@
 /**
 * List Page (index)
 */
+#private {
+  padding-bottom: 80px;
+}
+
 .pp-lp-private__intro > div:last-of-type {
   max-width: 700px;
 }
@@ -43,6 +47,10 @@
 }
 
 @media (min-width: 48rem) {
+  #private {
+    padding-bottom: 120px;
+  }
+
   .pp-lp-swiper__wrapper .swiper-button-prev {
     width: 60px;
     height: 60px;
@@ -64,5 +72,17 @@
   .pp-lp-swiper__wrapper .swiper-button-next::after {
     padding: 1px 0 0 0;
     font-size: 44px;
+  }
+}
+
+#regular {
+  margin-bottom: -60px;
+  padding: 40px 0 80px 0;
+  background-color: var(--color-brand-white);
+}
+@media (min-width: 48rem) {
+  #regular {
+    margin-bottom: -100px;
+    padding: 80px 0 120px 0;
   }
 }
