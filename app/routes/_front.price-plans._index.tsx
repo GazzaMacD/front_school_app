@@ -38,52 +38,14 @@ export const meta: V2_MetaFunction = () => {
  * Loader and Action functions
  */
 export async function loader() {
-  try {
-    const lPageUrl = `${BASE_API_URL}/pages/?type=products.ClassPricesListPage&fields=*`;
-    const dPageUrl = `${BASE_API_URL}/pages/?type=products.ClassPricesDetailPage&fields=title,display_title,class_service`;
-    const urls = [lPageUrl, dPageUrl];
-    const [lPage, dPage] = await Promise.all(
-      urls.map((url) =>
-        fetch(url)
-          .then(async (res) => {
-            return {
-              data: await res.json(),
-              status: res.status,
-              ok: res.ok,
-              url: url,
-            };
-          })
-          .catch((error) => ({ error, url }))
-      )
-    );
-    if (
-      !lPage.ok ||
-      !dPage.ok ||
-      !lPage.data.items.length ||
-      !dPage.data.items.length
-    ) {
-      throw new Response("Sorry, 404", { status: 404 });
-    }
-    const privateClasses = [];
-    const regularClasses = [];
-    dPage.data.items.forEach((page) => {
-      if (page.class_service.class_type === "private") {
-        privateClasses.push(page);
-      }
-      if (page.class_service.class_type === "regular") {
-        regularClasses.push(page);
-      }
-    });
-    // sort pages into private or regular
-    return json({
-      listPage: lPage.data.items[0],
-      privateClasses,
-      regularClasses,
-    });
-  } catch (error) {
-    console.log(error);
-    throw new Response("oops that is an error", { status: 500 });
+  const url = `${BASE_API_URL}/pages/?type=products.ClassPricesListPage&fields=*`;
+  const response = await fetch(url);
+  const data = await response.json();
+  if (!response.ok || !data.items.length) {
+    throw new Response("Oops that's a 404", { status: 404 });
   }
+  const page = data.items[0];
+  return json({ page });
 }
 
 /**
@@ -91,11 +53,7 @@ export async function loader() {
  */
 
 export default function PricePlansIndexPage() {
-  const {
-    listPage: lp,
-    privateClasses: pc,
-    regularClasses: rc,
-  } = useLoaderData<typeof loader>();
+  const { page: lp } = useLoaderData<typeof loader>();
 
   const [windowSize, setWindowSize] = React.useState(() => {
     if (typeof window !== "undefined") {
