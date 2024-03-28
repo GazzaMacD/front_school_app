@@ -1,44 +1,65 @@
-import { json, type LoaderArgs } from "@remix-run/node";
+import * as React from "react";
+
+import {
+  json,
+  type LoaderArgs,
+  type V2_MetaFunction,
+  type LinksFunction,
+} from "@remix-run/node";
 import { useLoaderData, Link } from "@remix-run/react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import swipperStyles from "swiper/css";
+import swipperNavStyles from "swiper/css/navigation";
+import { Navigation } from "swiper/modules";
+import { BsFillBarChartFill, BsGlobe, BsJournalText } from "react-icons/bs";
 
 import { BASE_API_URL } from "~/common/constants.server";
 import { getGlobalEnv } from "~/common/utils";
-import { BsFillBarChartFill, BsGlobe, BsJournalText } from "react-icons/bs";
 import { HeadingOne } from "~/components/headings";
 import { Swoosh1 } from "~/components/swooshes";
 import { DetailLinkCard } from "~/components/cards";
 import { getDivisor4LetterHash } from "~/common/utils";
+import { getTitle } from "~/common/utils";
+import { ClassPricePlanTable } from "~/components/prices";
+import pricesStyles from "~/styles/components/prices.css";
 
-/*
- * types
+/**
+ * Helper functions
  */
+export const links: LinksFunction = () => [
+  { rel: "stylesheet", href: swipperStyles },
+  { rel: "stylesheet", href: swipperNavStyles },
+  { rel: "stylesheet", href: pricesStyles },
+];
+
+export const meta: V2_MetaFunction = ({ data }) => {
+  const { page } = data;
+  return [
+    { title: getTitle({ title: `${page.display_title}`, isHome: false }) },
+  ];
+};
 
 /*
- * server functions
+ * Loader and Action functions
  */
 
 export async function loader({ request, params }: LoaderArgs) {
-  try {
-    const { subject, slug } = params;
-    const apiUrl = `${BASE_API_URL}/pages/?type=courses.CourseDisplayDetailPage&subject_slug=${subject}&slug=${slug}&fields=*`;
-    const response = await fetch(apiUrl);
-    if (!response.ok) {
-      throw new Error("Error", { cause: response.status });
-    }
-    const pagesData = await response.json();
-    if (!pagesData.items.length) {
-      // slug query string returned no page == 404
-      throw new Response("Oops sorry we can't seem to find that page", {
-        status: 404,
-      });
-    }
-    const page = pagesData.items[0];
-    return { page };
-  } catch (error) {
-    throw new Response("Oops sorry something went wrong", {
-      status: 500,
+  const { subject, slug } = params;
+  const apiUrl = `${BASE_API_URL}/pages/?type=courses.CourseDisplayDetailPage&subject_slug=${subject}&slug=${slug}&fields=*`;
+  const response = await fetch(apiUrl);
+  if (!response.ok) {
+    throw new Response(`Oops sorry that's a ${response.status}`, {
+      status: response.status,
     });
   }
+  const pagesData = await response.json();
+  if (!pagesData.items.length) {
+    throw new Response("Oops sorry that's a 404", {
+      status: 404,
+    });
+  }
+  const page = pagesData.items[0];
+  return json({ page });
 }
 /**
  * Page
@@ -53,6 +74,47 @@ export default function CourseDetailPage() {
   const levelFromDisplay = page.level_from.display.split(",");
   const levelToDisplay = page.level_to.display.split(",");
   const relatedHash = getDivisor4LetterHash(page.related_courses.length);
+
+  /* slider related */
+  const [windowSize, setWindowSize] = React.useState(() => {
+    if (typeof window !== "undefined") {
+      return window.innerWidth;
+    }
+    return 0;
+  });
+  const handleWindowResize = React.useCallback((event) => {
+    setWindowSize(window.innerWidth);
+  }, []);
+
+  React.useEffect(() => {
+    window.addEventListener("resize", handleWindowResize);
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, [handleWindowResize]);
+
+  let sliderSpace =
+    windowSize > 1000
+      ? 80
+      : windowSize > 800
+      ? 60
+      : windowSize > 600
+      ? 40
+      : windowSize > 400
+      ? 30
+      : 20;
+
+  let pricesNumSlides =
+    windowSize > 1000
+      ? 2.5
+      : windowSize > 800
+      ? 2
+      : windowSize > 600
+      ? 2
+      : windowSize > 400
+      ? 1.5
+      : 1.2;
+
   return (
     <>
       <header className="cs-dp-header">
@@ -177,7 +239,7 @@ export default function CourseDetailPage() {
       </section>
 
       <section id="plans">
-        <div className="g-narrow-container">
+        <div className="g-basic-container">
           <HeadingOne
             enText="Popular Price Plans"
             jpText="人気のプラン"
@@ -186,10 +248,92 @@ export default function CourseDetailPage() {
             level="h2"
           />
         </div>
-        <div style={{ textAlign: "center" }}>
-          <p>Three plans here </p>
-          <p>Link button to all plans here</p>
-        </div>
+        {windowSize > 1300 ? (
+          <div className="g-basic-container">
+            <div className="cs-dp-plans__large-wrapper">
+              {page.common_price_plans.map((item, i) => {
+                const p = item.price_plan;
+                const pi = item.price_plan.price_info;
+                return (
+                  <div key={item.id} className="cs-dp-plans__plan">
+                    <ClassPricePlanTable
+                      color="beige"
+                      showLinkButton={true}
+                      slug={p.slug}
+                      titleEn={p.title}
+                      titleJa={p.display_title}
+                      duration={p.length}
+                      durationUnit={p.length_unit}
+                      stdQuantity={p.quantity}
+                      stdQuantityUnit={p.quantity_unit}
+                      maxNum={p.max_num}
+                      isNative={p.is_native}
+                      isOnline={p.is_online}
+                      isInperson={p.is_inperson}
+                      hasOnlineNotes={p.has_onlinenotes}
+                      bookableOnline={p.bookable_online}
+                      preTaxPrice={pi.pretax_price}
+                      postTaxPrice={pi.posttax_price}
+                      onSale={pi.is_sale}
+                      preSalePreTaxPrice={pi.before_sale_pretax_price}
+                      preSalePostTaxPrice={pi.before_sale_posttax_price}
+                      priceStartDate={pi.start_date}
+                      priceEndDate={pi.end_date}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        ) : (
+          <div className="g-basic-container">
+            <div className="cs-dp-swiper__wrapper">
+              <Swiper
+                modules={[Navigation]}
+                spaceBetween={sliderSpace}
+                slidesPerView={pricesNumSlides}
+                navigation
+                pagination={{ clickable: true }}
+                scrollbar={{ draggable: true }}
+                onSwiper={(swiper) => console.log(swiper)}
+                onSlideChange={() => console.log("slide change")}
+              >
+                {page.common_price_plans.map((item) => {
+                  const p = item.price_plan;
+                  const pi = item.price_plan.price_info;
+                  return (
+                    <SwiperSlide key={item.id}>
+                      <ClassPricePlanTable
+                        color="beige"
+                        showLinkButton={true}
+                        slug={p.slug}
+                        titleEn={p.title}
+                        titleJa={p.display_title}
+                        duration={p.length}
+                        durationUnit={p.length_unit}
+                        stdQuantity={p.quantity}
+                        stdQuantityUnit={p.quantity_unit}
+                        maxNum={p.max_num}
+                        isNative={p.is_native}
+                        isOnline={p.is_online}
+                        isInperson={p.is_inperson}
+                        hasOnlineNotes={p.has_onlinenotes}
+                        bookableOnline={p.bookable_online}
+                        preTaxPrice={pi.pretax_price}
+                        postTaxPrice={pi.posttax_price}
+                        onSale={pi.is_sale}
+                        preSalePreTaxPrice={pi.before_sale_pretax_price}
+                        preSalePostTaxPrice={pi.before_sale_posttax_price}
+                        priceStartDate={pi.start_date}
+                        priceEndDate={pi.end_date}
+                      />
+                    </SwiperSlide>
+                  );
+                })}
+              </Swiper>
+            </div>
+          </div>
+        )}
       </section>
 
       <section id="related">

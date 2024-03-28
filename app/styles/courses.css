@@ -299,6 +299,83 @@ a.cs-lp-language__link:hover {
 }
 
 /* plans */
+#plans {
+  padding-bottom: 80px;
+}
+/* plans --large screen */
+.cs-dp-plans__large-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(370px, 1fr));
+}
+.cs-dp-plans__plan {
+  justify-self: center;
+}
+
+/* plans --medium and small screen */
+.cs-dp-swiper__wrapper .swiper {
+  padding-top: 50px;
+}
+.cs-dp-swiper__wrapper .swiper-button-prev {
+  width: 40px;
+  height: 40px;
+  background-color: var(--color-brand-brown);
+  border-radius: 50%;
+  right: 80px;
+  left: auto;
+  top: 22px;
+  color: var(--color-brand-white);
+}
+
+.cs-dp-swiper__wrapper .swiper-button-prev::after {
+  content: "➜";
+  transform: rotate(180deg);
+  padding: 0 0 4px 0;
+  font-size: 22px;
+}
+
+.cs-dp-swiper__wrapper .swiper-button-next {
+  width: 40px;
+  height: 40px;
+  background-color: var(--color-brand-brown);
+  border-radius: 50%;
+  right: 0px;
+  top: 22px;
+  color: var(--color-brand-white);
+}
+.cs-dp-swiper__wrapper .swiper-button-next::after {
+  content: "➜";
+  padding: 1px 0 0 0;
+  font-size: 22px;
+}
+
+@media (min-width: 48rem) {
+  #private {
+    padding-bottom: 120px;
+  }
+
+  .cs-dp-swiper__wrapper .swiper-button-prev {
+    width: 60px;
+    height: 60px;
+    right: 100px;
+    left: auto;
+    top: 22px;
+  }
+  .cs-dp-swiper__wrapper .swiper-button-prev::after {
+    padding: 0 0 4px 0;
+    font-size: 44px;
+  }
+
+  .cs-dp-swiper__wrapper .swiper-button-next {
+    width: 60px;
+    height: 60px;
+    right: 10px;
+    top: 22px;
+  }
+  .cs-dp-swiper__wrapper .swiper-button-next::after {
+    padding: 1px 0 0 0;
+    font-size: 44px;
+  }
+}
 
 /* related */
 #related {
