@@ -252,6 +252,60 @@ a.cs-lp-language__link:hover {
     margin: 100px 0 120px 0;
   }
 }
+/* skills */
+.cs-dp-skills ul {
+}
+.cs-dp-skills__skill {
+  margin-bottom: 10px;
+  min-height: 40px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 5px 20px;
+  display: flex;
+  align-items: center;
+}
+.cs-dp-skills__skill > div:first-of-type {
+  color: var(--color-brand-green);
+  font-family: var(--font-en-primary);
+  font-weight: var(--font-w-semi-bold);
+  font-size: var(--font-size-xl);
+  line-height: 1;
+  margin-right: 15px;
+}
+@media (min-width: 48rem) {
+  .cs-dp-skills ul {
+    columns: 2;
+    column-gap: 20px;
+    column-fill: balance-all;
+  }
+  .cs-dp-skills__skill {
+    min-height: 70px;
+    padding: 10px 20px;
+    border-radius: var(--radius-small);
+    margin-bottom: 20px;
+  }
+  .cs-dp-skills__skill > div:first-of-type {
+    font-size: var(--font-size-2xl);
+    margin-right: 20px;
+  }
+}
+@media (min-width: 64rem) {
+  .cs-dp-skills ul {
+    column-gap: 40px;
+  }
+}
+
+@media (min-width: 75rem) {
+  .cs-dp-skills ul {
+    column-gap: 80px;
+  }
+  .cs-dp-skills {
+    padding: 0 40px;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (min-width: 96rem) {
+}
 
 /* about */
 
