@@ -186,6 +186,7 @@ a.cs-lp-language__link:hover {
   margin: 0;
   font-size: var(--font-size-xl);
   font-weight: var(--font-w-bold);
+  margin-bottom: 11px;
 }
 .cs-dp-header__titles > h1 > span {
   margin-top: 11px;
