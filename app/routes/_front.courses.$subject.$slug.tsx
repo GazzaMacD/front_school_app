@@ -178,8 +178,20 @@ export default function CourseDetailPage() {
             level="h2"
           />
         </div>
-        <div style={{ textAlign: "center" }}>
-          <p>Max 9 skills + one ...nado in list form here</p>
+        <div className="g-basic-container">
+          <div className="cs-dp-skills">
+            <ul>
+              {page.course_content_points.map((sk, i) => {
+                const num = i > 8 ? i + 1 : `0${i + 1}`;
+                return (
+                  <li key={sk.id} className="cs-dp-skills__skill">
+                    <div>{num}</div>
+                    <div>{sk.value.text}</div>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
         </div>
       </section>
 
