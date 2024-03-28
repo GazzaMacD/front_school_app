@@ -8,6 +8,7 @@ import { BsRecord, BsX, BsArrowRightShort } from "react-icons/bs";
  */
 type TPriceTableProps = {
   color: "brown" | "beige";
+  showLinkButton: boolean;
   slug: string;
   titleEn: string;
   titleJa: string;
@@ -31,6 +32,7 @@ type TPriceTableProps = {
 };
 function ClassPricePlanTable({
   color,
+  showLinkButton,
   slug,
   titleEn,
   titleJa,
@@ -122,12 +124,14 @@ function ClassPricePlanTable({
           </tr>
         </tbody>
       </table>
-      <div>
-        <Link className="c-pricetable__link" to={`/price-plans/${slug}`}>
-          詳しく見る
-          <BsArrowRightShort />
-        </Link>
-      </div>
+      {showLinkButton ? (
+        <div>
+          <Link className="c-pricetable__link" to={`/price-plans/${slug}`}>
+            詳しく見る
+            <BsArrowRightShort />
+          </Link>
+        </div>
+      ) : null}
     </div>
   );
 }

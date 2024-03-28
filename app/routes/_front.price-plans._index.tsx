@@ -122,6 +122,7 @@ export default function PricePlansIndexPage() {
                     <SwiperSlide key={item.id}>
                       <ClassPricePlanTable
                         color="beige"
+                        showLinkButton={true}
                         slug={p.slug}
                         titleEn={p.title}
                         titleJa={p.display_title}
@@ -183,6 +184,7 @@ export default function PricePlansIndexPage() {
                     <SwiperSlide key={item.id}>
                       <ClassPricePlanTable
                         color="beige"
+                        showLinkButton={true}
                         slug={p.slug}
                         titleEn={p.title}
                         titleJa={p.display_title}
