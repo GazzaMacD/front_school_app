@@ -170,47 +170,46 @@ export default function BlogLessonsIndexPage() {
         </div>
       </div>
 
-      <div className="g-basic-container">
-        <div className="bl-posts">
-          {lessons.length
-            ? lessons.map((lesson) => {
-                const pubDate = new Date(lesson.published_date);
-                return (
-                  <Link
-                    to={lesson.meta.slug}
-                    key={lesson.id}
-                    className="bl-post-link"
-                  >
-                    <article className="bl-post">
-                      <div className="bl-post__img-wrapper">
-                        <img
-                          src={`${ENV.BASE_BACK_URL}${lesson.header_image.thumbnail.src}`}
-                          alt={lesson.header_image.title}
-                        />
-                        <div className="bl-post__overlay">
-                          <div className="bl-post__overlay-inner">
-                            <p>Let's learn!</p>
-                            <p>勉強しよう</p>
-                            <FaArrowRightLong />
+      <section id="posts">
+        <div className="bl-lp-posts">
+          <div className="g-grid-container1">
+            {lessons.length
+              ? lessons.map((lesson, i) => {
+                  const pubDate = new Date(lesson.published_date);
+                  const n = i % 2;
+                  return (
+                    <div key={lesson.id} className={`bl-lp-post-wrapper t${n}`}>
+                      <Link to={lesson.meta.slug} className="bl-lp-post-link">
+                        <article className="bl-lp-post">
+                          <div className="bl-lp-post__img-wrapper">
+                            <img
+                              src={`${ENV.BASE_BACK_URL}${lesson.header_image.thumbnail.src}`}
+                              alt={lesson.header_image.title}
+                            />
+                            <div className="bl-lp-post__overlay">
+                              <p>Let's learn!</p>
+                              <p>勉強しよう</p>
+                              <FaArrowRightLong />
+                            </div>
                           </div>
-                        </div>
-                      </div>
-                      <div className="bl-post__details">
-                        <p>
-                          {`${pubDate.getFullYear()}.${
-                            pubDate.getMonth() + 1
-                          }.${pubDate.getDate()}`}{" "}
-                          <span>[ {lesson.category.ja_name} ]</span>
-                        </p>
-                        <h2>{lesson.display_title}</h2>
-                      </div>
-                    </article>
-                  </Link>
-                );
-              })
-            : null}
+                          <div className="bl-lp-post__details">
+                            <p>
+                              {`${pubDate.getFullYear()}.${
+                                pubDate.getMonth() + 1
+                              }.${pubDate.getDate()}`}{" "}
+                              <span>[ {lesson.category.ja_name} ]</span>
+                            </p>
+                            <h3>{lesson.display_title}</h3>
+                          </div>
+                        </article>
+                      </Link>
+                    </div>
+                  );
+                })
+              : null}
+          </div>
         </div>
-      </div>
+      </section>
     </SlidingHeaderPage>
   );
 }
