@@ -1,14 +1,20 @@
 import React from "react";
-import { redirect, json } from "@remix-run/node";
+import {
+  json,
+  type V2_MetaFunction,
+  type LinksFunction,
+} from "@remix-run/node";
 import { useSearchParams } from "@remix-run/react";
 import { Link, useFetcher, useLoaderData } from "@remix-run/react";
 import { FaArrowRightLong } from "react-icons/fa6";
 
+import { getTitle } from "~/common/utils";
 import { BASE_API_URL } from "~/common/constants.server";
 import { handlePreview } from "~/common/utils.server";
 import { getGlobalEnv } from "~/common/utils";
 import { HeadingOne } from "~/components/headings";
 import { Swoosh1 } from "~/components/swooshes";
+import pageStyles from "~/styles/components/pages.css";
 
 /*types */
 import type { ActionArgs, LoaderArgs } from "@remix-run/node";
@@ -17,6 +23,7 @@ import type {
   TBaseListPage,
   TListPageItemAllMeta,
 } from "~/common/types";
+import { SlidingHeaderPage } from "~/components/pages";
 
 type TLessonsPreview = TBaseDetailPage & {
   jp_title: string;
@@ -30,13 +37,31 @@ type TLessons = TBaseListPage & {
   items: TLesson[];
 };
 
+/**
+ * Helper functions
+ */
+export const links: LinksFunction = () => [
+  { rel: "stylesheet", href: pageStyles },
+];
+
+export const meta: V2_MetaFunction = () => {
+  return [
+    {
+      title: getTitle({
+        title: "Blog Lessons・読んで学べるブログ",
+        isHome: false,
+      }),
+    },
+  ];
+};
+
 /*
- * serverside functions
+ * Loader and Action functions
  */
 
 export async function loader({ request }: LoaderArgs) {
   const category = new URL(request.url).searchParams.get("category");
-  const pageUrl = `${BASE_API_URL}/pages/?type=lessons.LessonListPage&fields=title,display_title,display_tagline`;
+  const pageUrl = `${BASE_API_URL}/pages/?type=lessons.LessonListPage&fields=_,title,display_title`;
   const categoriesUrl = `${BASE_API_URL}/lesson-categories/`;
   const urls = [pageUrl, categoriesUrl];
   try {
@@ -89,6 +114,10 @@ export async function loader({ request }: LoaderArgs) {
   }
 }
 
+/*
+ * Page
+ */
+
 export default function BlogLessonsIndexPage() {
   const ENV = getGlobalEnv();
   const [searchParams] = useSearchParams();
@@ -98,52 +127,50 @@ export default function BlogLessonsIndexPage() {
   const lessons = lessonsData.items;
 
   return (
-    <>
-      <div className="container">
-        <header className="g-header1">
-          <HeadingOne
-            enText={page.title}
-            jpText={page.display_title}
-            align="center"
-            bkground="light"
-            level="h1"
-          />
-          <p className="g-header1__tagline">{page.display_tagline}</p>
-        </header>
-        <div className="bl-cats-wrapper">
-          <div className="bl-cats-inner">
-            <div className="bl-cats-aside">カテゴリで絞り込む</div>
-            <div className="bl-cats">
-              {categories.map((category, i) => {
-                if (i === 0) {
-                  return (
-                    <Link
-                      to="/blog-lessons"
-                      className={`bl-cat ${
-                        selectedCat == null ? "bl-cat--active" : ""
-                      }`}
-                      key={category.id}
-                    >
-                      {category.ja_name}
-                    </Link>
-                  );
-                } else {
-                  return (
-                    <Link
-                      to={`/blog-lessons?category=${category.ja_name}`}
-                      key={category.id}
-                      className={`bl-cat ${
-                        selectedCat === category.ja_name ? "bl-cat--active" : ""
-                      }`}
-                    >
-                      {category.ja_name}
-                    </Link>
-                  );
-                }
-              })}
-            </div>
+    <SlidingHeaderPage
+      mainTitle={page.title}
+      subTitle={page.display_title}
+      swooshBackColor="cream"
+      swooshFrontColor="beige"
+    >
+      <div className="bl-lp-cats-wrapper">
+        <div className="bl-lp-cats-wrapper__inner">
+          <div className="bl-lp-cats-aside">カテゴリで絞り込む</div>
+          <div className="bl-lp-cats">
+            {categories.map((category, i) => {
+              if (i === 0) {
+                return (
+                  <Link
+                    to="/blog-lessons"
+                    className={`bl-lp-cat ${
+                      selectedCat == null ? "bl-lp-cat--active" : ""
+                    }`}
+                    key={category.id}
+                  >
+                    {category.ja_name}
+                  </Link>
+                );
+              } else {
+                return (
+                  <Link
+                    to={`/blog-lessons?category=${category.ja_name}`}
+                    key={category.id}
+                    className={`bl-lp-cat ${
+                      selectedCat === category.ja_name
+                        ? "bl-lp-cat--active"
+                        : ""
+                    }`}
+                  >
+                    {category.ja_name}
+                  </Link>
+                );
+              }
+            })}
           </div>
         </div>
+      </div>
+
+      <div className="g-basic-container">
         <div className="bl-posts">
           {lessons.length
             ? lessons.map((lesson) => {
@@ -184,7 +211,6 @@ export default function BlogLessonsIndexPage() {
             : null}
         </div>
       </div>
-      <Swoosh1 swooshColor="beige" backColor="cream" />
-    </>
+    </SlidingHeaderPage>
   );
 }
