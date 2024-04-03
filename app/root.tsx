@@ -22,15 +22,19 @@ import {
 import { useLoaderData } from "@remix-run/react";
 
 import { authenticatedUser } from "./common/session.server";
-import globalStyles from "./styles/global.css";
-import fontStyles from "./styles/fonts.css";
 import { SolidPillButtonLink } from "./components/buttons";
 import { createGlobalEnvObj } from "./env.server";
+import { HOME_URL } from "./common/constants.server";
+import { ErrorPage } from "./components/errors";
+import globalStyles from "./styles/global.css";
+import fontStyles from "./styles/fonts.css";
+import errorStyles from "./styles/errors.css";
 
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
   { rel: "stylesheet", href: fontStyles },
   { rel: "stylesheet", href: globalStyles },
+  { rel: "stylesheet", href: errorStyles },
 ];
 
 export async function loader({ request }: LoaderArgs) {
@@ -227,19 +231,62 @@ export default function App() {
   );
 }
 
+function ErrorDoc({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="ja">
+      <head>
+        <title>Oh no...</title>
+        <Links />
+        <Meta />
+      </head>
+      <body>
+        {children}
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+
+// best effort, last ditch error boundary. This should only catch root errors
+// all other errors should be caught by the index route which will include
+// the footer and menu which is much better.
 export function ErrorBoundary() {
   const error = useRouteError();
+  console.log("here");
 
   if (isRouteErrorResponse(error)) {
-    return (
-      <div>
-        <h1>
-          {error.status} {error.statusText}
-        </h1>
-        <p>{error.data}</p>
-        <Link to="/">Go home</Link>
-      </div>
-    );
+    if (error.status === 404) {
+      return (
+        <ErrorDoc>
+          <ErrorPage
+            title="404 - Sorry that page seems to be missing."
+            text="Please click the link below"
+            linkUrl={HOME_URL}
+            linkText="Home"
+          />
+        </ErrorDoc>
+      );
+    } else if (error.status !== 500) {
+      return (
+        <ErrorDoc>
+          <ErrorPage
+            title={`${error.status} - Sorry there seems to be a problem.`}
+            text="Please click the link below"
+            linkUrl={HOME_URL}
+            linkText="Home"
+          />
+        </ErrorDoc>
+      );
+    } else {
+      return (
+        <ErrorDoc>
+          <ErrorPage
+            title="500 - Server Error."
+            text="We apologize for the inconvenience. We are working on this problem, please try again later."
+          />
+        </ErrorDoc>
+      );
+    }
   } else if (error instanceof Error) {
     return (
       <div>

@@ -1,0 +1,8 @@
+.er-main {
+  background-color: var(--color-brand-cream);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
