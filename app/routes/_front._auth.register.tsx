@@ -1,7 +1,7 @@
 import { Link, useActionData } from "@remix-run/react";
 import {
-  type V2_MetaFunction,
-  type ActionArgs,
+  type MetaFunction,
+  type ActionFunctionArgs,
   json,
   redirect,
 } from "@remix-run/node";
@@ -23,7 +23,7 @@ import type {
 function isRegisterOk(data: TRegisterFail | TRegisterOk): data is TRegisterOk {
   return data && "detail" in data;
 }
-export const meta: V2_MetaFunction = () => {
+export const meta: MetaFunction = () => {
   return [
     { title: getTitle({ title: "Register・アカウント作成", isHome: false }) },
   ];
@@ -32,7 +32,7 @@ export const meta: V2_MetaFunction = () => {
 /*
  * Server Functions
  */
-export const action = async ({ request }: ActionArgs) => {
+export const action = async ({ request }: ActionFunctionArgs) => {
   const form = await request.formData();
   const email = form.get("email");
   const password1 = form.get("password1");

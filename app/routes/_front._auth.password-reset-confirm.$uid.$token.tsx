@@ -1,10 +1,10 @@
 import { useActionData, useLoaderData } from "@remix-run/react";
 import {
-  type ActionArgs,
-  type V2_MetaFunction,
+  type ActionFunctionArgs,
+  type MetaFunction,
   json,
   redirect,
-  type LoaderArgs,
+  type LoaderFunctionArgs,
 } from "@remix-run/node";
 
 import { resetConfirm } from "~/common/session.server";
@@ -39,7 +39,7 @@ function isResetConfirmErrors(
   );
 }
 
-export const meta: V2_MetaFunction = () => {
+export const meta: MetaFunction = () => {
   return [
     {
       title: getTitle({
@@ -53,7 +53,7 @@ export const meta: V2_MetaFunction = () => {
 /*
  * Server Functions
  */
-export const action = async ({ request }: ActionArgs) => {
+export const action = async ({ request }: ActionFunctionArgs) => {
   const form = await request.formData();
   const uid = Number(form.get("uid"));
   const token = form.get("token");
@@ -126,7 +126,7 @@ export const action = async ({ request }: ActionArgs) => {
   }
 }; //end action
 
-export const loader = ({ params }: LoaderArgs) => {
+export const loader = ({ params }: LoaderFunctionArgs) => {
   const { uid, token } = params;
   return json({ uid, token });
 };

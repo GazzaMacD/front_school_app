@@ -1,12 +1,16 @@
 import React from "react";
-import { type LinksFunction, type LoaderArgs, json } from "@remix-run/node";
+import {
+  type LinksFunction,
+  type LoaderFunctionArgs,
+  json,
+} from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
 import { getGlobalEnv } from "~/common/utils";
 
 import { BASE_API_URL } from "~/common/constants.server";
 import { Swoosh1 } from "~/components/swooshes";
 
-export async function loader({ params }: LoaderArgs) {
+export async function loader({ params }: LoaderFunctionArgs) {
   const { slug } = params;
   try {
     const testimonialsUrl = `${BASE_API_URL}/pages/?type=testimonials.TestimonialDetailPage&slug=${slug}&fields=*`;

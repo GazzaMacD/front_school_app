@@ -1,4 +1,4 @@
-import type { LinksFunction, V2_MetaFunction } from "@remix-run/node";
+import type { LinksFunction, MetaFunction } from "@remix-run/node";
 import * as React from "react";
 import { json } from "@remix-run/node";
 import swipperStyles from "swiper/css";
@@ -24,7 +24,7 @@ import { HeadingOne } from "~/components/headings";
 import { getDisplay } from "~/common/utils";
 
 // server side functions
-export const meta: V2_MetaFunction = () => {
+export const meta: MetaFunction = () => {
   return [{ title: getTitle({ title: "", isHome: true }) }];
 };
 

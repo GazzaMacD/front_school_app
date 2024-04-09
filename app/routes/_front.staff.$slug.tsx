@@ -1,4 +1,4 @@
-import { json, type LoaderArgs } from "@remix-run/node";
+import { json, type LoaderFunctionArgs } from "@remix-run/node";
 import { BASE_API_URL } from "~/common/constants.server";
 import { useLoaderData } from "@remix-run/react";
 import { getGlobalEnv } from "~/common/utils";
@@ -7,7 +7,7 @@ import React from "react";
 /* types */
 
 /* server side functions */
-export async function loader({ request, params }: LoaderArgs) {
+export async function loader({ request, params }: LoaderFunctionArgs) {
   try {
     const { slug } = params;
     const apiUrl = `${BASE_API_URL}/pages/?type=staff.StaffDetailPage&slug=${slug}&fields=*`;

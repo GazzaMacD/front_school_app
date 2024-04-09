@@ -1,11 +1,11 @@
-import { json, redirect, type V2_MetaFunction } from "@remix-run/node";
+import { json, redirect, type MetaFunction } from "@remix-run/node";
 import React from "react";
 import { useLoaderData, useActionData } from "@remix-run/react";
 
 import { verifyEmail } from "~/common/session.server";
 import { getTitle } from "~/common/utils";
 //types
-import type { ActionArgs, LoaderArgs } from "@remix-run/node";
+import type { ActionFunctionArgs, LoaderFunctionArgs } from "@remix-run/node";
 import type { TVerifyResponse } from "~/common/types";
 import { SlidingHeaderPage } from "~/components/pages";
 import { FaArrowRightLong } from "react-icons/fa6";
@@ -13,7 +13,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
  * Helper functions
  */
 
-export const meta: V2_MetaFunction = () => {
+export const meta: MetaFunction = () => {
   return [
     {
       title: getTitle({
@@ -27,7 +27,7 @@ export const meta: V2_MetaFunction = () => {
 /*
  * Server Functions
  */
-export const action = async ({ request }: ActionArgs) => {
+export const action = async ({ request }: ActionFunctionArgs) => {
   const form = await request.formData();
   const key = form.get("key");
 
@@ -53,7 +53,7 @@ export const action = async ({ request }: ActionArgs) => {
   return redirect("/email-confirmed");
 }; // action
 
-export const loader = async ({ params }: LoaderArgs) => {
+export const loader = async ({ params }: LoaderFunctionArgs) => {
   const { key } = params;
   return json({ key });
 };

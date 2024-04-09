@@ -2,7 +2,7 @@ import { useMatches, Link, useLoaderData, Outlet } from "@remix-run/react";
 import {
   redirect,
   json,
-  type LoaderArgs,
+  type LoaderFunctionArgs,
   type LinksFunction,
 } from "@remix-run/node";
 
@@ -18,7 +18,7 @@ export const links: LinksFunction = () => [
   { rel: "stylesheet", href: schedulesStyles },
 ];
 
-export async function loader({ request }: LoaderArgs) {
+export async function loader({ request }: LoaderFunctionArgs) {
   const userData = await authenticatedUser(request);
   const redirectTo = new URL(request.url).pathname;
   const searchParams = new URLSearchParams([["redirectTo", redirectTo]]);

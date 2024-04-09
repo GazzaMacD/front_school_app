@@ -1,7 +1,7 @@
 import { useMatches, Link, useLoaderData, Outlet } from "@remix-run/react";
-import { json, type LoaderArgs } from "@remix-run/node";
+import { json, type LoaderFunctionArgs } from "@remix-run/node";
 
-export function loader({ params }: LoaderArgs) {
+export function loader({ params }: LoaderFunctionArgs) {
   const { slug } = params;
   return json({ slug });
 }

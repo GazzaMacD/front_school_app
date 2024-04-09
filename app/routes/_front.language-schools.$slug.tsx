@@ -2,8 +2,8 @@ import { Link, useLoaderData } from "@remix-run/react";
 import {
   type LinksFunction,
   json,
-  type LoaderArgs,
-  type V2_MetaFunction,
+  type LoaderFunctionArgs,
+  type MetaFunction,
 } from "@remix-run/node";
 import { FaArrowRightLong } from "react-icons/fa6";
 
@@ -18,14 +18,14 @@ export const links: LinksFunction = () => [
   { rel: "stylesheet", href: galleryStyles },
 ];
 
-export const meta: V2_MetaFunction = ({ data }) => {
+export const meta: MetaFunction = ({ data }) => {
   const { page } = data;
   return [
     { title: getTitle({ title: `${page.display_title}`, isHome: false }) },
   ];
 };
 
-export async function loader({ params }: LoaderArgs) {
+export async function loader({ params }: LoaderFunctionArgs) {
   try {
     const { slug } = params;
     const dPageUrl = `${BASE_API_URL}/pages/?slug=${slug}&type=languageschools.LanguageSchoolDetailPage&fields=*`;

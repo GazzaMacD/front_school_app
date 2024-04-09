@@ -1,8 +1,4 @@
-import {
-  json,
-  type V2_MetaFunction,
-  type LinksFunction,
-} from "@remix-run/node";
+import { json, type MetaFunction, type LinksFunction } from "@remix-run/node";
 import { AiOutlineCalendar, AiOutlineClockCircle } from "react-icons/ai";
 import { Link, useLoaderData } from "@remix-run/react";
 import { RiEmotionHappyLine, RiEmotionUnhappyLine } from "react-icons/ri";
@@ -17,7 +13,7 @@ import { getGlobalEnv } from "~/common/utils";
 import cardStyles from "~/styles/components/cards.css";
 
 /*types */
-import type { LoaderArgs } from "@remix-run/node";
+import type { LoaderFunctionArgs } from "@remix-run/node";
 import type {
   TWagBasicImage,
   TBaseDetailPage,
@@ -169,7 +165,7 @@ function multipleChoiceCreator(data) {
   return data;
 }
 
-export const meta: V2_MetaFunction = ({ data }) => {
+export const meta: MetaFunction = ({ data }) => {
   const { page } = data;
   return [
     { title: getTitle({ title: `${page.display_title}`, isHome: false }) },
@@ -179,7 +175,7 @@ export const meta: V2_MetaFunction = ({ data }) => {
  * Serverside functions
  */
 
-export async function loader({ request, params }: LoaderArgs) {
+export async function loader({ request, params }: LoaderFunctionArgs) {
   //handle previews
   const previewResponse = await handlePreview<TLessonsPreview>(request);
   if (previewResponse.isPreview && previewResponse.data) {

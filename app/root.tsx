@@ -1,5 +1,9 @@
 import { cssBundleHref } from "@remix-run/css-bundle";
-import { type LinksFunction, type LoaderArgs, json } from "@remix-run/node";
+import {
+  type LinksFunction,
+  type LoaderFunctionArgs,
+  json,
+} from "@remix-run/node";
 import { AiFillPhone } from "react-icons/ai";
 import { FaMobileAlt } from "react-icons/fa";
 import {
@@ -37,7 +41,7 @@ export const links: LinksFunction = () => [
   { rel: "stylesheet", href: errorStyles },
 ];
 
-export async function loader({ request }: LoaderArgs) {
+export async function loader({ request }: LoaderFunctionArgs) {
   const userData = await authenticatedUser(request);
   const user = userData ? userData.user : null;
   const GLOBAL_ENV = createGlobalEnvObj();
