@@ -1,6 +1,6 @@
 import {
-  type LoaderArgs,
-  type V2_MetaFunction,
+  type LoaderFunctionArgs,
+  type MetaFunction,
   redirect,
 } from "@remix-run/node";
 
@@ -11,7 +11,7 @@ import { SlidingHeaderPage } from "~/components/pages";
  * Helper functions
  */
 
-export const meta: V2_MetaFunction = () => {
+export const meta: MetaFunction = () => {
   return [
     {
       title: getTitle({
@@ -25,7 +25,7 @@ export const meta: V2_MetaFunction = () => {
 /*
  * Server Functions
  */
-export function loader({ request }: LoaderArgs) {
+export function loader({ request }: LoaderFunctionArgs) {
   const referer = request.headers.get("referer");
   if (!referer || new URL(referer).pathname !== "/password-reset") {
     return redirect("/");

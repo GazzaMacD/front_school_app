@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Link } from "@remix-run/react";
-import { redirect, type LoaderArgs } from "@remix-run/node";
+import { redirect, type LoaderFunctionArgs } from "@remix-run/node";
 
 import { HeadingOne } from "~/components/headings";
 import { Swoosh1 } from "~/components/swooshes";
@@ -8,7 +8,7 @@ import { Swoosh1 } from "~/components/swooshes";
 /*
  * Server Functions
  */
-export function loader({ request }: LoaderArgs) {
+export function loader({ request }: LoaderFunctionArgs) {
   const referer = request.headers.get("referer");
   const pathname = referer ? new URL(referer).pathname : "";
   if (pathname === "/contact") {

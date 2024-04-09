@@ -1,11 +1,7 @@
 import React from "react";
 
 import { useLoaderData } from "@remix-run/react";
-import {
-  json,
-  type V2_MetaFunction,
-  type LinksFunction,
-} from "@remix-run/node";
+import { json, type MetaFunction, type LinksFunction } from "@remix-run/node";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 
@@ -23,7 +19,7 @@ export const links: LinksFunction = () => [
   { rel: "stylesheet", href: pageStyles },
 ];
 
-export const meta: V2_MetaFunction = () => {
+export const meta: MetaFunction = () => {
   return [
     {
       title: getTitle({

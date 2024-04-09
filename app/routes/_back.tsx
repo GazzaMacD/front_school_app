@@ -1,5 +1,5 @@
 import {
-  type LoaderArgs,
+  type LoaderFunctionArgs,
   type LinksFunction,
   json,
   redirect,
@@ -15,7 +15,7 @@ export const links: LinksFunction = () => [
   { rel: "stylesheet", href: mySpaceStyles },
 ];
 
-export async function loader({ request }: LoaderArgs) {
+export async function loader({ request }: LoaderFunctionArgs) {
   const userData = await authenticatedUser(request);
   //if null get path and redirect to login route with redirect parameter
   if (!userData) {

@@ -1,4 +1,4 @@
-import { type V2_MetaFunction } from "@remix-run/node";
+import { type MetaFunction } from "@remix-run/node";
 import { Link } from "@remix-run/react";
 
 import { getTitle } from "~/common/utils";
@@ -7,7 +7,7 @@ import { SlidingHeaderPage } from "~/components/pages";
 /*
  * Helper functions
  */
-export const meta: V2_MetaFunction = () => {
+export const meta: MetaFunction = () => {
   return [
     {
       title: getTitle({

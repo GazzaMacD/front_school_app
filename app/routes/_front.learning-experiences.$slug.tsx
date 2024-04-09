@@ -2,8 +2,8 @@ import { Link, useLoaderData } from "@remix-run/react";
 import {
   type LinksFunction,
   json,
-  type LoaderArgs,
-  type V2_MetaFunction,
+  type LoaderFunctionArgs,
+  type MetaFunction,
 } from "@remix-run/node";
 
 import { BASE_API_URL } from "~/common/constants.server";
@@ -45,14 +45,14 @@ export const links: LinksFunction = () => [
   { rel: "stylesheet", href: galleryStyles },
 ];
 
-export const meta: V2_MetaFunction = ({ data }) => {
+export const meta: MetaFunction = ({ data }) => {
   const { page } = data;
   return [
     { title: getTitle({ title: `${page.display_title}`, isHome: false }) },
   ];
 };
 
-export async function loader({ params }: LoaderArgs) {
+export async function loader({ params }: LoaderFunctionArgs) {
   const { slug } = params;
   try {
     const url = `${BASE_API_URL}/pages/?slug=${slug}&type=products.LearningExperienceDetailPage&fields=*`;

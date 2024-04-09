@@ -2,8 +2,8 @@ import * as React from "react";
 
 import {
   json,
-  type LoaderArgs,
-  type V2_MetaFunction,
+  type LoaderFunctionArgs,
+  type MetaFunction,
   type LinksFunction,
 } from "@remix-run/node";
 import { useLoaderData, Link } from "@remix-run/react";
@@ -32,7 +32,7 @@ export const links: LinksFunction = () => [
   { rel: "stylesheet", href: pricesStyles },
 ];
 
-export const meta: V2_MetaFunction = ({ data }) => {
+export const meta: MetaFunction = ({ data }) => {
   const { page } = data;
   return [
     { title: getTitle({ title: `${page.display_title}`, isHome: false }) },
@@ -43,7 +43,7 @@ export const meta: V2_MetaFunction = ({ data }) => {
  * Loader and Action functions
  */
 
-export async function loader({ request, params }: LoaderArgs) {
+export async function loader({ request, params }: LoaderFunctionArgs) {
   const { subject, slug } = params;
   const apiUrl = `${BASE_API_URL}/pages/?type=courses.CourseDisplayDetailPage&subject_slug=${subject}&slug=${slug}&fields=*`;
   const response = await fetch(apiUrl);

@@ -1,7 +1,11 @@
 import React from "react";
 
 import { useLoaderData } from "@remix-run/react";
-import { type V2_MetaFunction, type LoaderArgs, json } from "@remix-run/node";
+import {
+  type MetaFunction,
+  type LoaderFunctionArgs,
+  json,
+} from "@remix-run/node";
 
 import { BASE_API_URL } from "~/common/constants.server";
 import { getTitle } from "~/common/utils";
@@ -14,7 +18,7 @@ import { Swoosh1 } from "~/components/swooshes";
  * Helper functions
  */
 
-export const meta: V2_MetaFunction = () => {
+export const meta: MetaFunction = () => {
   return [
     {
       title: getTitle({
@@ -27,7 +31,7 @@ export const meta: V2_MetaFunction = () => {
 /**
  * Loader and Action functions
  */
-export async function loader({ params }: LoaderArgs) {
+export async function loader({ params }: LoaderFunctionArgs) {
   const { slug } = params;
   const url = `${BASE_API_URL}/pages/?slug=${slug}&type=products.ClassPricesDetailPage&fields=*`;
   console.log(url);

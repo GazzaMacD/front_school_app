@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  json,
-  type V2_MetaFunction,
-  type LinksFunction,
-} from "@remix-run/node";
+import { json, type MetaFunction, type LinksFunction } from "@remix-run/node";
 import { useSearchParams } from "@remix-run/react";
 import { Link, useFetcher, useLoaderData } from "@remix-run/react";
 import { FaArrowRightLong } from "react-icons/fa6";
@@ -17,7 +13,7 @@ import { Swoosh1 } from "~/components/swooshes";
 import pageStyles from "~/styles/components/pages.css";
 
 /*types */
-import type { ActionArgs, LoaderArgs } from "@remix-run/node";
+import type { ActionFunctionArgs, LoaderFunctionArgs } from "@remix-run/node";
 import type {
   TBaseDetailPage,
   TBaseListPage,
@@ -44,7 +40,7 @@ export const links: LinksFunction = () => [
   { rel: "stylesheet", href: pageStyles },
 ];
 
-export const meta: V2_MetaFunction = () => {
+export const meta: MetaFunction = () => {
   return [
     {
       title: getTitle({
@@ -59,7 +55,7 @@ export const meta: V2_MetaFunction = () => {
  * Loader and Action functions
  */
 
-export async function loader({ request }: LoaderArgs) {
+export async function loader({ request }: LoaderFunctionArgs) {
   const category = new URL(request.url).searchParams.get("category");
   const pageUrl = `${BASE_API_URL}/pages/?type=lessons.LessonListPage&fields=_,title,display_title`;
   const categoriesUrl = `${BASE_API_URL}/lesson-categories/`;

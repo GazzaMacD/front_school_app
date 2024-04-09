@@ -1,8 +1,8 @@
 import { redirect } from "@remix-run/node";
-import type { LoaderArgs } from "@remix-run/node";
+import type { LoaderFunctionArgs } from "@remix-run/node";
 import { BASE_API_URL } from "~/common/constants.server";
 
-export async function loader({ request }: LoaderArgs) {
+export async function loader({ request }: LoaderFunctionArgs) {
   /* A resource route to deal with routing the preview requests
    * from the cms to the correct route with required
    * query params. This current structue necessitates

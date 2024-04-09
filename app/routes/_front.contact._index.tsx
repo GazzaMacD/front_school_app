@@ -3,8 +3,8 @@ import { useLoaderData, Form, useActionData, Link } from "@remix-run/react";
 import {
   json,
   redirect,
-  type ActionArgs,
-  type V2_MetaFunction,
+  type ActionFunctionArgs,
+  type MetaFunction,
 } from "@remix-run/node";
 
 import { BASE_API_URL } from "~/common/constants.server";
@@ -83,7 +83,7 @@ function validateRequired(value: unknown): string[] {
   return [];
 }
 
-export const meta: V2_MetaFunction = () => {
+export const meta: MetaFunction = () => {
   return [
     { title: getTitle({ title: "Contact・お問い合わせ", isHome: false }) },
   ];
@@ -93,7 +93,7 @@ export const meta: V2_MetaFunction = () => {
  * Server functions
  */
 
-export const action = async ({ request }: ActionArgs) => {
+export const action = async ({ request }: ActionFunctionArgs) => {
   const form = await request.formData();
 
   const fullName = form.get("fullName");

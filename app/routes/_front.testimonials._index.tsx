@@ -1,7 +1,7 @@
 import {
   type LinksFunction,
   json,
-  type LoaderArgs,
+  type LoaderFunctionArgs,
   redirect,
 } from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
@@ -14,7 +14,7 @@ export const links: LinksFunction = () => [
   { rel: "stylesheet", href: aboutStyles },
 ];
 
-export async function loader({ params }: LoaderArgs) {
+export async function loader({ params }: LoaderFunctionArgs) {
   return redirect("/");
   /*
   const { slug } = params;

@@ -1,7 +1,7 @@
 import { useActionData } from "@remix-run/react";
 import {
-  type ActionArgs,
-  type V2_MetaFunction,
+  type ActionFunctionArgs,
+  type MetaFunction,
   json,
   redirect,
 } from "@remix-run/node";
@@ -26,7 +26,7 @@ function isPasswordResetOk(
   return data && "detail" in data;
 }
 
-export const meta: V2_MetaFunction = () => {
+export const meta: MetaFunction = () => {
   return [
     {
       title: getTitle({
@@ -40,7 +40,7 @@ export const meta: V2_MetaFunction = () => {
 /*
  * Server Functions
  */
-export const action = async ({ request }: ActionArgs) => {
+export const action = async ({ request }: ActionFunctionArgs) => {
   const form = await request.formData();
   const email = form.get("email");
 

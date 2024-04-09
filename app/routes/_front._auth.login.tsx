@@ -1,5 +1,9 @@
 import { Link, useActionData, useSearchParams } from "@remix-run/react";
-import { type ActionArgs, type V2_MetaFunction, json } from "@remix-run/node";
+import {
+  type ActionFunctionArgs,
+  type MetaFunction,
+  json,
+} from "@remix-run/node";
 import React from "react";
 
 import {
@@ -24,14 +28,14 @@ function isLoginOk(data: TLoginFail | TLoginOk): data is TLoginOk {
   return data && "access" in data;
 }
 
-export const meta: V2_MetaFunction = () => {
+export const meta: MetaFunction = () => {
   return [{ title: getTitle({ title: "Login・ログイン", isHome: false }) }];
 };
 
 /*
  * Server Functions
  */
-export const action = async ({ request }: ActionArgs) => {
+export const action = async ({ request }: ActionFunctionArgs) => {
   const form = await request.formData();
   const email = form.get("email");
   const password = form.get("password");

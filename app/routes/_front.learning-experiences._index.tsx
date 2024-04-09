@@ -1,9 +1,5 @@
 import { Link, useLoaderData } from "@remix-run/react";
-import {
-  json,
-  type LinksFunction,
-  type V2_MetaFunction,
-} from "@remix-run/node";
+import { json, type LinksFunction, type MetaFunction } from "@remix-run/node";
 
 import { BASE_API_URL } from "~/common/constants.server";
 import { getGlobalEnv, getDateString } from "~/common/utils";
@@ -21,7 +17,7 @@ export const links: LinksFunction = () => [
   { rel: "stylesheet", href: galleryStyles },
 ];
 
-export const meta: V2_MetaFunction = () => {
+export const meta: MetaFunction = () => {
   return [
     {
       title: getTitle({

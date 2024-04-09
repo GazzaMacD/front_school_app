@@ -1,9 +1,5 @@
 import { Link, useLoaderData } from "@remix-run/react";
-import {
-  type LinksFunction,
-  json,
-  type V2_MetaFunction,
-} from "@remix-run/node";
+import { type LinksFunction, json, type MetaFunction } from "@remix-run/node";
 
 import { BASE_API_URL } from "~/common/constants.server";
 import { getGlobalEnv } from "~/common/utils";
@@ -18,7 +14,7 @@ export const links: LinksFunction = () => [
   { rel: "stylesheet", href: pageStyles },
 ];
 
-export const meta: V2_MetaFunction = () => {
+export const meta: MetaFunction = () => {
   return [
     { title: getTitle({ title: "Language Schools・語学学校", isHome: false }) },
   ];
