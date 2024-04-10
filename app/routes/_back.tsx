@@ -8,11 +8,11 @@ import { useLoaderData, Outlet, Link } from "@remix-run/react";
 
 import { authenticatedUser } from "../common/session.server";
 import { hasSchedulePermissions } from "../common/permissions.server";
-import mySpaceStyles from "~/styles/my-space.css";
+import myPageStyles from "~/styles/my-page.css";
 import { type TUser } from "~/common/types";
 
 export const links: LinksFunction = () => [
-  { rel: "stylesheet", href: mySpaceStyles },
+  { rel: "stylesheet", href: myPageStyles },
 ];
 
 export async function loader({ request }: LoaderFunctionArgs) {
@@ -30,19 +30,24 @@ export async function loader({ request }: LoaderFunctionArgs) {
   return json({ user, perms });
 }
 
-export default function BackParentRoute() {
+export default function MyPageParentRoute() {
   const { user, perms } = useLoaderData<typeof loader>();
 
   return (
     <>
-      <aside className="bkms-sidebar">
-        <p>My Space</p>
-        <p>Hello {user?.contact?.name ? user.contact.name : user.email}</p>
+      <header className="mp-p-header">
+        <h2>マイページ</h2>
+        <p>
+          <span>こんにちは、</span>
+          <span>{user?.contact?.name ? user.contact.name : user.email}</span>
+        </p>
+      </header>
+      <aside className="mp-p-sidebar">
         {perms.classSchedules && (
           <Link to="/my-space/schedules">Book class</Link>
         )}
       </aside>
-      <main className="bkms-main">
+      <main className="mp-p-main">
         <Outlet />
       </main>
     </>
