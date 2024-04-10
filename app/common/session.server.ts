@@ -3,7 +3,7 @@ import {
   SESSION_NAME,
   SESSION_SECRET,
   BASE_API_URL,
-  DEFAULT_REDIRECT,
+  LOGIN_REDIRECT,
 } from "./constants.server";
 import type {
   TLogin,
@@ -35,11 +35,11 @@ import { MESSAGES } from "./languageDictionary";
 
 export function secureRedirect(to: FormDataEntryValue | null): string {
   if (!to || typeof to !== "string") {
-    return DEFAULT_REDIRECT;
+    return LOGIN_REDIRECT;
   }
 
   if (!to.startsWith("/") || to.startsWith("//")) {
-    return DEFAULT_REDIRECT;
+    return LOGIN_REDIRECT;
   }
 
   return to;

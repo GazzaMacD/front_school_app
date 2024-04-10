@@ -7,4 +7,4 @@ export const PERMISSIONS = {
   schedule: getEnvOrThrow("SCHEDULE_PERMS"),
 };
 export const SESSION_NAME = "__xl_session__";
-export const DEFAULT_REDIRECT = "/my-space";
+export const LOGIN_REDIRECT = "/my-page";

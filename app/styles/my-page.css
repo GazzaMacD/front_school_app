@@ -1,0 +1,69 @@
+/**
+* My page parent
+*/
+/* header */
+.mp-p-header {
+  margin-top: 80px;
+  height: 80px;
+  padding: 0 5px;
+  display: flex;
+  background-color: var(--color-brand-green);
+  justify-content: space-between;
+  align-items: center;
+}
+.mp-p-header > h2 {
+  margin: 0;
+  line-height: 1;
+  color: var(--color-brand-white);
+  font-size: var(--font-size-xl);
+}
+.mp-p-header > p {
+  margin: 0;
+  line-height: 1;
+  color: var(--color-brand-white);
+  font-size: var(--font-size-xs);
+}
+.mp-p-header > p > span {
+  display: block;
+}
+.mp-p-header > p > span:first-of-type {
+  margin-bottom: 5px;
+}
+@media (min-width: 48rem) {
+  .mp-p-header {
+    margin-top: 130px;
+    height: 80px;
+    padding: 0 15px;
+  }
+  .mp-p-header > p > span {
+    display: inline;
+  }
+  .mp-p-header > h2 {
+    font-size: var(--font-size-2xl);
+  }
+  .mp-p-header > p {
+    font-size: var(--font-size-s);
+  }
+}
+@media (min-width: 64rem) {
+  .mp-p-header {
+    margin-top: 80px;
+  }
+}
+@media (min-width: 96rem) {
+}
+
+/* sidebar */
+.mp-p-sidebar {
+  position: fixed;
+  width: 250px;
+  height: 100%;
+  background-color: var(--color-base-cream);
+}
+/* my space main */
+.mp-p-main {
+  background-color: white;
+  min-height: 100%;
+  margin: 0 0 0 250px;
+  padding: 98px 20px 20px 20px;
+}
