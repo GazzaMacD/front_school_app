@@ -188,7 +188,7 @@ a.mp-p-sidebar__social > svg {
   transition: opacity 0.4s ease-in-out;
 }
 .mp-p-overlay.active {
-  position: absolute;
+  position: fixed;
   display: block;
   top: 0;
   bottom: 0;
