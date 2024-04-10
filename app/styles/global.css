@@ -1113,7 +1113,7 @@ a.g-menu__reglog-link:before {
   font-weight: 600;
   white-space: nowrap;
   line-height: 1;
-  transition: all 0.25s ease-in-out;
+  transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
 }
 a.g-menu__reglog-link:hover > .g-menu__reglog {
   color: var(--color-brand-orange);
@@ -1134,12 +1134,12 @@ a.g-menu__reglog-link:hover > .g-menu__reglog {
   background-color: var(--color-brand-orange);
   border: 2px solid var(--color-brand-orange);
   border-radius: 100px;
-  padding: 10px 20px;
-  font-size: 16px;
+  padding: 8px 12px;
+  font-size: 11px;
   font-weight: 600;
   white-space: nowrap;
   line-height: 1;
-  transition: all 0.25s ease-in-out;
+  transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
 }
 .g-menu__logout:hover {
   cursor: pointer;
@@ -1157,6 +1157,7 @@ a.g-menu__reglog-link:hover > .g-menu__reglog {
   }
   .g-menu__logout {
     padding: 10px 22px;
+    font-size: 16px;
   }
 }
 @media (min-width: 75rem) {
