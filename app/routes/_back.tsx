@@ -1,10 +1,14 @@
+import * as React from "react";
+
 import {
   type LoaderFunctionArgs,
   type LinksFunction,
   json,
   redirect,
 } from "@remix-run/node";
-import { useLoaderData, Outlet, Link } from "@remix-run/react";
+import { useLoaderData, Outlet, Link, useLocation } from "@remix-run/react";
+import { BsHouse, BsCalendarWeek, BsX } from "react-icons/bs";
+import { FaInstagram, FaFacebookF, FaYoutube } from "react-icons/fa";
 
 import { authenticatedUser } from "../common/session.server";
 import { hasSchedulePermissions } from "../common/permissions.server";
@@ -32,24 +36,87 @@ export async function loader({ request }: LoaderFunctionArgs) {
 
 export default function MyPageParentRoute() {
   const { user, perms } = useLoaderData<typeof loader>();
+  const { pathname } = useLocation();
+  const [menuOpen, setMenuOpen] = React.useState(false);
 
   return (
     <>
       <header className="mp-p-header">
+        <div className="mp-p-header__button" onClick={() => setMenuOpen(true)}>
+          <span>&nbsp;</span>
+        </div>
         <h2>マイページ</h2>
         <p>
           <span>こんにちは、</span>
           <span>{user?.contact?.name ? user.contact.name : user.email}</span>
         </p>
       </header>
-      <aside className="mp-p-sidebar">
-        {perms.classSchedules && (
-          <Link to="/my-space/schedules">Book class</Link>
-        )}
-      </aside>
+      <Menu
+        key={pathname}
+        classSchedules={perms.classSchedules}
+        menuOpen={menuOpen}
+        setMenuOpen={setMenuOpen}
+      />
       <main className="mp-p-main">
         <Outlet />
       </main>
+    </>
+  );
+}
+
+type TMenuProps = {
+  menuOpen: boolean;
+  setMenuOpen: (x: boolean) => void;
+  classSchedules: boolean;
+};
+
+function Menu({ menuOpen, setMenuOpen, classSchedules }: TMenuProps) {
+  return (
+    <>
+      <aside className={`mp-p-sidebar ${menuOpen ? "active" : ""}`}>
+        <ul className="mp-p-sidebar__menu">
+          <li
+            onClick={() => setMenuOpen(false)}
+            className="mp-p-sidebar__menu__close"
+          >
+            <BsX />
+            メニューを閉じる
+          </li>
+          <li>
+            <Link to="/my-page" onClick={() => setMenuOpen(false)}>
+              <BsHouse />
+              マイページTOP
+            </Link>
+          </li>
+          {classSchedules && (
+            <li>
+              <Link onClick={() => setMenuOpen(false)} to="/my-page/schedules">
+                <BsCalendarWeek />
+                スケジュール
+              </Link>
+            </li>
+          )}
+        </ul>
+        <div className="mp-p-sidebar__socials">
+          <Link className="mp-p-sidebar__social instagram" to="#">
+            <FaInstagram />
+            <span>Instagram | Language Learning</span>
+          </Link>
+          <Link className="mp-p-sidebar__social instagram" to="#">
+            <FaInstagram />
+            <span>Instagram | News</span>
+          </Link>
+          <Link className="mp-p-sidebar__social facebook" to="#">
+            <FaFacebookF />
+            <span>Facebook</span>
+          </Link>
+          <Link className="mp-p-sidebar__social youtube" to="#">
+            <FaYoutube />
+            <span>Youtube</span>
+          </Link>
+        </div>
+      </aside>
+      <div className={`mp-p-overlay ${menuOpen ? "active" : ""}`}></div>
     </>
   );
 }
