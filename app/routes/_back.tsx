@@ -6,7 +6,13 @@ import {
   json,
   redirect,
 } from "@remix-run/node";
-import { useLoaderData, Outlet, Link, useLocation } from "@remix-run/react";
+import {
+  useLoaderData,
+  Outlet,
+  Link,
+  useLocation,
+  useMatches,
+} from "@remix-run/react";
 import { BsHouse, BsCalendarWeek, BsX } from "react-icons/bs";
 import { FaInstagram, FaFacebookF, FaYoutube } from "react-icons/fa";
 
@@ -19,6 +25,10 @@ import { type TUser } from "~/common/types";
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: myPageStyles },
 ];
+
+export const handle = {
+  breadcrumb: () => <Link to="/my-page">マイページTOP</Link>,
+};
 
 export async function loader({ request }: LoaderFunctionArgs) {
   const userData = await authenticatedUser(request);
@@ -38,6 +48,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
 export default function MyPageParentRoute() {
   const { user, perms } = useLoaderData<typeof loader>();
   const { pathname } = useLocation();
+  const matches = useMatches();
   const [menuOpen, setMenuOpen] = React.useState(false);
 
   return (
@@ -59,6 +70,15 @@ export default function MyPageParentRoute() {
         setMenuOpen={setMenuOpen}
       />
       <main className={`mp-p-main ${menuOpen ? "active" : ""}`}>
+        <div className="mp-p-breadcrumbs">
+          <ol>
+            {matches
+              .filter((match) => match.handle && match.handle.breadcrumb)
+              .map((match, index) => (
+                <li key={index}>{match.handle.breadcrumb(match)}</li>
+              ))}
+          </ol>
+        </div>
         <Outlet />
       </main>
     </>

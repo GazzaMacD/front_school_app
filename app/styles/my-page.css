@@ -11,6 +11,7 @@
   display: flex;
   background-color: var(--color-brand-green);
   align-items: center;
+  z-index: 10;
 }
 .mp-p-header__button {
   display: block;
@@ -231,15 +232,23 @@ a.mp-p-sidebar__social > svg {
 }
 /* my space main */
 .mp-p-main {
-  margin: 140px 0 0 0;
-  padding: 20px;
+  margin: 139px 0 0 0;
+  padding: 0 20px 20px 20px;
+  position: relative;
 }
 .mp-p-main.active {
   overflow: hidden;
 }
+@media (min-width: 48rem) {
+  .mp-p-main {
+    margin: 210px 0 0 0;
+    padding: 0 20px 20px 20px;
+  }
+}
 @media (min-width: 64rem) {
   .mp-p-main {
     margin: 160px 0 0 300px;
+    padding: 20px;
   }
 }
 @media (min-width: 96rem) {
@@ -248,12 +257,42 @@ a.mp-p-sidebar__social > svg {
   }
 }
 
+/* breadcrumbs */
 .mp-p-breadcrumbs {
+  position: fixed;
   background-color: var(--color-brand-beige);
-  font-size: 12px;
-  padding: 14px 20px;
+  font-size: 10px;
+  text-transform: capitalize;
+  padding: 14px 10px;
   margin: 0 0 40px 0;
-  border-radius: 10px;
+  left: 0;
+  right: 0;
+}
+.mp-p-breadcrumbs > ol {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.mp-p-breadcrumbs > ol > li {
+  margin-left: 5px;
+}
+.mp-p-breadcrumbs > ol > li {
+  margin-left: 5px;
+}
+.mp-p-breadcrumbs > ol > li:not(:first-child)::before {
+  content: ">";
+  margin-right: 5px;
+}
+
+@media (min-width: 64rem) {
+  .mp-p-breadcrumbs {
+    position: static;
+    font-size: 12px;
+    border-radius: 10px;
+  }
+}
+@media (min-width: 96rem) {
 }
 
 /* my space index */
