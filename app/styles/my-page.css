@@ -4,7 +4,7 @@
 /* header */
 .mp-p-header {
   position: fixed;
-  top: 80px;
+  top: 79px;
   width: 100%;
   height: 60px;
   padding: 0 5px;
@@ -231,7 +231,32 @@ a.mp-p-sidebar__social > svg {
 }
 /* my space main */
 .mp-p-main {
-  min-height: 100%;
-  margin: 0 0 0 250px;
-  padding: 98px 20px 20px 20px;
+  margin: 140px 0 0 0;
+  padding: 20px;
+}
+.mp-p-main.active {
+  overflow: hidden;
+}
+@media (min-width: 64rem) {
+  .mp-p-main {
+    margin: 160px 0 0 300px;
+  }
+}
+@media (min-width: 96rem) {
+  .mp-p-main {
+    margin: 160px 0 0 350px;
+  }
+}
+
+.mp-p-breadcrumbs {
+  background-color: var(--color-brand-beige);
+  font-size: 12px;
+  padding: 14px 20px;
+  margin: 0 0 40px 0;
+  border-radius: 10px;
+}
+
+/* my space index */
+.mp-i-info > h2 {
+  font-size: var(--font-size-xl);
 }

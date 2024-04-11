@@ -13,6 +13,7 @@ import { FaInstagram, FaFacebookF, FaYoutube } from "react-icons/fa";
 import { authenticatedUser } from "../common/session.server";
 import { hasSchedulePermissions } from "../common/permissions.server";
 import myPageStyles from "~/styles/my-page.css";
+import { SOCIAL_URLS } from "~/common/constants";
 import { type TUser } from "~/common/types";
 
 export const links: LinksFunction = () => [
@@ -57,7 +58,7 @@ export default function MyPageParentRoute() {
         menuOpen={menuOpen}
         setMenuOpen={setMenuOpen}
       />
-      <main className="mp-p-main">
+      <main className={`mp-p-main ${menuOpen ? "active" : ""}`}>
         <Outlet />
       </main>
     </>
@@ -98,19 +99,32 @@ function Menu({ menuOpen, setMenuOpen, classSchedules }: TMenuProps) {
           )}
         </ul>
         <div className="mp-p-sidebar__socials">
-          <Link className="mp-p-sidebar__social instagram" to="#">
+          <Link
+            className="mp-p-sidebar__social instagram"
+            to={SOCIAL_URLS.instagram_learn}
+          >
             <FaInstagram />
             <span>Instagram | Language Learning</span>
           </Link>
-          <Link className="mp-p-sidebar__social instagram" to="#">
+          <Link
+            className="mp-p-sidebar__social instagram"
+            to={SOCIAL_URLS.instagram_learn}
+          >
             <FaInstagram />
             <span>Instagram | News</span>
           </Link>
-          <Link className="mp-p-sidebar__social facebook" to="#">
+          <Link
+            className="mp-p-sidebar__social facebook"
+            to={SOCIAL_URLS.facebook}
+          >
             <FaFacebookF />
             <span>Facebook</span>
           </Link>
-          <Link className="mp-p-sidebar__social youtube" to="#">
+          <Link
+            className="mp-p-sidebar__social 
+          youtube"
+            to={SOCIAL_URLS.youtube}
+          >
             <FaYoutube />
             <span>Youtube</span>
           </Link>
