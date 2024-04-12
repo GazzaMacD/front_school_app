@@ -38,13 +38,12 @@ export default function ContactSuccessPage() {
           </div>
           <div className="ct-success__details">
             <p>
-              Thanks so much for contacting us, we will be in touch with you
-              soon.
+              お問い合わせいただき誠にありがとうございます。こちらから改めてご連絡させていただきますのでお待ち下さいませ。
             </p>
             <p>
-              If you have some time, why don't you read one of our{" "}
-              <Link to="/blog-lessons">free blog lessons</Link>. Alternatively,
-              please go to our <Link to="/">home page.</Link>
+              もしよろしければ、
+              <Link to="/blog-lessons">ブログレッスン一覧</Link>や、
+              <Link to="/">エクスリンガルホームページ</Link>をご覧ください。
             </p>
           </div>
         </div>

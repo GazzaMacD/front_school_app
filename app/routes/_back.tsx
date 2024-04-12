@@ -22,6 +22,9 @@ import myPageStyles from "~/styles/my-page.css";
 import { SOCIAL_URLS } from "~/common/constants";
 import { type TUser } from "~/common/types";
 
+/**
+ *   Helper functions and constants
+ **/
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: myPageStyles },
 ];
@@ -30,6 +33,9 @@ export const handle = {
   breadcrumb: () => <Link to="/my-page">マイページTOP</Link>,
 };
 
+/**
+ *  Actions and Loaders
+ **/
 export async function loader({ request }: LoaderFunctionArgs) {
   const userData = await authenticatedUser(request);
   //if null get path and redirect to login route with redirect parameter
@@ -44,6 +50,9 @@ export async function loader({ request }: LoaderFunctionArgs) {
   };
   return json({ user, perms });
 }
+/**
+ * Page
+ **/
 
 export default function MyPageParentRoute() {
   const { user, perms } = useLoaderData<typeof loader>();
@@ -79,7 +88,9 @@ export default function MyPageParentRoute() {
               ))}
           </ol>
         </div>
-        <Outlet />
+        <div className="mp-p-main__content">
+          <Outlet />
+        </div>
       </main>
     </>
   );
