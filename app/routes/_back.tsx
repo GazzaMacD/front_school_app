@@ -6,19 +6,36 @@ import {
   json,
   redirect,
 } from "@remix-run/node";
-import { useLoaderData, Outlet, Link, useLocation } from "@remix-run/react";
+import {
+  useLoaderData,
+  Outlet,
+  Link,
+  useLocation,
+  useMatches,
+} from "@remix-run/react";
 import { BsHouse, BsCalendarWeek, BsX } from "react-icons/bs";
 import { FaInstagram, FaFacebookF, FaYoutube } from "react-icons/fa";
 
 import { authenticatedUser } from "../common/session.server";
 import { hasSchedulePermissions } from "../common/permissions.server";
 import myPageStyles from "~/styles/my-page.css";
+import { SOCIAL_URLS } from "~/common/constants";
 import { type TUser } from "~/common/types";
 
+/**
+ *   Helper functions and constants
+ **/
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: myPageStyles },
 ];
 
+export const handle = {
+  breadcrumb: () => <Link to="/my-page">マイページTOP</Link>,
+};
+
+/**
+ *  Actions and Loaders
+ **/
 export async function loader({ request }: LoaderFunctionArgs) {
   const userData = await authenticatedUser(request);
   //if null get path and redirect to login route with redirect parameter
@@ -33,10 +50,14 @@ export async function loader({ request }: LoaderFunctionArgs) {
   };
   return json({ user, perms });
 }
+/**
+ * Page
+ **/
 
 export default function MyPageParentRoute() {
   const { user, perms } = useLoaderData<typeof loader>();
   const { pathname } = useLocation();
+  const matches = useMatches();
   const [menuOpen, setMenuOpen] = React.useState(false);
 
   return (
@@ -57,8 +78,19 @@ export default function MyPageParentRoute() {
         menuOpen={menuOpen}
         setMenuOpen={setMenuOpen}
       />
-      <main className="mp-p-main">
-        <Outlet />
+      <main className={`mp-p-main ${menuOpen ? "active" : ""}`}>
+        <div className="mp-p-breadcrumbs">
+          <ol>
+            {matches
+              .filter((match) => match.handle && match.handle.breadcrumb)
+              .map((match, index) => (
+                <li key={index}>{match.handle.breadcrumb(match)}</li>
+              ))}
+          </ol>
+        </div>
+        <div className="mp-p-main__content">
+          <Outlet />
+        </div>
       </main>
     </>
   );
@@ -98,19 +130,32 @@ function Menu({ menuOpen, setMenuOpen, classSchedules }: TMenuProps) {
           )}
         </ul>
         <div className="mp-p-sidebar__socials">
-          <Link className="mp-p-sidebar__social instagram" to="#">
+          <Link
+            className="mp-p-sidebar__social instagram"
+            to={SOCIAL_URLS.instagram_learn}
+          >
             <FaInstagram />
             <span>Instagram | Language Learning</span>
           </Link>
-          <Link className="mp-p-sidebar__social instagram" to="#">
+          <Link
+            className="mp-p-sidebar__social instagram"
+            to={SOCIAL_URLS.instagram_learn}
+          >
             <FaInstagram />
             <span>Instagram | News</span>
           </Link>
-          <Link className="mp-p-sidebar__social facebook" to="#">
+          <Link
+            className="mp-p-sidebar__social facebook"
+            to={SOCIAL_URLS.facebook}
+          >
             <FaFacebookF />
             <span>Facebook</span>
           </Link>
-          <Link className="mp-p-sidebar__social youtube" to="#">
+          <Link
+            className="mp-p-sidebar__social 
+          youtube"
+            to={SOCIAL_URLS.youtube}
+          >
             <FaYoutube />
             <span>Youtube</span>
           </Link>

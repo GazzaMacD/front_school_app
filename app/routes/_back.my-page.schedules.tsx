@@ -18,6 +18,10 @@ export const links: LinksFunction = () => [
   { rel: "stylesheet", href: schedulesStyles },
 ];
 
+export const handle = {
+  breadcrumb: (m) => <Link to="/my-page/schedules">スケジュール</Link>,
+};
+
 export async function loader({ request }: LoaderFunctionArgs) {
   const userData = await authenticatedUser(request);
   const redirectTo = new URL(request.url).pathname;

@@ -2,6 +2,8 @@ import { Outlet } from "@remix-run/react";
 import { Link } from "@remix-run/react";
 import { FaInstagram, FaFacebookF, FaYoutube } from "react-icons/fa";
 
+import { SOCIAL_URLS } from "~/common/constants";
+
 export default function FrontParentRoute() {
   return (
     <>
@@ -18,21 +20,33 @@ export default function FrontParentRoute() {
             </div>
             <div className="g-footer__socials">
               <div>
-                <Link className="g-footer__social instagram" to="#">
+                <Link
+                  className="g-footer__social instagram"
+                  to={SOCIAL_URLS.instagram_learn}
+                >
                   <FaInstagram />
                   <span>Instagram | Language Learning</span>
                 </Link>
-                <Link className="g-footer__social instagram" to="#">
+                <Link
+                  className="g-footer__social instagram"
+                  to={SOCIAL_URLS.instagram_news}
+                >
                   <FaInstagram />
                   <span>Instagram | News</span>
                 </Link>
               </div>
               <div>
-                <Link to="#" className="g-footer__social regular">
+                <Link
+                  to={SOCIAL_URLS.facebook}
+                  className="g-footer__social regular"
+                >
                   <FaFacebookF />
                   <span>Facebook</span>
                 </Link>
-                <Link className="g-footer__social regular" to="#">
+                <Link
+                  to={SOCIAL_URLS.youtube}
+                  className="g-footer__social regular"
+                >
                   <FaYoutube />
                   <span>Youtube</span>
                 </Link>
