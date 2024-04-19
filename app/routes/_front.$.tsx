@@ -1,11 +1,20 @@
-import { type LoaderFunctionArgs } from "@remix-run/node";
-import { isRouteErrorResponse, useRouteError } from "@remix-run/react";
-import { Link } from "@remix-run/react";
+import { redirect, type LoaderFunctionArgs } from "@remix-run/node";
+import { isRouteErrorResponse, useRouteError, Link } from "@remix-run/react";
 
 import { SwooshErrorPage } from "~/components/errors";
 
+const redirects: { [key: string]: string } = {
+  "blog/english/i-made-an-appointment-with-my-friend-2-mastering-to-make-plans/":
+    "/blog-lessons/all-elements-post",
+};
+
 export async function loader({ params, request }: LoaderFunctionArgs) {
-  console.log(params);
+  /*
+  const filePath = params["*"];
+  if (filePath && filePath in redirects) {
+    return redirect(redirects[filePath], 301);
+  }
+  */
   throw new Response("Use other route", { status: 404 });
 }
 
