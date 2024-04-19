@@ -54,19 +54,14 @@ export const meta: MetaFunction = ({ data }) => {
 
 export async function loader({ params }: LoaderFunctionArgs) {
   const { slug } = params;
-  try {
-    const url = `${BASE_API_URL}/pages/?slug=${slug}&type=products.LearningExperienceDetailPage&fields=*`;
-    const res = await fetch(url);
-    const data = await res.json();
-    if (!res.ok || !data.items.length) {
-      throw new Response("Sorry, 404", { status: 404 });
-    }
-    const page = data.items[0];
-    return json({ page });
-  } catch (error) {
-    //console.log(error);
-    throw new Response("oops that is an error", { status: 500 });
+  const url = `${BASE_API_URL}/pages/?slug=${slug}&type=products.LearningExperienceDetailPage&fields=*`;
+  const res = await fetch(url);
+  const data = await res.json();
+  if (!res.ok || !data.items.length) {
+    throw new Response("Sorry, 404", { status: 404 });
   }
+  const page = data.items[0];
+  return json({ page });
 }
 
 export default function LearningExperiencesDetailPage() {
