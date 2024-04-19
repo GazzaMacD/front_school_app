@@ -6,3 +6,11 @@
   justify-content: center;
   align-items: center;
 }
+.er-main--swoosh {
+  background-color: var(--color-brand-cream);
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,27 +1,12 @@
-import {
-  Outlet,
-  useRouteError,
-  isRouteErrorResponse,
-  Link,
-} from "@remix-run/react";
-import { type LinksFunction } from "@remix-run/node";
+import { type LoaderFunctionArgs } from "@remix-run/node";
+import { isRouteErrorResponse, useRouteError } from "@remix-run/react";
+import { Link } from "@remix-run/react";
 
-import blStyles from "~/styles/blog-lessons.css";
 import { SwooshErrorPage } from "~/components/errors";
 
-export const links: LinksFunction = () => [
-  { rel: "stylesheet", href: blStyles },
-];
-
-/*
- * client side code
- */
-export default function LessonsParentPage() {
-  return (
-    <>
-      <Outlet />
-    </>
-  );
+export async function loader({ params, request }: LoaderFunctionArgs) {
+  console.log(params);
+  throw new Response("Use other route", { status: 404 });
 }
 
 export function ErrorBoundary() {

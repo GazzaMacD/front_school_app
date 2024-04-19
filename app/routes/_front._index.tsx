@@ -3,7 +3,12 @@ import * as React from "react";
 import { json } from "@remix-run/node";
 import swipperStyles from "swiper/css";
 import swipperNavStyles from "swiper/css/navigation";
-import { Link, useLoaderData } from "@remix-run/react";
+import {
+  Link,
+  isRouteErrorResponse,
+  useLoaderData,
+  useRouteError,
+} from "@remix-run/react";
 import { FaArrowRightLong, FaXmark, FaRegCircle } from "react-icons/fa6";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
@@ -13,7 +18,7 @@ import cardStyles from "~/styles/components/cards.css";
 import { StaffRoundPicCard } from "~/components/cards";
 import { getTitle } from "~/common/utils";
 import { Swoosh1 } from "~/components/swooshes";
-import { BASE_API_URL } from "~/common/constants.server";
+import { BASE_API_URL, HOME_URL } from "~/common/constants.server";
 import { getGlobalEnv } from "~/common/utils";
 import {
   RoundButtonLink,
@@ -22,6 +27,7 @@ import {
 } from "~/components/buttons";
 import { HeadingOne } from "~/components/headings";
 import { getDisplay } from "~/common/utils";
+import { ErrorPage } from "~/components/errors";
 
 // server side functions
 export const meta: MetaFunction = () => {
@@ -39,37 +45,32 @@ export const loader = async () => {
   const homeUrl = `${BASE_API_URL}/pages/?type=home.HomePage&fields=*`;
   const blogslUrl = `${BASE_API_URL}/pages/?order=-published_date&limit=8&type=lessons.LessonDetailPage&fields=_,id,slug,display_title,display_tagline,published_date,title,category,header_image`;
   const urls = [homeUrl, blogslUrl];
-  try {
-    const [home, blogs] = await Promise.all(
-      urls.map((url) =>
-        fetch(url)
-          .then(async (r) => {
-            return {
-              data: await r.json(),
-              status: r.status,
-              ok: r.ok,
-            };
-          })
-          .then((data) => {
-            return {
-              data: data.data,
-              status: data.status,
-              ok: data.ok,
-              url: url,
-            };
-          })
-          .catch((error) => ({ error, url }))
-      )
-    );
-    /* NOTE - ERROR HANDLING HERE */
+  const [home, blogs] = await Promise.all(
+    urls.map((url) =>
+      fetch(url)
+        .then(async (r) => {
+          return {
+            data: await r.json(),
+            status: r.status,
+            ok: r.ok,
+          };
+        })
+        .then((data) => {
+          return {
+            data: data.data,
+            status: data.status,
+            ok: data.ok,
+            url: url,
+          };
+        })
+        .catch((error) => ({ error, url }))
+    )
+  );
 
-    return json({
-      home: home.data.items[0],
-      blogs: blogs.data.items,
-    });
-  } catch (error) {
-    throw new Response("sorry, that is a 500", { status: 500 });
-  }
+  return json({
+    home: home.data.items[0],
+    blogs: blogs.data.items,
+  });
 };
 
 // --------------------------------//

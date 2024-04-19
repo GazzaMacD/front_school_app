@@ -1,9 +1,10 @@
 import type { LinksFunction } from "@remix-run/node";
-import { Outlet } from "@remix-run/react";
+import { Outlet, isRouteErrorResponse, useRouteError } from "@remix-run/react";
 
 import contactStyles from "~/styles/contact.css";
 import pageCStyles from "~/styles/components/pages.css";
 import cardStyles from "~/styles/components/cards.css";
+import { ErrorPage } from "~/components/errors";
 
 /**
  *  Utils and helper functions
