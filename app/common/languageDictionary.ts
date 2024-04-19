@@ -28,7 +28,7 @@ export const MESSAGES = {
     statusCode: {
       HTTP403: "403 - Sorry area is forbidden",
       HTTP404: "404 - Sorry that page seems to be missing",
-      HTTP500: "500 - Looks like something went wrong! ",
+      HTTP500: "500 - Looks like something went wrong on the server! ",
     },
     errorBoundaryText: {
       clickLink: "Please click the link below",
