@@ -8,30 +8,21 @@ import React from "react";
 
 /* server side functions */
 export async function loader({ request, params }: LoaderFunctionArgs) {
-  try {
-    const { slug } = params;
-    const apiUrl = `${BASE_API_URL}/pages/?type=staff.StaffDetailPage&slug=${slug}&fields=*`;
-    const response = await fetch(apiUrl);
-    const responseData = await response.json();
-    const data = responseData.items[0];
-    if (!response.ok || !data) {
-      return json(
-        { data: null, error: { message: "Sorry, that is a 404." } },
-        { status: 404 }
-      );
-    }
-    return json({ data: data, error: null });
-  } catch (error) {
-    return json(
-      { data: null, error: { message: "Sorry, that is a 500." } },
-      { status: 500 }
-    );
+  const { slug } = params;
+  const apiUrl = `${BASE_API_URL}/pages/?type=staff.StaffDetailPage&slug=${slug}&fields=*`;
+  console.log(apiUrl);
+  const response = await fetch(apiUrl);
+  const data = await response.json();
+  if (!response.ok || !data.items.length) {
+    throw new Response("Sorry, that's a 404", { status: 404 });
   }
+  const page = data.items[0];
+  return json({ page });
 }
 
 /* page components */
 export default function StaffDetailPage() {
-  const { data, error } = useLoaderData<typeof loader>();
+  const { page } = useLoaderData<typeof loader>();
   const ENV = getGlobalEnv();
   return (
     <div className="st">
@@ -39,40 +30,40 @@ export default function StaffDetailPage() {
         <header>
           <div className="st-header__img-wrapper">
             <img
-              src={`${ENV.BASE_BACK_URL}${data.profile_image.original.src}`}
-              alt={`${data.profile_image.original.alt}`}
+              src={`${ENV.BASE_BACK_URL}${page.profile_image.original.src}`}
+              alt={`${page.profile_image.original.alt}`}
             />
           </div>
-          <h1 className="st-header__name">{data.title}</h1>
+          <h1 className="st-header__name">{page.title}</h1>
         </header>
         <div className="st-summary">
           <table>
             <tbody>
               <tr>
                 <td>出身国</td>
-                <td>{data.country}</td>
+                <td>{page.country}</td>
               </tr>
               <tr>
                 <td>母国語</td>
-                <td>{data.native_language.name_ja}</td>
+                <td>{page.native_language.name_ja}</td>
               </tr>
               <tr>
                 <td>その他の言語</td>
                 <td>
-                  {data.languages_spoken
+                  {page.languages_spoken
                     .map((l) => l.language.name_ja)
                     .join("、")}
                 </td>
               </tr>
               <tr>
                 <td>趣味</td>
-                <td>{data.hobbies}</td>
+                <td>{page.hobbies}</td>
               </tr>
             </tbody>
           </table>
         </div>
         <div className="st-interview">
-          {data.interview.map((block) => {
+          {page.interview.map((block) => {
             if (block.type === "q_and_a") {
               return block.value.q_and_a_series.map((qa) => {
                 return (
