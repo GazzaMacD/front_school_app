@@ -1,10 +1,6 @@
 import React from "react";
-import {
-  type LinksFunction,
-  type LoaderFunctionArgs,
-  json,
-} from "@remix-run/node";
-import { Link, useLoaderData } from "@remix-run/react";
+import { type LoaderFunctionArgs, json } from "@remix-run/node";
+import { useLoaderData } from "@remix-run/react";
 import { getGlobalEnv } from "~/common/utils";
 
 import { BASE_API_URL } from "~/common/constants.server";
@@ -12,16 +8,15 @@ import { Swoosh1 } from "~/components/swooshes";
 
 export async function loader({ params }: LoaderFunctionArgs) {
   const { slug } = params;
-  try {
-    const testimonialsUrl = `${BASE_API_URL}/pages/?type=testimonials.TestimonialDetailPage&slug=${slug}&fields=*`;
-    const testimonialRes = await fetch(testimonialsUrl);
-    const testimonialData = await testimonialRes.json();
-    return json({
-      testimonial: testimonialData.items[0],
-    });
-  } catch (error) {
-    throw new Response("sorry, that is a 500", { status: 500 });
+  const url = `${BASE_API_URL}/pages/?type=testimonials.TestimonialDetailPage&slug=${slug}&fields=*`;
+  const res = await fetch(url);
+  const data = await res.json();
+  if (!res.ok || !data.items.length) {
+    throw new Response("Sorry, that's a 404.", { status: 404 });
   }
+  return json({
+    testimonial: data.items[0],
+  });
 }
 
 export default function TestimonialsDetailPage() {
