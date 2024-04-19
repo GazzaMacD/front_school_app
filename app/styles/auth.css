@@ -1,0 +1,75 @@
+/* wrappers */
+.au-wrapper {
+  margin: 0 20px;
+}
+.au-wrapper__inner {
+  margin: 0 auto;
+  max-width: 380px;
+}
+
+@media (min-width: 48rem) {
+  .au-wrapper {
+    margin: 0 30px;
+  }
+  .au-wrapper__inner {
+    max-width: 480px;
+  }
+}
+
+/* form */
+.au-form {
+  background-color: var(--color-brand-white);
+  padding: 30px;
+  border-radius: var(--radius-small);
+}
+.au-form__bottom-message {
+  padding: 40px 0 0 0;
+  text-align: center;
+  font-size: var(--r14px);
+}
+.au-form__bottom-message > p {
+  margin-bottom: 5px;
+}
+.au-form__message {
+  max-width: 500px;
+  text-align: center;
+  font-size: var(--r14px);
+}
+.au-form__message > p {
+  margin-bottom: 5px;
+}
+.au-form__submit {
+  background-color: var(--color-brand-green);
+  color: var(--color-brand-white);
+  width: 100%;
+  text-align: center;
+  position: relative;
+  border: 2px solid var(--color-brand-green);
+  border-radius: 100px;
+  line-height: 1;
+  font-weight: 600;
+  padding: 12px 26px;
+  transition: all 0.25s ease-in-out;
+}
+.au-form__submit:hover {
+  background-color: var(--color-brand-white);
+  color: var(--color-brand-green);
+}
+.au-form__submit svg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto 30px auto 0;
+  width: 24px;
+  height: 24px;
+}
+@media (min-width: 48rem) {
+  .au-wrapper {
+    margin: 0 30px;
+  }
+  .au-form {
+    padding: 80px;
+    border-radius: var(--radius-large);
+  }
+}

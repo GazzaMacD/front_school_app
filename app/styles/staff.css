@@ -1,0 +1,41 @@
+.st {
+  padding: 80px 0 80px;
+}
+/* header */
+.st-header__img-wrapper {
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 80px;
+}
+.st-header__name {
+  font-size: var(--font-size-5xl);
+  font-weight: var(--font-w-bold);
+  text-align: center;
+  margin-bottom: 80px;
+}
+/* summary */
+.st-summary {
+  background-color: var(--color-brand-white);
+  border-radius: var(--radius-medium);
+  padding: 40px;
+  margin-bottom: 80px;
+}
+.st-summary td:first-of-type {
+  padding: 10px 40px 10px 0;
+  color: var(--color-brand-green);
+  font-weight: var(--font-w-bold);
+}
+.st-summary td:last-of-type {
+  font-weight: var(--font-w-bold);
+}
+/* summary */
+.st-interview__qa > p:first-of-type {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-w-bold);
+  margin-bottom: 32px;
+}
+.st-interview__qa > p:last-of-type {
+  font-size: var(--font-size-m);
+  font-weight: var(--font-w-medium);
+  margin-bottom: 60px;
+}

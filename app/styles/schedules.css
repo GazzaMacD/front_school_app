@@ -1,0 +1,15 @@
+/* Parent Page Styles */
+.bkscd {
+}
+/* Index Page Styles */
+.bksci {
+}
+
+/* Detail Page Styles */
+.bkscd {
+}
+.bkscd__iframe {
+  border: none;
+  width: 100%;
+  height: 1250px;
+}

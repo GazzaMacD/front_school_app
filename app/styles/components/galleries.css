@@ -1,0 +1,34 @@
+/**
+* Simple Image Gallery
+*/
+.c-gallery__figure {
+  margin-bottom: 40px;
+}
+.c-gallery__figure > img {
+  border-radius: var(--radius-small);
+  margin-bottom: 15px;
+}
+.c-gallery__figure > figcaption {
+  font-size: var(--font-size-xs);
+}
+@media (min-width: 48rem) {
+  .c-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.6vw;
+  }
+  .c-gallery__figure {
+    margin-bottom: 20px;
+  }
+}
+@media (min-width: 64rem) {
+  .c-gallery {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.6vw;
+  }
+}
+@media (min-width: 75rem) {
+  .c-gallery__figure > figcaption {
+    font-size: var(--font-size-s);
+  }
+}
