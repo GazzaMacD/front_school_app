@@ -1,4 +1,4 @@
-import { brandColors } from "~/common/brandColors";
+import { Swoosh1 } from "~/components/swooshes";
 
 type TErrorPageProps = {
   title: string;
@@ -21,4 +21,20 @@ function ErrorPage({ title, text, linkUrl, linkText }: TErrorPageProps) {
   );
 }
 
-export { ErrorPage };
+function SwooshErrorPage({ title, text, linkUrl, linkText }: TErrorPageProps) {
+  return (
+    <>
+      <main className="er-main--swoosh">
+        <h1>{title}</h1>
+        <p>{text}</p>
+        {linkText && linkUrl ? (
+          <p>
+            <a href={linkUrl}>{linkText}</a>
+          </p>
+        ) : null}
+      </main>
+      <Swoosh1 swooshColor="beige" backColor="cream" />
+    </>
+  );
+}
+export { ErrorPage, SwooshErrorPage };

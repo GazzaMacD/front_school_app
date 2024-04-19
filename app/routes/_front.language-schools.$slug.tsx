@@ -26,22 +26,17 @@ export const meta: MetaFunction = ({ data }) => {
 };
 
 export async function loader({ params }: LoaderFunctionArgs) {
-  try {
-    const { slug } = params;
-    const dPageUrl = `${BASE_API_URL}/pages/?slug=${slug}&type=languageschools.LanguageSchoolDetailPage&fields=*`;
-    const res = await fetch(dPageUrl);
-    const dPagepage = await res.json();
-    if (!res.ok || !dPagepage.items.length) {
-      throw new Response(`Oops that is a ${res.status}`, {
-        status: res.status,
-      });
-    }
-    const page = dPagepage.items[0];
-    return json({ page });
-  } catch (error) {
-    console.log(error);
-    throw new Response("oops that is an error", { status: 500 });
+  const { slug } = params;
+  const dPageUrl = `${BASE_API_URL}/pages/?slug=${slug}&type=languageschools.LanguageSchoolDetailPage&fields=*`;
+  const res = await fetch(dPageUrl);
+  const dPagepage = await res.json();
+  if (!res.ok || !dPagepage.items.length) {
+    throw new Response(`Oops that is a 404`, {
+      status: 404,
+    });
   }
+  const page = dPagepage.items[0];
+  return json({ page });
 }
 
 export default function LanguageSchoolDetailPage() {

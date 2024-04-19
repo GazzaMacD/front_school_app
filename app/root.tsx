@@ -26,7 +26,6 @@ import {
 import { useLoaderData } from "@remix-run/react";
 
 import { authenticatedUser } from "./common/session.server";
-import { SolidPillButtonLink } from "./components/buttons";
 import { createGlobalEnvObj } from "./env.server";
 import { HOME_URL } from "./common/constants.server";
 import { ErrorPage } from "./components/errors";
@@ -256,7 +255,6 @@ function ErrorDoc({ children }: { children: React.ReactNode }) {
 // the footer and menu which is much better.
 export function ErrorBoundary() {
   const error = useRouteError();
-  console.log("here");
 
   if (isRouteErrorResponse(error)) {
     if (error.status === 404) {
@@ -265,7 +263,7 @@ export function ErrorBoundary() {
           <ErrorPage
             title="404 - Sorry that page seems to be missing."
             text="Please click the link below"
-            linkUrl={HOME_URL}
+            linkUrl="/"
             linkText="Home"
           />
         </ErrorDoc>
@@ -276,7 +274,7 @@ export function ErrorBoundary() {
           <ErrorPage
             title={`${error.status} - Sorry there seems to be a problem.`}
             text="Please click the link below"
-            linkUrl={HOME_URL}
+            linkUrl="/"
             linkText="Home"
           />
         </ErrorDoc>

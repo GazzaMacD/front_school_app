@@ -12,6 +12,7 @@ export function getEnvOrThrow(name: string) {
 export function createGlobalEnvObj() {
   return {
     BASE_BACK_URL: getEnvOrThrow("BASE_BACK_URL"),
+    HOME_URL: getEnvOrThrow("HOME_URL"),
   };
 }
 

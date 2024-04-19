@@ -1,8 +1,10 @@
-import { Outlet } from "@remix-run/react";
+import { Outlet, isRouteErrorResponse, useRouteError } from "@remix-run/react";
 import { Link } from "@remix-run/react";
 import { FaInstagram, FaFacebookF, FaYoutube } from "react-icons/fa";
 
 import { SOCIAL_URLS } from "~/common/constants";
+import { HOME_URL } from "~/common/constants.server";
+import { ErrorPage } from "~/components/errors";
 
 export default function FrontParentRoute() {
   return (
