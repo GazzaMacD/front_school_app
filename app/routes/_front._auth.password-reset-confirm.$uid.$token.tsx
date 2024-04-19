@@ -71,7 +71,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
       {
         fields: null,
         errors: {
-          non_field_errors: [MESSAGES["ja"].form.standard400],
+          non_field_errors: [MESSAGES["ja"].form.standard],
         },
       },
       { status: 400 }
@@ -97,7 +97,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
         {
           fields: fields,
           errors: {
-            non_field_errors: [MESSAGES["ja"].form.standard400],
+            non_field_errors: [MESSAGES["ja"].form.standard],
           },
         },
         { status: 400 }
@@ -118,7 +118,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
       {
         fields: fields,
         errors: {
-          non_field_errors: [MESSAGES["en"].form.standard400],
+          non_field_errors: [MESSAGES["en"].form.standard],
         },
       },
       { status: 400 }

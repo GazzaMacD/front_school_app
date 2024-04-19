@@ -112,7 +112,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
         fields: null,
         data: null,
         errors: {
-          non_field_errors: [MESSAGES["en"].form.standard400],
+          non_field_errors: [MESSAGES["en"].form.standard],
         },
       },
       { status: 400 }
@@ -169,7 +169,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     return redirect("/contact/success");
   } catch (error) {
     // network error
-    errors.non_field_errors = [MESSAGES["ja"].form.standard400];
+    errors.non_field_errors = [MESSAGES["ja"].form.standard];
     return json(
       {
         fields,

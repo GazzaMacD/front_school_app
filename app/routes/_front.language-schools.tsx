@@ -8,6 +8,7 @@ import { type LinksFunction } from "@remix-run/node";
 
 import lsStyles from "../styles/language-schools.css";
 import { SwooshErrorPage } from "~/components/errors";
+import { MESSAGES } from "~/common/languageDictionary";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: lsStyles },
@@ -31,26 +32,26 @@ export function ErrorBoundary() {
     if (error.status === 404) {
       return (
         <SwooshErrorPage
-          title="404 - Sorry that page seems to be missing."
-          text="Please click the link below"
+          title={MESSAGES.ja.statusCode.HTTP404}
+          text={MESSAGES.ja.errorBoundaryText.clickLink}
           linkUrl="/"
-          linkText="Home"
+          linkText={MESSAGES.ja.errorBoundaryLinkTexts.home}
         />
       );
     } else if (error.status !== 500) {
       return (
         <SwooshErrorPage
-          title={`${error.status} - Sorry there seems to be a problem.`}
-          text="Please click the link below"
+          title={MESSAGES.ja.statusCode.HTTP500}
+          text={MESSAGES.ja.errorBoundaryText.clickLink}
           linkUrl="/"
-          linkText="Home"
+          linkText={MESSAGES.ja.errorBoundaryLinkTexts.home}
         />
       );
     } else {
       return (
         <SwooshErrorPage
-          title="500 - Server Error."
-          text="We apologize for the inconvenience. We are working on this problem, please try again later."
+          title={MESSAGES.ja.statusCode.HTTP500}
+          text={MESSAGES.ja.errorBoundaryText.tryLater}
         />
       );
     }
@@ -65,6 +66,6 @@ export function ErrorBoundary() {
       </div>
     );
   } else {
-    return <h1>Unknown Error</h1>;
+    return <h1>500 - Sorry looks like something went wrong on the server</h1>;
   }
 }
