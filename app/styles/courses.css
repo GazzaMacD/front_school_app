@@ -58,9 +58,19 @@
   grid-column: 1 /16;
 }
 
-/* popular courses */
+/* all language courses */
 .cs-lp-language__heading {
   grid-column: 1 /16;
+}
+/* all language courses -- english */
+.cs-lp-language__english {
+  grid-column: 1 /16;
+  display: grid;
+  grid-template-columns: repeat(15, 1fr);
+  margin-top: -80px;
+}
+.cs-lp-language__col {
+  padding-top: 80px;
 }
 
 .cs-lp-language__col.a,
