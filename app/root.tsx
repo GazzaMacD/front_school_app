@@ -4,13 +4,11 @@ import {
   type LoaderFunctionArgs,
   json,
 } from "@remix-run/node";
-import { AiFillPhone } from "react-icons/ai";
-import { FaMobileAlt } from "react-icons/fa";
 import {
   FaInstagram,
   FaFacebookF,
-  FaLinkedinIn,
   FaYoutube,
+  FaMobileAlt,
 } from "react-icons/fa";
 import {
   Link,
@@ -21,17 +19,17 @@ import {
   Scripts,
   ScrollRestoration,
   isRouteErrorResponse,
+  useLocation,
   useRouteError,
+  useLoaderData,
 } from "@remix-run/react";
-import { useLoaderData } from "@remix-run/react";
 
-import { authenticatedUser } from "./common/session.server";
-import { createGlobalEnvObj } from "./env.server";
-import { HOME_URL } from "./common/constants.server";
-import { ErrorPage } from "./components/errors";
-import globalStyles from "./styles/global.css";
-import fontStyles from "./styles/fonts.css";
-import errorStyles from "./styles/errors.css";
+import { authenticatedUser } from "~/common/session.server";
+import { createGlobalEnvObj } from "~/env.server";
+import { ErrorPage } from "~/components/errors";
+import globalStyles from "~/styles/global.css";
+import fontStyles from "~/styles/fonts.css";
+import errorStyles from "~/styles/errors.css";
 
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
@@ -49,6 +47,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
 
 export default function App() {
   const { user, GLOBAL_ENV } = useLoaderData<typeof loader>();
+  const { pathname } = useLocation();
   return (
     <html lang="ja">
       <head>
@@ -117,105 +116,7 @@ export default function App() {
                     )}
                   </ul>
                 </nav>
-                <div>
-                  <form>
-                    <input
-                      type="checkbox"
-                      id="navi-toggle"
-                      className="g-sm__checkbox"
-                    />
-                    <label
-                      htmlFor="navi-toggle"
-                      className="g-sm__button"
-                      role="button"
-                    >
-                      <div>
-                        <span className="g-sm__button__icon">&nbsp;</span>
-                        <span className="g-sm__button__text">メニュー</span>
-                      </div>
-                    </label>
-                    <div className="g-sm">
-                      <nav className="g-sm__inner">
-                        <div className="g-sm__inner__menus">
-                          <h3>言語学習</h3>
-                          <ul>
-                            <li>
-                              <Link to="/courses">― コース紹介</Link>
-                            </li>
-                            <li>
-                              <Link to="/prices">― 料金</Link>
-                            </li>
-                            <li>
-                              <Link to="/learning-experiences">
-                                ― ランゲージ・エクスペリエンス
-                              </Link>
-                            </li>
-                            <li>
-                              <Link to="/courses">― 読んで学べるブログ</Link>
-                            </li>
-                          </ul>
-
-                          <h3>会社案内</h3>
-                          <ul>
-                            <li>
-                              <Link to="/about">― 私たちについて</Link>
-                            </li>
-                            <li>
-                              <Link to="/language-schools">― スクール一覧</Link>
-                            </li>
-                            <li>
-                              <Link to="/news">― 最新情報</Link>
-                            </li>
-                          </ul>
-                          <h3>お問い合わせ</h3>
-                          <ul>
-                            <li>
-                              <Link to="/contact#form">
-                                ― フォームでのお問い合わせ
-                              </Link>
-                            </li>
-                            <li>
-                              <Link to="/contact#telephone">
-                                ― 電話でのお問い合わせe
-                              </Link>
-                            </li>
-                            <li>
-                              <Link to="mailto:contact@xlingual.co.jp">
-                                ― Eメールでのお問い合わせ
-                              </Link>
-                            </li>
-                          </ul>
-                          <h3>その他</h3>
-                          <ul>
-                            <li>
-                              <Link to="/privacy-policy">
-                                ― プライバシーポリシー
-                              </Link>
-                            </li>
-                          </ul>
-                        </div>
-                        <div className="g-sm__inner__socials">
-                          <Link className="g-sm__social instagram" to="#">
-                            <FaInstagram />
-                            <div>Instagram | Language Learning</div>
-                          </Link>
-                          <Link to="#" className="g-sm__social regular">
-                            <FaFacebookF />
-                            <div>Facebook</div>
-                          </Link>
-                          <Link className="g-sm__social instagram" to="#">
-                            <FaInstagram />
-                            <div>Instagram | News</div>
-                          </Link>
-                          <Link className="g-sm__social regular" to="#">
-                            <FaYoutube />
-                            <div>Youtube</div>
-                          </Link>
-                        </div>
-                      </nav>
-                    </div>
-                  </form>
-                </div>
+                <HamburgerMenu key={pathname} />
               </div>
             </div>
           </header>
@@ -231,6 +132,96 @@ export default function App() {
         <LiveReload />
       </body>
     </html>
+  );
+}
+
+function HamburgerMenu() {
+  return (
+    <div>
+      <form>
+        <input type="checkbox" id="navi-toggle" className="g-sm__checkbox" />
+        <label htmlFor="navi-toggle" className="g-sm__button" role="button">
+          <div>
+            <span className="g-sm__button__icon">&nbsp;</span>
+            <span className="g-sm__button__text">メニュー</span>
+          </div>
+        </label>
+        <div className="g-sm">
+          <nav className="g-sm__inner">
+            <div className="g-sm__inner__menus">
+              <h3>言語学習</h3>
+              <ul>
+                <li>
+                  <Link to="/courses">― コース紹介</Link>
+                </li>
+                <li>
+                  <Link to="/prices">― 料金</Link>
+                </li>
+                <li>
+                  <Link to="/learning-experiences">
+                    ― ランゲージ・エクスペリエンス
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/courses">― 読んで学べるブログ</Link>
+                </li>
+              </ul>
+
+              <h3>会社案内</h3>
+              <ul>
+                <li>
+                  <Link to="/about">― 私たちについて</Link>
+                </li>
+                <li>
+                  <Link to="/language-schools">― スクール一覧</Link>
+                </li>
+                <li>
+                  <Link to="/news">― 最新情報</Link>
+                </li>
+              </ul>
+              <h3>お問い合わせ</h3>
+              <ul>
+                <li>
+                  <Link to="/contact#form">― フォームでのお問い合わせ</Link>
+                </li>
+                <li>
+                  <Link to="/contact#telephone">― 電話でのお問い合わせe</Link>
+                </li>
+                <li>
+                  <Link to="mailto:contact@xlingual.co.jp">
+                    ― Eメールでのお問い合わせ
+                  </Link>
+                </li>
+              </ul>
+              <h3>その他</h3>
+              <ul>
+                <li>
+                  <Link to="/privacy-policy">― プライバシーポリシー</Link>
+                </li>
+              </ul>
+            </div>
+            <div className="g-sm__inner__socials">
+              <Link className="g-sm__social instagram" to="#">
+                <FaInstagram />
+                <div>Instagram | Language Learning</div>
+              </Link>
+              <Link to="#" className="g-sm__social regular">
+                <FaFacebookF />
+                <div>Facebook</div>
+              </Link>
+              <Link className="g-sm__social instagram" to="#">
+                <FaInstagram />
+                <div>Instagram | News</div>
+              </Link>
+              <Link className="g-sm__social regular" to="#">
+                <FaYoutube />
+                <div>Youtube</div>
+              </Link>
+            </div>
+          </nav>
+        </div>
+      </form>
+    </div>
   );
 }
 
