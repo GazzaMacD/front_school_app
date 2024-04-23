@@ -165,29 +165,35 @@ export default function CoursesIndexPage() {
                 level="h2"
               />
             </div>
-            {Object.entries(englishHeadings).map(([k, v]) => {
-              return (
-                <div key={k} className={`cs-lp-language__col ${v[0]}`}>
-                  <h3>{v[1]}</h3>
-                  {ld.english[k] ? (
-                    ld.english[k].map((cs) => {
-                      return (
-                        <Link
-                          key={cs.id}
-                          to={`/courses/${cs.course.subject}/${cs.meta.slug}`}
-                          className="cs-lp-language__link"
-                        >
-                          {cs.display_title}
-                          <FaArrowRightLong />
-                        </Link>
-                      );
-                    })
-                  ) : (
-                    <p>Coming soon</p>
-                  )}
-                </div>
-              );
-            })}
+            <div className="cs-lp-language__english">
+              {Object.entries(englishHeadings).map(([k, v]) => {
+                return (
+                  <div
+                    key={k}
+                    className={`cs-lp-language__col ${v[0]}`}
+                    id={v[1]}
+                  >
+                    <h3>{v[1]}</h3>
+                    {ld.english[k] ? (
+                      ld.english[k].map((cs) => {
+                        return (
+                          <Link
+                            key={cs.id}
+                            to={`/courses/${cs.course.subject}/${cs.meta.slug}`}
+                            className="cs-lp-language__link"
+                          >
+                            {cs.display_title}
+                            <FaArrowRightLong />
+                          </Link>
+                        );
+                      })
+                    ) : (
+                      <p>Coming soon</p>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
