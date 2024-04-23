@@ -30,6 +30,7 @@ import { ErrorPage } from "~/components/errors";
 import globalStyles from "~/styles/global.css";
 import fontStyles from "~/styles/fonts.css";
 import errorStyles from "~/styles/errors.css";
+import { SOCIAL_URLS } from "~/common/constants";
 
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
@@ -152,10 +153,10 @@ function HamburgerMenu() {
               <h3>言語学習</h3>
               <ul>
                 <li>
-                  <Link to="/courses">― コース紹介</Link>
+                  <Link to="/courses">― 語学コース一覧</Link>
                 </li>
                 <li>
-                  <Link to="/prices">― 料金</Link>
+                  <Link to="/price-plans">― 料金プラン</Link>
                 </li>
                 <li>
                   <Link to="/learning-experiences">
@@ -163,7 +164,7 @@ function HamburgerMenu() {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/courses">― 読んで学べるブログ</Link>
+                  <Link to="/blog-lessons">― 読んで学べるブログ</Link>
                 </li>
               </ul>
 
@@ -175,9 +176,6 @@ function HamburgerMenu() {
                 <li>
                   <Link to="/language-schools">― スクール一覧</Link>
                 </li>
-                <li>
-                  <Link to="/news">― 最新情報</Link>
-                </li>
               </ul>
               <h3>お問い合わせ</h3>
               <ul>
@@ -185,7 +183,7 @@ function HamburgerMenu() {
                   <Link to="/contact#form">― フォームでのお問い合わせ</Link>
                 </li>
                 <li>
-                  <Link to="/contact#telephone">― 電話でのお問い合わせe</Link>
+                  <Link to="/contact#telephone">― 電話でのお問い合わせ</Link>
                 </li>
                 <li>
                   <Link to="mailto:contact@xlingual.co.jp">
@@ -196,24 +194,33 @@ function HamburgerMenu() {
               <h3>その他</h3>
               <ul>
                 <li>
-                  <Link to="/privacy-policy">― プライバシーポリシー</Link>
+                  <Link to="/my-page">― マイページ</Link>
+                </li>
+                <li>
+                  <Link to="/privacy">― プライバシーポリシー</Link>
                 </li>
               </ul>
             </div>
             <div className="g-sm__inner__socials">
-              <Link className="g-sm__social instagram" to="#">
+              <Link
+                className="g-sm__social instagram"
+                to={SOCIAL_URLS.instagram_learn}
+              >
                 <FaInstagram />
                 <div>Instagram | Language Learning</div>
               </Link>
-              <Link to="#" className="g-sm__social regular">
+              <Link to={SOCIAL_URLS.facebook} className="g-sm__social regular">
                 <FaFacebookF />
                 <div>Facebook</div>
               </Link>
-              <Link className="g-sm__social instagram" to="#">
+              <Link
+                to={SOCIAL_URLS.instagram_news}
+                className="g-sm__social instagram"
+              >
                 <FaInstagram />
                 <div>Instagram | News</div>
               </Link>
-              <Link className="g-sm__social regular" to="#">
+              <Link to={SOCIAL_URLS.youtube} className="g-sm__social regular">
                 <FaYoutube />
                 <div>Youtube</div>
               </Link>
