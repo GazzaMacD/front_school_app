@@ -66,10 +66,10 @@ export default function FrontParentRoute() {
               <h3>言語学習</h3>
               <ul>
                 <li>
-                  ― <Link to="/courses">コース紹介</Link>
+                  ― <Link to="/courses">語学コース一覧</Link>
                 </li>
                 <li>
-                  ― <Link to="/prices">料金</Link>
+                  ― <Link to="/price-plans">料金プラン</Link>
                 </li>
                 <li>
                   ―{" "}
@@ -78,7 +78,7 @@ export default function FrontParentRoute() {
                   </Link>
                 </li>
                 <li>
-                  ― <Link to="/courses">読んで学べるブログ</Link>
+                  ― <Link to="/blog-lessons">読んで学べるブログ</Link>
                 </li>
               </ul>
 
@@ -90,25 +90,16 @@ export default function FrontParentRoute() {
                 <li>
                   ― <Link to="/language-schools">スクール一覧</Link>
                 </li>
-                <li>
-                  ― <Link to="/news">最新情報</Link>
-                </li>
               </ul>
             </div>
             <div>
               <h3>お問い合わせ</h3>
               <ul>
                 <li>
-                  ―{" "}
-                  <Link to="/contact/form#contact">
-                    フォームでのお問い合わせ
-                  </Link>
+                  ― <Link to="/contact#form">フォームでのお問い合わせ</Link>
                 </li>
                 <li>
-                  ―{" "}
-                  <Link to="/contact/telephone#contact">
-                    電話でのお問い合わせe
-                  </Link>
+                  ― <Link to="/contact#telephone">電話でのお問い合わせe</Link>
                 </li>
                 <li>
                   ―{" "}
@@ -120,7 +111,10 @@ export default function FrontParentRoute() {
               <h3>その他</h3>
               <ul>
                 <li>
-                  ― <Link to="/privacy-policy">プライバシーポリシー</Link>
+                  ― <Link to="/my-page">マイページ</Link>
+                </li>
+                <li>
+                  <Link to="/privacy">― プライバシーポリシー</Link>
                 </li>
               </ul>
             </div>
