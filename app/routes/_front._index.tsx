@@ -352,7 +352,7 @@ export default function Index() {
             </div>
             <div className="ho-prices__button-wrapper">
               <LgBiButtonLink
-                to="/class-prices"
+                to="/price-plans"
                 color="orange"
                 jp="すべてのプランを見る"
                 en="View All Plans"
