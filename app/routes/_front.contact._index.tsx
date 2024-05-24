@@ -294,10 +294,10 @@ export default function ContactIndexPage() {
             </div>
             <div
               className="ct-texp__intro"
-              dangerouslySetInnerHTML={{ __html: page.trial_intro }}
+              dangerouslySetInnerHTML={{ __html: page.exp_intro }}
             />
             <div className="ct-texp__steps">
-              {page.trial_steps.map((step, i, arr) => {
+              {page.exp_steps.map((step, i, arr) => {
                 const len = arr.length;
                 return (
                   <div key={step.id}>
