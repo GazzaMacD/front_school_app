@@ -145,6 +145,15 @@ a.ls-lp-school__link::before {
   font-size: var(--font-size-s);
   font-weight: var(--font-w-bold);
 }
+.ls-dp-header__img-wrap {
+  overflow: hidden;
+}
+.ls-dp-header__img-wrap > img {
+  width: 100%;
+  max-height: 900px;
+  object-fit: cover;
+  object-position: center center;
+}
 @media (min-width: 48rem) {
   .ls-dp-header {
     margin: 70px 0 80px 0;
