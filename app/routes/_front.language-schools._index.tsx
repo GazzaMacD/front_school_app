@@ -68,12 +68,13 @@ export default function LanguageSchoolsListPage() {
       swooshBackColor="cream"
       swooshFrontColor="beige"
     >
+      {/* 
       <div className="ls-lp-intro">
         <div
           className="g-narrow-container"
           dangerouslySetInnerHTML={{ __html: lp.display_intro }}
         />
-      </div>
+      </div>*/}
       <section className="ls-lp-schools">
         <div className="g-grid-container1">
           {dp.map((school, i) => {

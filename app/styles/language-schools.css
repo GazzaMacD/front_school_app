@@ -14,11 +14,17 @@
 .ls-lp-schools {
 }
 /* schools list -- layout */
+.ls-lp-school {
+  margin-bottom: 30px;
+}
 .ls-lp-school.t0,
 .ls-lp-school.t1 {
   grid-column: 1 / 16;
 }
 @media (min-width: 64rem) {
+  .ls-lp-school {
+    margin-bottom: 60px;
+  }
   .ls-lp-school.t0 {
     grid-column: 1 /8;
   }
