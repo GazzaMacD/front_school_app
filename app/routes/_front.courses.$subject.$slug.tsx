@@ -172,7 +172,7 @@ export default function CourseDetailPage() {
         <div className="g-narrow-container">
           <HeadingOne
             enText="What skills will I learn"
-            jpText="学べるスキル"
+            jpText="学べるスキルの例"
             align="center"
             bkground="light"
             level="h2"
