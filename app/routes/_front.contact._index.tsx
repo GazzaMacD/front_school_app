@@ -51,7 +51,7 @@ type TContactActionResponse = {
 const contactMenu = [
   {
     id: 1,
-    text: "無料体験レッスン",
+    text: "レベルチェックと体験レッスン",
     url: "#trial",
   },
   {
@@ -377,7 +377,7 @@ export default function ContactIndexPage() {
               </Link>
               <div className="ct-tel__times">
                 <div className="ct-tel__times__label">
-                  <span>営業時間</span>
+                  <span>受付時間</span>
                 </div>
                 <div className="ct-tel__times__time">
                   <span>火/木/金</span>
@@ -415,9 +415,33 @@ export default function ContactIndexPage() {
             </div>
             <div className="ct-form__wrapper">
               <div className="ct-form__msg">
-                <Link to="#trial">体験レッスンの流れ</Link>や
-                <Link to="#experience">ラーニング・エクスペリエンスの流れ</Link>
-                についてもっと知りたいですか？お問い合わせは火曜日〜土曜日に受け付けています。お問い合わせにはできるだけ早く対応させていただきます。
+                <p>
+                  <Link to="#trial">無料レベルチェック・無料体験レッスン</Link>
+                  や<Link to="#experience">ラーニング・エクスペリエンス</Link>
+                  またスクールへのお問い合わせは、こちらのお問い合わせフォームをご利用くださいませ。お問い合わせは火曜日〜土曜日に受け付けております。日・月・祝またはGWやお盆は休校となっております。その際は、翌営業日以降に出来るだけ早くご連絡させていただきます。
+                </p>
+                <p>
+                  無料レベルチェックレッスンをご希望の方は、ご希望の旨と、下記項目をご記載ください。
+                </p>
+                <p>
+                  1．レベルチェックレッスンのご希望日時（第3希望まで）
+                  <br />
+                  ※レッスンは毎時ちょうどから50分間でございます。
+                  <br />
+                  ※ご受講時間帯　火～金曜日：8時～21時（21時開始が最終）、土曜日：8時～18時（18時開始が最終）
+                  <br />
+                  ※日・月・祝日は休校となっております。
+                  <br />
+                  2．受講ご希望校舎（はなみずき通校／オンライン）
+                  <br />
+                  3．レベルチェックレッスンの形式のご希望（対面／オンライン）
+                  <br />
+                  4. オンライン受講をご希望の場合、ご希望の形式（Zoom／Google
+                  Meet／Skype）
+                  <br />
+                  ※三好ケ丘校または伏見校でのご受講をご希望の場合は、別途お問い合わせください。
+                  <br />
+                </p>
               </div>
 
               <Form
