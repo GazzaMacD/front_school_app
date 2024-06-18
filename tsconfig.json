@@ -1,10 +1,5 @@
 {
-  "include": [
-    "remix.env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".project_files/_front.contact.form.tsx"
-  ],
+  "include": ["remix.env.d.ts", "**/*.ts", "**/*.tsx"],
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ES2022"],
     "isolatedModules": true,
