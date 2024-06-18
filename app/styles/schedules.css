@@ -1,15 +1,36 @@
 /* Parent Page Styles */
-.bkscd {
+.sc {
 }
 /* Index Page Styles */
-.bksci {
+.sc-lp {
 }
 
+.sc-lp-school {
+}
+.sc-lp-school__schedule {
+}
+a.sc-lp-school__schedule__link {
+  display: block;
+  margin-bottom: 20px;
+}
+a.sc-lp-school__schedule__link::before {
+  content: none;
+}
+.sc-lp-school__schedule__link > div {
+  background-color: white;
+  padding: 14px 10px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+.sc-lp-school__schedule__link > div > span {
+  margin-left: 10px;
+}
 /* Detail Page Styles */
 .bkscd {
 }
 .bkscd__iframe {
   border: none;
   width: 100%;
-  height: 1250px;
+  height: 5000px;
 }

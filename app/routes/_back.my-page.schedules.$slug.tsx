@@ -43,6 +43,7 @@ export default function SchedulesDetailRoute() {
             title={`${schedule.teacherName}'s ${schedule.schoolName} Booking Schedule`}
             className="bkscd__iframe"
             src={schedule.scheduleUrl}
+            scrolling="no"
           ></iframe>
         </div>
       );

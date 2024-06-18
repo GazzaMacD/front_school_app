@@ -46,7 +46,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
   return json({ user, GLOBAL_ENV });
 }
 
-export default function App() {
+export default function Root() {
   const { user, GLOBAL_ENV } = useLoaderData<typeof loader>();
   const { pathname } = useLocation();
   return (
@@ -124,13 +124,13 @@ export default function App() {
           <Outlet />
         </div>
         <ScrollRestoration />
+        <LiveReload />
         <Scripts />
         <script
           dangerouslySetInnerHTML={{
             __html: `window.GLOBAL_ENV = ${JSON.stringify(GLOBAL_ENV)}`,
           }}
         />
-        <LiveReload />
       </body>
     </html>
   );

@@ -8,6 +8,9 @@ module.exports = {
   serverBuildPath: "api/index.js",
   serverModuleFormat: "cjs",
   serverDependenciesToBundle: [/.*/],
+  dev: {
+    port: 4004,
+  },
   // appDirectory: "app",
   // assetsBuildDirectory: "public/build",
   // publicPath: "/build/",
