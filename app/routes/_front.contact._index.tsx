@@ -55,7 +55,7 @@ const contactMenu = [
   },
   {
     id: 2,
-    text: "ランゲージ・エクスペリエンス",
+    text: "ラーニング・エクスペリエンス",
     url: "#experience",
   },
   {
