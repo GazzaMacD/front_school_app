@@ -115,7 +115,10 @@ export default function Index() {
         <div className="ho-hero ">
           <div className="ho-hero__video-wrapper">
             <video className="ho-hero__video" playsInline autoPlay muted loop>
-              <source src="/video/dummy.mp4" type="video/mp4" />
+              <source
+                src="/video/2024-06-banner-video-2.mp4"
+                type="video/mp4"
+              />
             </video>
           </div>
           <div className="ho-hero__promo">
