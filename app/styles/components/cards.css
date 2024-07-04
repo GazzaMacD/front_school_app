@@ -14,6 +14,9 @@ a.c-staff-card__link:before {
   border-radius: 50%;
   margin-bottom: 15px;
 }
+.c-staff-card__img {
+  width: 100%;
+}
 /* overlay */
 .c-staff-card__overlay {
   position: absolute;
