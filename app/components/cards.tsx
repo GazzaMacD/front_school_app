@@ -87,7 +87,6 @@ function StaffRoundPicCard({
       </Link>
       <div className="c-staff-card__details">
         <h3>{name}</h3>
-        <p>{tagline}</p>
       </div>
     </article>
   );
