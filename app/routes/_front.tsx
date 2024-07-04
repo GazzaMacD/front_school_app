@@ -56,7 +56,7 @@ export default function FrontParentRoute() {
             </div>
             <div className="g-footer__copyright">
               <p>
-                © Copyright 2023 株式会社XLingual | All Rights Reserved |
+                © Copyright 2024 株式会社XLingual | All Rights Reserved |
                 Website by digital4.green
               </p>
             </div>
@@ -74,7 +74,7 @@ export default function FrontParentRoute() {
                 <li>
                   ―{" "}
                   <Link to="/learning-experiences">
-                    ランゲージ・エクスペリエンス
+                    ラーニング・エクスペリエンス
                   </Link>
                 </li>
                 <li>

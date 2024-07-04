@@ -160,7 +160,7 @@ function HamburgerMenu() {
                 </li>
                 <li>
                   <Link to="/learning-experiences">
-                    ― ランゲージ・エクスペリエンス
+                    ― ラーニング・エクスペリエンス
                   </Link>
                 </li>
                 <li>
