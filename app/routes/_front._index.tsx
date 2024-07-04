@@ -480,7 +480,7 @@ export default function Index() {
 
 /* helper functions */
 function getBlogSlideGap(windowSize: number) {
-  if (windowSize > 2000) return 3.5;
+  if (windowSize > 2000) return 110;
   else if (windowSize > 1800) return 103;
   else if (windowSize > 1700) return 96;
   else if (windowSize > 1600) return 90;
