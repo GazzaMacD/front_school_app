@@ -178,6 +178,9 @@ a.le-lp-upcoming__exp__link:hover {
   color: var(--color-brand-orange);
   margin-right: 10px;
 }
+.le-dp-header__img-wrapper img {
+  width: 100%;
+}
 @media (min-width: 48rem) {
   .le-dp-header {
     margin: 70px 0 80px 0;
