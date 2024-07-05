@@ -86,11 +86,10 @@ export default function LearningExperiencesDetailPage() {
             </div>
           </div>
         </div>
-        <div>
+        <div className="le-dp-header__img-wrapper">
           <img
             src={`${ENV.BASE_BACK_URL}${page.header_image.original.src}`}
             alt={page.header_image.original.alt}
-            className="lexdp__top-img"
           />
         </div>
       </header>

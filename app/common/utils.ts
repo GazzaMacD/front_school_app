@@ -45,7 +45,7 @@ export function getDateString(start: string, end: string) {
 export function getDateStringWithDays(start: string, end: string) {
   const startDate = new Date(start);
   const endDate = new Date(end);
-  const days = ["Sun", "Mon", "Tue", "Thu", "Fri", "Sat"];
+  const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   let dateString: string;
   if (startDate.getTime() === endDate.getTime()) {
     dateString = `${startDate.getFullYear()}.${startDate.getMonth()}.${startDate.getDate()} (${
