@@ -38,8 +38,13 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   const form = await request.formData();
   const name = form.get("name");
   const nameEn = form.get("name_en");
+  const bday = form.get("bday");
 
-  if (typeof name !== "string" || typeof nameEn !== "string") {
+  if (
+    typeof name !== "string" ||
+    typeof nameEn !== "string" ||
+    typeof bday !== "string"
+  ) {
     return json({
       fields: null,
       data: null,
@@ -63,6 +68,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
       body: JSON.stringify({
         name: name,
         name_en: nameEn,
+        bday: bday,
       }),
     });
     const data = await response.json();
@@ -151,7 +157,6 @@ export default function ProfileRoute() {
                 type="text"
                 id="name-input"
                 name="name"
-                required
                 defaultValue={
                   actionData?.fields?.name
                     ? actionData.fields.name
@@ -203,6 +208,39 @@ export default function ProfileRoute() {
                   id="name-en-errors"
                 >
                   {actionData.errors.name_en.map((error: string) => {
+                    return <li key={error}>{error}</li>;
+                  })}
+                </ul>
+              ) : null}
+            </div>
+
+            <div className="g-form__input-group">
+              <label className="g-form__text-label" htmlFor="bday-input">
+                英語での誕生日
+                <span className="g-form__help-text">(例：11 May)</span>
+              </label>
+              <input
+                type="text"
+                id="bday-input"
+                name="bday"
+                maxLength={13}
+                defaultValue={
+                  actionData?.fields?.bday
+                    ? actionData.fields.bday
+                    : loaderData.bday
+                }
+                aria-invalid={Boolean(actionData?.errors?.bday?.length)}
+                aria-errormessage={
+                  actionData?.errors?.bday?.length ? "bday-errors" : undefined
+                }
+              />
+              {actionData?.errors?.bday?.length ? (
+                <ul
+                  className="g-form__validation-errors"
+                  role="alert"
+                  id="bday-errors"
+                >
+                  {actionData.errors.name.map((error: string) => {
                     return <li key={error}>{error}</li>;
                   })}
                 </ul>
