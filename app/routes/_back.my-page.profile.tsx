@@ -131,6 +131,18 @@ export default function ProfileRoute() {
       <section className="mp-pr-main">
         <div className="mp-pr-form">
           <Form method="PUT">
+            {actionData?.errors?.non_field_errors ? (
+              <div className="g-form__nonfield-errors">
+                <ul>
+                  {actionData.errors.non_field_errors.map((error) => (
+                    <li role="alert" key={error}>
+                      {error}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+
             <div className="g-form__input-group">
               <label className="g-form__text-label" htmlFor="name-input">
                 氏名 <span className="g-form__help-text">(例：山田太郎)</span>
