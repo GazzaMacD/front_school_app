@@ -4,7 +4,7 @@ import {
   json,
   redirect,
 } from "@remix-run/node";
-import { useLoaderData, Form, useActionData } from "@remix-run/react";
+import { useLoaderData, Form, useActionData, Link } from "@remix-run/react";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { BASE_API_URL } from "~/common/constants.server";
 import { MESSAGES } from "~/common/languageDictionary";
@@ -23,10 +23,17 @@ type TFieldData = {
   name: string;
   name_en: string;
 };
+/**
+ * Helper functions
+ **/
 
+export const handle = {
+  breadcrumb: (m) => <Link to="/my-page/profile">プロフィール</Link>,
+};
 /**
  *  Actions and Loaders
  **/
+
 export const action = async ({ request }: ActionFunctionArgs) => {
   const form = await request.formData();
   const name = form.get("name");
