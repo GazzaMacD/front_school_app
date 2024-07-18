@@ -16,11 +16,15 @@ import {
 import { BsHouse, BsCalendarWeek, BsX, BsPersonBadge } from "react-icons/bs";
 import { FaInstagram, FaFacebookF, FaYoutube } from "react-icons/fa";
 
-import { authenticatedUser } from "../common/session.server";
-import { hasSchedulePermissions } from "../common/permissions.server";
+import {
+  authenticatedUser,
+  createAuthenticatedHeaders,
+} from "~/common/session.server";
+import { hasSchedulePermissions } from "~/common/permissions.server";
 import myPageStyles from "~/styles/my-page.css";
 import { SOCIAL_URLS } from "~/common/constants";
 import { type TUser } from "~/common/types";
+import { BASE_API_URL } from "~/common/constants.server";
 
 /**
  *   Helper functions and constants
@@ -44,12 +48,18 @@ export async function loader({ request }: LoaderFunctionArgs) {
     const searchParams = new URLSearchParams([["redirectTo", redirectTo]]);
     throw redirect(`/login?${searchParams}`);
   }
-  const user: TUser = userData.user;
+  const apiUrl = `${BASE_API_URL}/users/${userData.user.id}/user/`;
+  const response = await fetch(apiUrl, {
+    method: "GET",
+    headers: createAuthenticatedHeaders(userData),
+  });
+  const user: TUser = await response.json();
   const perms = {
     classSchedules: hasSchedulePermissions(user.groups, user.is_staff),
   };
   return json({ user, perms });
-}
+} // loader
+
 /**
  * Page
  **/
