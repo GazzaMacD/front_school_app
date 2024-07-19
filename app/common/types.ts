@@ -100,6 +100,7 @@ type TAuthErrorsBase = {
 };
 
 export type TUser = {
+  id: number;
   email: string;
   contact: {
     name: string;

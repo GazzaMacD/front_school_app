@@ -1796,6 +1796,11 @@ fieldset {
 .g-form__text-label {
   margin-bottom: 10px;
 }
+.g-form__help-text {
+  margin-left: 10px;
+  font-size: 10px;
+  color: var(--color-brand-brown);
+}
 .g-form__input-group input::placeholder {
   color: var(--color-sec-mediumgrey);
   font-size: var(--font-size-s);
