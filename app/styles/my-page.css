@@ -356,3 +356,27 @@ a.mp-i-news-link::before {
   font-size: var(--font-size-m);
   margin: 0;
 }
+
+/* my space profile (pr) */
+.mp-pr-header h2 {
+  text-align: center;
+}
+.mp-pr-main {
+  display: flex;
+  justify-content: center;
+}
+.mp-pr-form {
+  background-color: var(--color-brand-white);
+  padding: 20px;
+  border-radius: var(--radius-small);
+}
+.mp-pr-form form {
+  min-width: 280px;
+}
+
+@media (min-width: 64rem) {
+  .mp-pr-form {
+    padding: 40px;
+    border-radius: var(--radius-medium);
+  }
+}
