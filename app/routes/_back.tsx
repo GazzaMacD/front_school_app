@@ -13,7 +13,7 @@ import {
   useLocation,
   useMatches,
 } from "@remix-run/react";
-import { BsHouse, BsCalendarWeek, BsX, BsPersonBadge } from "react-icons/bs";
+import { BsHouse, BsCalendarWeek, BsX, BsPersonVcard } from "react-icons/bs";
 import { FaInstagram, FaFacebookF, FaYoutube } from "react-icons/fa";
 
 import {
@@ -132,7 +132,7 @@ function Menu({ menuOpen, setMenuOpen, classSchedules }: TMenuProps) {
           </li>
           <li>
             <Link to="/my-page/profile" onClick={() => setMenuOpen(false)}>
-              <BsPersonBadge />
+              <BsPersonVcard />
               プロフィール
             </Link>
           </li>
