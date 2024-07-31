@@ -91,6 +91,9 @@ export async function resetConfirm({
   newPassword2,
 }: TResetConfirm): Promise<TResetConfirmResponse> {
   try {
+    console.warn(
+      `top of try | resetConfirm | ${BASE_API_URL}/auth/password/reset/confirm/ `
+    );
     const response = await fetch(
       `${BASE_API_URL}/auth/password/reset/confirm/`,
       {
@@ -108,6 +111,11 @@ export async function resetConfirm({
     );
     const data: TResetConfirmErrors | TResetConfirmOk = await response.json();
     if (!response.ok) {
+      console.warn(
+        `!response.ok | resetConfirm | status: ${
+          response.status
+        } | data: ${JSON.stringify(data)}`
+      );
       return {
         success: false,
         status: response.status,
