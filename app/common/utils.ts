@@ -420,7 +420,23 @@ export const redirects: TRedirects = {
     statusCode: 301,
   },
   "courses/nurses-english/": {
-    path: "/courses/english/english-for-doctors",
+    path: "/courses/english/english-for-nurses",
+    statusCode: 301,
+  },
+  "courses/meeeting-english/": {
+    path: "/courses/english/meeting-english",
+    statusCode: 301,
+  },
+  "courses/courses/specialized-eiken/": {
+    path: "/courses/english/specialized-eiken-course",
+    statusCode: 301,
+  },
+  "courses/toeic-native-course/": {
+    path: "/courses/english/native-taught-toeic-preparation",
+    statusCode: 301,
+  },
+  "courses/email-writing/": {
+    path: "/courses/english/english-email-writing-course",
     statusCode: 301,
   },
 };
