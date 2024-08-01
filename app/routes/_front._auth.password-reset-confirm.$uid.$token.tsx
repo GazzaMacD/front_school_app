@@ -118,7 +118,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
       {
         fields: fields,
         errors: {
-          non_field_errors: [MESSAGES["en"].form.standard],
+          non_field_errors: [MESSAGES["ja"].form.standard],
         },
       },
       { status: 400 }
