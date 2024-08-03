@@ -35,9 +35,15 @@ export function getDateString(start: string, end: string) {
   const endDate = new Date(end);
   let dateString: string;
   if (startDate.getTime() === endDate.getTime()) {
-    dateString = `${startDate.getFullYear()}.${startDate.getMonth()}.${startDate.getDate()}`;
+    dateString = `${startDate.getFullYear()}.${
+      startDate.getMonth() + 1
+    }.${startDate.getDate()}`;
   } else {
-    dateString = `${startDate.getFullYear()}.${startDate.getMonth()}.${startDate.getDate()} ~ ${endDate.getFullYear()}.${endDate.getMonth()}.${endDate.getDate()}`;
+    dateString = `${startDate.getFullYear()}.${
+      startDate.getMonth() + 1
+    }.${startDate.getDate()} ~ ${endDate.getFullYear()}.${
+      endDate.getMonth() + 1
+    }.${endDate.getDate()}`;
   }
   return dateString;
 }
@@ -48,15 +54,17 @@ export function getDateStringWithDays(start: string, end: string) {
   const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   let dateString: string;
   if (startDate.getTime() === endDate.getTime()) {
-    dateString = `${startDate.getFullYear()}.${startDate.getMonth()}.${startDate.getDate()} (${
-      days[startDate.getDay()]
-    })`;
+    dateString = `${startDate.getFullYear()}.${
+      startDate.getMonth() + 1
+    }.${startDate.getDate()} (${days[startDate.getDay()]})`;
   } else {
-    dateString = `${startDate.getFullYear()}.${startDate.getMonth()}.${startDate.getDate()} (${
+    dateString = `${startDate.getFullYear()}.${
+      startDate.getMonth() + 1
+    }.${startDate.getDate()} (${
       days[startDate.getDay()]
-    }) ~ ${endDate.getFullYear()}.${endDate.getMonth()}.${endDate.getDate()} (${
-      days[endDate.getDay()]
-    })`;
+    }) ~ ${endDate.getFullYear()}.${
+      endDate.getMonth() + 1
+    }.${endDate.getDate()} (${days[endDate.getDay()]})`;
   }
   return dateString;
 }
