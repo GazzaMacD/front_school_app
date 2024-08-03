@@ -7,8 +7,7 @@ import {
 } from "@remix-run/node";
 
 import { BASE_API_URL } from "~/common/constants.server";
-import { BlogCard } from "~/components/cards";
-import { StaffRoundPicCard } from "~/components/cards";
+import { BlogCard, StaffRoundPicCard } from "~/components/cards";
 import { Swoosh1 } from "~/components/swooshes";
 import { SimpleImageGallery } from "~/components/galleries";
 import galleryStyles from "~/styles/components/galleries.css";
@@ -16,6 +15,7 @@ import {
   getDateStringWithDays,
   getDivisor4LetterHash,
   getGlobalEnv,
+  getTitle,
 } from "~/common/utils";
 import {
   FaRegCalendar,
@@ -26,7 +26,6 @@ import {
 } from "react-icons/fa6";
 import { HeadingOne } from "~/components/headings";
 import cardStyles from "~/styles/components/cards.css";
-import { getTitle } from "~/common/utils";
 
 function getValidPrices(prices) {
   const now = new Date().getTime();
