@@ -116,7 +116,7 @@ type TRedirects = {
 };
 
 export const redirects: TRedirects = {
-  "blog/": {
+  "blog/list/": {
     path: "/blog-lessons",
     statusCode: 301,
   },
@@ -447,95 +447,230 @@ export const redirects: TRedirects = {
     path: "/courses/english/english-email-writing-course",
     statusCode: 301,
   },
+  //experiences
+  "exciting-learning-experience/": {
+    path: "/courses/english/english-email-writing-course",
+    statusCode: 301,
+  },
+  //learning centers
+  "learning-centers/": {
+    path: "/language-schools",
+    statusCode: 301,
+  },
+  "learning-centers/hanamizukidori-school/": {
+    path: "/language-schools/hanamizukidori",
+    statusCode: 301,
+  },
+  "learning-centers/miyoshi-school/": {
+    path: "/language-schools/miyoshigaoka",
+    statusCode: 301,
+  },
+  "learning-centers/fushimi-school/": {
+    path: "language-schools/fushimi",
+    statusCode: 301,
+  },
+  //price plans
+  "prices/": {
+    path: "/price-plans",
+    statusCode: 301,
+  },
+  "prices/eighty-minute-group/": {
+    path: "/price-plans/80-minute-group",
+    statusCode: 301,
+  },
+  "prices/fifty-minute-group/": {
+    path: "/price-plans/50-minute-group",
+    statusCode: 301,
+  },
+  "prices/community-group/": {
+    path: "/price-plans/community-centre-group",
+    statusCode: 301,
+  },
+  "prices/business-email/": {
+    path: "/price-plans/writing-class",
+    statusCode: 301,
+  },
+  "prices/private-charter/": {
+    path: "/price-plans/private-charter",
+    statusCode: 301,
+  },
+  "prices/private-man-to-man/": {
+    path: "/price-plans/premium-private",
+    statusCode: 301,
+  },
+  "prices/private-online/": {
+    path: "/price-plans/private-online",
+    statusCode: 301,
+  },
+  // contact
+  "contact/": {
+    path: "/contact",
+    statusCode: 301,
+  },
+  // video lessons
+  "courses/video-lesson/how-hollywood-actors-play-their-roles/": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/how-hollywood-actors-play-their-roles/",
+    statusCode: 302,
+  },
+  "courses/video-lesson/english-is-essential-for-entrepreneurs/": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/english-is-essential-for-entrepreneurs/",
+    statusCode: 302,
+  },
+  "courses/video-lesson/kevin-oleary-my-morning-routine/": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/kevin-oleary-my-morning-routine/",
+    statusCode: 302,
+  },
+  "courses/video-lesson/words-to-describe-exciting-careers/": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/words-to-describe-exciting-careers/",
+    statusCode: 302,
+  },
+  "courses/video-lesson/reid-hoffman-how-i-work/": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/reid-hoffman-how-i-work/",
+    statusCode: 302,
+  },
+  "courses/video-lesson/origami-inspires-tiny-medical-devices/": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/origami-inspires-tiny-medical-devices/",
+    statusCode: 302,
+  },
+  "courses/video-lesson/wild-hamster-has-a-graveyard-feast/": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/wild-hamster-has-a-graveyard-feast/",
+    statusCode: 302,
+  },
+  "courses/video-lesson/a-day-in-the-life-of-a-neurosurgeon/": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/a-day-in-the-life-of-a-neurosurgeon/",
+    statusCode: 302,
+  },
+  "courses/video-lesson/how-to-properly-set-up-your-desk/": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/how-to-properly-set-up-your-desk/",
+    statusCode: 302,
+  },
+  "courses/video-lesson/the-mummification-process/": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/the-mummification-process/",
+    statusCode: 302,
+  },
+  "courses/video-lesson/incident-between-us-police-and-soldier/": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/incident-between-us-police-and-soldier/",
+    statusCode: 302,
+  },
+  "courses/video-lesson/covid-19-vaccine-side-effects/": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/covid-19-vaccine-side-effects/",
+    statusCode: 302,
+  },
+  "courses/video-lesson/bridget-van-kralingen-how-i-work/": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/bridget-van-kralingen-how-i-work/",
+    statusCode: 302,
+  },
+  "courses/video-lesson/tired-eyes-this-may-be-why/": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/tired-eyes-this-may-be-why/",
+    statusCode: 302,
+  },
+  "courses/video-lesson/how-to-get-a-job-the-values-of-ceos/": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/how-to-get-a-job-the-values-of-ceos/",
+    statusCode: 302,
+  },
+  "courses/video-lesson/prepositions-mr-beans-awkward-drive/": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/prepositions-mr-beans-awkward-drive/",
+    statusCode: 302,
+  },
+  "courses/video-lesson/the-edible-water-bottle/": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/the-edible-water-bottle/",
+    statusCode: 302,
+  },
+  "courses/video-lesson/should-you-wear-earbuds-in-the-summer/": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/should-you-wear-earbuds-in-the-summer/",
+    statusCode: 302,
+  },
+  "courses/video-lesson/sue-desmond-hellman-how-i-work/": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/sue-desmond-hellman-how-i-work/",
+    statusCode: 302,
+  },
+  "courses/video-lesson/kevin-oleary-my-sunday-routine/": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/kevin-oleary-my-sunday-routine/",
+    statusCode: 302,
+  },
+  "courses/video-lesson/joseph-swedish-how-i-work/": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/joseph-swedish-how-i-work/",
+    statusCode: 302,
+  },
+  "courses/video-lesson/guy-kawasaki-lessons-on-innovation/": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/guy-kawasaki-lessons-on-innovation/",
+    statusCode: 302,
+  },
+  "courses/video-lesson/richard-lovett-how-i-work/": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/richard-lovett-how-i-work/",
+    statusCode: 302,
+  },
+  "courses/video-lesson/becoming-a-first-class-flight-attendant/": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/becoming-a-first-class-flight-attendant/",
+    statusCode: 302,
+  },
+  "courses/video-lesson/cyclone-seroja-causes-hundreds-of-deaths/": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/cyclone-seroja-causes-hundreds-of-deaths/",
+    statusCode: 302,
+  },
+  "courses/video-lesson/immunity-and-vaccines-explained/": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/immunity-and-vaccines-explained/",
+    statusCode: 302,
+  },
+  "courses/video-lesson/eu-decision-due-on-astrazeneca-vaccine/": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/eu-decision-due-on-astrazeneca-vaccine/",
+    statusCode: 302,
+  },
+  "courses/video-lesson/elle-fannings-homonyms/": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/elle-fannings-homonyms/",
+    statusCode: 302,
+  },
+  "courses/video-lesson/covid-19-deaths-obesity-link/": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/covid-19-deaths-obesity-link/",
+    statusCode: 302,
+  },
+  "courses/video-lesson/eu-vaccine-roll-out/": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/eu-vaccine-roll-out/",
+    statusCode: 302,
+  },
+  "courses/video-lesson/france-to-ease-lockdown-restrictions/": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/france-to-ease-lockdown-restrictions/",
+    statusCode: 302,
+  },
+  "courses/video-lesson/trump-accepts-formal-transition/": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/trump-accepts-formal-transition/",
+    statusCode: 302,
+  },
+  "courses/video-lesson/deadly-texas-storm/": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/deadly-texas-storm/",
+    statusCode: 302,
+  },
+  "courses/video-lesson/saudi-activist-set-free/": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/saudi-activist-set-free/",
+    statusCode: 302,
+  },
+  "courses/video-lesson/myanmar-military-coup/": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/myanmar-military-coup/",
+    statusCode: 302,
+  },
+  "courses/video-lesson/trump-impeachment-trial/": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/trump-impeachment-trial/",
+    statusCode: 302,
+  },
+  "courses/video-lesson/conflict-in-ethiopia/": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/conflict-in-ethiopia/",
+    statusCode: 302,
+  },
+  "courses/video-lesson/counting-the-cost-of-covid/": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/counting-the-cost-of-covid/",
+    statusCode: 302,
+  },
+  // auth redirects
+  "accounts/login": {
+    path: "/login",
+    statusCode: 301,
+  },
+  "accounts/reset-password": {
+    path: "/password-reset",
+    statusCode: 301,
+  },
+  "accounts/sign-up": {
+    path: "/register",
+    statusCode: 301,
+  },
 };
-/*
-auth redirects
-course redirects
-experiences redirects
-  "": {
-    path: "",
-    statusCode: 301,
-  },
-  "": {
-    path: "",
-    statusCode: 301,
-  },
-  "": {
-    path: "",
-    statusCode: 301,
-  },
-  "": {
-    path: "",
-    statusCode: 301,
-  },
-  "": {
-    path: "",
-    statusCode: 301,
-  },
-  "": {
-    path: "",
-    statusCode: 301,
-  },
-  "": {
-    path: "",
-    statusCode: 301,
-  },
-  "": {
-    path: "",
-    statusCode: 301,
-  },
-  "": {
-    path: "",
-    statusCode: 301,
-  },
-  "": {
-    path: "",
-    statusCode: 301,
-  },
-  "": {
-    path: "",
-    statusCode: 301,
-  },
-  "": {
-    path: "",
-    statusCode: 301,
-  },
-  "": {
-    path: "",
-    statusCode: 301,
-  },
-  "": {
-    path: "",
-    statusCode: 301,
-  },
-  "": {
-    path: "",
-    statusCode: 301,
-  },
-  "": {
-    path: "",
-    statusCode: 301,
-  },
-  "": {
-    path: "",
-    statusCode: 301,
-  },
-  "": {
-    path: "",
-    statusCode: 301,
-  },
-  "": {
-    path: "",
-    statusCode: 301,
-  },
-  "": {
-    path: "",
-    statusCode: 301,
-  },
-  "": {
-    path: "",
-    statusCode: 301,
-  },
-};
-
-*/
