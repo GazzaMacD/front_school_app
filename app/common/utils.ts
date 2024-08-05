@@ -507,159 +507,6 @@ export const redirects: TRedirects = {
     path: "/contact",
     statusCode: 301,
   },
-  // video lessons
-  "courses/video-lesson/how-hollywood-actors-play-their-roles/": {
-    path: "https://archive.xlingual.co.jp/courses/video-lesson/how-hollywood-actors-play-their-roles/",
-    statusCode: 302,
-  },
-  "courses/video-lesson/english-is-essential-for-entrepreneurs/": {
-    path: "https://archive.xlingual.co.jp/courses/video-lesson/english-is-essential-for-entrepreneurs/",
-    statusCode: 302,
-  },
-  "courses/video-lesson/kevin-oleary-my-morning-routine/": {
-    path: "https://archive.xlingual.co.jp/courses/video-lesson/kevin-oleary-my-morning-routine/",
-    statusCode: 302,
-  },
-  "courses/video-lesson/words-to-describe-exciting-careers/": {
-    path: "https://archive.xlingual.co.jp/courses/video-lesson/words-to-describe-exciting-careers/",
-    statusCode: 302,
-  },
-  "courses/video-lesson/reid-hoffman-how-i-work/": {
-    path: "https://archive.xlingual.co.jp/courses/video-lesson/reid-hoffman-how-i-work/",
-    statusCode: 302,
-  },
-  "courses/video-lesson/origami-inspires-tiny-medical-devices/": {
-    path: "https://archive.xlingual.co.jp/courses/video-lesson/origami-inspires-tiny-medical-devices/",
-    statusCode: 302,
-  },
-  "courses/video-lesson/wild-hamster-has-a-graveyard-feast/": {
-    path: "https://archive.xlingual.co.jp/courses/video-lesson/wild-hamster-has-a-graveyard-feast/",
-    statusCode: 302,
-  },
-  "courses/video-lesson/a-day-in-the-life-of-a-neurosurgeon/": {
-    path: "https://archive.xlingual.co.jp/courses/video-lesson/a-day-in-the-life-of-a-neurosurgeon/",
-    statusCode: 302,
-  },
-  "courses/video-lesson/how-to-properly-set-up-your-desk/": {
-    path: "https://archive.xlingual.co.jp/courses/video-lesson/how-to-properly-set-up-your-desk/",
-    statusCode: 302,
-  },
-  "courses/video-lesson/the-mummification-process/": {
-    path: "https://archive.xlingual.co.jp/courses/video-lesson/the-mummification-process/",
-    statusCode: 302,
-  },
-  "courses/video-lesson/incident-between-us-police-and-soldier/": {
-    path: "https://archive.xlingual.co.jp/courses/video-lesson/incident-between-us-police-and-soldier/",
-    statusCode: 302,
-  },
-  "courses/video-lesson/covid-19-vaccine-side-effects/": {
-    path: "https://archive.xlingual.co.jp/courses/video-lesson/covid-19-vaccine-side-effects/",
-    statusCode: 302,
-  },
-  "courses/video-lesson/bridget-van-kralingen-how-i-work/": {
-    path: "https://archive.xlingual.co.jp/courses/video-lesson/bridget-van-kralingen-how-i-work/",
-    statusCode: 302,
-  },
-  "courses/video-lesson/tired-eyes-this-may-be-why/": {
-    path: "https://archive.xlingual.co.jp/courses/video-lesson/tired-eyes-this-may-be-why/",
-    statusCode: 302,
-  },
-  "courses/video-lesson/how-to-get-a-job-the-values-of-ceos/": {
-    path: "https://archive.xlingual.co.jp/courses/video-lesson/how-to-get-a-job-the-values-of-ceos/",
-    statusCode: 302,
-  },
-  "courses/video-lesson/prepositions-mr-beans-awkward-drive/": {
-    path: "https://archive.xlingual.co.jp/courses/video-lesson/prepositions-mr-beans-awkward-drive/",
-    statusCode: 302,
-  },
-  "courses/video-lesson/the-edible-water-bottle/": {
-    path: "https://archive.xlingual.co.jp/courses/video-lesson/the-edible-water-bottle/",
-    statusCode: 302,
-  },
-  "courses/video-lesson/should-you-wear-earbuds-in-the-summer/": {
-    path: "https://archive.xlingual.co.jp/courses/video-lesson/should-you-wear-earbuds-in-the-summer/",
-    statusCode: 302,
-  },
-  "courses/video-lesson/sue-desmond-hellman-how-i-work/": {
-    path: "https://archive.xlingual.co.jp/courses/video-lesson/sue-desmond-hellman-how-i-work/",
-    statusCode: 302,
-  },
-  "courses/video-lesson/kevin-oleary-my-sunday-routine/": {
-    path: "https://archive.xlingual.co.jp/courses/video-lesson/kevin-oleary-my-sunday-routine/",
-    statusCode: 302,
-  },
-  "courses/video-lesson/joseph-swedish-how-i-work/": {
-    path: "https://archive.xlingual.co.jp/courses/video-lesson/joseph-swedish-how-i-work/",
-    statusCode: 302,
-  },
-  "courses/video-lesson/guy-kawasaki-lessons-on-innovation/": {
-    path: "https://archive.xlingual.co.jp/courses/video-lesson/guy-kawasaki-lessons-on-innovation/",
-    statusCode: 302,
-  },
-  "courses/video-lesson/richard-lovett-how-i-work/": {
-    path: "https://archive.xlingual.co.jp/courses/video-lesson/richard-lovett-how-i-work/",
-    statusCode: 302,
-  },
-  "courses/video-lesson/becoming-a-first-class-flight-attendant/": {
-    path: "https://archive.xlingual.co.jp/courses/video-lesson/becoming-a-first-class-flight-attendant/",
-    statusCode: 302,
-  },
-  "courses/video-lesson/cyclone-seroja-causes-hundreds-of-deaths/": {
-    path: "https://archive.xlingual.co.jp/courses/video-lesson/cyclone-seroja-causes-hundreds-of-deaths/",
-    statusCode: 302,
-  },
-  "courses/video-lesson/immunity-and-vaccines-explained/": {
-    path: "https://archive.xlingual.co.jp/courses/video-lesson/immunity-and-vaccines-explained/",
-    statusCode: 302,
-  },
-  "courses/video-lesson/eu-decision-due-on-astrazeneca-vaccine/": {
-    path: "https://archive.xlingual.co.jp/courses/video-lesson/eu-decision-due-on-astrazeneca-vaccine/",
-    statusCode: 302,
-  },
-  "courses/video-lesson/elle-fannings-homonyms/": {
-    path: "https://archive.xlingual.co.jp/courses/video-lesson/elle-fannings-homonyms/",
-    statusCode: 302,
-  },
-  "courses/video-lesson/covid-19-deaths-obesity-link/": {
-    path: "https://archive.xlingual.co.jp/courses/video-lesson/covid-19-deaths-obesity-link/",
-    statusCode: 302,
-  },
-  "courses/video-lesson/eu-vaccine-roll-out/": {
-    path: "https://archive.xlingual.co.jp/courses/video-lesson/eu-vaccine-roll-out/",
-    statusCode: 302,
-  },
-  "courses/video-lesson/france-to-ease-lockdown-restrictions/": {
-    path: "https://archive.xlingual.co.jp/courses/video-lesson/france-to-ease-lockdown-restrictions/",
-    statusCode: 302,
-  },
-  "courses/video-lesson/trump-accepts-formal-transition/": {
-    path: "https://archive.xlingual.co.jp/courses/video-lesson/trump-accepts-formal-transition/",
-    statusCode: 302,
-  },
-  "courses/video-lesson/deadly-texas-storm/": {
-    path: "https://archive.xlingual.co.jp/courses/video-lesson/deadly-texas-storm/",
-    statusCode: 302,
-  },
-  "courses/video-lesson/saudi-activist-set-free/": {
-    path: "https://archive.xlingual.co.jp/courses/video-lesson/saudi-activist-set-free/",
-    statusCode: 302,
-  },
-  "courses/video-lesson/myanmar-military-coup/": {
-    path: "https://archive.xlingual.co.jp/courses/video-lesson/myanmar-military-coup/",
-    statusCode: 302,
-  },
-  "courses/video-lesson/trump-impeachment-trial/": {
-    path: "https://archive.xlingual.co.jp/courses/video-lesson/trump-impeachment-trial/",
-    statusCode: 302,
-  },
-  "courses/video-lesson/conflict-in-ethiopia/": {
-    path: "https://archive.xlingual.co.jp/courses/video-lesson/conflict-in-ethiopia/",
-    statusCode: 302,
-  },
-  "courses/video-lesson/counting-the-cost-of-covid/": {
-    path: "https://archive.xlingual.co.jp/courses/video-lesson/counting-the-cost-of-covid/",
-    statusCode: 302,
-  },
   // auth redirects
   "accounts/login": {
     path: "/login",
@@ -672,5 +519,160 @@ export const redirects: TRedirects = {
   "accounts/sign-up": {
     path: "/register",
     statusCode: 301,
+  },
+};
+
+export const videoLessonRedirects: TRedirects = {
+  "how-hollywood-actors-play-their-roles": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/how-hollywood-actors-play-their-roles/",
+    statusCode: 302,
+  },
+  "english-is-essential-for-entrepreneurs": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/english-is-essential-for-entrepreneurs/",
+    statusCode: 302,
+  },
+  "kevin-oleary-my-morning-routine": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/kevin-oleary-my-morning-routine/",
+    statusCode: 302,
+  },
+  "words-to-describe-exciting-careers": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/words-to-describe-exciting-careers/",
+    statusCode: 302,
+  },
+  "reid-hoffman-how-i-work": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/reid-hoffman-how-i-work/",
+    statusCode: 302,
+  },
+  "origami-inspires-tiny-medical-devices": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/origami-inspires-tiny-medical-devices/",
+    statusCode: 302,
+  },
+  "wild-hamster-has-a-graveyard-feast": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/wild-hamster-has-a-graveyard-feast/",
+    statusCode: 302,
+  },
+  "a-day-in-the-life-of-a-neurosurgeon": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/a-day-in-the-life-of-a-neurosurgeon/",
+    statusCode: 302,
+  },
+  "how-to-properly-set-up-your-desk": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/how-to-properly-set-up-your-desk/",
+    statusCode: 302,
+  },
+  "the-mummification-process/": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/the-mummification-process/",
+    statusCode: 302,
+  },
+  "incident-between-us-police-and-soldier": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/incident-between-us-police-and-soldier/",
+    statusCode: 302,
+  },
+  "covid-19-vaccine-side-effects": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/covid-19-vaccine-side-effects/",
+    statusCode: 302,
+  },
+  "bridget-van-kralingen-how-i-work": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/bridget-van-kralingen-how-i-work/",
+    statusCode: 302,
+  },
+  "tired-eyes-this-may-be-why": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/tired-eyes-this-may-be-why/",
+    statusCode: 302,
+  },
+  "how-to-get-a-job-the-values-of-ceos": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/how-to-get-a-job-the-values-of-ceos/",
+    statusCode: 302,
+  },
+  "prepositions-mr-beans-awkward-drive": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/prepositions-mr-beans-awkward-drive/",
+    statusCode: 302,
+  },
+  "the-edible-water-bottle": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/the-edible-water-bottle/",
+    statusCode: 302,
+  },
+  "should-you-wear-earbuds-in-the-summer": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/should-you-wear-earbuds-in-the-summer/",
+    statusCode: 302,
+  },
+  "sue-desmond-hellman-how-i-work": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/sue-desmond-hellman-how-i-work/",
+    statusCode: 302,
+  },
+  "kevin-oleary-my-sunday-routine": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/kevin-oleary-my-sunday-routine/",
+    statusCode: 302,
+  },
+  "joseph-swedish-how-i-work": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/joseph-swedish-how-i-work/",
+    statusCode: 302,
+  },
+  "guy-kawasaki-lessons-on-innovation": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/guy-kawasaki-lessons-on-innovation/",
+    statusCode: 302,
+  },
+  "richard-lovett-how-i-work": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/richard-lovett-how-i-work/",
+    statusCode: 302,
+  },
+  "becoming-a-first-class-flight-attendant": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/becoming-a-first-class-flight-attendant/",
+    statusCode: 302,
+  },
+  "cyclone-seroja-causes-hundreds-of-deaths": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/cyclone-seroja-causes-hundreds-of-deaths/",
+    statusCode: 302,
+  },
+  "immunity-and-vaccines-explained": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/immunity-and-vaccines-explained/",
+    statusCode: 302,
+  },
+  "eu-decision-due-on-astrazeneca-vaccine": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/eu-decision-due-on-astrazeneca-vaccine/",
+    statusCode: 302,
+  },
+  "elle-fannings-homonyms": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/elle-fannings-homonyms/",
+    statusCode: 302,
+  },
+  "covid-19-deaths-obesity-link": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/covid-19-deaths-obesity-link/",
+    statusCode: 302,
+  },
+  "eu-vaccine-roll-out": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/eu-vaccine-roll-out/",
+    statusCode: 302,
+  },
+  "france-to-ease-lockdown-restrictions": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/france-to-ease-lockdown-restrictions/",
+    statusCode: 302,
+  },
+  "trump-accepts-formal-transition": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/trump-accepts-formal-transition/",
+    statusCode: 302,
+  },
+  "deadly-texas-storm": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/deadly-texas-storm/",
+    statusCode: 302,
+  },
+  "saudi-activist-set-free": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/saudi-activist-set-free/",
+    statusCode: 302,
+  },
+  "myanmar-military-coup": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/myanmar-military-coup/",
+    statusCode: 302,
+  },
+  "trump-impeachment-trial": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/trump-impeachment-trial/",
+    statusCode: 302,
+  },
+  "conflict-in-ethiopia": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/conflict-in-ethiopia/",
+    statusCode: 302,
+  },
+  "counting-the-cost-of-covid": {
+    path: "https://archive.xlingual.co.jp/courses/video-lesson/counting-the-cost-of-covid/",
+    statusCode: 302,
   },
 };
