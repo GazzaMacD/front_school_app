@@ -5,6 +5,7 @@ import {
   type LoaderFunctionArgs,
   type MetaFunction,
   type LinksFunction,
+  redirect,
 } from "@remix-run/node";
 import { useLoaderData, Link } from "@remix-run/react";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -14,12 +15,15 @@ import { Navigation } from "swiper/modules";
 import { BsFillBarChartFill, BsGlobe, BsJournalText } from "react-icons/bs";
 
 import { BASE_API_URL } from "~/common/constants.server";
-import { getGlobalEnv } from "~/common/utils";
+import {
+  getGlobalEnv,
+  getTitle,
+  getDivisor4LetterHash,
+  videoLessonRedirects,
+} from "~/common/utils";
 import { HeadingOne } from "~/components/headings";
 import { Swoosh1 } from "~/components/swooshes";
 import { DetailLinkCard } from "~/components/cards";
-import { getDivisor4LetterHash } from "~/common/utils";
-import { getTitle } from "~/common/utils";
 import { ClassPricePlanTable } from "~/components/prices";
 import pricesStyles from "~/styles/components/prices.css";
 
@@ -45,6 +49,12 @@ export const meta: MetaFunction = ({ data }) => {
 
 export async function loader({ request, params }: LoaderFunctionArgs) {
   const { subject, slug } = params;
+  if (subject === "video-lesson" && slug && slug in videoLessonRedirects) {
+    return redirect(
+      videoLessonRedirects[slug].path,
+      videoLessonRedirects[slug].statusCode
+    );
+  }
   const apiUrl = `${BASE_API_URL}/pages/?type=courses.CourseDisplayDetailPage&subject_slug=${subject}&slug=${slug}&fields=*`;
   const response = await fetch(apiUrl);
   if (!response.ok) {
