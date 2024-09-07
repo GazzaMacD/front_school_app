@@ -464,6 +464,7 @@ template {
   --color-sec-lightgrey: hsl(0, 0%, 89%);
   --color-sec-mediumgrey: hsl(0, 0%, 70%);
   --color-sec-darkbeige: hsl(38, 52%, 82%);
+  --color-sec-light-blue: hsl(188, 39%, 76%);
   /*shadows*/
   --color-shadow: rgba(0, 0, 0, 0.1);
 }
