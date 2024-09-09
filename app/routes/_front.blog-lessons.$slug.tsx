@@ -1,4 +1,9 @@
-import { json, type MetaFunction, type LinksFunction } from "@remix-run/node";
+import {
+  json,
+  type MetaFunction,
+  type LinksFunction,
+  type LoaderFunctionArgs,
+} from "@remix-run/node";
 import { AiOutlineCalendar, AiOutlineClockCircle } from "react-icons/ai";
 import { Link, useLoaderData } from "@remix-run/react";
 import { RiEmotionHappyLine, RiEmotionUnhappyLine } from "react-icons/ri";
@@ -8,12 +13,10 @@ import { BASE_API_URL } from "~/common/constants.server";
 import { handlePreview } from "~/common/utils.server";
 import { Swoosh1 } from "~/components/swooshes";
 import { BlogCard } from "~/components/cards";
-import { getTitle } from "~/common/utils";
-import { getGlobalEnv } from "~/common/utils";
+import { SimpleBannerCampaignAdd } from "~/components/ads";
+import { getTitle, getGlobalEnv } from "~/common/utils";
 import cardStyles from "~/styles/components/cards.css";
-
-/*types */
-import type { LoaderFunctionArgs } from "@remix-run/node";
+import campaignAdStyles from "~/styles/components/campaign-ads.css";
 import type {
   TWagBasicImage,
   TBaseDetailPage,
@@ -23,6 +26,7 @@ import type {
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: cardStyles },
+  { rel: "stylesheet", href: campaignAdStyles },
 ];
 
 type TLessonDetailOptions = {
@@ -433,6 +437,31 @@ export default function LessonsDetailPage() {
           }
         })}
       </section>
+
+      {page.related_simple_banner_campaigns &&
+      page.related_simple_banner_campaigns.length ? (
+        <section className="bl-dp__campaign">
+          <div className="g-narrow-container">
+            <h3>キャンペーン情報</h3>
+            <div className="c-cmpa">
+              {page.related_simple_banner_campaigns.map((campaignObj) => {
+                const campaign = campaignObj.campaign;
+                return (
+                  <SimpleBannerCampaignAdd
+                    key={campaign.id}
+                    slug={campaign.slug}
+                    colorType={campaign.color_type}
+                    nameJa={campaign.name_ja}
+                    offer={campaign.offer}
+                    startDate={campaign.start_date}
+                    endDate={campaign.end_date}
+                  />
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       <section className="bl-dp__related">
         <div className="g-grid-container1">

@@ -2,6 +2,7 @@
 ================= Notes ===================
 BEM - prefix identifiers for class names accross the app
 g- | global styles
+c- | components
 ho- home styles
 bl- blog lessons styles
 st - staff styles
@@ -10,8 +11,12 @@ ls - language school styles
 le - learning experiences
 te - testimonials
 cs -courses
+cn - campaigns
+ct - contact pages 
 pp - price plans
 mp - my page
+------ components ------
+c-cmpa - campaign ads components
 
 ========
 Section  & Heading Bottom Margins
@@ -462,6 +467,7 @@ template {
   --color-sec-lightgrey: hsl(0, 0%, 89%);
   --color-sec-mediumgrey: hsl(0, 0%, 70%);
   --color-sec-darkbeige: hsl(38, 52%, 82%);
+  --color-sec-light-blue: hsl(188, 39%, 76%);
   /*shadows*/
   --color-shadow: rgba(0, 0, 0, 0.1);
 }
