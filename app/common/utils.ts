@@ -30,6 +30,18 @@ export function getTitle({
  * Date and time functions
  */
 
+export function getJapaneseDurationString(s: string, e: string): string {
+  const start = new Date(s);
+  const end = new Date(e);
+  const startString = `${start.getFullYear()}年${
+    start.getMonth() + 1
+  }月${start.getDate()}日`;
+  const endString = `${end.getFullYear()}年${
+    end.getMonth() + 1
+  }月${end.getDate()}日`;
+  return `${startString} ~ ${endString}`;
+}
+
 export function getDateString(start: string, end: string) {
   const startDate = new Date(start);
   const endDate = new Date(end);
