@@ -45,7 +45,7 @@
   align-items: center;
 }
 .cn-dp-scb-header__side > div {
-  max-width: 400px;
+  max-width: 450px;
 }
 .cn-dp-scb-header__side h2 {
   background-color: var(--color-brand-brown);
@@ -57,7 +57,7 @@
 .cn-dp-scb-header__side h4 {
   display: flex;
   align-items: center;
-  margin-bottom: var(--r16px);
+  margin-bottom: var(--r8px);
 }
 .cn-dp-scb-header__side svg {
   margin-right: 10px;
@@ -91,7 +91,7 @@
   }
   .cn-dp-scb-header__side h4 {
     font-size: var(--font-size-l);
-    margin-bottom: var(--r12px);
+    margin-bottom: var(--r6px);
   }
   .cn-dp-scb-header__side p {
     font-size: var(--font-size-s);
@@ -101,9 +101,6 @@
 @media (min-width: 96rem) {
   .cn-dp-scb-header__side {
     flex: 0 1 35%;
-  }
-  .cn-dp-scb-header__side p {
-    font-size: var(--font-size-m);
   }
 }
 

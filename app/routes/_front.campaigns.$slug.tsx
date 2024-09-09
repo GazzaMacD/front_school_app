@@ -8,6 +8,7 @@ import { FaRegGrinStars } from "react-icons/fa";
 
 import { BASE_API_URL } from "~/common/constants.server";
 import { Swoosh1 } from "~/components/swooshes";
+import { getJapaneseDurationString } from "~/common/utils";
 
 export async function loader({ params }: LoaderFunctionArgs) {
   const { slug } = params;
@@ -67,7 +68,7 @@ function SimpleBanner({
   endDate,
   additionalDetails,
 }: TSimpleBannerProps) {
-  const period = getPeriodString(startDate, endDate);
+  const period = getJapaneseDurationString(startDate, endDate);
   return (
     <>
       <header className="cn-dp-scb-header">
@@ -80,9 +81,7 @@ function SimpleBanner({
                 <Link to="/price-plans">Our price plans</Link>
               </h4>
               <p>
-                Explore our ever expanding range of price plans designed to give
-                you the best language education for the best value while also
-                suiting your particular needs.
+                あなたのニーズに合わせた最高の語学教育を、最適な価格でご提供します。幅広い料金プランをご覧いただき、あなたにとって最適なものをお選びください。
               </p>
             </article>
             <article>
@@ -91,9 +90,7 @@ function SimpleBanner({
                 <Link to="/courses">Language courses</Link>
               </h4>
               <p>
-                Our spoken english and other english courses designed and taught
-                by our multi lingual expert teachers to help you towards
-                speaking and communicating with native like natural language.
+                エクスリンガルが提供する、英会話コースや様々な英語学習コースをご覧いただけます。ネイティブのように自然に話し、コミュニケーションをとることを目的として、マルチリンガルなエキスパート講師によりデザインされています。
               </p>
             </article>
             <article>
@@ -102,10 +99,7 @@ function SimpleBanner({
                 <Link to="/learning-experiences">Learning experiences</Link>
               </h4>
               <p>
-                Explore our learning events created to help you learn to speak
-                english naturally all while enjoying yourself, meeting new
-                people in our community and also learning new things other than
-                language.
+                エクスリンガルが開催する学習イベントをご覧いただけます。エクスリンガルの学習コミュニティを通じて新しい人と出会い、楽しみながら語学を学ぶことができます。語学以外にも、新たな知識を数多く学ぶことができます。
               </p>
             </article>
             <article>
@@ -114,10 +108,7 @@ function SimpleBanner({
                 <Link to="/blog-lessons">Learning Blog</Link>
               </h4>
               <p>
-                We love to help our greater english learning community in
-                Nagakute, Miyoshi and Eastern Nagoya. Read our blog lessons
-                aimed to help everyone in our community speak more fluently and
-                naturally.
+                私たちは長久手市、みよし市、名古屋市東部を中心に、多くの皆様の英語学習を応援しています。より流暢に、より自然に英語を話せるようになることを目的としてつくられたエクスリンガルのブログレッスンを、ぜひご覧ください。
               </p>
             </article>
             <article>
@@ -126,9 +117,7 @@ function SimpleBanner({
                 <Link to="/about">About Us</Link>
               </h4>
               <p>
-                Read about our mission as a company and learn more about all our
-                talented, multilingual teachers who have so much experience with
-                language learning and teaching.
+                私たちエクスリンガルの企業としての使命、そして語学学習と教育分野で多くの経験を持つ、才能豊かなマルチリンガル講師たちの詳細をご覧いただけます。
               </p>
             </article>
           </div>
@@ -159,15 +148,3 @@ function SimpleBanner({
 /*
  * Helper functions
  */
-
-function getPeriodString(s: string, e: string): string {
-  const start = new Date(s);
-  const end = new Date(e);
-  const startString = `${start.getFullYear()}年${
-    start.getMonth() + 1
-  }月${start.getDate()}日`;
-  const endString = `${end.getFullYear()}年${
-    end.getMonth() + 1
-  }月${end.getDate()}日`;
-  return `${startString} ~ ${endString}`;
-}

@@ -1,0 +1,108 @@
+/* Ads container */
+.c-cmpa {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+/* Links */
+/**
+ Simple Campaign Banner Ads
+*/
+.c-cmpa-sb-banner {
+  background-color: white;
+  flex: 1 1 100%;
+  aspect-ratio: 2 / 1;
+  border-radius: var(--radius-medium);
+  padding: 20px;
+  text-align: center;
+}
+
+.c-cmpa-sb-banner__name {
+  font-size: var(--font-size-l);
+}
+.c-cmpa-sb-banner__name > span {
+  display: block;
+  margin-top: 10px;
+}
+.c-cmpa-sb-banner__offer {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.c-cmpa-sb-banner__duration {
+  font-size: var(--font-size-s);
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+a.c-cmpa-sb-banner__link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 auto;
+  max-width: fit-content;
+  font-size: var(--font-size-l);
+  font-weight: 700;
+  border: solid 2px;
+  border-radius: 100px;
+  padding: 6px 40px;
+  transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
+}
+a.c-cmpa-sb-banner__link::before {
+  content: none;
+}
+
+/** colorType variants **/
+
+/*--lightblue--*/
+.c-cmpa-sb-banner.lightblue {
+  background-color: var(--color-sec-light-blue);
+}
+.c-cmpa-sb-banner__name.lightblue {
+  color: var(--color-brand-orange);
+  text-shadow: 1px 1px 1px var(--color-brand-brown);
+}
+.c-cmpa-sb-banner__name.lightblue > span {
+  color: var(--color-brand-white);
+  text-shadow: 1px 1px 1px var(--color-brand-brown);
+}
+.c-cmpa-sb-banner__offer.lightblue {
+  color: var(--color-brand-brown);
+  text-shadow: 2px 2px 3px var(--color-brand-cream);
+}
+.c-cmpa-sb-banner__link.lightblue {
+  background-color: var(--color-brand-orange);
+  border-color: var(--color-brand-orange);
+  color: var(--color-brand-white);
+}
+.c-cmpa-sb-banner__link.lightblue:hover {
+  background-color: var(--color-brand-white);
+  color: var(--color-brand-orange);
+}
+
+/** responsive breakpoints **/
+
+@media (min-width: 48rem) {
+  .c-cmpa-sb-banner {
+    padding: 30px;
+  }
+  .c-cmpa-sb-banner__name {
+    font-size: var(--font-size-xl);
+  }
+  .c-cmpa-sb-banner__offer {
+    font-size: var(--font-size-3xl);
+    margin-bottom: 30px;
+  }
+  .c-cmpa-sb-banner__duration {
+    font-size: var(--font-size-m);
+    margin-bottom: 30px;
+  }
+}
+@media (min-width: 64rem) {
+}
+@media (min-width: 75rem) {
+}
+@media (min-width: 96rem) {
+}

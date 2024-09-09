@@ -2,6 +2,7 @@
 ================= Notes ===================
 BEM - prefix identifiers for class names accross the app
 g- | global styles
+c- | components
 ho- home styles
 bl- blog lessons styles
 st - staff styles
@@ -14,6 +15,8 @@ cn - campaigns
 ct - contact pages 
 pp - price plans
 mp - my page
+------ components ------
+c-cmpa - campaign ads components
 
 ========
 Section  & Heading Bottom Margins
