@@ -219,6 +219,31 @@ a.bl-lp-post-link::before {
   font-weight: var(--font-w-semi-bold);
   line-height: 1.5;
 }
+/* --- see more section -- */
+.bl-lp-post__see-more-count {
+  text-align: center;
+  margin: 20px 0 10px 0;
+}
+a.bl-lp-post__see-more-btn::before {
+  content: none;
+}
+a.bl-lp-post__see-more-btn {
+  display: block;
+  width: max-content;
+  margin: 20px auto;
+  padding: 10px 40px;
+  border: 2px solid var(--color-brand-green);
+  border-radius: 100px;
+  color: var(--color-brand-white);
+  font-weight: 600;
+  background-color: var(--color-brand-green);
+  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+a.bl-lp-post__see-more-btn:hover {
+  color: var(--color-brand-green);
+  background-color: var(--color-brand-white);
+}
+
 @media (min-width: 48rem) {
 }
 @media (min-width: 64rem) {
