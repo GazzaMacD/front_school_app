@@ -321,7 +321,7 @@ export default function BlogLessonsIndexPage() {
                 preventScrollReset
                 className="bl-lp-post__see-more-btn"
               >
-                さらに読み込む
+                もっと見る
               </Link>
             </>
           ) : null}
