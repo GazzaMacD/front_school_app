@@ -152,6 +152,11 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     });
     const responseData: TContactAPIResponse = await response.json();
     if (!response.ok) {
+      // Deal with spam here
+      if (response.status === 422) {
+        // Just send to success page
+        return redirect("/contact/success");
+      }
       errors.email = responseData.email ? responseData.email : [];
       errors.message = responseData.contact_notes
         ? responseData.contact_notes[0].note
