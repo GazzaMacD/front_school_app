@@ -56,6 +56,28 @@ export default function Root() {
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <Meta />
         <Links />
+        {pathname.includes("my-page") ? null : (
+          <>
+            <script
+              async
+              src="https://www.googletagmanager.com/gtag/js?id=AW-16701882541"
+            >
+              {" "}
+            </script>
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-16701882541');
+
+            `,
+              }}
+            />
+          </>
+        )}
       </head>
       <body>
         <div className="base-wrapper">
