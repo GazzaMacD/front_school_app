@@ -277,7 +277,11 @@ export default function BlogLessonsIndexPage() {
                   const n = i % 2;
                   return (
                     <div key={lesson.id} className={`bl-lp-post-wrapper t${n}`}>
-                      <Link to={lesson.meta.slug} className="bl-lp-post-link">
+                      <Link
+                        to={lesson.meta.slug}
+                        className="bl-lp-post-link"
+                        target="_blank"
+                      >
                         <article className="bl-lp-post">
                           <div className="bl-lp-post__img-wrapper">
                             <img
