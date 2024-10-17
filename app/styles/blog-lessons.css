@@ -148,8 +148,8 @@ a.bl-lp-post-link::before {
 }
 .bl-lp-post__img-wrapper > img {
   max-width: 100%;
+  height: auto;
   border-radius: var(--radius-small);
-  height: 100%;
   object-fit: cover;
   object-position: center;
 }
