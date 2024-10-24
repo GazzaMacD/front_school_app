@@ -16,7 +16,8 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <h1>Updat XLingual to Remix 2.13</h1>
+        <h1>XLingual</h1>
+        <p>Update XLingual app to remix 2.13</p>
         <ScrollRestoration />
         <Scripts />
       </body>
