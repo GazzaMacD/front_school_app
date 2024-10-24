@@ -1,4 +1,4 @@
-import { getEnvOrThrow } from "../env.server";
+import { getEnvOrThrow } from "../env";
 
 export const BASE_API_URL = getEnvOrThrow("BASE_API_URL");
 export const SESSION_SECRET = getEnvOrThrow("SESSION_SECRET");

@@ -1,4 +1,4 @@
-import { createGlobalEnvObj, type TGlobalEnv } from "~/env.server";
+import { createGlobalEnvObj, type TGlobalEnv } from "~/env";
 /*
  * Get Environment variables on client or server
  */
