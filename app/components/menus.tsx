@@ -7,7 +7,8 @@ function HamburgerMenu() {
     <div>
       <form>
         <input type="checkbox" id="navi-toggle" className="g-sm__checkbox" />
-        <label htmlFor="navi-toggle" className="g-sm__button" role="button">
+        {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+        <label htmlFor="navi-toggle" className="g-sm__button">
           <div>
             <span className="g-sm__button__icon">&nbsp;</span>
             <span className="g-sm__button__text">メニュー</span>
