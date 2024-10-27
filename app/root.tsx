@@ -11,9 +11,11 @@ import {
   Outlet,
 } from "@remix-run/react";
 
-import globalStyles from "~/styles/global.css?url";
-import fontStyles from "~/styles/fonts.css?url";
+import { authenticatedUser } from "~/common/session.server";
+import { createGlobalEnvObj } from "./env";
 import errorStyles from "~/styles/errors.css?url";
+import fontStyles from "~/styles/fonts.css?url";
+import globalStyles from "~/styles/global.css?url";
 
 /**
  * helpers, loaders, actions
@@ -23,6 +25,13 @@ export const links: LinksFunction = () => [
   { rel: "stylesheet", href: globalStyles },
   { rel: "stylesheet", href: errorStyles },
 ];
+
+export async function loader({ request }: LoaderFunctionArgs) {
+  const userData = await authenticatedUser(request);
+  const user = userData ? userData.user : null;
+  const GLOBAL_ENV = createGlobalEnvObj();
+  return json({ user, GLOBAL_ENV });
+}
 
 /**
  * Page
