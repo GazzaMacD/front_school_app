@@ -12,15 +12,18 @@ import {
   Outlet,
   useLocation,
   useLoaderData,
+  useRouteError,
+  isRouteErrorResponse,
 } from "@remix-run/react";
 import { FaMobileAlt } from "react-icons/fa";
 
-import { authenticatedUser } from "~/common/session.server";
+import { authenticatedUser } from "./common/session.server";
 import { createGlobalEnvObj } from "./env";
-import errorStyles from "~/styles/errors.css?url";
-import fontStyles from "~/styles/fonts.css?url";
+import errorStyles from "./styles/errors.css?url";
+import { ErrorPage } from "./components/errors";
+import fontStyles from "./styles/fonts.css?url";
 import globalStyles from "~/styles/global.css?url";
-import { HamburgerMenu } from "~/components/menus";
+import { HamburgerMenu } from "./components/menus";
 
 /**
  * helpers, loaders, actions
@@ -128,4 +131,74 @@ export default function App() {
       </body>
     </html>
   );
+}
+
+function ErrorDoc({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="ja">
+      <head>
+        <title>Oh no...</title>
+        <Links />
+        <Meta />
+      </head>
+      <body>
+        {children}
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+
+// best effort, last ditch error boundary. This should only catch root errors
+// all other errors should be caught by the index route which will include
+// the footer and menu which is much better.
+export function ErrorBoundary() {
+  const error = useRouteError();
+
+  if (isRouteErrorResponse(error)) {
+    if (error.status === 404) {
+      return (
+        <ErrorDoc>
+          <ErrorPage
+            title="404 - Sorry that page seems to be missing."
+            text="Please click the link below"
+            linkUrl="/"
+            linkText="Home"
+          />
+        </ErrorDoc>
+      );
+    } else if (error.status !== 500) {
+      return (
+        <ErrorDoc>
+          <ErrorPage
+            title={`${error.status} - Sorry there seems to be a problem.`}
+            text="Please click the link below"
+            linkUrl="/"
+            linkText="Home"
+          />
+        </ErrorDoc>
+      );
+    } else {
+      return (
+        <ErrorDoc>
+          <ErrorPage
+            title="500 - Server Error."
+            text="We apologize for the inconvenience. We are working on this problem, please try again later."
+          />
+        </ErrorDoc>
+      );
+    }
+  } else if (error instanceof Error) {
+    return (
+      <div>
+        <h1>Error</h1>
+        <p>{error.message}</p>
+        <p>The stack trace is:</p>
+        <pre>{error.stack}</pre>
+        <Link to="/">Go home</Link>
+      </div>
+    );
+  } else {
+    return <h1>Unknown Error</h1>;
+  }
 }
