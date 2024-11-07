@@ -679,6 +679,7 @@ Design Elements
 -------------------------------- */
 :root {
   /* border radiu */
+  --radius-extra-small: 12px;
   --radius-small: 20px;
   --radius-sm: 15px;
   --radius-xs: 5px;

@@ -3,10 +3,12 @@ import * as React from "react";
 import { json } from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
 import { FaArrowRightLong, FaXmark, FaRegCircle } from "react-icons/fa6";
+import { Carousel } from "nuka-carousel";
 
 import { BASE_API_URL } from "~/common/constants.server";
 import homeStyles from "~/styles/home.css?url";
 import cardStyles from "~/styles/components/cards.css?url";
+import carouselStyles from "~/styles/components/carousel.css?url";
 import { StaffRoundPicCard } from "~/components/cards";
 import { getTitle, getGlobalEnv, getDisplay } from "~/common/utils";
 import { Swoosh1 } from "~/components/swooshes";
@@ -16,6 +18,7 @@ import {
   SolidPillButtonLink,
 } from "~/components/buttons";
 import { HeadingOne } from "~/components/headings";
+import { CustomArrows } from "~/components/carousel";
 
 // server side functions
 export const meta: MetaFunction = () => {
@@ -25,6 +28,7 @@ export const meta: MetaFunction = () => {
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: homeStyles },
   { rel: "stylesheet", href: cardStyles },
+  { rel: "stylesheet", href: carouselStyles },
 ];
 
 export const loader = async () => {
@@ -379,49 +383,49 @@ export default function Index() {
                 level="h2"
               />
             </div>
-            <div className="ho-blog__slider-wrapper">
-              <div>
-                ** Was swiper **
-                {/* This was Swiper container */}
-                {blogs.map((blog, i) => {
+            <div className="ho-blog__carousel-wrapper">
+              <Carousel
+                showArrows
+                arrows={<CustomArrows />}
+                className="ho-blog__carousel"
+              >
+                {blogs.map((blog, i, arr) => {
                   const d = new Date(blog.published_date);
                   return (
-                    <div key={blog.id}>
-                      {/* This was Swiper Slider container */}
-                      <Link
-                        className="ho-blog-link"
-                        to={`/blog-lessons/${blog.meta.slug}`}
-                      >
-                        <div className="ho-blog__card">
-                          <div className="ho-blog__card-img-wrapper">
-                            <img
-                              className="ho-blog__card-img"
-                              src={`${ENV.BASE_BACK_URL}${blog.header_image.medium.src}`}
-                              alt={blog.header_image.medium.alt}
-                            />
-                            <div className="ho-blog__card-overlay">
-                              <div className="ho-blog__card-overlay-inner">
-                                <h3>Let's Learn!</h3>
-                                <p>記事を読む</p>
-                                <FaArrowRightLong />
-                              </div>
+                    <Link
+                      className="ho-blog-link"
+                      to={`/blog-lessons/${blog.meta.slug}`}
+                      key={blog.id}
+                    >
+                      <div className="ho-blog__card">
+                        <div className="ho-blog__card-img-wrapper">
+                          <img
+                            className="ho-blog__card-img"
+                            src={`${ENV.BASE_BACK_URL}${blog.header_image.medium.src}`}
+                            alt={blog.header_image.medium.alt}
+                          />
+                          <div className="ho-blog__card-overlay">
+                            <div className="ho-blog__card-overlay-inner">
+                              <h3>Let's Learn!</h3>
+                              <p>記事を読む</p>
+                              <FaArrowRightLong />
                             </div>
-                          </div>
-                          <div className="ho-blog__card-details">
-                            <div>
-                              <p>{`${d.getFullYear()}.${
-                                d.getMonth() + 1
-                              }.${d.getDate()}`}</p>
-                              <p>[ {blog.category.ja_name} ]</p>
-                            </div>
-                            <h3>{blog.display_title}</h3>
                           </div>
                         </div>
-                      </Link>
-                    </div>
+                        <div className="ho-blog__card-details">
+                          <div>
+                            <p>{`${d.getFullYear()}.${
+                              d.getMonth() + 1
+                            }.${d.getDate()}`}</p>
+                            <p>[ {blog.category.ja_name} ]</p>
+                          </div>
+                          <h3>{blog.display_title}</h3>
+                        </div>
+                      </div>
+                    </Link>
                   );
                 })}
-              </div>
+              </Carousel>
             </div>
             <div className="ho-blog__more">
               <SolidPillButtonLink to="/blog-lessons" color="green">

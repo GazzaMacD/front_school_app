@@ -720,55 +720,55 @@
   grid-column: 1/16;
   justify-self: center;
 }
-/* blog slider */
-.ho-blog__slider-wrapper {
+/* blog carousel */
+.ho-blog__carousel-wrapper {
   margin: -160px 0 40px 0;
   grid-column: 1/16;
 }
-.ho-blog-lessons .swiper-wrapper {
-  padding: 70px 0 0 0;
+.ho-blog__carousel {
+  padding: 170px 0 0 0;
 }
-.ho-blog-lessons .swiper {
-  padding: 100px 0 0 0;
+.ho-blog__carousel .c-carousel-controls {
+  position: absolute;
+  top: -80px;
+  right: 0;
 }
-.ho-blog-lessons .swiper-button-prev {
-  width: 40px;
-  height: 40px;
+.ho-blog__carousel .c-carousel-btn {
   background-color: var(--color-brand-brown);
-  border-radius: 50%;
-  right: 60px;
-  left: auto;
-  top: 100px;
   color: var(--color-brand-white);
 }
-.ho-blog-lessons .swiper-button-prev::after {
-  content: "➜";
-  transform: rotate(180deg);
-  padding: 0 0 4px 0;
-  font-size: 22px;
+.ho-blog__carousel .c-carousel-btn.inactive {
+  background-color: var(--color-brand-beige);
+  color: var(--color-brand-white);
 }
 
-.ho-blog-lessons .swiper-button-next {
-  width: 40px;
-  height: 40px;
-  background-color: var(--color-brand-brown);
-  border-radius: 50%;
-  right: 0;
-  top: 100px;
-  color: var(--color-brand-white);
+@media (min-width: 48rem) {
+  .ho-blog__carousel .c-carousel-controls {
+    top: -128px;
+    right: 20px;
+  }
 }
-.ho-blog-lessons .swiper-button-next::after {
-  content: "➜";
-  padding: 1px 0 0 0;
-  font-size: 22px;
+@media (min-width: 64rem) {
+  .ho-blog__carousel .c-carousel-controls {
+    top: -160px;
+  }
 }
+
 /* cards */
+a.ho-blog-link {
+  display: block;
+  min-width: 46%;
+  margin-right: 4%;
+}
+a.ho-blog-link:last-child {
+  margin-right: 0;
+}
 a.ho-blog-link::before {
   content: none;
 }
 .ho-blog__card-img-wrapper {
   position: relative;
-  border-radius: var(--radius-small);
+  border-radius: var(--radius-extra-small);
   overflow: hidden;
 }
 .ho-blog__card-overlay {
@@ -785,7 +785,7 @@ a.ho-blog-link::before {
   height: 100%;
   opacity: 0;
   transition: 0.5s ease-in-out;
-  border-radius: var(--radius-small);
+  border-radius: var(--radius-extra-small);
   z-index: 4;
 }
 .ho-blog__card-img-wrapper:hover .ho-blog__card-overlay {
@@ -831,7 +831,7 @@ a.ho-blog-link::before {
   opacity: 100%;
 }
 .ho-blog__card-img {
-  border-radius: var(--radius-small);
+  border-radius: var(--radius-extra-small);
 }
 /* details */
 .ho-blog__card-details {
@@ -866,6 +866,18 @@ a.ho-blog-link::before {
   display: flex;
   justify-content: center;
 }
+@media (min-width: 30rem) {
+  .ho-blog__card-img-wrapper {
+    border-radius: var(--radius-small);
+  }
+  /* cards--overlay */
+  .ho-blog__card-overlay {
+    border-radius: var(--radius-small);
+  }
+  .ho-blog__card-img {
+    border-radius: var(--radius-small);
+  }
+}
 
 @media (min-width: 48rem) {
   .ho-blog-lessons {
@@ -877,34 +889,13 @@ a.ho-blog-link::before {
     margin: -160px 0 80px 0;
     grid-column: 1/16;
   }
-  .ho-blog-lessons .swiper-wrapper {
-    padding: 70px 0 0 0;
-  }
-  .ho-blog-lessons .swiper {
-    padding: 100px 0 0 0;
-  }
-  .ho-blog-lessons .swiper-button-prev {
-    width: 60px;
-    height: 60px;
-    right: 100px;
-    top: 30px;
-  }
-  .ho-blog-lessons .swiper-button-prev::after {
-    font-size: 44px;
+  /* cards */
+  a.ho-blog-link {
+    display: block;
+    min-width: 30%;
+    margin-right: 4%;
   }
 
-  .ho-blog-lessons .swiper-button-next {
-    width: 60px;
-    height: 60px;
-    right: 10px;
-    top: 30px;
-  }
-  .ho-blog-lessons .swiper-button-next::after {
-    content: "➜";
-    padding: 1px 0 0 0;
-    font-size: 44px;
-  }
-  /* cards */
   /* cards--overlay */
   .ho-blog__card-overlay-inner > h3 {
     font-size: 32px;
