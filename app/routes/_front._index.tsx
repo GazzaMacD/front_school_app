@@ -42,10 +42,14 @@ export const links: LinksFunction = () => [
 ];
 
 export const loader = async () => {
-  const homeUrl = `${BASE_API_URL}/pages/?type=home.HomePage&fields=*`;
+  const homeUrl = `${BASE_API_URL}/pages/?type=home.homepage&fields=*`;
   const blogslUrl = `${BASE_API_URL}/pages/?order=-published_date&limit=8&type=lessons.LessonDetailPage&fields=_,id,slug,display_title,display_tagline,published_date,title,category,header_image`;
-  const urls = [homeUrl, blogslUrl];
-  const [home, blogs] = await Promise.all(
+  //campaign urls
+  const simpleBannerUrl = `${BASE_API_URL}/pages/?type=campaigns.CampaignSimpleBannerPage&limit=3&fields=*`;
+  const imageBannerUrl = `${BASE_API_URL}/pages/?type=campaigns.CampaignImageBannerPage&limit=3&fields=_,banner_image,slug,title,start_date,end_date,name_ja`;
+
+  const urls = [homeUrl, blogslUrl, simpleBannerUrl, imageBannerUrl];
+  const [home, blogs, simpleBanner, imageBanner] = await Promise.all(
     urls.map((url) =>
       fetch(url)
         .then(async (r) => {
@@ -67,9 +71,23 @@ export const loader = async () => {
     )
   );
 
+  const campaigns = [
+    ...simpleBanner.data.items,
+    ...imageBanner.data.items,
+  ].filter((campaign) => {
+    const now = Date.now();
+    const start = new Date(campaign.start_date).getTime();
+    const end = new Date(campaign.end_date).getTime();
+    if (start <= now && end >= now) {
+      return true;
+    }
+    return false;
+  });
+
   return json({
     home: home.data.items[0],
     blogs: blogs.data.items,
+    campaigns,
   });
 };
 
