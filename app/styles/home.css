@@ -95,6 +95,142 @@
     left: 100px;
   }
 }
+
+/**
+* Campaigns 
+*/
+#campaigns {
+  padding: 30px 0 60px 0;
+  background-color: var(--color-brand-white);
+}
+a.ho-campaigns__link::before {
+  content: none;
+}
+.ho-campaigns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+a.ho-campaigns__link {
+  display: block;
+  width: 100%;
+}
+/* Simple banner */
+.ho-campaigns__card {
+  max-width: 100%;
+  aspect-ratio: 16/10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.ho-campaigns-sb {
+  padding: 10px 5px;
+}
+.ho-campaigns-sb__name {
+  text-align: center;
+}
+.ho-campaigns-sb__name > span {
+  display: block;
+  margin-top: 5px;
+}
+.ho-campaigns-sb__offer {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-w-semi-bold);
+  text-align: center;
+  margin-bottom: 0;
+}
+.ho-campaigns-sb__duration {
+  font-weight: var(--font-w-semi-bold);
+  text-align: center;
+  margin-bottom: 0;
+}
+/* Simple banner -- lightblue */
+.ho-campaigns__card.lightblue {
+  background-color: var(--color-sec-light-blue);
+}
+.ho-campaigns-sb__name.lightblue {
+  color: var(--color-brand-orange);
+  text-shadow: 1px 1px 1px var(--color-brand-brown);
+}
+.ho-campaigns-sb__name.lightblue > span {
+  color: var(--color-brand-white);
+  text-shadow: 1px 1px 1px var(--color-brand-brown);
+}
+.ho-campaigns-sb__offer.lightblue {
+  color: var(--color-brand-brown);
+  text-shadow: 2px 2px 3px var(--color-brand-cream);
+}
+
+@media (min-width: 30rem) {
+  .ho-campaigns-sb {
+    padding: 20px 10px;
+  }
+  .ho-campaigns-sb__name {
+    text-align: center;
+    font-size: var(--font-size-2xl);
+  }
+  .ho-campaigns-sb__name > span {
+    font-size: var(--font-size-2xl);
+    margin-top: 20px;
+  }
+  .ho-campaigns-sb__offer {
+    font-size: var(--font-size-4xl);
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .ho-campaigns-sb__duration {
+    font-weight: var(--font-w-semi-bold);
+    text-align: center;
+    margin-bottom: 0;
+  }
+}
+
+@media (min-width: 48rem) {
+  #campaigns {
+    padding: 70px 0 100px 0;
+  }
+  .ho-campaigns {
+    flex-direction: row;
+    align-items: stretch;
+  }
+  a.ho-campaigns__link {
+    max-width: 50%;
+  }
+  .ho-campaigns_card {
+    max-width: 50%;
+  }
+  .ho-campaigns-sb {
+    padding: 10px 5px;
+  }
+  .ho-campaigns-sb__name {
+    text-align: center;
+    font-size: var(--font-size-l);
+  }
+  .ho-campaigns-sb__name > span {
+    font-size: var(--font-size-l);
+    margin-top: 10px;
+  }
+  .ho-campaigns-sb__offer {
+    font-size: var(--font-size-2xl);
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .ho-campaigns-sb__duration {
+    font-weight: var(--font-w-semi-bold);
+    text-align: center;
+    margin-bottom: 0;
+  }
+}
+@media (min-width: 64rem) {
+  .ho-campaigns {
+    gap: 40px;
+  }
+}
+@media (min-width: 75rem) {
+}
+
 /**
 * Why study with us 
 */
