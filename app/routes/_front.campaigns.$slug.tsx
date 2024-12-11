@@ -1,5 +1,9 @@
 import React from "react";
-import { type LoaderFunctionArgs, json } from "@remix-run/node";
+import {
+  type LoaderFunctionArgs,
+  json,
+  type MetaFunction,
+} from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
 import { BsCurrencyYen, BsInfoCircle } from "react-icons/bs";
 import { GiTalk } from "react-icons/gi";
@@ -8,7 +12,25 @@ import { FaRegGrinStars } from "react-icons/fa";
 
 import { BASE_API_URL } from "~/common/constants.server";
 import { Swoosh1 } from "~/components/swooshes";
-import { getJapaneseDurationString } from "~/common/utils";
+import {
+  getJapaneseDurationString,
+  getGlobalEnv,
+  getTitle,
+} from "~/common/utils";
+import type {
+  THeaderImage,
+  TStreamRichText,
+  TStreamTextWidthImage,
+  TStreamYoutube,
+} from "~/common/types";
+
+export const meta: MetaFunction = ({ data }) => {
+  const { page } = data;
+  return [
+    { title: getTitle({ title: `${page.name_ja}`, isHome: false }) },
+    { name: "description", content: page.tagline },
+  ];
+};
 
 export async function loader({ params }: LoaderFunctionArgs) {
   const { slug } = params;
@@ -33,8 +55,23 @@ export async function loader({ params }: LoaderFunctionArgs) {
 
 export default function CampaignDetailPage() {
   const { page } = useLoaderData<typeof loader>();
-  return (
-    <>
+  const ENV = getGlobalEnv();
+
+  let campaignPage;
+  const pType = page?.campaign_page_type;
+
+  if (pType === "image_banner") {
+    campaignPage = (
+      <ImageBanner
+        startDate={page.start_date}
+        endDate={page.end_date}
+        bannerImage={page.banner_image}
+        baseBackUrl={ENV.BASE_BACK_URL}
+        additionalDetails={page.additional_details}
+      />
+    );
+  } else if (pType === "simple_banner") {
+    campaignPage = (
       <SimpleBanner
         colorType={page.color_type}
         nameJa={page.name_ja}
@@ -44,10 +81,24 @@ export default function CampaignDetailPage() {
         endDate={page.end_date}
         additionalDetails={page.additional_details}
       />
+    );
+  } else {
+    campaignPage = <h2>Sorry seems there is an error here!</h2>;
+  }
+
+  return (
+    <>
+      {campaignPage}
       <Swoosh1 swooshColor="beige" backColor="cream" />
     </>
   );
 }
+
+/**
+ * Components
+ */
+
+/** Simple Banner Component */
 
 type TSimpleBannerProps = {
   colorType: string;
@@ -145,6 +196,79 @@ function SimpleBanner({
   );
 }
 
-/*
- * Helper functions
- */
+/** Image Banner Component */
+
+type TImageBannerProps = {
+  startDate: string;
+  endDate: string;
+  bannerImage: THeaderImage;
+  baseBackUrl: string;
+  additionalDetails: Array<
+    TStreamRichText | TStreamTextWidthImage | TStreamYoutube
+  >;
+};
+
+function ImageBanner({
+  startDate,
+  endDate,
+  bannerImage,
+  baseBackUrl,
+  additionalDetails,
+}: TImageBannerProps) {
+  const period = getJapaneseDurationString(startDate, endDate);
+  return (
+    <>
+      <header className="cn-dp-ib-header">
+        <img
+          src={`${baseBackUrl}${bannerImage.medium.src}`}
+          alt={bannerImage.title}
+        />
+      </header>
+      <section className="cn-dp-ib-details">
+        {additionalDetails.map((block) => {
+          if (block.type === "rich_text") {
+            return (
+              <div
+                className="g-narrow-container"
+                key={block.id}
+                dangerouslySetInnerHTML={{ __html: block.value }}
+              />
+            );
+          } else if (block.type === "text_width_img") {
+            return (
+              <div key={block.id} className="g-narrow-container">
+                <figure className="cn-dp__figure text-width">
+                  <img
+                    src={`${baseBackUrl}${block.value.image.original.src}`}
+                    alt={block.value.image.title}
+                  />
+                  {block.value?.caption ? (
+                    <figcaption>{block.value.caption}</figcaption>
+                  ) : null}
+                </figure>
+              </div>
+            );
+          } else if (block.type === "youtube") {
+            return (
+              <div key={block.id} className="g-narrow-container">
+                <div className="bl-dp__youtube">
+                  <iframe
+                    className={`youtube-iframe ${
+                      block.value.short ? "youtube-short" : ""
+                    }`}
+                    src={`${block.value.src}?modestbranding=1&controls=0&rel=0`}
+                    title="YouTube video player"
+                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                </div>
+              </div>
+            );
+          } else {
+            return <></>;
+          }
+        })}
+      </section>
+    </>
+  );
+}
