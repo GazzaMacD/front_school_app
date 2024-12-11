@@ -1,11 +1,61 @@
 /*
 * ======== Detail Pages =======
 */
+/* Common */
+.cn-dp__figure {
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+}
+.cn-dp__figure > figcaption {
+  margin-top: 10px;
+  font-size: var(--font-size-xs);
+}
+.cn-dp__figure.full-width {
+  width: 100%;
+}
+.cn-dp__figure.text-width > figcaption {
+  align-self: center;
+}
+@media (min-width: 48rem) {
+  .cn-dp__figure {
+    margin-bottom: 60px;
+  }
+  .cn-dp__figure > figcaption {
+    margin-top: 20px;
+    font-size: var(--font-size-s);
+  }
+}
+@media (min-width: 64rem) {
+  .cn-dp__figure.full-width > figcaption {
+    align-self: flex-start;
+    margin-left: 60px;
+  }
+  .cn-dp__figure.text-width > figcaption {
+    align-self: flex-start;
+  }
+}
+
+/* ====== Image Banner Detail Page === */
+.cn-dp-ib-header > img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 40px;
+}
+.cn-dp-ib-details {
+  padding-bottom: 50px;
+}
+
 @media (min-width: 30rem) {
 }
 @media (min-width: 48rem) {
 }
 @media (min-width: 64rem) {
+  .cn-dp-ib-header > img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 60px;
+  }
 }
 @media (min-width: 75rem) {
 }

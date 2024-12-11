@@ -1,3 +1,22 @@
+/*
+ * Images
+ */
+type TImage = {
+  src: string;
+  width: number;
+  height: number;
+  alt: number;
+};
+
+export type THeaderImage = {
+  id: number;
+  title: string;
+  original: TImage;
+  medium: TImage;
+  thumbnail: TImage;
+  alt: string;
+};
+
 type TClientENV = {
   BASE_BACK_URL: string;
 };
@@ -234,4 +253,44 @@ export type TValidateTokensResponse = {
   isValid: boolean;
   isNew: boolean;
   newToken: string | null;
+};
+
+/**
+ * Stream Fields
+ */
+export type TStreamRichText = {
+  type: "rich_text";
+  value: string;
+  id: string;
+};
+
+type TStreamImageValue = {
+  image: {
+    id: number;
+    title: string;
+    original: TImage;
+    medium: TImage;
+    thumbnail: TImage;
+  };
+  caption: string;
+  author: string;
+  attribution_url: string;
+  license_type: string;
+  license_url: string;
+};
+
+export type TStreamTextWidthImage = {
+  type: "text_width_img";
+  value: TStreamImageValue;
+  id: string;
+};
+
+export type TStreamYoutube = {
+  type: "youtube";
+  value: {
+    src: string;
+    short: boolean;
+    limit: boolean;
+  };
+  id: string;
 };
