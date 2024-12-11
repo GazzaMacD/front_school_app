@@ -16,7 +16,7 @@ import { Navigation } from "swiper/modules";
 import homeStyles from "~/styles/home.css";
 import cardStyles from "~/styles/components/cards.css";
 import { StaffRoundPicCard } from "~/components/cards";
-import { getTitle } from "~/common/utils";
+import { getJapaneseDurationString, getTitle } from "~/common/utils";
 import { Swoosh1 } from "~/components/swooshes";
 import { BASE_API_URL, HOME_URL } from "~/common/constants.server";
 import { getGlobalEnv } from "~/common/utils";
@@ -28,6 +28,8 @@ import {
 import { HeadingOne } from "~/components/headings";
 import { getDisplay } from "~/common/utils";
 import { ErrorPage } from "~/components/errors";
+import CampaignDetailPage from "./_front.campaigns.$slug";
+import { THeaderImage } from "~/common/types";
 
 // server side functions
 export const meta: MetaFunction = () => {
@@ -43,10 +45,10 @@ export const links: LinksFunction = () => [
 
 export const loader = async () => {
   const homeUrl = `${BASE_API_URL}/pages/?type=home.homepage&fields=*`;
-  const blogslUrl = `${BASE_API_URL}/pages/?order=-published_date&limit=8&type=lessons.LessonDetailPage&fields=_,id,slug,display_title,display_tagline,published_date,title,category,header_image`;
+  const blogslUrl = `${BASE_API_URL}/pages/?order=-published_date&limit=8&type=lessons.LessonDetailPage&fields=_,id,slug,display_title,display_tagline,published_date,title,category,header_image,id`;
   //campaign urls
   const simpleBannerUrl = `${BASE_API_URL}/pages/?type=campaigns.CampaignSimpleBannerPage&limit=3&fields=*`;
-  const imageBannerUrl = `${BASE_API_URL}/pages/?type=campaigns.CampaignImageBannerPage&limit=3&fields=_,banner_image,slug,title,start_date,end_date,name_ja`;
+  const imageBannerUrl = `${BASE_API_URL}/pages/?type=campaigns.CampaignImageBannerPage&limit=3&fields=_,banner_image,slug,title,start_date,end_date,name_ja,campaign_page_type`;
 
   const urls = [homeUrl, blogslUrl, simpleBannerUrl, imageBannerUrl];
   const [home, blogs, simpleBanner, imageBanner] = await Promise.all(
@@ -94,7 +96,7 @@ export const loader = async () => {
 // --------------------------------//
 // client side functions
 export default function Index() {
-  const { home, blogs } = useLoaderData<typeof loader>();
+  const { home, blogs, campaigns } = useLoaderData<typeof loader>();
   const ENV = getGlobalEnv();
   const [windowSize, setWindowSize] = React.useState(() => {
     if (typeof window !== "undefined") {
@@ -152,6 +154,49 @@ export default function Index() {
           </div>
         </div>
       </section>
+
+      {campaigns.length ? (
+        <section id="campaigns">
+          <div className="g-basic-container">
+            <HeadingOne
+              enText="Current Campaigns"
+              jpText="現在実施中のキャンペーン"
+              align="center"
+              bkground="light"
+              level="h2"
+            />
+            <div className="ho-campaigns">
+              {campaigns.map((c) => {
+                if (c.campaign_page_type === "image_banner") {
+                  return (
+                    <BannerImageCard
+                      key={c.id}
+                      image={c.banner_image}
+                      slug={c.meta.slug}
+                      nameJa={c.name_ja}
+                      baseUrl={ENV.BASE_BACK_URL}
+                    />
+                  );
+                } else if (c.campaign_page_type === "simple_banner") {
+                  return (
+                    <SimpleBannerCard
+                      key={c.id}
+                      slug={c.meta.slug}
+                      colorType={c.color_type}
+                      nameJa={c.name_ja}
+                      offer={c.offer}
+                      startDate={c.start_date}
+                      endDate={c.end_date}
+                    />
+                  );
+                } else {
+                  return null;
+                }
+              })}
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       <section id="why">
         <div className="g-grid-container1 ho-why">
@@ -540,4 +585,65 @@ function getNumSlides(windowSize: number) {
   else if (windowSize > 400) return 1.44;
   else if (windowSize > 300) return 1.35;
   else return 1.25;
+}
+
+/**
+ * Components
+ */
+type TBannerImageCardProps = {
+  slug: string;
+  image: THeaderImage;
+  nameJa: string;
+  baseUrl: string;
+};
+
+function BannerImageCard({
+  slug,
+  image,
+  nameJa,
+  baseUrl,
+}: TBannerImageCardProps) {
+  return (
+    <Link to={`/campaigns/${slug}`} className="ho-campaigns__link">
+      <div className="ho-campaigns__card">
+        <img src={`${baseUrl}/${image.thumbnail.src}`} alt={`${nameJa}`} />
+      </div>
+    </Link>
+  );
+}
+
+// SimpleBannerCard
+
+type TSimpleBannerCardProps = {
+  slug: string;
+  colorType: "lightblue";
+  nameJa: string;
+  offer: string;
+  startDate: string;
+  endDate: string;
+};
+
+function SimpleBannerCard({
+  slug,
+  colorType,
+  nameJa,
+  offer,
+  startDate,
+  endDate,
+}: TSimpleBannerCardProps) {
+  const duration = getJapaneseDurationString(startDate, endDate);
+  return (
+    <Link to={`/campaigns/${slug}`} className={`ho-campaigns__link`}>
+      <div className={`ho-campaigns__card ${colorType}`}>
+        <h4 className={`ho-campaigns-sb__name ${colorType}`}>
+          {nameJa}
+          <span>キャンペーン</span>
+        </h4>
+        <p className={`ho-campaigns-sb__offer ${colorType}`}>{offer}</p>
+        <p className={`ho-campaigns-sb__duration ${colorType}`}>
+          期間: {duration}
+        </p>
+      </div>
+    </Link>
+  );
 }
