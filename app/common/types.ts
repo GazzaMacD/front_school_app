@@ -294,3 +294,12 @@ export type TStreamYoutube = {
   };
   id: string;
 };
+
+export type TShowHide = {
+  type: "show_hide";
+  value: {
+    showing: string;
+    hidden: string;
+  };
+  id: string;
+};
