@@ -22,6 +22,7 @@ import type {
   TStreamRichText,
   TStreamTextWidthImage,
   TStreamYoutube,
+  TShowHide,
 } from "~/common/types";
 
 export const meta: MetaFunction = ({ data }) => {
@@ -204,7 +205,7 @@ type TImageBannerProps = {
   bannerImage: THeaderImage;
   baseBackUrl: string;
   additionalDetails: Array<
-    TStreamRichText | TStreamTextWidthImage | TStreamYoutube
+    TStreamRichText | TStreamTextWidthImage | TStreamYoutube | TShowHide
   >;
 };
 
@@ -262,6 +263,17 @@ function ImageBanner({
                     allowFullScreen
                   ></iframe>
                 </div>
+              </div>
+            );
+          } else if (block.type === "show_hide") {
+            return (
+              <div key={block.id} className="g-narrow-container">
+                <details className="cn-dp__show-hide">
+                  <summary>{block.value.showing}</summary>
+                  <div
+                    dangerouslySetInnerHTML={{ __html: block.value.hidden }}
+                  />
+                </details>
               </div>
             );
           } else {
