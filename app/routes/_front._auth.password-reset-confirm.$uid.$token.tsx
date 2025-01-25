@@ -238,6 +238,21 @@ export default function ResetConfirmRoute() {
                 送信する
                 <FaArrowRightLong />
               </button>
+              <div className="au-form__bottom-message">
+                <p>
+                  下記内容にご注意いただき、安全なパスワードの設定をお願いいたします。パスワード設定は、以下の条件を満たしていることが必要です。
+                </p>
+                <ul>
+                  <li>15文字以上で作成してください。</li>
+                  <li>大文字、小文字、数字、記号をご使用ください。</li>
+                  <li>
+                    他でご使用されているパスワードと同じものはお控えください。
+                  </li>
+                  <li>
+                    苗字や名前、ご家族のお名前など、個人情報を含むものや、個人が特定されやすい簡易なパスワードはお控えください。
+                  </li>
+                </ul>
+              </div>
             </form>
           </div>
         </div>
