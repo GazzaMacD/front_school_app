@@ -24,11 +24,15 @@
 }
 .au-form__bottom-message {
   padding: 40px 0 0 0;
-  text-align: center;
-  font-size: var(--r14px);
+  text-align: left;
+  font-size: var(--r12px);
 }
 .au-form__bottom-message > p {
   margin-bottom: 5px;
+}
+.au-form__bottom-message > ul {
+  list-style-position: outside;
+  padding-left: 15px;
 }
 .au-form__message {
   max-width: 500px;
