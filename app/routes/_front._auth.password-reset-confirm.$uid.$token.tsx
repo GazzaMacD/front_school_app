@@ -238,7 +238,7 @@ export default function ResetConfirmRoute() {
                 送信する
                 <FaArrowRightLong />
               </button>
-              <div class="au-form__bottom-message">
+              <div className="au-form__bottom-message">
                 <p>
                   下記内容にご注意いただき、安全なパスワードの設定をお願いいたします。パスワード設定は、以下の条件を満たしていることが必要です。
                 </p>
