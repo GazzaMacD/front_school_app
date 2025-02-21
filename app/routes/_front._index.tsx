@@ -3,12 +3,7 @@ import * as React from "react";
 import { json } from "@remix-run/node";
 import swipperStyles from "swiper/css";
 import swipperNavStyles from "swiper/css/navigation";
-import {
-  Link,
-  isRouteErrorResponse,
-  useLoaderData,
-  useRouteError,
-} from "@remix-run/react";
+import { Link, useLoaderData } from "@remix-run/react";
 import { FaArrowRightLong, FaXmark, FaRegCircle } from "react-icons/fa6";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
@@ -16,24 +11,33 @@ import { Navigation } from "swiper/modules";
 import homeStyles from "~/styles/home.css";
 import cardStyles from "~/styles/components/cards.css";
 import { StaffRoundPicCard } from "~/components/cards";
-import { getJapaneseDurationString, getTitle } from "~/common/utils";
+import {
+  getJapaneseDurationString,
+  getTitle,
+  getDisplay,
+  removeHTMLTags,
+  getGlobalEnv,
+} from "~/common/utils";
 import { Swoosh1 } from "~/components/swooshes";
 import { BASE_API_URL, HOME_URL } from "~/common/constants.server";
-import { getGlobalEnv } from "~/common/utils";
 import {
   RoundButtonLink,
   LgBiButtonLink,
   SolidPillButtonLink,
 } from "~/components/buttons";
 import { HeadingOne } from "~/components/headings";
-import { getDisplay } from "~/common/utils";
-import { ErrorPage } from "~/components/errors";
-import CampaignDetailPage from "./_front.campaigns.$slug";
-import { THeaderImage } from "~/common/types";
+import { type THeaderImage } from "~/common/types";
 
 // server side functions
-export const meta: MetaFunction = () => {
-  return [{ title: getTitle({ title: "", isHome: true }) }];
+export const meta: MetaFunction = ({ data }) => {
+  const { home } = data;
+  return [
+    { title: getTitle({ title: "", isHome: true }) },
+    {
+      name: "description",
+      content: removeHTMLTags(home.why_content),
+    },
+  ];
 };
 
 export const links: LinksFunction = () => [
@@ -333,8 +337,6 @@ export default function Index() {
                 navigation
                 pagination={{ clickable: true }}
                 scrollbar={{ draggable: true }}
-                onSwiper={(swiper) => console.log(swiper)}
-                onSlideChange={() => console.log("slide change")}
               >
                 {home.home_class_prices.map((p) => {
                   const cp = p.class_price;
@@ -485,8 +487,6 @@ export default function Index() {
                 navigation
                 pagination={{ clickable: true }}
                 scrollbar={{ draggable: true }}
-                onSwiper={(swiper) => console.log(swiper)}
-                onSlideChange={() => console.log("slide change")}
               >
                 {blogs.map((blog, i) => {
                   const d = new Date(blog.published_date);
