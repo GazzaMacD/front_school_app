@@ -173,6 +173,10 @@ export const meta: MetaFunction = ({ data }) => {
   const { page } = data;
   return [
     { title: getTitle({ title: `${page.display_title}`, isHome: false }) },
+    {
+      name: "description",
+      content: page?.display_tagline || "",
+    },
   ];
 };
 /*

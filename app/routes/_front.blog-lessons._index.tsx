@@ -71,6 +71,11 @@ export const meta: MetaFunction = () => {
         isHome: false,
       }),
     },
+    {
+      name: "description",
+      content:
+        "すべてのXlingualブログレッスンの一覧ページには、カテゴリーボタンがあり、簡単に記事を並べ替えることができます。",
+    },
   ];
 };
 
