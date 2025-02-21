@@ -1,6 +1,6 @@
-import { type LinksFunction, json } from "@remix-run/node";
-import { Link, useLoaderData } from "@remix-run/react";
-import { getGlobalEnv } from "~/common/utils";
+import { type LinksFunction, json, type MetaFunction } from "@remix-run/node";
+import { useLoaderData } from "@remix-run/react";
+import { getGlobalEnv, getTitle, getDivisor4LetterHash } from "~/common/utils";
 
 import { SlidingHeaderPage } from "~/components/pages";
 import { BASE_API_URL } from "~/common/constants.server";
@@ -9,13 +9,23 @@ import { StaffRoundPicCard, NumberedHorizontalCards } from "~/components/cards";
 import aboutStyles from "~/styles/about.css";
 import pageCStyles from "~/styles/components/pages.css";
 import cardStyles from "~/styles/components/cards.css";
-import { getDivisor4LetterHash } from "~/common/utils";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: aboutStyles },
   { rel: "stylesheet", href: pageCStyles },
   { rel: "stylesheet", href: cardStyles },
 ];
+
+export const meta: MetaFunction = ({ data }) => {
+  const { page } = data;
+  return [
+    { title: getTitle({ title: "About Us・私たちについて", isHome: false }) },
+    {
+      name: "description",
+      content: page.mission_title,
+    },
+  ];
+};
 
 export async function loader() {
   const aboutAPIUrl = `${BASE_API_URL}/pages/?type=about.AboutPage&slug=about&fields=*`;
