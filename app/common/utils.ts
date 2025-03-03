@@ -25,6 +25,15 @@ export function getTitle({
   const baseTitle = "英会話・語学学校 エクスリンガル";
   return isHome ? baseTitle : `${title} | ${baseTitle}`;
 }
+/*
+ * String functions
+ */
+export function removeHTMLTags(html: string): string {
+  if (typeof html !== "string") {
+    return "";
+  }
+  return html.replace(/<[^>]*(>|$)|&nbsp;|&zwnj;|&raquo;|&laquo;|&gt;/g, "");
+}
 
 /*
  * Date and time functions
