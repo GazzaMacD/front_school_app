@@ -56,8 +56,8 @@ export default function FrontParentRoute() {
             </div>
             <div className="g-footer__copyright">
               <p>
-                © Copyright 2024 株式会社XLingual | All Rights Reserved |
-                Website by digital4.green
+                © Copyright 2025 株式会社XLingual | All Rights Reserved |
+                Website by Gareth Macdonald
               </p>
             </div>
           </div>
