@@ -1,0 +1,495 @@
+export const loader = () => {
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- Home  -->
+<url>
+  <loc>https://www.xlingual.co.jp/</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<!-- About  -->
+<url>
+  <loc>https://www.xlingual.co.jp/about</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<!-- Staff  -->
+<url>
+  <loc>https://www.xlingual.co.jp/staff/karissa-kopitch</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/staff/carina-delay</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/staff/fujisawa-haruna</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/staff/brian-carpenter</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/staff/gareth-macdonald</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/staff/michele-langevin</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+<!-- Contact  -->
+<url>
+  <loc>https://www.xlingual.co.jp/contact</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<!-- Auth  -->
+<url>
+  <loc>https://www.xlingual.co.jp/register</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/login</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/password-reset</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/login?redirectTo=%2Fmy-page</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<!-- Price Plans  -->
+<url>
+  <loc>https://www.xlingual.co.jp/price-plans</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/price-plans/private-charter</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/price-plans/private-online</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/price-plans/premium-private</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/price-plans/in-person-private</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/price-plans/writing-class</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/price-plans/80-minute-group</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/price-plans/50-minute-group</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/price-plans/community-centre-group</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<!-- Learning Experiences  -->
+<url>
+  <loc>https://www.xlingual.co.jp/learning-experiences</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/learning-experiences/easter-egg-painting</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
+<!-- Testimonials  -->
+<url>
+  <loc>https://www.xlingual.co.jp/testimonials/ryuhei-kawamoto</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/testimonials/chie-taniguchi</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<!-- Language Schools  -->
+<url>
+  <loc>https://www.xlingual.co.jp/language-schools</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/language-schools/hanamizukidori</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/language-schools/miyoshigaoka</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/language-schools/fushimi</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+<!-- Privacy  -->
+<url>
+  <loc>https://www.xlingual.co.jp/privacy</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<!-- Courses  -->
+<url>
+  <loc>https://www.xlingual.co.jp/courses</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/courses/english/presentation-english</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/courses/english/elementary-regular-english</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/courses/english/meeting-english</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/courses/english/english-for-doctors</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/courses/english/intermediate-regular-english</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/courses/english/advanced-regular-english</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/courses/english/elementary-general-business-english</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/courses/english/intermediate-general-business-english</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/courses/english/advanced-general-business-english</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/courses/english/english-for-nurses</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/courses/english/specialized-eiken-course</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/courses/english/native-taught-toeic-preparation</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/courses/english/english-email-writing-course</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+<!-- Campaigns  -->
+<url>
+  <loc>https://www.xlingual.co.jp/campaigns/spring-forward-campaign-2025-03-01-to-2025-04-30</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/campaigns/last-chance-summer-campaign-2024-09-09-to-2024-10-08</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+
+<!-- Blog Lessons  -->
+<url>
+  <loc>https://www.xlingual.co.jp/blog-lessons</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://www.xlingual.co.jp/blog-lessons/why-has-the-demand-for-eiken-increased</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/blog-lessons/i-think-with-negative-statements</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/blog-lessons/the-power-of-habit-in-learning-languages</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/blog-lessons/eiken-for-communication</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/blog-lessons/most-vs-most-of</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/blog-lessons/is-japan-a-safety-country</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/blog-lessons/how-to-use-got-to-and-have-got</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/blog-lessons/advantages-of-taking-eiken-can-eiken-be-used-for-university-entrance-exams</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/blog-lessons?category=%E8%8B%B1%E4%BC%9A%E8%A9%B1%E3%81%A7%E3%82%88%E3%81%8F%E3%81%82%E3%82%8B%E9%96%93%E9%81%95%E3%81%84</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/blog-lessons?category=%E6%96%87%E5%8C%96</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/blog-lessons?category=%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9%E8%8B%B1%E4%BC%9A%E8%A9%B1</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/blog-lessons?category=%E8%8B%B1%E6%A4%9C%E5%AF%BE%E7%AD%96%E3%82%A2%E3%83%89%E3%83%90%E3%82%A4%E3%82%B9</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/blog-lessons?category=%E3%83%93%E3%83%87%E3%82%AA%E8%8B%B1%E4%BC%9A%E8%A9%B1%E3%83%AC%E3%83%83%E3%82%B9%E3%83%B3</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/blog-lessons?category=%E8%8B%B1%E5%8D%98%E8%AA%9E%E3%83%AC%E3%83%83%E3%82%B9%E3%83%B3</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/blog-lessons?category=%E8%8B%B1%E6%96%87%E6%B3%95</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/blog-lessons?category=%E5%A4%96%E5%9B%BD%E8%AA%9E%E5%AD%A6%E7%BF%92%E3%82%A2%E3%83%89%E3%83%90%E3%82%A4%E3%82%B9</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/blog-lessons/what-is-american-thanksgiving</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/blog-lessons/a-better-way-to-say-cheap-2-for-business-owners-and-marketers</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/blog-lessons?page=2</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/blog-lessons/trends-and-strategies-for-the-new-eiken-test</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/blog-lessons/how-can-i-improve-my-english-reading</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/blog-lessons/benefit-of-community-in-language-learning</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/blog-lessons/most-vs-almost-how-to-use-them-like-a-native</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/blog-lessons/how-many-families-do-you-have</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/blog-lessons?category=%E5%A4%96%E5%9B%BD%E8%AA%9E%E5%AD%A6%E7%BF%92%E3%82%A2%E3%83%89%E3%83%90%E3%82%A4%E3%82%B9</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/blog-lessons/a-wonderful-tool-to-help-you-memorize-words-and-phrases</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/blog-lessons/verb-with-ing-is-not-only-used-for-actions-happening-right-now</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/blog-lessons/present-tense-for-future</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/blog-lessons/a-better-way-to-say-cheap</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/blog-lessons/i-made-an-appointment-with-my-friend-1-thats-not-the-correct-word</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/blog-lessons/top-10-mistakes-i-hear-in-class-number-10</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/blog-lessons/i-made-an-appointment-with-my-friend-2-mastering-to-make-plans</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/blog-lessons/to-blame-vs-to-criticize</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/blog-lessons?page=2&amp;category=%E8%8B%B1%E4%BC%9A%E8%A9%B1%E3%81%A7%E3%82%88%E3%81%8F%E3%81%82%E3%82%8B%E9%96%93%E9%81%95%E3%81%84</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/blog-lessons/superstitions-cross-your-fingers</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/blog-lessons/superstitions-knock-on-wood-why-are-you-knocking</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/blog-lessons/are-you-being-understood-by-your-patients</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/blog-lessons/eg-ie-etc-what-do-they-mean</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/blog-lessons/how-to-properly-set-up-your-desk</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/blog-lessons/so-what-is-the-difference-between-forget-to-do-and-forget-doing</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/courses/</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/contact/</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.xlingual.co.jp/blog-lessons/do-you-really-use-verbs-with-ing-for-future</loc>
+  <lastmod>2025-04-08T14:32:39+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+</urlset>`;
+
+  return new Response(sitemap, {
+    status: 200,
+    headers: {
+      "Content-Type": "text/xml",
+    },
+  });
+};
