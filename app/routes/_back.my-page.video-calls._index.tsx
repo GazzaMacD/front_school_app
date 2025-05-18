@@ -11,7 +11,6 @@ export default function VideoCallsIndexRoute() {
 
   return (
     <div>
-      <p>Video Calls</p>
       {videoCallsData.map((videoCallObj: TVideoCallObj) => {
         return (
           <Link

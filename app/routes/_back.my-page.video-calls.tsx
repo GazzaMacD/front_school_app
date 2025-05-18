@@ -37,7 +37,6 @@ export async function loader({ request }: LoaderFunctionArgs) {
       throw redirect(`/login?${searchParams}`);
     }
     const videoCallsData = await videoCallsRes.json();
-    console.log("Video calls data", videoCallsData);
     return { videoCallsData };
   } catch (error) {
     console.log(`Oops error in  ${redirectTo}`);
