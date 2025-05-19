@@ -59,10 +59,9 @@ export default function VideoCallsParentRoute() {
   }
 
   return (
-    <>
-      <p>Video Lessons</p>
+    <div>
       <Outlet />
-    </>
+    </div>
   );
 }
 

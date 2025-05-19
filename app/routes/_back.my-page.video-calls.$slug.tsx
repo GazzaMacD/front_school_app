@@ -44,7 +44,7 @@ export default function VideoCallsDetailRoute() {
   if (!vc || !roomUrl || typeof roomUrl !== "string") {
     // Something wrong here so show user
     return (
-      <div className="">
+      <div className="vc-dp-video-call-wrapper">
         <h2>Video Call Error</h2>
         <p>Sorry there seems to be no video call available here</p>
       </div>
@@ -52,11 +52,8 @@ export default function VideoCallsDetailRoute() {
   } else {
     // has roomURL
     return (
-      <div>
-        <whereby-embed
-          room={roomUrl}
-          style={{ width: "100%", height: "70vh" }}
-        />
+      <div className="vc-dp-video-call-wrapper">
+        <whereby-embed class="vc-dp-video-call" room={roomUrl} />
       </div>
     );
   }

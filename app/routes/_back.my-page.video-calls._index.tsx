@@ -1,5 +1,6 @@
 import { useMatches, Link, useLoaderData, Outlet } from "@remix-run/react";
-import { BsCalendarWeek } from "react-icons/bs";
+import { BsPersonVideo2 } from "react-icons/bs";
+import { SolidPillButtonLink } from "~/components/buttons";
 
 export default function VideoCallsIndexRoute() {
   const matches = useMatches();
@@ -10,15 +11,17 @@ export default function VideoCallsIndexRoute() {
   console.log(videoCallsData);
 
   return (
-    <div>
+    <div className="vc-lp-list-wrapper">
       {videoCallsData.map((videoCallObj: TVideoCallObj) => {
         return (
-          <Link
+          <SolidPillButtonLink
+            color="green"
             key={videoCallObj.teacher.id}
             to={`/my-page/video-calls/${videoCallObj.slug}`}
           >
-            {videoCallObj.teacher.name}
-          </Link>
+            <BsPersonVideo2 />
+            &nbsp;&nbsp; {videoCallObj.teacher.name}
+          </SolidPillButtonLink>
         );
       })}
     </div>

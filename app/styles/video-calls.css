@@ -1,0 +1,34 @@
+/* Parent Page */
+/* List Page */
+.vc-lp-list-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 260px;
+}
+/*
+@media (min-width: 30rem) {
+}
+@media (min-width: 48rem) {
+}
+@media (min-width: 64rem) {
+}
+@media (min-width: 75rem) {
+}
+*/
+@media (min-width: 96rem) {
+  .vc-lp-list-wrapper {
+    padding: 40px 0 0 0;
+  }
+}
+/* Detail Page */
+.vc-dp-video-call {
+  display: block;
+  width: 100%;
+  height: calc(100vh - 450px);
+}
+@media (min-width: 96rem) {
+  .vc-dp-video-call-wrapper {
+    padding: 32px 0 0 0;
+  }
+}
