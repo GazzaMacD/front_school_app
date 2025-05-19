@@ -21,6 +21,7 @@ export const handle = {
 export default function VideoCallsDetailRoute() {
   const { slug } = useLoaderData<typeof loader>();
   const matches = useMatches();
+
   // Get teacher video call data from slug
   const {
     data: { videoCallsData },
@@ -28,21 +29,35 @@ export default function VideoCallsDetailRoute() {
   const vc = videoCallsData.find((videoCall) => videoCall.slug === slug);
 
   // Verify if host or guest
+  let roomUrl;
+
   const {
     data: { user },
   } = matches[1];
   if (user.is_staff && vc && vc.teacher.id === user.id) {
-    console.log("is host");
+    roomUrl = vc.host_room_url;
   } else {
-    console.log("is guest");
+    roomUrl = vc.room_url;
   }
 
-  let jsx = (
-    <div className="">
-      <h2>Video Call Error</h2>
-      <p>Sorry there seems to be no video call available here</p>
-    </div>
-  );
-
-  return jsx;
+  // Verify if host or guest
+  if (!vc || !roomUrl || typeof roomUrl !== "string") {
+    // Something wrong here so show user
+    return (
+      <div className="">
+        <h2>Video Call Error</h2>
+        <p>Sorry there seems to be no video call available here</p>
+      </div>
+    );
+  } else {
+    // has roomURL
+    return (
+      <div>
+        <whereby-embed
+          room={roomUrl}
+          style={{ width: "100%", height: "70vh" }}
+        />
+      </div>
+    );
+  }
 }
