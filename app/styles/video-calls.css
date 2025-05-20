@@ -25,7 +25,7 @@
 .vc-dp-video-call {
   display: block;
   width: 100%;
-  height: calc(100vh - 450px);
+  height: calc(100vh - 250px);
 }
 @media (min-width: 96rem) {
   .vc-dp-video-call-wrapper {

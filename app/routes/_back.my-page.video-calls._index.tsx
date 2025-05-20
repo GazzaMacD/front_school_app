@@ -1,18 +1,17 @@
-import { useMatches, Link, useLoaderData, Outlet } from "@remix-run/react";
+import { useMatches } from "@remix-run/react";
 import { BsPersonVideo2 } from "react-icons/bs";
 import { SolidPillButtonLink } from "~/components/buttons";
 
+import { TVCalls, TVCall } from "~/common/types";
+
 export default function VideoCallsIndexRoute() {
   const matches = useMatches();
-  console.log(matches);
-  const {
-    data: { videoCallsData },
-  } = matches[2];
-  console.log(videoCallsData);
+  const { data } = matches[2];
+  const { videoCallsData }: TVCalls = data;
 
   return (
     <div className="vc-lp-list-wrapper">
-      {videoCallsData.map((videoCallObj: TVideoCallObj) => {
+      {videoCallsData.map((videoCallObj: TVCall) => {
         return (
           <SolidPillButtonLink
             color="green"
@@ -27,11 +26,3 @@ export default function VideoCallsIndexRoute() {
     </div>
   );
 }
-
-type TVideoCallObj = {
-  slug: string;
-  teacher: {
-    name: string;
-    id: number;
-  };
-};

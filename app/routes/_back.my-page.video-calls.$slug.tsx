@@ -2,21 +2,37 @@ import * as React from "react";
 import { useMatches, Link, useLoaderData, Outlet } from "@remix-run/react";
 import { json, type LoaderFunctionArgs } from "@remix-run/node";
 
-function getBreadCrumbText(slug) {
+/**
+ * Types
+ */
+import { TVCallMatches, TVCall, TVCalls } from "~/common/types";
+
+/**
+ *  Helpers
+ */
+
+function getBreadCrumbText(slug: string) {
   return slug.split("-").join(" ");
 }
+
+export const handle = {
+  breadcrumb: (m: TVCallMatches) => {
+    return (
+      <Link to={`/my-page/video-calls/${m.data.slug}`}>
+        {getBreadCrumbText(m.data.slug)}
+      </Link>
+    );
+  },
+};
+
+/**
+ * Loaders and Actions
+ */
 
 export function loader({ params }: LoaderFunctionArgs) {
   const { slug } = params;
   return json({ slug });
 }
-export const handle = {
-  breadcrumb: (m) => (
-    <Link to={`/my-page/video-calls/${m.data.slug}`}>
-      {getBreadCrumbText(m.data.slug)}
-    </Link>
-  ),
-};
 
 export default function VideoCallsDetailRoute() {
   const { slug } = useLoaderData<typeof loader>();
@@ -26,7 +42,11 @@ export default function VideoCallsDetailRoute() {
   const {
     data: { videoCallsData },
   } = matches[2];
-  const vc = videoCallsData.find((videoCall) => videoCall.slug === slug);
+
+  console.log(videoCallsData);
+  const vc = videoCallsData.find(
+    (videoCall: TVCall) => videoCall.slug === slug
+  );
 
   // Verify if host or guest
   let roomUrl;
