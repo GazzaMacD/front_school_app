@@ -56,7 +56,7 @@ export default function SchedulesParentRoute() {
     return (
       <>
         <p>Sorry you don't have permission to see this part of the site.</p>
-        <Link to="/my-space">Go back to my Page</Link>
+        <Link to="/my-page">Go back to my Page</Link>
       </>
     );
   }

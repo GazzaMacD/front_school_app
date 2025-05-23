@@ -43,7 +43,6 @@ export default function VideoCallsDetailRoute() {
     data: { videoCallsData },
   } = matches[2];
 
-  console.log(videoCallsData);
   const vc = videoCallsData.find(
     (videoCall: TVCall) => videoCall.slug === slug
   );
