@@ -303,3 +303,29 @@ export type TShowHide = {
   };
   id: string;
 };
+
+/**
+ * Video Calls
+ */
+
+export type TVCallMatches = {
+  id: string;
+  pathname: string;
+  params: {
+    slug: string;
+  };
+  data: {
+    slug: string;
+  };
+};
+
+export type TVCall = {
+  slug: string;
+  teacher: {
+    name: string;
+    id: number;
+  };
+  host_room_url: string;
+  room_url: string;
+};
+export type TVCalls = TVCall[];

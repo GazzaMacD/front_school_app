@@ -56,6 +56,14 @@ export default function Root() {
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <Meta />
         <Links />
+        {pathname.includes("video-calls") ? (
+          <script
+            src="https://cdn.srv.whereby.com/embed/v2-embed.js"
+            type="module"
+            defer
+          ></script>
+        ) : null}
+
         {pathname.includes("my-page") ? null : (
           <>
             <script
