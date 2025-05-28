@@ -1,4 +1,4 @@
-import { type ActionFunctionArgs, json } from "@remix-run/node";
+import { type ActionFunctionArgs, json, redirect } from "@remix-run/node";
 import { z, type ZodIssue } from "zod";
 
 import { MC_URL, MC_API_KEY, MC_AUD_ALL_ID } from "~/common/constants.server";
@@ -189,4 +189,8 @@ export async function action({ request }: ActionFunctionArgs) {
       { status: 400 }
     );
   }
+}
+
+export function loader() {
+  return redirect("/");
 }
