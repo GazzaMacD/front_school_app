@@ -17,6 +17,7 @@ import { SimpleBannerCampaignAdd } from "~/components/ads";
 import { getTitle, getGlobalEnv } from "~/common/utils";
 import cardStyles from "~/styles/components/cards.css";
 import campaignAdStyles from "~/styles/components/campaign-ads.css";
+import { EmailSubscription } from "~/components/email-subscriptions";
 import type {
   TWagBasicImage,
   TBaseDetailPage,
@@ -466,6 +467,12 @@ export default function LessonsDetailPage() {
           </div>
         </section>
       ) : null}
+
+      <section>
+        <div className="g-narrow-container">
+          <EmailSubscription />
+        </div>
+      </section>
 
       <section className="bl-dp__related">
         <div className="g-grid-container1">
