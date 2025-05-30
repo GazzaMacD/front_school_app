@@ -1,0 +1,18 @@
+/*
+* Email Subscribe css (c-es-)
+*/
+.c-es-wrapper {
+  margin: 20px 0 40px 0;
+  padding: 40px 20px;
+  border: 2px dashed var(--color-brand-brown);
+  border-radius: var(--radius-medium);
+}
+.c-es-wrapper > p {
+  font-size: var(--r13px);
+}
+
+.c-es-form__cols {
+  display: flex;
+  gap: 15px;
+  justify-content: space-between;
+}

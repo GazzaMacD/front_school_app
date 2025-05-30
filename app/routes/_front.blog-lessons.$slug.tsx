@@ -16,6 +16,7 @@ import { BlogCard } from "~/components/cards";
 import { SimpleBannerCampaignAdd } from "~/components/ads";
 import { getTitle, getGlobalEnv } from "~/common/utils";
 import cardStyles from "~/styles/components/cards.css";
+import emailSubscribeStyles from "~/styles/components/email-subscribe.css";
 import campaignAdStyles from "~/styles/components/campaign-ads.css";
 import { EmailSubscription } from "~/components/email-subscriptions";
 import type {
@@ -28,6 +29,7 @@ import type {
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: cardStyles },
   { rel: "stylesheet", href: campaignAdStyles },
+  { rel: "stylesheet", href: emailSubscribeStyles },
 ];
 
 type TLessonDetailOptions = {

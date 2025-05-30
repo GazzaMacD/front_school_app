@@ -18,8 +18,8 @@ function EmailSubscription() {
 
   if (showThanks) {
     return (
-      <div>
-        <h2>Thanks for subscribing</h2>
+      <div className="c-es-wrapper">
+        <h3>Thanks for subscribing</h3>
         <p>
           Thank you so much for taking an interest in our regular emails. We
           always aim to help you with these mails and hope that you will be
@@ -35,8 +35,8 @@ function EmailSubscription() {
   }
 
   return (
-    <div>
-      <h2>Subscribe to our regular Learning Email</h2>
+    <div className="c-es-wrapper">
+      <h3>Subscribe to our regular Learning Email</h3>
       <p>
         We love to help our language learning community with their studies. We
         publish regular learning blogs posts and instagram posts as well as have
@@ -84,69 +84,70 @@ function EmailSubscription() {
             </ul>
           ) : null}
         </div>
+        <div className="c-es-form__cols">
+          <div className="g-form__input-group">
+            <label className="g-form__text-label" htmlFor="family_name-input">
+              姓
+            </label>
+            <input
+              type="text"
+              id="family_name-input"
+              name="family_name"
+              required
+              disabled={
+                fetcher.state === "loading" || fetcher.state === "submitting"
+              }
+              aria-invalid={Boolean(fetcher.data?.errors?.family_name?.length)}
+              aria-errormessage={
+                fetcher.data?.errors?.family_name?.length
+                  ? "family_name-errors"
+                  : undefined
+              }
+            />
+            {fetcher.data?.family_name?.email?.length ? (
+              <ul
+                className="g-form__validation-errors"
+                role="alert"
+                id="family_name-errors"
+              >
+                {fetcher.data.errors.family_name.map((error: string) => {
+                  return <li key={error}>{error}</li>;
+                })}
+              </ul>
+            ) : null}
+          </div>
 
-        <div className="g-form__input-group">
-          <label className="g-form__text-label" htmlFor="family_name-input">
-            姓
-          </label>
-          <input
-            type="text"
-            id="family_name-input"
-            name="family_name"
-            required
-            disabled={
-              fetcher.state === "loading" || fetcher.state === "submitting"
-            }
-            aria-invalid={Boolean(fetcher.data?.errors?.family_name?.length)}
-            aria-errormessage={
-              fetcher.data?.errors?.family_name?.length
-                ? "family_name-errors"
-                : undefined
-            }
-          />
-          {fetcher.data?.family_name?.email?.length ? (
-            <ul
-              className="g-form__validation-errors"
-              role="alert"
-              id="family_name-errors"
-            >
-              {fetcher.data.errors.family_name.map((error: string) => {
-                return <li key={error}>{error}</li>;
-              })}
-            </ul>
-          ) : null}
-        </div>
-
-        <div className="g-form__input-group">
-          <label className="g-form__text-label" htmlFor="given_name-input">
-            名
-          </label>
-          <input
-            type="text"
-            id="given_name-input"
-            name="given_name"
-            required
-            disabled={
-              fetcher.state === "loading" || fetcher.state === "submitting"
-            }
-            aria-invalid={Boolean(fetcher.data?.errors?.given_name?.length)}
-            aria-errormessage={
-              fetcher.data?.errors?.given_name?.length
-                ? "given_name-errors"
-                : undefined
-            }
-          />
-          {fetcher.data?.given_name?.email?.length ? (
-            <ul
-              className="g-form__validation-errors"
-              role="alert"
-              id="given_name-errors"
-            >
-              {fetcher.data.errors.given_name.map((error: string) => {
-                return <li key={error}>{error}</li>;
-              })}
-            </ul>
-          ) : null}
+          <div className="g-form__input-group">
+            <label className="g-form__text-label" htmlFor="given_name-input">
+              名
+            </label>
+            <input
+              type="text"
+              id="given_name-input"
+              name="given_name"
+              required
+              disabled={
+                fetcher.state === "loading" || fetcher.state === "submitting"
+              }
+              aria-invalid={Boolean(fetcher.data?.errors?.given_name?.length)}
+              aria-errormessage={
+                fetcher.data?.errors?.given_name?.length
+                  ? "given_name-errors"
+                  : undefined
+              }
+            />
+            {fetcher.data?.given_name?.email?.length ? (
+              <ul
+                className="g-form__validation-errors"
+                role="alert"
+                id="given_name-errors"
+              >
+                {fetcher.data.errors.given_name.map((error: string) => {
+                  return <li key={error}>{error}</li>;
+                })}
+              </ul>
+            ) : null}
+          </div>
         </div>
 
         <div className="g-form__submit">
