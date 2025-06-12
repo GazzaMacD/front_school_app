@@ -16,7 +16,9 @@ import { BlogCard } from "~/components/cards";
 import { SimpleBannerCampaignAdd } from "~/components/ads";
 import { getTitle, getGlobalEnv } from "~/common/utils";
 import cardStyles from "~/styles/components/cards.css";
+import emailSubscribeStyles from "~/styles/components/email-subscribe.css";
 import campaignAdStyles from "~/styles/components/campaign-ads.css";
+import { EmailSubscription } from "~/components/email-subscriptions";
 import type {
   TWagBasicImage,
   TBaseDetailPage,
@@ -27,6 +29,7 @@ import type {
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: cardStyles },
   { rel: "stylesheet", href: campaignAdStyles },
+  { rel: "stylesheet", href: emailSubscribeStyles },
 ];
 
 type TLessonDetailOptions = {
@@ -466,6 +469,12 @@ export default function LessonsDetailPage() {
           </div>
         </section>
       ) : null}
+
+      <section>
+        <div className="g-narrow-container">
+          <EmailSubscription />
+        </div>
+      </section>
 
       <section className="bl-dp__related">
         <div className="g-grid-container1">
