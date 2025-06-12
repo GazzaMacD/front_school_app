@@ -19,32 +19,25 @@ function EmailSubscription() {
   if (showThanks) {
     return (
       <div className="c-es-wrapper">
-        <h3>Thanks for subscribing</h3>
+        <h3>ご登録いただき、誠にありがとうございます。</h3>
+
         <p>
-          Thank you so much for taking an interest in our regular emails. We
-          always aim to help you with these mails and hope that you will be
-          satisfied with what we send you. If you are not satisfied, please
-          don't hesitate to contact us with any suggestions on how we might
-          improve our service to our language learning community. We'd love to
-          hear from you. If you are truely unhappy, you can unsubsribe from our
-          mailing list from the email at the bottom.
+          エクスリンガルの学習メールにご関心をお寄せくださり、誠にありがとうございます。私たちは、メール読者の皆様の学習をサポートし、ご満足いただけるよう取り組んでおりますが、何かご意見などございましたら、ぜひお気軽にお問い合わせくださいませ。万一、ご満足いただけない場合には、メールの配信解除はいつでも可能となっております。メール下部の「unsubscribe」のリンクから配信解除を行っていただけます。
         </p>
-        <p>Have a good day and thanks for reading our blog posts.</p>
+
+        <p>
+          当校ウェブサイトをご覧いただき、誠にありがとうございます。
+          素晴らしい一日をお過ごしください。{" "}
+        </p>
       </div>
     );
   }
 
   return (
     <div className="c-es-wrapper">
-      <h3>Subscribe to our regular Learning Email</h3>
+      <h3>エクスリンガル学習メールをぜひご利用ください</h3>
       <p>
-        We love to help our language learning community with their studies. We
-        publish regular learning blogs posts and instagram posts as well as have
-        regular language learning experiences. If you would like to join our
-        mailing list to be updated regularly (about once every two weeks),
-        please sign up below. You can unsubsribe anytime. Family name are First
-        name are optional but we are friendly nice people who like to know our
-        audience so if you would like, please let us know who you are.
+        私たちは、語学学習をする多くの方を全力でサポートしたいと考えています。このメールでは講師ブログや当校インスタグラムの最新記事、語学イベント「ラーニング・エクスペリエンス」のご案内などをお届けしています。メールは約2週間に1度の配信です。購読は無料となっておりますので、ぜひメールを登録して、あなたの学習に役立つ情報をお受け取りください。配信解除はいつでも可能です。メールアドレスのみでもご登録いただけますが、もし差し支えなければ、お名前のご入力もよろしくお願いいたします。
       </p>
       <fetcher.Form
         method="post"

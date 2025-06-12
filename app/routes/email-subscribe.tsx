@@ -82,6 +82,12 @@ function mcErrorsToError(mcErrors: TSubscribeToAudience): TSubscriberErrors {
   switch (mcErrors.data?.title) {
     case "Member Exists":
       return { email: ["このメールはすでに登録されています"] };
+    case "Invalid Resource":
+      return {
+        email: [
+          "このEメールは偽物か無効のようです。本物のEメールアドレスを入力してください",
+        ],
+      };
     default:
       return { email: ["このメールは登録できません。お問い合わせください"] };
   }
