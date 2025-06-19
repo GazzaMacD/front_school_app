@@ -18,8 +18,10 @@ export default function VideoCallsIndexRoute() {
             key={videoCallObj.teacher.id}
             to={`/my-page/video-calls/${videoCallObj.slug}`}
           >
-            <BsPersonVideo2 />
-            &nbsp;&nbsp; {videoCallObj.teacher.name}
+            <div className="vc-lp-button__inner">
+              <BsPersonVideo2 />
+              {videoCallObj.teacher.name}
+            </div>
           </SolidPillButtonLink>
         );
       })}

@@ -13,7 +13,13 @@ import {
   useLocation,
   useMatches,
 } from "@remix-run/react";
-import { BsHouse, BsCalendarWeek, BsX, BsPersonVcard } from "react-icons/bs";
+import {
+  BsHouse,
+  BsCalendarWeek,
+  BsX,
+  BsPersonVcard,
+  BsPersonVideo2,
+} from "react-icons/bs";
 import { FaInstagram, FaFacebookF, FaYoutube } from "react-icons/fa";
 
 import {
@@ -137,12 +143,26 @@ function Menu({ menuOpen, setMenuOpen, classSchedules }: TMenuProps) {
             </Link>
           </li>
           {classSchedules && (
-            <li>
-              <Link onClick={() => setMenuOpen(false)} to="/my-page/schedules">
-                <BsCalendarWeek />
-                スケジュール
-              </Link>
-            </li>
+            <>
+              <li>
+                <Link
+                  onClick={() => setMenuOpen(false)}
+                  to="/my-page/schedules"
+                >
+                  <BsCalendarWeek />
+                  スケジュール
+                </Link>
+              </li>
+              <li>
+                <Link
+                  onClick={() => setMenuOpen(false)}
+                  to="/my-page/video-calls"
+                >
+                  <BsPersonVideo2 />
+                  ビデオ通話
+                </Link>
+              </li>
+            </>
           )}
         </ul>
         <div className="mp-p-sidebar__socials">
