@@ -6,6 +6,11 @@
   gap: 15px;
   max-width: 260px;
 }
+
+.vc-lp-button__inner {
+  display: flex;
+  gap: 10px;
+}
 /*
 @media (min-width: 30rem) {
 }
