@@ -17,6 +17,7 @@ export default function VideoCallsIndexRoute() {
             color="green"
             key={videoCallObj.teacher.id}
             to={`/my-page/video-calls/${videoCallObj.slug}`}
+            reloadDoc={true}
           >
             <div className="vc-lp-button__inner">
               <BsPersonVideo2 />

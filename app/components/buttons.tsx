@@ -84,11 +84,17 @@ type TPillButtonLinkProps = {
   to: string;
   color: "brown" | "orange" | "green";
   children: React.ReactNode;
+  reloadDoc?: boolean;
 };
 
-function SolidPillButtonLink({ to, color, children }: TPillButtonLinkProps) {
+function SolidPillButtonLink({
+  to,
+  color,
+  children,
+  reloadDoc = false,
+}: TPillButtonLinkProps) {
   return (
-    <Link to={to} className="g-sp-button-link">
+    <Link to={to} reloadDocument={reloadDoc} className="g-sp-button-link">
       <div className={`g-sp-button ${color}`}>{children}</div>
     </Link>
   );
