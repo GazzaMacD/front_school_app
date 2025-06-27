@@ -51,8 +51,8 @@ export const loader = async () => {
   const homeUrl = `${BASE_API_URL}/pages/?type=home.homepage&fields=*`;
   const blogslUrl = `${BASE_API_URL}/pages/?order=-published_date&limit=8&type=lessons.LessonDetailPage&fields=_,id,slug,display_title,display_tagline,published_date,title,category,header_image,id`;
   //campaign urls
-  const simpleBannerUrl = `${BASE_API_URL}/pages/?type=campaigns.CampaignSimpleBannerPage&limit=3&fields=*`;
-  const imageBannerUrl = `${BASE_API_URL}/pages/?type=campaigns.CampaignImageBannerPage&limit=3&fields=_,banner_image,slug,title,start_date,end_date,name_ja,campaign_page_type`;
+  const simpleBannerUrl = `${BASE_API_URL}/pages/?type=campaigns.CampaignSimpleBannerPage&order=-start_date&limit=3&fields=*`;
+  const imageBannerUrl = `${BASE_API_URL}/pages/?type=campaigns.CampaignImageBannerPage&order=-start_date&limit=3&fields=_,banner_image,slug,title,start_date,end_date,name_ja,campaign_page_type`;
 
   const urls = [homeUrl, blogslUrl, simpleBannerUrl, imageBannerUrl];
   const [home, blogs, simpleBanner, imageBanner] = await Promise.all(
@@ -108,7 +108,6 @@ export default function Index() {
     }
     return 0;
   });
-  console.log(campaigns);
 
   const handleWindowResize = React.useCallback((event) => {
     setWindowSize(window.innerWidth);
