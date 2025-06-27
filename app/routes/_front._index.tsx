@@ -108,6 +108,7 @@ export default function Index() {
     }
     return 0;
   });
+  console.log(campaigns);
 
   const handleWindowResize = React.useCallback((event) => {
     setWindowSize(window.innerWidth);
